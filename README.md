@@ -5,9 +5,10 @@
 [![License](https://img.shields.io/cocoapods/l/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
 [![Platform](https://img.shields.io/cocoapods/p/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
 
+- [🗝 Features](#features)
 - [⤵️ Installation](#installation)
 - [🛠 Usage](#usage)
-- [💪🏼 Improvements](#improvements)
+- [👓 Translation](#translation)
 
 ## Screenshot
 
