@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GBHFacebookImagePicker'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.'
 
 # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/terflogag/GBHFacebookImagePicker.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'GBHFacebookImagePicker/Classes/**/*'
   
