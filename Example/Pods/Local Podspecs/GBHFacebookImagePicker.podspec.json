@@ -1,0 +1,22 @@
+{
+  "name": "GBHFacebookImagePicker",
+  "version": "0.1.0",
+  "summary": "A short description of GBHFacebookImagePicker.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/GBHFacebookImagePicker",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Florian Gabach": "florian.gabach@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/GBHFacebookImagePicker.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "GBHFacebookImagePicker/Classes/**/*"
+}

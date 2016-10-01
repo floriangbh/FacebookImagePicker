@@ -1,0 +1,16 @@
+PODS:
+  - GBHFacebookImagePicker (0.1.0)
+
+DEPENDENCIES:
+  - GBHFacebookImagePicker (from `../`)
+
+EXTERNAL SOURCES:
+  GBHFacebookImagePicker:
+    :path: ../
+
+SPEC CHECKSUMS:
+  GBHFacebookImagePicker: efbe8fbe7fbc4c0c21e57ca43ab88835cbcc1037
+
+PODFILE CHECKSUM: e1e674ba020873f0530813eb6d09f5f2341e5d00
+
+COCOAPODS: 1.1.0.rc.2
