@@ -9,13 +9,13 @@
 - [🛠 Usage](#usage)
 - [💪🏼 Improvements](#improvements)
 
+## Screenshot
+
+![Preview](https://github.com/terflogag/GBHFacebookImagePicker/raw/master/preview.png)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Screenshot
-
-[![Preview](https://github.com/terflogag/GBHFacebookImagePicker/raw/master/preview.png)]
 
 ## Requirements
 
@@ -77,13 +77,6 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 "Allow" = "<your_translation>";
 "Close" = "<your_translation>";
 ```
-=======
-## Improvements 
-
-Comming soon : 
-- Localized string (actually only in French !)
-- Image's cache 
->>>>>>> 4c43bf4b19b43a47812a785c67bc213079270337
 
 ## Author
 
