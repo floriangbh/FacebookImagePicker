@@ -7,7 +7,6 @@
 
 - [⤵️ Installation](#installation)
 - [🛠 Usage](#usage)
-- [💪🏼 Comming soon improvement](#usage)
 
 ## Example
 
