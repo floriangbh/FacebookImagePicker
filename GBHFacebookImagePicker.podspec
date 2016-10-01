@@ -17,9 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description      = 'GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0. Permit to pick picture in your Facebook album'
 
   s.homepage         = 'https://github.com/terflogag/GBHFacebookImagePicker'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
@@ -38,5 +36,6 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+    s.dependency 'FBSDKCoreKit', '~> 4.16.0'
+    s.dependency 'FBSDKLoginKit', '~> 4.16.0'
 end

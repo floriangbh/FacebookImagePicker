@@ -5,11 +5,19 @@
 [![License](https://img.shields.io/cocoapods/l/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
 [![Platform](https://img.shields.io/cocoapods/p/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
 
+- [⤵️ Installation](#installation)
+- [🛠 Usage](#usage)
+- [💪🏼 Comming soon improvement](#usage)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+
+* Xcode 8 
+* iOS 9.0+ target deployment
+* FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
 
 ## Installation
 
@@ -20,9 +28,33 @@ it, simply add the following line to your Podfile:
 pod "GBHFacebookImagePicker"
 ```
 
+## Usage
+
+You need to have set up your application correctly to work with Facebook : https://developers.facebook.com/docs/ios/getting-started
+
+Then, implement the `GBHFacebookImagePickerDelegate` protocol:
+
+```
+// MARK: - GBHFacebookImagePicker Protocol
+
+func facebookImagePicker(imagePicker: UIViewController, didSelectImageWithUrl url: String) {
+imagePicker.dismiss(animated: true, completion: nil)
+
+print("Image URL : \(url)")
+// Do anything you want with the picture url !
+}
+```
+
+## Improvement 
+
+Comming soon :
+- Error handling 
+- Image cache 
+And more !
+
 ## Author
 
-Florian Gabach, florian.gabach@gmail.com
+Florian Gabach, contact@floriangabach.fr
 
 ## License
 
