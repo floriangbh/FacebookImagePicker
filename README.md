@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
 [![Platform](https://img.shields.io/cocoapods/p/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
 
+GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
+
 - [🗝 Features](#features)
 - [⤵️ Installation](#installation)
 - [🛠 Usage](#usage)
