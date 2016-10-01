@@ -12,6 +12,10 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Screenshot
+
+[![Preview](https://github.com/terflogag/GBHFacebookImagePicker/raw/master/preview.png)]
+
 ## Requirements
 
 * Xcode 8 
@@ -58,6 +62,18 @@ let albumPicker = GBHFacebookImagePicker()
 albumPicker.delegate = self
 let navi = UINavigationController(rootViewController: albumPicker)
 self.present(navi, animated: true)
+```
+
+## Translation 
+
+GBHFacebookImagePicker is currently write in english. If you need translation for the permission popup (or whatever thing), just add this line in your localized file  :
+
+```
+"Pictures" = "<your_translation>";
+"Oups" = "<your_translation>";
+"You need to allow photo's permission." =  "<your_translation>";
+"Allow" = "<your_translation>";
+"Close" = "<your_translation>";
 ```
 
 ## Author
