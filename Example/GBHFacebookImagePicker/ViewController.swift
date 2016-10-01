@@ -45,6 +45,14 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         
         print("Image URL : \(url)")
     }
+    
+    func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
+        print(error.debugDescription)
+    }
+    
+    func facebookImagePicker(didCancelled imagePicker: UIViewController) {
+        print("Cancelled Facebook Album picker")
+    }
 
 }
 
