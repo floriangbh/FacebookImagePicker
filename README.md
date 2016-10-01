@@ -38,11 +38,20 @@ Then, implement the `GBHFacebookImagePickerDelegate` protocol:
 // MARK: - GBHFacebookImagePicker Protocol
 
 func facebookImagePicker(imagePicker: UIViewController, didSelectImageWithUrl url: String) {
-imagePicker.dismiss(animated: true, completion: nil)
+	imagePicker.dismiss(animated: true, completion: nil)
 
-print("Image URL : \(url)")
-// Do anything you want with the picture url !
+	print("Image URL : \(url)")
+	// Do anything you want with the picture url !
 }
+```
+
+Display picker : 
+
+```
+let albumPicker = GBHFacebookImagePicker()
+albumPicker.delegate = self
+let navi = UINavigationController(rootViewController: albumPicker)
+ self.present(navi, animated: true)
 ```
 
 ## Improvement 
