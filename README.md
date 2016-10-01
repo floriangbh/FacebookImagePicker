@@ -13,6 +13,13 @@
 
 ![Preview](https://github.com/terflogag/GBHFacebookImagePicker/raw/master/preview.png)
 
+## Features 
+
+- Login with Facebook SDK and display user's Albums
+- Display pictures of each albums 
+- Handling denied photo's access 
+- Select and get URL of the picked picture 
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -65,7 +72,6 @@ let navi = UINavigationController(rootViewController: albumPicker)
 self.present(navi, animated: true)
 ```
 
-<<<<<<< HEAD
 ## Translation 
 
 GBHFacebookImagePicker is currently write in english. If you need translation for the permission popup (or whatever thing), just add this line in your localized file  :
