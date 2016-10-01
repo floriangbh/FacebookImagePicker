@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'GBHFacebookImagePicker_Example' do
+  pod 'GBHFacebookImagePicker', :path => '../'
+
+  target 'GBHFacebookImagePicker_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
