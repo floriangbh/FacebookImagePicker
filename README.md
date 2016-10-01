@@ -60,7 +60,7 @@ let navi = UINavigationController(rootViewController: albumPicker)
 self.present(navi, animated: true)
 ```
 
-## Improvements
+## Improvements (comming soon !)
 
 - Localized string (actually only in French !)
 - Image's cache 
