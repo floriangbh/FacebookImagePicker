@@ -7,6 +7,7 @@
 
 - [⤵️ Installation](#installation)
 - [🛠 Usage](#usage)
+- [💪🏼 Improvements](#improvements)
 
 ## Example
 
@@ -64,6 +65,7 @@ let navi = UINavigationController(rootViewController: albumPicker)
 self.present(navi, animated: true)
 ```
 
+<<<<<<< HEAD
 ## Translation 
 
 GBHFacebookImagePicker is currently write in english. If you need translation for the permission popup (or whatever thing), just add this line in your localized file  :
@@ -75,6 +77,13 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 "Allow" = "<your_translation>";
 "Close" = "<your_translation>";
 ```
+=======
+## Improvements 
+
+Comming soon : 
+- Localized string (actually only in French !)
+- Image's cache 
+>>>>>>> 4c43bf4b19b43a47812a785c67bc213079270337
 
 ## Author
 
