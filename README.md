@@ -54,7 +54,7 @@ Just in case, for public application (which can be use in the AppStore), you nee
 * Xcode 8 
 * iOS 9.0+ target deployment
 * FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
-* Facebook Application, see [usage](#usage) for explaination with link 
+* Facebook Application, see [usage](#usage) for explaination 
 
 ## Installation
 
