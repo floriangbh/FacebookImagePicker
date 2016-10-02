@@ -15,9 +15,17 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        imageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        imageView.contentMode = UIViewContentMode.scaleToFill
-        contentView.addSubview(imageView)
+        // Add imageView for add Photo
+        self.imageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        self.imageView.contentMode = UIViewContentMode.scaleToFill
+        self.contentView.addSubview(imageView)
+    }
+    
+    func configure(picture: GBHFacebookImageModel) {
+        if let urlPath = picture.link,
+            let url = URL(string: urlPath) {
+            self.imageView?.imageUrl = url
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

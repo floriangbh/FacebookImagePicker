@@ -140,7 +140,7 @@ public class GBHFacebookImagePicker: UITableViewController, GBHAlbumPickerTableV
     }
     
     /**
-     *
+     * Handler for click on close button
      **/
     @objc fileprivate func closePicker() {
         self.delegate.facebookImagePicker(didCancelled: self)
@@ -148,7 +148,7 @@ public class GBHFacebookImagePicker: UITableViewController, GBHAlbumPickerTableV
     }
     
     /**
-     *
+     * Handler for did retrieve album list
      **/
     func didReceiveAlbum(_ sender: Notification) {
         if let albums =  sender.object as? [GBHFacebookAlbumModel] {
@@ -158,15 +158,15 @@ public class GBHFacebookImagePicker: UITableViewController, GBHAlbumPickerTableV
     }
     
     /**
-     *
+     * Show popup with ask user_photos permission
      **/
     fileprivate func showDeniedPermissionPopup() {
         let alertController = UIAlertController(title: NSLocalizedString("Oups", comment: ""),
-                                                message: NSLocalizedString("Vous devez autoriser l'accès aux photos afin de pouvoir choisir une photo.", comment: ""),
+                                                message: NSLocalizedString("You need to allow photo's permission.", comment: ""),
                                                 preferredStyle: UIAlertControllerStyle.alert)
         
         // Done & Cancel button
-        let autorizeAction = UIAlertAction(title: NSLocalizedString("Autoriser", comment: ""),
+        let autorizeAction = UIAlertAction(title: NSLocalizedString("Allow", comment: ""),
                                            style: UIAlertActionStyle.default,
                                            handler: {
                                             alert -> Void in
@@ -174,7 +174,7 @@ public class GBHFacebookImagePicker: UITableViewController, GBHAlbumPickerTableV
         })
         
         // Cancel action
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Fermer", comment: ""),
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Close", comment: ""),
                                          style: UIAlertActionStyle.cancel,
                                          handler: {
                                             (action : UIAlertAction!) -> Void in
@@ -220,16 +220,10 @@ public class GBHFacebookImagePicker: UITableViewController, GBHAlbumPickerTableV
         return cell!
     }
     
-    /**
-     *
-     **/
     override public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
-    
-    /**
-     *
-     **/
+
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let albumDetailVC = GBHPhotoPickerCollectionViewController()
         albumDetailVC.albumPictureDelegate = self

@@ -13,28 +13,20 @@ import FBSDKCoreKit
 class GBHFacebookHelper {
     
     /**
-     *
+     * User's album list
      **/
     var albumList: [GBHFacebookAlbumModel] = []
     
     /**
-     *
+     * Singleton
      **/
     static let shared = GBHFacebookHelper()
-    
-    // MARK: - Init
-    
-    /**
-     *
-     **/
-    init(){
-        
-    }
+
     
     // MARK: - Retrieve Facebook's Albums
     
     /**
-     *
+     * Make GRAPH API's request for user's album
      **/
     func fbAlbumRequest(after: String?) {
         
@@ -81,7 +73,7 @@ class GBHFacebookHelper {
     }
     
     /**
-     *
+     * Parsing GRAPH API result for user's album in GBHFacebookAlbumModel array
      **/
     fileprivate func parseFbAlbumResult(fbResult: Dictionary<String, AnyObject>) {
         if let albumArray = fbResult["data"] as? [AnyObject] {
@@ -109,7 +101,7 @@ class GBHFacebookHelper {
     // MARK: - Retrieve Facebook's Picture
     
     /**
-     *
+     * Make GRAPH API's request for album's pictures
      **/
     func fbAlbumsPictureRequest(after: String?,
                                 album : GBHFacebookAlbumModel) {
@@ -157,7 +149,7 @@ class GBHFacebookHelper {
     }
     
     /**
-     *
+     * Parsing GRAPH API result for album's picture in GBHFacebookAlbumModel
      **/
     fileprivate func parseFbPicture(fbResult: Dictionary<String, AnyObject>, album: GBHFacebookAlbumModel) {
         if let photosResult = fbResult["data"] as? [AnyObject] {
@@ -179,22 +171,25 @@ class GBHFacebookHelper {
     // MARK: - Logout
     
     /**
-     *
+     * Logout with clear session, token & user's album
      **/
     func logout(){
         FBSDKLoginManager().logOut()
+        self.albumList = [] // Clear Album
     }
     
     // MARK: - Login
     
     /**
-     *
+     * Start login with Facebook SDK 
+     * Parameters :
+     * - vc : source controller
+     * - completion(success , error if needed)
      **/
     func login(vc: UIViewController,
                completion: @escaping (Bool, LoginError?) -> Void) {
         
         self.logout() // Flush Facebook login
-        self.albumList = [] // Clear Album
         
         // Start Facebook's login
         let loginManager = FBSDKLoginManager()

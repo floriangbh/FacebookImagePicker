@@ -1,6 +1,5 @@
 # GBHFacebookImagePicker
 
-[![CI Status](http://img.shields.io/travis/Florian Gabach/GBHFacebookImagePicker.svg?style=flat)](https://travis-ci.org/Florian Gabach/GBHFacebookImagePicker)
 [![Version](https://img.shields.io/cocoapods/v/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
 [![License](https://img.shields.io/cocoapods/l/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
 [![Platform](https://img.shields.io/cocoapods/p/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
@@ -11,6 +10,8 @@ GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 - [⤵️ Installation](#installation)
 - [🛠 Usage](#usage)
 - [👓 Translation](#translation)
+- [💪🏼 Improvements](#improvements)
+
 
 ## Screenshot
 
@@ -27,11 +28,33 @@ GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+Don't forgot to replace the current Facebook App's ID with your own in the plist file (Open as > Source code). 
+Like this :
+
+```
+<key>CFBundleURLTypes</key>
+<array>
+<dict>
+<key>CFBundleTypeRole</key>
+<string>Editor</string>
+<key>CFBundleURLSchemes</key>
+<array>
+<string>fb<YOUR_FACEBOO_APP_ID></string>
+</array>
+</dict>
+</array>
+<key>FacebookAppID</key>
+<string><YOUR_FACEBOO_APP_ID></string>
+```
+
+Just in case, for public application (which can be use in the AppStore), you need to send your Facebook's App in review to have user's photos permission.  
+
 ## Requirements
 
 * Xcode 8 
 * iOS 9.0+ target deployment
 * FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
+* Facebook Application, see #usage for explaination with link 
 
 ## Installation
 
@@ -86,6 +109,14 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 "Allow" = "<your_translation>";
 "Close" = "<your_translation>";
 ```
+
+## Improvements
+
+Comming soon improvements :
+- Caching with images 
+- Multiple selection
+- Better use of keychain & token for login
+- UI 
 
 ## Author
 

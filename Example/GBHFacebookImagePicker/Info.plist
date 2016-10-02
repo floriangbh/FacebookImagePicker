@@ -29,6 +29,8 @@
 			</array>
 		</dict>
 	</array>
+    <key>FacebookAppID</key>
+    <string>1759801157620759</string>
     <key>LSApplicationQueriesSchemes</key>
     <array>
         <string>fbapi</string>
@@ -36,8 +38,6 @@
         <string>fbauth2</string>
         <string>fbshareextension</string>
     </array>
-    <key>FacebookAppID</key>
-    <string>1759801157620759</string>
     <key>FacebookDisplayName</key>
     <string>GBHFacebookImagePicker</string>
 	<key>CFBundleVersion</key>

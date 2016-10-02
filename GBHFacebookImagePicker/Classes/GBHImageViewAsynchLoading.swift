@@ -13,7 +13,7 @@ class GBHImageAsyncViewLoading: UIImageView {
     var imageUrl: URL? {
         didSet {
             self.contentMode = .scaleToFill
-            image = UIImage(named: "default")
+            self.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
             if let url = imageUrl {
                 URLSession.shared.dataTask(with: url as URL) { data, response, error in
                     guard let data = data , error == nil else {
@@ -29,8 +29,10 @@ class GBHImageAsyncViewLoading: UIImageView {
                     }
                     }.resume()
             } else {
-                self.image = UIImage(named: "default")
+                self.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
             }
         }
     }
 }
+
+
