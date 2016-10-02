@@ -121,6 +121,7 @@ Comming soon improvements :
 ## Author
 
 Florian Gabach, contact@floriangabach.fr
+
 Inspired by https://github.com/OceanLabs/FacebookImagePicker-iOS
 
 ## License
