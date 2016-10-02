@@ -39,12 +39,12 @@ Like this :
 <string>Editor</string>
 <key>CFBundleURLSchemes</key>
 <array>
-<string>fb<YOUR_FACEBOO_APP_ID></string>
+<string>fb<YOUR_FACEBOOK_APP_ID></string>
 </array>
 </dict>
 </array>
 <key>FacebookAppID</key>
-<string><YOUR_FACEBOO_APP_ID></string>
+<string><YOUR_FACEBOOK_APP_ID></string>
 ```
 
 Just in case, for public application (which can be use in the AppStore), you need to send your Facebook's App in review to have user's photos permission.  
