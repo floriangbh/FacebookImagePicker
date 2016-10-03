@@ -175,7 +175,6 @@ class GBHFacebookHelper {
      **/
     func logout(){
         FBSDKLoginManager().logOut()
-        self.albumList = [] // Clear Album
     }
     
     // MARK: - Login
@@ -188,6 +187,8 @@ class GBHFacebookHelper {
      **/
     func login(vc: UIViewController,
                completion: @escaping (Bool, LoginError?) -> Void) {
+        
+        self.albumList = [] // Clear Album
         
         if FBSDKAccessToken.current() == nil {
             // No token, we need to login
