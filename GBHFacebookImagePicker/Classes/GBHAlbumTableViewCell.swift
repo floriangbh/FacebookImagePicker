@@ -43,7 +43,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         let cellWidth: Int = Int(self.frame.size.width)
-        self.textLabel?.frame = CGRect(x: imageWidth + 30, y: 30, width: cellWidth, height: 20)
+        self.textLabel?.frame = CGRect(x: imageWidth + 30, y: 30, width: cellWidth - (imageWidth * 2), height: 20)
         self.detailTextLabel?.frame = CGRect(x: imageWidth + 30, y: 50, width: cellWidth, height: 20)
     }
     
