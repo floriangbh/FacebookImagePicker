@@ -34,14 +34,14 @@ Like this :
 ```
 <key>CFBundleURLTypes</key>
 <array>
-<dict>
-<key>CFBundleTypeRole</key>
-<string>Editor</string>
-<key>CFBundleURLSchemes</key>
-<array>
-<string>fb<YOUR_FACEBOOK_APP_ID></string>
-</array>
-</dict>
+    <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb<YOUR_FACEBOOK_APP_ID></string>
+            </array>
+    </dict>
 </array>
 <key>FacebookAppID</key>
 <string><YOUR_FACEBOOK_APP_ID></string>
