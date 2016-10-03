@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name             = 'GBHFacebookImagePicker'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0. Enjoy !'
-  s.description      = 'GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0. Permit to pick picture in your Facebook album'
+  s.description      = 'GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0 which permit to pick picture in your Facebook album'
   s.homepage         = 'https://github.com/terflogag/GBHFacebookImagePicker'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
