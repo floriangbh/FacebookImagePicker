@@ -12,7 +12,6 @@ class GBHImageAsyncViewLoading: UIImageView {
     
     var imageUrl: URL? {
         didSet {
-            self.contentMode = .scaleToFill
             self.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
             if let url = imageUrl {
                 URLSession.shared.dataTask(with: url as URL) { data, response, error in

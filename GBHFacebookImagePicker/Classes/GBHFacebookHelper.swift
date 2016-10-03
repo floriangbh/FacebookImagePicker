@@ -191,9 +191,7 @@ class GBHFacebookHelper {
         
         if FBSDKAccessToken.current() == nil {
             // No token, we need to login
-            
-            self.logout() // Flush Facebook login
-            
+
             // Start Facebook's login
             let loginManager = FBSDKLoginManager()
             loginManager.logIn(withReadPermissions: ["user_photos"],
@@ -213,6 +211,7 @@ class GBHFacebookHelper {
                                             // Check "user_photos" permission statut
                                             if (response?.declinedPermissions.contains("user_photos"))! {
                                                 // "user_photos" is dennied
+                                                self.logout() // Flush fb session
                                                 completion(false, LoginError.PermissionDenied)
                                             } else {
                                                 // "user_photos" is granted, let's get user's pictures
@@ -227,37 +226,15 @@ class GBHFacebookHelper {
                                 }
             }
         } else {
-            // Already logged in, check permission 
-            
-            // Build path album request
-            var  path = "/me/permissions/user_photos"
-            
-            // Build Facebook's request
-            let graphRequest = FBSDKGraphRequest(graphPath: path,
-                                                 parameters: nil)
-            
-            // Start Facebook's request
-            _ = graphRequest?.start { connection, result, error in
-                if error != nil {
-                    print(error.debugDescription)
-                    completion(false, LoginError.LoginFailed)
-                    return
-                }else{
-                    // Try to parse request's result
-                    if let fbResult = result as? Dictionary<String, AnyObject>,
-                        let photoPermission = fbResult["data"] as? [AnyObject],
-                        let permission = photoPermission[0] as? Dictionary<String, AnyObject>,
-                        let statuts = permission["status"] as? String {
-                        if statuts == "granted" {
-                            completion(true, nil)
-                        } else {
-                            self.logout() // Flush session
-                            completion(false, LoginError.PermissionDenied)
-                        }
-                    } else {
-                        completion(false, LoginError.LoginFailed)
-                    }
-                }
+            // Already logged in, check User_photos permission
+            if FBSDKAccessToken.current().permissions.contains("user_photos") {
+                // User_photos's permission ok
+                self.fbAlbumRequest(after: nil)
+                completion(true, nil)
+            } else {
+                // User_photos's permission denied
+                self.logout() // Flush fb session
+                completion(false, LoginError.PermissionDenied)
             }
         }
     }

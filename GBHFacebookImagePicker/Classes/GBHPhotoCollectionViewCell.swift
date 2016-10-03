@@ -17,7 +17,8 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         
         // Add imageView for add Photo
         self.imageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        self.imageView.contentMode = UIViewContentMode.scaleToFill
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageView.clipsToBounds = true
         self.contentView.addSubview(imageView)
     }
     

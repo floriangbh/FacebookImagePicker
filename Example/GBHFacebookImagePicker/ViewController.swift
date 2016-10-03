@@ -23,7 +23,7 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
                                        action: #selector(self.showAlbumClick),
                                        for: UIControlEvents.touchUpInside)
         
-        self.pickerImageView.contentMode = .scaleToFill
+        self.pickerImageView.contentMode = .scaleAspectFill
     }
 
     override func didReceiveMemoryWarning() {

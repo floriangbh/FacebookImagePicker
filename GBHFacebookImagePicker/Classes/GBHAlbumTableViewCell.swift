@@ -19,9 +19,9 @@ class GBHAlbumTableViewCell: UITableViewCell {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
         self.accessoryType = .disclosureIndicator
-        
         self.photoImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 15, y: 10, width: imageWidth, height: imageHeight))
-        self.photoImageView.contentMode = UIViewContentMode.scaleToFill
+        self.photoImageView.contentMode = .scaleAspectFill
+        self.photoImageView.clipsToBounds = true
         self.contentView.addSubview(self.photoImageView)
     }
     
@@ -42,6 +42,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        // Text layout
         let cellWidth: Int = Int(self.frame.size.width)
         self.textLabel?.frame = CGRect(x: imageWidth + 30, y: 30, width: cellWidth - (imageWidth * 2), height: 20)
         self.detailTextLabel?.frame = CGRect(x: imageWidth + 30, y: 50, width: cellWidth, height: 20)
