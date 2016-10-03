@@ -21,7 +21,7 @@ class GBHFacebookHelper {
      * Singleton
      **/
     static let shared = GBHFacebookHelper()
-
+    
     
     // MARK: - Retrieve Facebook's Albums
     
@@ -181,7 +181,7 @@ class GBHFacebookHelper {
     // MARK: - Login
     
     /**
-     * Start login with Facebook SDK 
+     * Start login with Facebook SDK
      * Parameters :
      * - vc : source controller
      * - completion(success , error if needed)
@@ -189,39 +189,76 @@ class GBHFacebookHelper {
     func login(vc: UIViewController,
                completion: @escaping (Bool, LoginError?) -> Void) {
         
-        self.logout() // Flush Facebook login
-        
-        // Start Facebook's login
-        let loginManager = FBSDKLoginManager()
-        loginManager.logIn(withReadPermissions: ["user_photos"],
-                           from: vc) { (response, error) in
-                            if(error != nil) {
-                                // Failed
-                                print("Failed to login")
-                                print(error.debugDescription)
-                                completion(false, LoginError.LoginFailed)
-                            } else {
-                                // Success
-                                if response?.isCancelled == true {
-                                    // Login Cancelled
-                                    completion(false, LoginError.LoginCancelled)
+        if FBSDKAccessToken.current() == nil {
+            // No token, we need to login
+            
+            self.logout() // Flush Facebook login
+            
+            // Start Facebook's login
+            let loginManager = FBSDKLoginManager()
+            loginManager.logIn(withReadPermissions: ["user_photos"],
+                               from: vc) { (response, error) in
+                                if(error != nil) {
+                                    // Failed
+                                    print("Failed to login")
+                                    print(error.debugDescription)
+                                    completion(false, LoginError.LoginFailed)
                                 } else {
-                                    if response?.token != nil {
-                                        // Check "user_photos" permission statut
-                                        if (response?.declinedPermissions.contains("user_photos"))! {
-                                            // "user_photos" is dennied
-                                            completion(false, LoginError.PermissionDenied)
-                                        } else {
-                                            // "user_photos" is granted, let's get user's pictures
-                                            self.fbAlbumRequest(after: nil)
-                                            completion(true, nil)
-                                        }
+                                    // Success
+                                    if response?.isCancelled == true {
+                                        // Login Cancelled
+                                        completion(false, LoginError.LoginCancelled)
                                     } else {
-                                        // Failed
-                                        completion(false, LoginError.LoginFailed)
+                                        if response?.token != nil {
+                                            // Check "user_photos" permission statut
+                                            if (response?.declinedPermissions.contains("user_photos"))! {
+                                                // "user_photos" is dennied
+                                                completion(false, LoginError.PermissionDenied)
+                                            } else {
+                                                // "user_photos" is granted, let's get user's pictures
+                                                self.fbAlbumRequest(after: nil)
+                                                completion(true, nil)
+                                            }
+                                        } else {
+                                            // Failed
+                                            completion(false, LoginError.LoginFailed)
+                                        }
                                     }
                                 }
-                            }
+            }
+        } else {
+            // Already logged in, check permission 
+            
+            // Build path album request
+            var  path = "/me/permissions/user_photos"
+            
+            // Build Facebook's request
+            let graphRequest = FBSDKGraphRequest(graphPath: path,
+                                                 parameters: nil)
+            
+            // Start Facebook's request
+            _ = graphRequest?.start { connection, result, error in
+                if error != nil {
+                    print(error.debugDescription)
+                    completion(false, LoginError.LoginFailed)
+                    return
+                }else{
+                    // Try to parse request's result
+                    if let fbResult = result as? Dictionary<String, AnyObject>,
+                        let photoPermission = fbResult["data"] as? [AnyObject],
+                        let permission = photoPermission[0] as? Dictionary<String, AnyObject>,
+                        let statuts = permission["status"] as? String {
+                        if statuts == "granted" {
+                            completion(true, nil)
+                        } else {
+                            self.logout() // Flush session
+                            completion(false, LoginError.PermissionDenied)
+                        }
+                    } else {
+                        completion(false, LoginError.LoginFailed)
+                    }
+                }
+            }
         }
     }
 }
