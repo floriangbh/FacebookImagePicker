@@ -18,22 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxw-gh-6yW">
-                                <state key="normal" title="Show album"/>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="96T-bG-AKg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="96T-bG-AKg">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="7s6-iE-8YG"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxw-gh-6yW">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="giQ-t6-wTX"/>
+                                </constraints>
+                                <state key="normal" title="Show album"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="mrj-lc-FK1" firstAttribute="top" secondItem="fxw-gh-6yW" secondAttribute="bottom" constant="130" id="KME-xj-rzU"/>
+                            <constraint firstItem="fxw-gh-6yW" firstAttribute="leading" secondItem="vZb-ve-Jud" secondAttribute="leadingMargin" constant="64" id="QAO-gm-dof"/>
+                            <constraint firstItem="fxw-gh-6yW" firstAttribute="centerX" secondItem="vZb-ve-Jud" secondAttribute="centerX" id="TwE-Gl-6eu"/>
+                            <constraint firstItem="fxw-gh-6yW" firstAttribute="centerX" secondItem="96T-bG-AKg" secondAttribute="centerX" id="Zpc-GT-ZHK"/>
                             <constraint firstItem="96T-bG-AKg" firstAttribute="top" secondItem="g0Q-A4-EiV" secondAttribute="bottom" constant="130" id="aIm-S7-eX7"/>
-                            <constraint firstItem="fxw-gh-6yW" firstAttribute="centerX" secondItem="96T-bG-AKg" secondAttribute="centerX" id="hg7-nQ-zzk"/>
-                            <constraint firstItem="mrj-lc-FK1" firstAttribute="top" secondItem="fxw-gh-6yW" secondAttribute="bottom" constant="145" id="pJa-qz-ERK"/>
                             <constraint firstItem="96T-bG-AKg" firstAttribute="leading" secondItem="vZb-ve-Jud" secondAttribute="leadingMargin" constant="71" id="wbu-h6-J2B"/>
-                            <constraint firstItem="fxw-gh-6yW" firstAttribute="centerX" secondItem="vZb-ve-Jud" secondAttribute="centerX" id="zei-MQ-PJK"/>
                         </constraints>
                     </view>
                     <connections>

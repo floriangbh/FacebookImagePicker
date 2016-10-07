@@ -55,6 +55,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
     
     fileprivate func prepareViewController() {
         self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
+        self.view.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1.0)
         
         self.prepareCollectionView()
         self.prepareActivityIndicator()
