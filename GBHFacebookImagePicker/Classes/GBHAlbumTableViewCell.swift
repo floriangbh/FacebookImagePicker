@@ -18,7 +18,9 @@ class GBHAlbumTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
+        self.backgroundColor = GBHAppearanceManager.whiteCustom
         self.accessoryType = .disclosureIndicator
+        
         self.photoImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 15, y: 10, width: imageWidth, height: imageHeight))
         self.photoImageView.contentMode = .scaleAspectFill
         self.photoImageView.clipsToBounds = true

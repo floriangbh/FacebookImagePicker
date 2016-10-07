@@ -15,6 +15,8 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.backgroundColor = GBHAppearanceManager.whiteCustom
+        
         // Add imageView for add Photo
         self.imageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
         self.imageView.contentMode = .scaleAspectFill

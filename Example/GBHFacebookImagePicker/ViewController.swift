@@ -19,7 +19,7 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Prepare picker button
-        self.showAlbumButton.setTitle("Login Facebook", for: .normal)
+        self.showAlbumButton.setTitle("Show picker", for: .normal)
         self.showAlbumButton.setTitleColor(UIColor.white, for: .normal)
         self.showAlbumButton.layer.cornerRadius = 3.0
         self.showAlbumButton.backgroundColor = UIColor(red: 59/255.0, green: 89/255.0, blue: 152/255.0, alpha: 1.0)
@@ -29,6 +29,7 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         
         // Background color
         self.view.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1.0)
+    
     }
 
     override func didReceiveMemoryWarning() {
