@@ -117,7 +117,7 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 
 Florian Gabach, contact@floriangabach.fr
 
-Inspired by https://github.com/OceanLabs/FacebookImagePicker-iOS
+Inspired by https://github.com/OceanLabs/FacebookImagePicker-iOS (Objective-C)
 
 ## License
 
