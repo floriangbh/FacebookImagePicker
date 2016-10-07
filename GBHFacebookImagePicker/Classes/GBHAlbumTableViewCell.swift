@@ -50,7 +50,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
         self.detailTextLabel?.frame = CGRect(x: imageWidth + 30, y: 50, width: cellWidth, height: 20)
     }
     
-    func confirgure(album: GBHFacebookAlbumModel) {
+    func configure(album: GBHFacebookAlbumModel) {
         // Album title
         self.textLabel?.text = album.name ?? ""
         

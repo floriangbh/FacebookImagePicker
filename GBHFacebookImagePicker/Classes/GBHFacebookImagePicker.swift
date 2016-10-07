@@ -209,14 +209,7 @@ public class GBHFacebookImagePicker: UITableViewController, GBHAlbumPickerTableV
             cell = GBHAlbumTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         }
         
-        cell?.textLabel?.text = albums[indexPath.row].name
-        if let count = albums[indexPath.row].count {
-            cell?.detailTextLabel?.text = "\(count)"
-        }
-        
-        if let url = albums[indexPath.row].coverUrl {
-            cell?.photoImageView.imageUrl = url
-        }
+        cell?.configure(album: albums[indexPath.row])
         
         return cell!
     }
