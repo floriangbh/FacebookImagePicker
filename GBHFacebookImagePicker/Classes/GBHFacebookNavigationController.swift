@@ -1,8 +1,8 @@
 //
-//  GBHAppearanceManager.swift
-//  GBHFacebookImagePicker
+//  GBHFacebookNavigationController.swift
+//  Pods
 //
-//  Created by Florian Gabach on 07/10/2016.
+//  Created by Florian Gabach on 09/10/2016.
 //  Copyright (c) 2016 Florian Gabach <contact@floriangabach.fr>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
 import UIKit
 
-class GBHAppearanceManager: NSObject {
-    static let whiteCustom = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1.0)
-    static let facebookColor = UIColor(red: 59/255.0, green: 89/255.0, blue: 152/255.0, alpha: 1.0)
+class GBHFacebookNavigationController: UINavigationController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Custom navigation bar color
+        self.navigationBar.barTintColor = GBHAppearanceManager.facebookColor
+        self.navigationBar.tintColor = GBHAppearanceManager.whiteCustom
+        self.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : GBHAppearanceManager.whiteCustom
+        ]
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }

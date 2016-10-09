@@ -111,6 +111,7 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 "You need to allow photo's permission." =  "<your_translation>";
 "Allow" = "<your_translation>";
 "Close" = "<your_translation>";
+"Album(s)" = "<your_translation>";
 ```
 
 ## Author

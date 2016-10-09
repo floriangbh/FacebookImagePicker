@@ -41,10 +41,8 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         print(self, #function)
         
         // Init & Show picker
-        let albumPicker = GBHFacebookImagePicker()
-        albumPicker.delegate = self
-        let navi = UINavigationController(rootViewController: albumPicker)
-        self.present(navi, animated: true)
+        let picker = GBHFacebookImagePicker()
+        picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
     }
     
     

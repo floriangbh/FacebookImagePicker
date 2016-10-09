@@ -1,6 +1,6 @@
 //
 //  GBHAssetManager.swift
-//  Pods
+//  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 02/10/2016.
 //  Copyright (c) 2016 Florian Gabach <contact@floriangabach.fr>
