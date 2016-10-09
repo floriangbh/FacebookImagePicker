@@ -95,10 +95,8 @@ func facebookImagePicker(didCancelled imagePicker: UIViewController) {
 Display picker : 
 
 ```
-let albumPicker = GBHFacebookImagePicker()
-albumPicker.delegate = self
-let navi = UINavigationController(rootViewController: albumPicker)
-self.present(navi, animated: true)
+let picker = GBHFacebookImagePicker()
+picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
 ```
 
 ## Translation 
