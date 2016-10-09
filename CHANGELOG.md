@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.0.5
+
+- Fixed bugs
+
 ### 1.0.4
 
 - Embed picker un navigation controller
