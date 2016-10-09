@@ -33,7 +33,7 @@ protocol GBHAlbumPickerTableViewControllerDelegate {
     func didSelecPictureInAlbum(url: String)
 }
 
-public class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewControllerDelegate {
+class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewControllerDelegate {
     
     // MARK: - Var
     
@@ -80,7 +80,7 @@ public class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableV
     fileprivate func prepareTableView() {
         // Common init
         self.tableView.tableFooterView = UIView()
-        self.title = NSLocalizedString("Album", comment: "")
+        self.title = NSLocalizedString("Album(s)", comment: "")
         self.tableView.register(GBHAlbumTableViewCell.self, forCellReuseIdentifier: "AlbumCell")
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -89,7 +89,6 @@ public class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableV
         
         // Close button (on the right corner of navigation bar)
         let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(self.closePicker))
-        closeButton.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem = closeButton
     }
     
