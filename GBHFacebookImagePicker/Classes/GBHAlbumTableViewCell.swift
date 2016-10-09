@@ -10,17 +10,22 @@ import UIKit
 
 class GBHAlbumTableViewCell: UITableViewCell {
     
-    var photoImageView: GBHImageAsyncViewLoading!
+    // MARK: - Var
     
-    private let imageWidth = 70
-    private let imageHeight = 70
+    fileprivate var photoImageView: GBHImageAsyncViewLoading!
+    fileprivate let imageWidth = 70
+    fileprivate let imageHeight = 70
+    
+    // MARK: - Init
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
+        // Common init
         self.backgroundColor = GBHAppearanceManager.whiteCustom
         self.accessoryType = .disclosureIndicator
         
+        // Album cover image
         self.photoImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 15, y: 10, width: imageWidth, height: imageHeight))
         self.photoImageView.contentMode = .scaleAspectFill
         self.photoImageView.clipsToBounds = true
@@ -37,8 +42,6 @@ class GBHAlbumTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     override func layoutSubviews() {
@@ -50,18 +53,20 @@ class GBHAlbumTableViewCell: UITableViewCell {
         self.detailTextLabel?.frame = CGRect(x: imageWidth + 30, y: 50, width: cellWidth, height: 20)
     }
     
+    // MARK: - Configure 
+    
     func configure(album: GBHFacebookAlbumModel) {
         // Album title
         self.textLabel?.text = album.name ?? ""
         
-        // Picture count
+        // Album's pictures count
         if let count = album.count {
             self.detailTextLabel?.text = "\(count)"
         } else {
             self.detailTextLabel?.text = "0"
         }
 
-        // Album cover
+        // Album cover image
         if let url = album.coverUrl {
             self.photoImageView.imageUrl = url
         }

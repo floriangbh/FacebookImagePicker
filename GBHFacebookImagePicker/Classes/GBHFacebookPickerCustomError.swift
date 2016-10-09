@@ -9,7 +9,7 @@
 import Foundation
 
 enum LoginError: Error {
-    case LoginCancelled
-    case PermissionDenied
-    case LoginFailed
+    case LoginCancelled // When login webview are cancelled before login
+    case PermissionDenied // When user_photos permission are denied
+    case LoginFailed // When Facebook login fail
 }

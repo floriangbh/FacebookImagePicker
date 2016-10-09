@@ -15,7 +15,7 @@ class GBHFacebookHelper {
     /**
      * User's album list
      **/
-    var albumList: [GBHFacebookAlbumModel] = []
+    fileprivate var albumList: [GBHFacebookAlbumModel] = []
     
     /**
      * Singleton
@@ -28,7 +28,7 @@ class GBHFacebookHelper {
     /**
      * Make GRAPH API's request for user's album
      **/
-    func fbAlbumRequest(after: String?) {
+    fileprivate func fbAlbumRequest(after: String?) {
         
         // Build path album request
         var  path = "me/albums?limit=100&fields=id,name,count,cover_photo"
@@ -173,7 +173,7 @@ class GBHFacebookHelper {
     /**
      * Logout with clear session, token & user's album
      **/
-    func logout(){
+    fileprivate func logout() {
         FBSDKLoginManager().logOut()
     }
     

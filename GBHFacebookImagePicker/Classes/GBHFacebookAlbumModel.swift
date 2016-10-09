@@ -10,11 +10,15 @@ import Foundation
 
 class GBHFacebookAlbumModel {
     
-    var name: String?
-    var count: Int?
-    var coverUrl: URL?
-    var id: String?
-    var photos: [GBHFacebookImageModel] = []
+    // MARK: - Var
+    
+    var name: String? // Album's name
+    var count: Int? // Album's pictures number
+    var coverUrl: URL? // Album's cover url
+    var id: String? // Album's id
+    var photos: [GBHFacebookImageModel] = [] // Contains album's picture
+    
+    // MARK: - Init
     
     init(name:String, count:Int, coverUrl:URL, id: String){
         self.name = name

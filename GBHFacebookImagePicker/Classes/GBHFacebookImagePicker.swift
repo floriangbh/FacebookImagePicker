@@ -9,12 +9,17 @@
 import UIKit
 
 protocol GBHAlbumPickerTableViewControllerDelegate {
+    
+    /**
+    * Perform when picture are selected in the displayed album  
+    **/
     func didSelecPictureInAlbum(url: String)
 }
 
 public class GBHFacebookImagePicker: UITableViewController, GBHAlbumPickerTableViewControllerDelegate {
     
     // MARK: - Var
+    
     public var delegate: GBHFacebookImagePickerDelegate!
     fileprivate var indicator = UIActivityIndicatorView() // Loading indicator
     fileprivate var albums: [GBHFacebookAlbumModel] = [] { // Albums list
@@ -115,7 +120,7 @@ public class GBHFacebookImagePicker: UITableViewController, GBHAlbumPickerTableV
     // MARK: - Action
     
     /**
-     *
+     * Start Facebook login
      **/
     fileprivate func doFacebookLogin() {
         GBHFacebookHelper.shared.login(vc: self) { (success, error) in
@@ -225,6 +230,8 @@ public class GBHFacebookImagePicker: UITableViewController, GBHAlbumPickerTableV
         self.navigationController?.pushViewController(albumDetailVC,
                                                       animated: true)
     }
+    
+    // MARK: - GBHAlbumPickerTableViewControllerDelegate
     
     func didSelecPictureInAlbum(url: String) {
         self.delegate.facebookImagePicker(imagePicker: self, didSelectImageWithUrl: url)

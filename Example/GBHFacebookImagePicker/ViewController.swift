@@ -75,6 +75,7 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         imagePicker.dismiss(animated: true, completion: nil)
         
         print("Image URL : \(url)")
+        
         self.loadPickedPicture(url: url) // Load pic 
     }
     

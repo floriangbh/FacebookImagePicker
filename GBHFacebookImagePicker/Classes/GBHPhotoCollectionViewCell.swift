@@ -10,14 +10,14 @@ import UIKit
 
 class GBHPhotoCollectionViewCell: UICollectionViewCell {
     
-    var imageView: GBHImageAsyncViewLoading!
+    fileprivate var imageView: GBHImageAsyncViewLoading!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = GBHAppearanceManager.whiteCustom
         
-        // Add imageView for add Photo
+        // Picture contener
         self.imageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
         self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
@@ -25,6 +25,8 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(picture: GBHFacebookImageModel) {
+        
+        // Set picture's url
         if let urlPath = picture.link,
             let url = URL(string: urlPath) {
             self.imageView?.imageUrl = url

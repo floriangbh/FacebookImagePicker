@@ -12,8 +12,11 @@ class GBHImageAsyncViewLoading: UIImageView {
     
     var imageUrl: URL? {
         didSet {
+            // Set default image
             self.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
+            
             if let url = imageUrl {
+                // Start url loading
                 URLSession.shared.dataTask(with: url as URL) { data, response, error in
                     guard let data = data , error == nil else {
                         print("\nerror on download \(error)")
@@ -24,11 +27,9 @@ class GBHImageAsyncViewLoading: UIImageView {
                         return
                     }
                     DispatchQueue.main.async {
-                        self.image = UIImage(data: data)
+                        self.image = UIImage(data: data) // Display image !
                     }
                     }.resume()
-            } else {
-                self.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
             }
         }
     }

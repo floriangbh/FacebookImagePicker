@@ -10,8 +10,12 @@ import Foundation
 
 class GBHFacebookImageModel {
     
-    var link: String?
-    var id: String?
+    // MARK: - Var
+    
+    var link: String? // Picture url (string)
+    var id: String? // Picture id
+    
+    // MARK: - Init
     
     init(link:String, id: String){
         self.id = id
