@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.0.4
+
+- Embed picker un navigation controller
+
 ### 1.0.3
 
 - Add Facebook app with valid permission for exemple project
