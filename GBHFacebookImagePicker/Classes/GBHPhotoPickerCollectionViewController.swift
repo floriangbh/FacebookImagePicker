@@ -39,7 +39,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
             }
         }
     }
-    var album: GBHFacebookAlbumModel? // Curent album
+    var album: GBHFacebookAlbumModel! // Curent album
     
     // MARK: Init & Load
 
@@ -51,7 +51,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
         self.prepareViewController()
         self.prepareObserver()
         
-        // Fetch photos
+        // Fetch photos if empty
         self.getPhotos()
     }
 
@@ -71,7 +71,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
     }
     
     fileprivate func prepareViewController() {
-        self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
+        self.title = self.album.name ?? NSLocalizedString("Pictures", comment: "")
         self.view.backgroundColor = GBHAppearanceManager.whiteCustom
         
         self.prepareCollectionView()
@@ -115,8 +115,11 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
     * Start request for album's pictures
     **/
     fileprivate func getPhotos() {
-        if let album = self.album {
+        self.imageArray = self.album.photos
+        if imageArray.isEmpty{
+            self.startLoading()
             GBHFacebookHelper.shared.fbAlbumsPictureRequest(after: nil, album: album)
+        } else {
             self.stopLoading()
         }
     }
@@ -125,6 +128,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
      * Did finish get album's pictures callback
      **/
     @objc fileprivate func didReceivePicture(_ sender: Notification) {
+        self.stopLoading()
         if let album = sender.object as? GBHFacebookAlbumModel, self.album?.id == album.id {
             self.imageArray = album.photos
         }

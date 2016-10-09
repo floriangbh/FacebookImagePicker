@@ -61,6 +61,8 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
                     return
                 }
                 DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    print(image)
                     self.pickerImageView.image = UIImage(data: data)
                 }
                 }.resume()
