@@ -29,31 +29,5 @@ Carthage
 # 
 # Note: if you ignore the Pods directory, make sure to uncomment
 # `pod install` in .travis.yml
-#
-# Pods/
+Pods/
 
-Example/GBHFacebookImagePicker.xcworkspace/contents.xcworkspacedata
-
-Example/Pods/Bolts/Bolts/Common/BFExecutor.h
-
-Example/Pods/Bolts/Bolts/Common/BFCancellationTokenRegistration.h
-
-Example/Podfile.lock
-
-Example/Pods/Bolts/Bolts/Common/BFCancellationToken.h
-
-Example/Pods/Bolts/Bolts/Common/BFCancellationToken.m
-
-Example/Pods/Bolts/Bolts/Common/BFCancellationTokenSource.m
-
-Example/Pods/Bolts/Bolts/Common/BFExecutor.m
-
-Example/Pods/Bolts/Bolts/Common/BFTask.m
-
-Example/Pods/Bolts/Bolts/Common/Bolts.h
-
-Example/Pods/Bolts/Bolts/Common/BFTask+Exceptions.m
-
-Example/Pods/Bolts/Bolts/Common/BFTaskCompletionSource.h
-
-Example/Pods/Bolts/Bolts/Common/BFTaskCompletionSource.m
