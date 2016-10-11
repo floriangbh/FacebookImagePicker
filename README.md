@@ -97,7 +97,7 @@ Display picker :
 
 ```
 let picker = GBHFacebookImagePicker()
-picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
+picker.presentFacebookAlbumImagePicker(from: self, delegate: self) 
 ```
 
 ## Translation 
