@@ -48,7 +48,7 @@ class GBHFacebookHelper {
     fileprivate func fbAlbumRequest(after: String?) {
         
         // Build path album request
-        var  path = "me/albums?limit=100&fields=id,name,count,cover_photo"
+        var  path = "me/albums?fields=id,name,count,cover_photo"
         if let afterPath = after {
             path = path.appendingFormat("&after=%@", afterPath)
         }
@@ -124,7 +124,7 @@ class GBHFacebookHelper {
                                 album : GBHFacebookAlbumModel) {
         
         // Build path album request
-        var  path = "/\(album.id!)/photos?fields=picture,source,id,images&limit=1000"
+        var  path = "/\(album.id!)/photos?fields=picture,source,id"
         if let afterPath = after {
             path = path.appendingFormat("&after=%@", afterPath)
         }
@@ -175,10 +175,11 @@ class GBHFacebookHelper {
             for photo in photosResult {
                 if let photoDic = photo as? [String : AnyObject],
                     let id = photoDic["id"] as? String,
-                    let link = photoDic["source"] as? String {
+                    let picture = photoDic["picture"] as? String,
+                    let source = photoDic["source"] as? String {
                     
                     // Build Picture model
-                    let photoObject = GBHFacebookImageModel(link: link, id: id)
+                    let photoObject = GBHFacebookImageModel(picture: picture, id: id, source: source)
                     album.photos.append(photoObject)
                 }
             }

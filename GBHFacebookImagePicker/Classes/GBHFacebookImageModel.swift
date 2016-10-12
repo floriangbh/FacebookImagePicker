@@ -29,13 +29,15 @@ class GBHFacebookImageModel {
     
     // MARK: - Var
     
-    var link: String? // Picture url (string)
+    var picture: String? // Picture url (string)
+    var source: String? // Source url (string)
     var id: String? // Picture id
     
     // MARK: - Init
     
-    init(link:String, id: String){
+    init(picture:String, id: String, source: String){
         self.id = id
-        self.link = link
+        self.picture = picture
+        self.source = source
     }
 }

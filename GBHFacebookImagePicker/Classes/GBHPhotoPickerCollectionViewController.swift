@@ -169,7 +169,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
         }
         
         // Set url to the delegate
-        if let url = self.imageArray[indexPath.row].link {
+        if let url = self.imageArray[indexPath.row].source {
             self.albumPictureDelegate?.didSelecPictureInAlbum(url: url)
         }
     }
