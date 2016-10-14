@@ -1,6 +1,11 @@
 Changelog
 =========
 
+### 1.0.6
+
+- Load album in low quality to improve memory usage, and provide source url/image
+- Get selected image (URL & UIImage)
+
 ### 1.0.5
 
 - Fixed bugs

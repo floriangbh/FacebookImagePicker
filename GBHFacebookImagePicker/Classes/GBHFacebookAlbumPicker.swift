@@ -151,7 +151,6 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                     case .LoginFailed:
                         // Failed to login with Facebook
                         self.delegate.facebookImagePicker(imagePicker: self, didFailWithError: error)
-                        self.dismiss(animated: true, completion: nil)
                     case .PermissionDenied:
                         // "user_photos" permission are denied, we need to ask permission !
                         self.showDeniedPermissionPopup()
@@ -250,6 +249,26 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     // MARK: - GBHAlbumPickerTableViewControllerDelegate
     
     func didSelecPictureInAlbum(url: String) {
-        self.delegate.facebookImagePicker(imagePicker: self, didSelectImageWithUrl: url)
+        
+        if let imageUrl = URL(string: url) {
+            // Start url loading
+            URLSession.shared.dataTask(with: imageUrl as URL) { data, response, error in
+                guard let data = data , error == nil else {
+                    self.delegate.facebookImagePicker(imagePicker: self, didFailWithError: error)
+                    return
+                }
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                    self.delegate.facebookImagePicker(imagePicker: self, didFailWithError: error)
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.delegate.facebookImagePicker(imagePicker: self,
+                                                      didSelectImage: UIImage(data: data),
+                                                      WithUrl: url)
+                }
+                }.resume()
+        } else {
+            self.delegate.facebookImagePicker(imagePicker: self, didFailWithError: nil)
+        }
     }
 }

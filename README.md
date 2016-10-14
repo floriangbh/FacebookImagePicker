@@ -22,7 +22,7 @@ GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 - [x] Login with Facebook SDK and display user's Albums
 - [x] Display pictures of each albums 
 - [x] Handling denied photo's access 
-- [x] Select and get URL of the picked picture 
+- [x] Select and get URL/Image of the picked picture 
 - [ ] Square image cropper (comming soon)
 - [ ] UI Customization (comming soon)
 - [ ] Keychain selection for Facebook login (comming soon)
@@ -78,14 +78,13 @@ Then, implement the `GBHFacebookImagePickerDelegate` protocol:
 ```
 // MARK: - GBHFacebookImagePicker Protocol
 
-func facebookImagePicker(imagePicker: UIViewController, didSelectImageWithUrl url: String) {
+func facebookImagePicker(imagePicker: UIViewController, didSelectImage image: UIImage?, WithUrl url: String) {
     imagePicker.dismiss(animated: true, completion: nil)
-
-    print("Image URL : \(url)")
+    // Do whatever you whant with the picked image or url ...
 }
 
 func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
-    print(error.debugDescription)
+    imagePicker.dismiss(animated: true, completion: nil)
 }
 
 func facebookImagePicker(didCancelled imagePicker: UIViewController) {
