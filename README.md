@@ -120,6 +120,8 @@ Inspired by https://github.com/OceanLabs/FacebookImagePicker-iOS (Objective-C)
 
 Here are some other Facebook's album picker libraries.
 
+- [sanche21/DSFacebookImagePicker](https://github.com/sanche21/DSFacebookImagePicker)
+- [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/FacebookImagePicker-iOS)
 - [bradtheappguy/BSFacebookImagePicker](https://github.com/bradtheappguy/BSFacebookImagePicker)
 
 ## License
