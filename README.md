@@ -118,4 +118,4 @@ Inspired by https://github.com/OceanLabs/FacebookImagePicker-iOS (Objective-C)
 
 ## License
 
-GBHFacebookImagePicker is available under the MIT license(LICENSE).
+GBHFacebookImagePicker is available under the [MIT license](LICENSE).
