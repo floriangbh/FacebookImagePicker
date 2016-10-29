@@ -118,12 +118,6 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 "Album(s)" = "<your_translation>";
 ```
 
-## Author
-
-Florian Gabach, contact@floriangabach.fr
-
-Inspired by [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/FacebookImagePicker-iOS) (Objective-C)
-
 ## Alternative solutions
 
 Here are some other Facebook's album picker libraries.
@@ -131,6 +125,12 @@ Here are some other Facebook's album picker libraries.
 - [sanche21/DSFacebookImagePicker](https://github.com/sanche21/DSFacebookImagePicker)
 - [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/FacebookImagePicker-iOS)
 - [bradtheappguy/BSFacebookImagePicker](https://github.com/bradtheappguy/BSFacebookImagePicker)
+
+## Author
+
+Florian Gabach, contact@floriangabach.fr
+
+Inspired by [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/FacebookImagePicker-iOS) (Objective-C)
 
 ## License
 
