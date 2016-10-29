@@ -58,6 +58,14 @@ Just in case, for public application (which can be use in the AppStore), you nee
 * FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
 * Facebook Application, see [usage](#usage) for explaination 
 
+## Try it ! 
+
+In your terminal :
+
+```ruby
+pod try GBHFacebookImagePicker
+```
+
 ## Installation
 
 GBHFacebookImagePicker is available through [CocoaPods](http://cocoapods.org). To install
