@@ -116,6 +116,12 @@ Florian Gabach, contact@floriangabach.fr
 
 Inspired by https://github.com/OceanLabs/FacebookImagePicker-iOS (Objective-C)
 
+## Alternative solutions
+
+Here are some other Facebook's album picker libraries.
+
+-[bradtheappguy/BSFacebookImagePicker](https://github.com/bradtheappguy/BSFacebookImagePicker)
+
 ## License
 
 GBHFacebookImagePicker is available under the [MIT license](LICENSE).
