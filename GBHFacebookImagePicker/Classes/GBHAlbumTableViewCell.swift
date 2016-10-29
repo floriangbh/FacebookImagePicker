@@ -72,6 +72,10 @@ class GBHAlbumTableViewCell: UITableViewCell {
     
     // MARK: - Configure 
     
+    
+    /// Configure the cell with Facebook's album 
+    ///
+    /// - Parameter album: Album model which contain album information
     func configure(album: GBHFacebookAlbumModel) {
         // Album title
         self.textLabel?.text = album.name ?? ""

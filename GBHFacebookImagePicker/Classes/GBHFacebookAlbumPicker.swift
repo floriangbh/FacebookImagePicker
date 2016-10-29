@@ -26,10 +26,9 @@
 import UIKit
 
 protocol GBHAlbumPickerTableViewControllerDelegate {
-    
-    /**
-    * Perform when picture are selected in the displayed album  
-    **/
+    /// Perform when picture are selected in the displayed album
+    ///
+    /// - Parameter url: url of the selected picture
     func didSelecPictureInAlbum(url: String)
 }
 
@@ -73,10 +72,8 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     }
     
     // MARK: - Prepare
-    
-    /**
-     * Init tableView dataSource, delegate, bar button & title
-     **/
+
+    /// Init tableView dataSource, delegate, bar button & title
     fileprivate func prepareTableView() {
         // Common init
         self.tableView.tableFooterView = UIView()
@@ -92,9 +89,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         self.navigationItem.rightBarButtonItem = closeButton
     }
     
-    /**
-     * Prepare observe for album retrieve & picture retrieve
-     **/
+    /// Prepare observe for album retrieve & picture retrieve
     fileprivate func prepareObserver() {
         // Add observe for end album loading
         NotificationCenter.default.addObserver(self,
@@ -105,9 +100,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     
     // MARK: - Loading indicator
     
-    /**
-     * Create & add activity indicator to the center of view
-     **/
+    /// Create & add activity indicator to the center of view
     fileprivate func prepareActivityIndicator() {
         self.indicator = UIActivityIndicatorView(frame:CGRect(x: 0, y: 0, width: 40, height: 40) )
         self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -116,18 +109,14 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         self.startLoading()
     }
     
-    /**
-     * Start loading indicator
-     **/
+    /// Start loading indicator
     fileprivate func startLoading() {
         self.indicator.startAnimating()
         self.indicator.backgroundColor = UIColor.clear
         self.indicator.color = UIColor.black
     }
     
-    /**
-     * Stop & hide loading indicator
-     **/
+    /// Stop & hide loading indicator
     fileprivate func stopLoading() {
         self.indicator.stopAnimating()
         self.indicator.hidesWhenStopped = true
@@ -135,9 +124,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     
     // MARK: - Action
     
-    /**
-     * Start Facebook login
-     **/
+    /// Start Facebook login
     fileprivate func doFacebookLogin() {
         GBHFacebookHelper.shared.login(vc: self) { (success, error) in
             if !success {
@@ -160,17 +147,13 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         }
     }
     
-    /**
-     * Handler for click on close button
-     **/
+    /// Handler for click on close button
     @objc fileprivate func closePicker() {
         self.delegate.facebookImagePicker(didCancelled: self)
         self.dismiss(animated: true, completion: nil)
     }
     
-    /**
-     * Handler for did retrieve album list
-     **/
+    /// Handler for did retrieve album list
     func didReceiveAlbum(_ sender: Notification) {
         if let albums =  sender.object as? [GBHFacebookAlbumModel] {
             self.albums = albums
@@ -178,9 +161,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         }
     }
     
-    /**
-     * Show popup with ask user_photos permission
-     **/
+    /// Show popup with ask user_photos permission
     fileprivate func showDeniedPermissionPopup() {
         let alertController = UIAlertController(title: NSLocalizedString("Oups", comment: ""),
                                                 message: NSLocalizedString("You need to allow photo's permission.", comment: ""),
@@ -248,6 +229,9 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     
     // MARK: - GBHAlbumPickerTableViewControllerDelegate
     
+    /// Did selected picture delegate
+    ///
+    /// - Parameter url: url of the selected picture
     func didSelecPictureInAlbum(url: String) {
         
         if let imageUrl = URL(string: url) {
