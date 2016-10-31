@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.source_files = 'GBHFacebookImagePicker/Classes/**/*'
   s.resource_bundles = { 'GBHFacebookImagePicker' => ['Images/*.{png}'] }
-  s.dependency 'FBSDKCoreKit', '~> 4.16.0'
-  s.dependency 'FBSDKLoginKit', '~> 4.16.0'
+  s.dependency 'FBSDKCoreKit', '~> 4.17.0'
+  s.dependency 'FBSDKLoginKit', '~> 4.17.0'
 end
