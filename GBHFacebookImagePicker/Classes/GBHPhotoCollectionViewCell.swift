@@ -41,6 +41,10 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(imageView)
     }
     
+    
+    /// Configure collection cell with image
+    ///
+    /// - Parameter picture: Facebook's image model
     func configure(picture: GBHFacebookImageModel) {
         
         // Set picture's url

@@ -42,11 +42,11 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
     var album: GBHFacebookAlbumModel! // Curent album
     
     // MARK: Init & Load
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
         // Prepare view
         self.prepareViewController()
         self.prepareObserver()
@@ -54,7 +54,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
         // Fetch photos if empty
         self.getPhotos()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -105,15 +105,13 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
     }
     
     fileprivate func stopLoading() {
-        self.indicator.stopAnimating()
         self.indicator.hidesWhenStopped = true
+        self.indicator.stopAnimating()
     }
     
     // MARK: - Action
     
-    /**
-    * Start request for album's pictures
-    **/
+    /// Start request for album's pictures
     fileprivate func getPhotos() {
         self.imageArray = self.album.photos
         if imageArray.isEmpty{
@@ -124,18 +122,16 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
         }
     }
     
-    /**
-     * Did finish get album's pictures callback
-     **/
+    /// Did finish get album's pictures callback
     @objc fileprivate func didReceivePicture(_ sender: Notification) {
         self.stopLoading()
         if let album = sender.object as? GBHFacebookAlbumModel, self.album?.id == album.id {
             self.imageArray = album.photos
         }
     }
-
+    
     // MARK: UICollectionView
-
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -143,7 +139,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
@@ -155,7 +151,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 80)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
     }
@@ -173,7 +169,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
             self.albumPictureDelegate?.didSelecPictureInAlbum(url: url)
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? GBHPhotoCollectionViewCell
         if cell == nil {
@@ -181,7 +177,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
         }
         
         cell?.configure(picture: self.imageArray[indexPath.row])
-    
+        
         return cell!
     }
 }
