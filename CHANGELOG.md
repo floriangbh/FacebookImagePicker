@@ -1,6 +1,13 @@
 Changelog
 =========
 
+### 1.0.7
+
+- Add customization way
+- Safe unwrap 
+- Update Facebook's tool dependency 
+- Improve exemple
+
 ### 1.0.6
 
 - Load album in low quality to improve memory usage, and provide source url/image
