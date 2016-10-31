@@ -1,5 +1,5 @@
 //
-//  GBHPhotoPickerCollectionViewController.swift
+//  GBHPhotoPickerViewController.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 29/09/2016.
@@ -25,7 +25,7 @@
 
 import UIKit
 
-class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     // MARK: Var
     fileprivate var indicator = UIActivityIndicatorView()
@@ -39,7 +39,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
             }
         }
     }
-    var album: GBHFacebookAlbumModel! // Curent album
+    var album: GBHFacebookAlbumModel? // Curent album
     
     // MARK: Init & Load
     
@@ -71,7 +71,7 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
     }
     
     fileprivate func prepareViewController() {
-        self.title = self.album.name ?? NSLocalizedString("Pictures", comment: "")
+        self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
         self.view.backgroundColor = GBHAppearanceManager.whiteCustom
         
         self.prepareCollectionView()
@@ -85,8 +85,10 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
         self.pictureCollection?.register(GBHPhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.pictureCollection?.delegate = self
         self.pictureCollection?.dataSource = self
-        self.view.addSubview(self.pictureCollection!)
         self.pictureCollection?.backgroundColor = UIColor.white
+        if let collection = self.pictureCollection {
+            self.view.addSubview(collection)
+        }
     }
     
     // MARK: - Loading indicator
@@ -113,12 +115,18 @@ class GBHPhotoPickerCollectionViewController: UIViewController, UICollectionView
     
     /// Start request for album's pictures
     fileprivate func getPhotos() {
-        self.imageArray = self.album.photos
-        if imageArray.isEmpty{
-            self.startLoading()
-            GBHFacebookHelper.shared.fbAlbumsPictureRequest(after: nil, album: album)
-        } else {
-            self.stopLoading()
+        if let photosArray = self.album?.photos {
+            self.imageArray = photosArray
+            if imageArray.isEmpty{
+                self.startLoading()
+                if let album = self.album {
+                    GBHFacebookHelper.shared.fbAlbumsPictureRequest(after: nil, album: album)
+                } else {
+                    self.albumPictureDelegate?.didFailSelectPictureInAlbum(error: nil)
+                }
+            } else {
+                self.stopLoading()
+            }
         }
     }
     

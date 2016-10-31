@@ -30,13 +30,19 @@ protocol GBHAlbumPickerTableViewControllerDelegate {
     ///
     /// - Parameter url: url of the selected picture
     func didSelecPictureInAlbum(url: String)
+    
+    
+    /// Failed selecte picture in album
+    ///
+    /// - Parameter error: error
+    func didFailSelectPictureInAlbum(error: Error?)
 }
 
 class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewControllerDelegate {
     
     // MARK: - Var
     
-    public var delegate: GBHFacebookImagePickerDelegate!
+    public var delegate: GBHFacebookImagePickerDelegate?
     fileprivate var indicator = UIActivityIndicatorView() // Loading indicator
     fileprivate var albums: [GBHFacebookAlbumModel] = [] { // Albums list
         didSet {
@@ -133,11 +139,11 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                     switch loginError {
                     case .LoginCancelled:
                         // Cancelled login
-                        self.delegate.facebookImagePicker(didCancelled: self)
+                        self.delegate?.facebookImagePicker(didCancelled: self)
                         self.dismiss(animated: true, completion: nil)
                     case .LoginFailed:
                         // Failed to login with Facebook
-                        self.delegate.facebookImagePicker(imagePicker: self, didFailWithError: error)
+                        self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
                     case .PermissionDenied:
                         // "user_photos" permission are denied, we need to ask permission !
                         self.showDeniedPermissionPopup()
@@ -149,7 +155,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     
     /// Handler for click on close button
     @objc fileprivate func closePicker() {
-        self.delegate.facebookImagePicker(didCancelled: self)
+        self.delegate?.facebookImagePicker(didCancelled: self)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -220,7 +226,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     }
 
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let albumDetailVC = GBHPhotoPickerCollectionViewController()
+        let albumDetailVC = GBHPhotoPickerViewController()
         albumDetailVC.albumPictureDelegate = self
         albumDetailVC.album = self.albums[indexPath.row]
         self.navigationController?.pushViewController(albumDetailVC,
@@ -238,21 +244,27 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
             // Start url loading
             URLSession.shared.dataTask(with: imageUrl as URL) { data, response, error in
                 guard let data = data , error == nil else {
-                    self.delegate.facebookImagePicker(imagePicker: self, didFailWithError: error)
+                    self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
                     return
                 }
                 if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                    self.delegate.facebookImagePicker(imagePicker: self, didFailWithError: error)
+                    self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
                     return
                 }
                 DispatchQueue.main.async {
-                    self.delegate.facebookImagePicker(imagePicker: self,
+                    self.delegate?.facebookImagePicker(imagePicker: self,
                                                       didSelectImage: UIImage(data: data),
                                                       WithUrl: url)
                 }
                 }.resume()
         } else {
-            self.delegate.facebookImagePicker(imagePicker: self, didFailWithError: nil)
+            self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: nil)
+        }
+    }
+    
+    func didFailSelectPictureInAlbum(error: Error?) {
+        if let err = error {
+            print(err.localizedDescription)
         }
     }
 }

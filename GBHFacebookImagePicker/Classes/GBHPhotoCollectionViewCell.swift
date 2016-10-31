@@ -27,7 +27,7 @@ import UIKit
 
 class GBHPhotoCollectionViewCell: UICollectionViewCell {
     
-    fileprivate var imageView: GBHImageAsyncViewLoading!
+    fileprivate var albumImageView: GBHImageAsyncViewLoading?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,10 +35,12 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = GBHAppearanceManager.whiteCustom
         
         // Picture contener
-        self.imageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        self.imageView.contentMode = .scaleAspectFill
-        self.imageView.clipsToBounds = true
-        self.contentView.addSubview(imageView)
+        self.albumImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        self.albumImageView?.contentMode = .scaleAspectFill
+        self.albumImageView?.clipsToBounds = true
+        if let imgView = self.albumImageView {
+            self.contentView.addSubview(imgView)
+        }
     }
     
     
@@ -50,7 +52,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         // Set picture's url
         if let urlPath = picture.picture,
             let url = URL(string: urlPath) {
-            self.imageView?.imageUrl = url
+            self.albumImageView?.imageUrl = url
         }
     }
     

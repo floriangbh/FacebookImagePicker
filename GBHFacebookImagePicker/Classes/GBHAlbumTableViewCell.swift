@@ -29,7 +29,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
     
     // MARK: - Var
     
-    fileprivate var photoImageView: GBHImageAsyncViewLoading!
+    fileprivate var photoImageView: GBHImageAsyncViewLoading?
     fileprivate let imageWidth = 70
     fileprivate let imageHeight = 70
     
@@ -44,9 +44,11 @@ class GBHAlbumTableViewCell: UITableViewCell {
         
         // Album cover image
         self.photoImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 15, y: 10, width: imageWidth, height: imageHeight))
-        self.photoImageView.contentMode = .scaleAspectFill
-        self.photoImageView.clipsToBounds = true
-        self.contentView.addSubview(self.photoImageView)
+        self.photoImageView?.contentMode = .scaleAspectFill
+        self.photoImageView?.clipsToBounds = true
+        if let imgView = self.photoImageView {
+            self.contentView.addSubview(imgView)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -89,7 +91,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
 
         // Album cover image
         if let url = album.coverUrl {
-            self.photoImageView.imageUrl = url
+            self.photoImageView?.imageUrl = url
         }
     }
 
