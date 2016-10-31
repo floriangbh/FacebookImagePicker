@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/GBHFacebookImagePicker.svg?style=flat)](http://cocoapods.org/pods/GBHFacebookImagePicker)
 
 <p align="center">
-    <img src="https://github.com/terflogag/GBHFacebookImagePicker/raw/develop/Ressources/logo.png" alt="GBHFacebookImagePicker">
+    <img src="https://github.com/terflogag/GBHFacebookImagePicker/raw/develop/Ressources/logo.png" alt="GBHFacebookImagePicker" style="width:200px;height:200px;">
 </p>
 
 GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
