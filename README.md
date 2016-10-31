@@ -21,7 +21,7 @@ GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 - [x] Display pictures of each albums 
 - [x] Handling denied photo's access 
 - [x] Select and get URL/Image of the picked picture 
-- [ ] UI Customization (comming soon)
+- [x] UI Customization 
 
 ## Example
 
@@ -99,8 +99,18 @@ Display picker :
 
 ```
 let picker = GBHFacebookImagePicker()
+GBHFacebookImagePicker.pickerConfig.ui.style = .facebook 
 picker.presentFacebookAlbumImagePicker(from: self, delegate: self) 
 ```
+
+## Customization 
+
+The are three style : .facebook (default style), .light & .dark.
+
+```
+GBHFacebookImagePicker.pickerConfig.ui.style = .facebook
+```
+
 
 ## Translation 
 
