@@ -32,7 +32,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = GBHAppearanceManager.whiteCustom
+        self.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
         
         // Picture contener
         self.albumImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))

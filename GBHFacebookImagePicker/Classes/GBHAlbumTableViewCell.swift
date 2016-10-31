@@ -39,7 +39,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
         // Common init
-        self.backgroundColor = GBHAppearanceManager.whiteCustom
+        self.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
         self.accessoryType = .disclosureIndicator
         
         // Album cover image

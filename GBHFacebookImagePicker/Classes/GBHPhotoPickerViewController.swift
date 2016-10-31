@@ -72,7 +72,7 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
     
     fileprivate func prepareViewController() {
         self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
-        self.view.backgroundColor = GBHAppearanceManager.whiteCustom
+        self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
         
         self.prepareCollectionView()
         self.prepareActivityIndicator()

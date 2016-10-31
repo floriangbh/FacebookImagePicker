@@ -43,6 +43,7 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         
         // Init & Show picker
         let picker = GBHFacebookImagePicker()
+        GBHFacebookImagePicker.pickerConfig.ui.style = .facebook
         picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
     }
     

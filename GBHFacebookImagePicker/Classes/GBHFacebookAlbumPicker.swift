@@ -88,7 +88,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.separatorStyle = .none
-        self.view.backgroundColor = GBHAppearanceManager.whiteCustom
+        self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
         
         // Close button (on the right corner of navigation bar)
         let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(self.closePicker))

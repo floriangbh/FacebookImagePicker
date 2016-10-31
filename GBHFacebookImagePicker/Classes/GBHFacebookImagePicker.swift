@@ -27,12 +27,14 @@ import UIKit
 
 public class GBHFacebookImagePicker: NSObject {
     
-    /**
-    * Present album picker
-    * Param : 
-    * - from : controller where we want present the picker
-    * - delegate for GBHFacebookImagePickerDelegate
-    **/
+    // Picker configuration settings
+    public static var pickerConfig = GBHFacebookPickerConfig()
+
+    /// Present album picker
+    ///
+    /// - Parameters:
+    ///   - from: controller where we want present the picker
+    ///   - delegate: delegate for GBHFacebookImagePickerDelegate
     public final func presentFacebookAlbumImagePicker(from: UIViewController,
                                                delegate: GBHFacebookImagePickerDelegate) {
         

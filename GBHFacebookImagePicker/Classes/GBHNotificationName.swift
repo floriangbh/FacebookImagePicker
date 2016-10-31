@@ -25,11 +25,9 @@
 
 import Foundation
 
-/**
- * Custom notification identifier
- * GBHFacebookImagePickerDidRetrieveAlbum -> When album did finish loading
- * GBHFacebookImagePickerDidRetriveAlbumPicture -> When album's picture did finish loading
- **/
+/// Custom notification identifier
+/// GBHFacebookImagePickerDidRetrieveAlbum -> When album did finish loading
+/// GBHFacebookImagePickerDidRetriveAlbumPicture -> When album's picture did finish loading
 extension Notification.Name {
     static let GBHFacebookImagePickerDidRetrieveAlbum = Notification.Name("GBHFacebookImagePickerDidRetrieveAlbum")
     static let GBHFacebookImagePickerDidRetriveAlbumPicture = Notification.Name("GBHFacebookImagePickerDidRetriveAlbumPicture")
