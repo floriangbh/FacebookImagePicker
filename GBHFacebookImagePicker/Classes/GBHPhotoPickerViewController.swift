@@ -174,6 +174,12 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
         
         // Set url to the delegate
         if let url = self.imageArray[indexPath.row].source {
+            // Clean collection and start loading
+            self.imageArray = []
+            self.startLoading()
+            self.pictureCollection?.reloadData()
+            
+            // Delegate
             self.albumPictureDelegate?.didSelecPictureInAlbum(url: url)
         }
     }
@@ -184,6 +190,7 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
             cell = GBHPhotoCollectionViewCell()
         }
         
+        // Configure cell with image
         cell?.configure(picture: self.imageArray[indexPath.row])
         
         return cell!

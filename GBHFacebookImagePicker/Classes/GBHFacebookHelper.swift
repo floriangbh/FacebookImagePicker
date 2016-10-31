@@ -122,7 +122,7 @@ class GBHFacebookHelper {
                                 album : GBHFacebookAlbumModel) {
         
         // Build path album request
-        guard let id = album.id else {
+        guard let id = album.id else { 
             return
         }
         var  path = "/\(id)/photos?fields=picture,source,id"
