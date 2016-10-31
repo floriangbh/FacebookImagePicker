@@ -6,7 +6,6 @@
 
 <p align="center">
     <img src="https://github.com/terflogag/GBHFacebookImagePicker/raw/develop/Ressources/logo.png" alt="GBHFacebookImagePicker" width="150">
-</p>
 
 GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 
@@ -14,6 +13,7 @@ GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 - [🛠 Installation](#installation)
 - [🗝 Usage](#usage)
 - [👅 Translation](#translation)
+</p>
 
 ## Screenshot
 
