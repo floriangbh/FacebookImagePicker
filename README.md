@@ -98,8 +98,7 @@ func facebookImagePicker(didCancelled imagePicker: UIViewController) {
 Display picker : 
 
 ```
-let picker = GBHFacebookImagePicker()
-GBHFacebookImagePicker.pickerConfig.ui.style = .facebook 
+let picker = GBHFacebookImagePicker() 
 picker.presentFacebookAlbumImagePicker(from: self, delegate: self) 
 ```
 
