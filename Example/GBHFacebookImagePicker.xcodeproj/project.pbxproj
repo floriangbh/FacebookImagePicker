@@ -15,6 +15,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		6E90D1920934B013D97127C5 /* Pods_GBHFacebookImagePicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FE6C080AA2A8E245EF0707 /* Pods_GBHFacebookImagePicker_Tests.framework */; };
+		7661A0E11DC8E64F008CCBAE /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 7661A0E01DC8E64F008CCBAE /* CHANGELOG.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		663B846C1D24CEE4306EAFC1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		7661A0E01DC8E64F008CCBAE /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		76B7FB4E1D9FFE00002C45C5 /* GBHFacebookImagePicker_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GBHFacebookImagePicker_Example.entitlements; sourceTree = "<group>"; };
 		D771BFA97E88D64C5F62D5E2 /* Pods_GBHFacebookImagePicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBHFacebookImagePicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E437BF19FF9AF287714980F5 /* Pods-GBHFacebookImagePicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBHFacebookImagePicker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GBHFacebookImagePicker_Tests/Pods-GBHFacebookImagePicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				513BF7BF9DC712BFCA01CD79 /* GBHFacebookImagePicker.podspec */,
 				663B846C1D24CEE4306EAFC1 /* README.md */,
 				FF26E06E633513D8B3E6CD2E /* LICENSE */,
+				7661A0E01DC8E64F008CCBAE /* CHANGELOG.md */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				7661A0E11DC8E64F008CCBAE /* CHANGELOG.md in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

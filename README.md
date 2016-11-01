@@ -77,6 +77,10 @@ pod "GBHFacebookImagePicker"
 
 You need to have set up your application correctly to work with Facebook : https://developers.facebook.com/docs/ios/getting-started
 
+```
+import GBHFacebookImagePicker
+```
+
 Then, implement the `GBHFacebookImagePickerDelegate` protocol:
 
 ```

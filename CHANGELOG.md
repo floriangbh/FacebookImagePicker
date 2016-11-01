@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.0.8
+
+- Automatically dismiss (#2)
+
 ### 1.0.7
 
 - Add customization way
