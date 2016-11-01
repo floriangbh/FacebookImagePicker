@@ -50,8 +50,6 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
     // MARK: - GBHFacebookImagePicker Protocol
 
     func facebookImagePicker(imagePicker: UIViewController, didSelectImage image: UIImage?, WithUrl url: String) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        
         print("Image URL : \(url)")
         if let pickedImage = image {
             self.pickerImageView.image = pickedImage
@@ -59,8 +57,6 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
     }
     
     func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        
         print(error.debugDescription)
     }
     
