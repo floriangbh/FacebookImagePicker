@@ -83,12 +83,11 @@ Then, implement the `GBHFacebookImagePickerDelegate` protocol:
 // MARK: - GBHFacebookImagePicker Protocol
 
 func facebookImagePicker(imagePicker: UIViewController, didSelectImage image: UIImage?, WithUrl url: String) {
-    imagePicker.dismiss(animated: true, completion: nil)
     // Do whatever you whant with the picked image or url ...
 }
 
 func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
-    imagePicker.dismiss(animated: true, completion: nil)
+    print(error.debugDescription)
 }
 
 func facebookImagePicker(didCancelled imagePicker: UIViewController) {
