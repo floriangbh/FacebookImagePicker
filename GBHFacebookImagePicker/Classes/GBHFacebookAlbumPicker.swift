@@ -263,6 +263,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                 }.resume()
         } else {
             self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
