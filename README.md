@@ -22,6 +22,7 @@ GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 - [x] Handling denied photo's access 
 - [x] Select and get URL/Image of the picked picture 
 - [x] UI Customization 
+- [ ] Multiple selection
 - [ ] Unit & UI Test 
 
 ## Example
