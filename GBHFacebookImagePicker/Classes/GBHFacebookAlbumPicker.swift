@@ -249,6 +249,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                     self.dismiss(animated: true, completion: nil)
                     return
                 }
+                // TODO: dismiss 
                 if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                     self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
                     self.dismiss(animated: true, completion: nil)
