@@ -140,11 +140,11 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                     case .LoginCancelled:
                         // Cancelled login
                         self.delegate?.facebookImagePicker(didCancelled: self)
-                        self.dismiss(animated: true, completion: nil)
+                        self.dismissPicker()
                     case .LoginFailed:
                         // Failed to login with Facebook
                         self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
-                        self.dismiss(animated: true, completion: nil)
+                        self.dismissPicker()
                     case .PermissionDenied:
                         // "user_photos" permission are denied, we need to ask permission !
                         self.showDeniedPermissionPopup()
@@ -157,7 +157,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     /// Handler for click on close button
     @objc fileprivate func closePicker() {
         self.delegate?.facebookImagePicker(didCancelled: self)
-        self.dismiss(animated: true, completion: nil)
+        self.dismissPicker()
     }
     
     /// Handler for did retrieve album list
@@ -187,7 +187,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                                          style: UIAlertActionStyle.cancel,
                                          handler: {
                                             (action : UIAlertAction!) -> Void in
-                                            self.dismiss(animated: true, completion: nil)
+                                            self.dismissPicker()
         })
         
         // Add button & show
@@ -246,31 +246,36 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
             URLSession.shared.dataTask(with: imageUrl as URL) { data, response, error in
                 guard let data = data , error == nil else {
                     self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
-                    self.dismiss(animated: true, completion: nil)
+                    self.dismissPicker()
                     return
                 }
-                // TODO: dismiss 
                 if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                     self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
-                    self.dismiss(animated: true, completion: nil)
+                    self.dismissPicker()
                     return
                 }
-                DispatchQueue.main.async {
                     self.delegate?.facebookImagePicker(imagePicker: self,
                                                       didSelectImage: UIImage(data: data),
                                                       WithUrl: url)
-                    self.dismiss(animated: true, completion: nil)
-                }
+                self.dismissPicker()
                 }.resume()
         } else {
             self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: nil)
-            self.dismiss(animated: true, completion: nil)
+            self.dismissPicker()
         }
     }
     
     func didFailSelectPictureInAlbum(error: Error?) {
         if let err = error {
             print(err.localizedDescription)
+        }
+    }
+    
+    // MARK: - Navigation 
+    
+    func dismissPicker() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }
