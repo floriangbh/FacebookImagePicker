@@ -15,7 +15,6 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		6E90D1920934B013D97127C5 /* Pods_GBHFacebookImagePicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FE6C080AA2A8E245EF0707 /* Pods_GBHFacebookImagePicker_Tests.framework */; };
-		7661A0E11DC8E64F008CCBAE /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 7661A0E01DC8E64F008CCBAE /* CHANGELOG.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -374,7 +373,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				7661A0E11DC8E64F008CCBAE /* CHANGELOG.md in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
