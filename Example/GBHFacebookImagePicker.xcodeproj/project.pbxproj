@@ -176,6 +176,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				D4347E65C0BA622A731E6780 /* [CP] Embed Pods Frameworks */,
 				765164EBC895447749794230 /* [CP] Copy Pods Resources */,
+				76F34F971DCD00480035B115 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -304,6 +305,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GBHFacebookImagePicker_Example/Pods-GBHFacebookImagePicker_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		76F34F971DCD00480035B115 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:\"\nfind \".\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"./Pods/*\" -print0 |\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" |\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
 		};
 		9D6AB94C20D1863A9BF0DCEE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
