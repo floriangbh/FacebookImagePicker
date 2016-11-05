@@ -27,7 +27,13 @@ GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+In your terminal :
+
+```ruby
+pod try GBHFacebookImagePicker
+```
+
+Or to run the example project manually, clone the repo, and run `pod install` from the Example directory first.
 
 Don't forgot to replace the current Facebook App's ID with your own in the plist file (Open as > Source code). 
 Like this :
@@ -56,14 +62,6 @@ Just in case, for public application (which can be use in the AppStore), you nee
 * iOS 9.0+ target deployment
 * FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
 * Facebook Application, see [usage](#usage) for explaination 
-
-## Try it ! 
-
-In your terminal :
-
-```ruby
-pod try GBHFacebookImagePicker
-```
 
 ## Installation
 
