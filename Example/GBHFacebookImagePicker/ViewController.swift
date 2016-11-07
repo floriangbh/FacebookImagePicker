@@ -64,4 +64,3 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         print("Cancelled Facebook Album picker")
     }
 }
-
