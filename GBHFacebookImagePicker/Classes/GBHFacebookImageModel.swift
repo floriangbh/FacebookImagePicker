@@ -41,3 +41,4 @@ class GBHFacebookImageModel {
         self.source = source
     }
 }
+
