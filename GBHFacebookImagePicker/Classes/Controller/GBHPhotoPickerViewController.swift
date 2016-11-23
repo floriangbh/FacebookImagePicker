@@ -80,6 +80,7 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
         self.startLoading()
     }
     
+    /// Prepare pictureCollection which will contains album's pictures 
     fileprivate func prepareCollectionView() {
         let layout = UICollectionViewFlowLayout()
         self.pictureCollection = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
@@ -87,9 +88,49 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
         self.pictureCollection?.delegate = self
         self.pictureCollection?.dataSource = self
         self.pictureCollection?.backgroundColor = UIColor.white
+        self.pictureCollection?.translatesAutoresizingMaskIntoConstraints = false
         if let collection = self.pictureCollection {
             self.view.addSubview(collection)
+            self.prepareCollectionViewConstraint()
         }
+    }
+    
+    func prepareCollectionViewConstraint() {
+        // Top constraint
+        self.view.addConstraint(NSLayoutConstraint(item: self.pictureCollection,
+                                                   attribute: NSLayoutAttribute.top,
+                                                   relatedBy: NSLayoutRelation.equal,
+                                                   toItem: self.view,
+                                                   attribute: NSLayoutAttribute.top,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        
+        // Bottom constraint
+        self.view.addConstraint(NSLayoutConstraint(item: self.pictureCollection,
+                                                   attribute: NSLayoutAttribute.bottom,
+                                                   relatedBy: NSLayoutRelation.equal,
+                                                   toItem: self.view,
+                                                   attribute: NSLayoutAttribute.bottom,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        
+        // Leading constraint
+        self.view.addConstraint(NSLayoutConstraint(item: self.pictureCollection,
+                                                   attribute: NSLayoutAttribute.leading,
+                                                   relatedBy: NSLayoutRelation.equal,
+                                                   toItem: self.view,
+                                                   attribute: NSLayoutAttribute.leading,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        
+        // Trainling constraint
+        self.view.addConstraint(NSLayoutConstraint(item: self.pictureCollection,
+                                                   attribute: NSLayoutAttribute.trailing,
+                                                   relatedBy: NSLayoutRelation.equal,
+                                                   toItem: self.view,
+                                                   attribute: NSLayoutAttribute.trailing,
+                                                   multiplier: 1,
+                                                   constant: 0))
     }
     
     // MARK: - Loading indicator

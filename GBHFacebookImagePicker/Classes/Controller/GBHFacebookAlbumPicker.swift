@@ -270,7 +270,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
             print(err.localizedDescription)
         }
     }
-    
+
     // MARK: - Navigation 
     
     func dismissPicker() {
