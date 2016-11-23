@@ -1,5 +1,5 @@
-Contributing
-============
+Contributing 🚀
+===============
 
 For fixes, improvements or ideas, fork the repository and issue a pull request.
 
