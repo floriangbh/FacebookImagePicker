@@ -41,6 +41,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     
     // MARK: - Var
     
+    private let reuseIdentifier = "AlbumCell"
     public var delegate: GBHFacebookImagePickerDelegate?
     fileprivate var indicator = UIActivityIndicatorView() // Loading indicator
     fileprivate var albums: [GBHFacebookAlbumModel] = [] { // Albums list
@@ -210,10 +211,10 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     }
     
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "AlbumCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GBHAlbumTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier,
+                                                 for: indexPath) as? GBHAlbumTableViewCell
         if cell == nil {
-            cell = GBHAlbumTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
+            cell = GBHAlbumTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: self.reuseIdentifier)
         }
         
         cell?.configure(album: albums[indexPath.row])
