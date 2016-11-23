@@ -80,7 +80,7 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
         self.startLoading()
     }
     
-    /// Prepare pictureCollection which will contains album's pictures 
+    /// Prepare pictureCollection which will contains album's pictures
     fileprivate func prepareCollectionView() {
         let layout = UICollectionViewFlowLayout()
         self.pictureCollection = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
