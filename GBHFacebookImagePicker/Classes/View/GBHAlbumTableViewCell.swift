@@ -74,7 +74,6 @@ class GBHAlbumTableViewCell: UITableViewCell {
     
     // MARK: - Configure 
     
-    
     /// Configure the cell with Facebook's album 
     ///
     /// - Parameter album: Album model which contain album information

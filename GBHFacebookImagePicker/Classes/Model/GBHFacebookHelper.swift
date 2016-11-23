@@ -35,7 +35,6 @@ class GBHFacebookHelper {
     /// Singleton
     static let shared = GBHFacebookHelper()
     
-    
     // MARK: - Retrieve Facebook's Albums
     
     /// Make GRAPH API's request for user's album
@@ -58,7 +57,7 @@ class GBHFacebookHelper {
             if error != nil {
                 print(error.debugDescription)
                 return
-            }else{
+            } else {
                 // Try to parse request's result
                 if let fbResult = result as? Dictionary<String, AnyObject> {
                     
@@ -77,7 +76,7 @@ class GBHFacebookHelper {
                         
                         print("Found \(self.albumList.count) album(s) with this Facebook account.")
                         // Notifie controller with albums
-                        NotificationCenter.default.post(name: Notification.Name.GBHFacebookImagePickerDidRetrieveAlbum,
+                        NotificationCenter.default.post(name: Notification.Name.ImagePickerDidRetrieveAlbum,
                                                         object: self.albumList)
                     }
                 }
@@ -103,7 +102,7 @@ class GBHFacebookHelper {
                     
                     // Build Album model
                     if let coverUrl = URL(string: albumUrlPath) {
-                        let albm = GBHFacebookAlbumModel(name: albumName, count: albumCount, coverUrl: coverUrl, id: albumId)
+                        let albm = GBHFacebookAlbumModel(name: albumName, count: albumCount, coverUrl: coverUrl, albmId: albumId)
                         self.albumList.append(albm)
                     }
                 }
@@ -119,10 +118,10 @@ class GBHFacebookHelper {
     ///   - after: after page identifier (optional)
     ///   - album: album model
     func fbAlbumsPictureRequest(after: String?,
-                                album : GBHFacebookAlbumModel) {
+                                album: GBHFacebookAlbumModel) {
         
         // Build path album request
-        guard let id = album.id else { 
+        guard let id = album.albumId else {
             return
         }
         var  path = "/\(id)/photos?fields=picture,source,id"
@@ -139,7 +138,7 @@ class GBHFacebookHelper {
             if error != nil {
                 print(error.debugDescription)
                 return
-            }else{
+            } else {
                 // Try to parse request's result
                 if let fbResult = result as? Dictionary<String, AnyObject> {
                     // Parse Album
@@ -158,7 +157,7 @@ class GBHFacebookHelper {
                     } else {
                         print("Found \(album.photos.count) photos for the \"\(album.name!)\" album.")
                         // Notifie controller with albums & photos
-                        NotificationCenter.default.post(name: Notification.Name.GBHFacebookImagePickerDidRetriveAlbumPicture,
+                        NotificationCenter.default.post(name: Notification.Name.ImagePickerDidRetriveAlbumPicture,
                                                         object: album)
                     }
                 }
@@ -182,7 +181,7 @@ class GBHFacebookHelper {
                     let source = photoDic["source"] as? String {
                     
                     // Build Picture model
-                    let photoObject = GBHFacebookImageModel(picture: picture, id: id, source: source)
+                    let photoObject = GBHFacebookImageModel(picture: picture, imgId: id, source: source)
                     album.photos.append(photoObject)
                 }
             }
@@ -203,7 +202,7 @@ class GBHFacebookHelper {
     /// - Parameters:
     ///   - vc: source controller
     ///   - completion: (success , error if needed)
-    func login(vc: UIViewController,
+    func login(controller: UIViewController,
                completion: @escaping (Bool, LoginError?) -> Void) {
         
         self.albumList = [] // Clear Album
@@ -214,8 +213,8 @@ class GBHFacebookHelper {
             // Start Facebook's login
             let loginManager = FBSDKLoginManager()
             loginManager.logIn(withReadPermissions: ["user_photos"],
-                               from: vc) { (response, error) in
-                                if(error != nil) {
+                               from: controller) { (response, error) in
+                                if error != nil {
                                     // Failed
                                     print("Failed to login")
                                     print(error.debugDescription)

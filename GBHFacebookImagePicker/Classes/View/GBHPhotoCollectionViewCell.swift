@@ -43,7 +43,6 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
     /// Configure collection cell with image
     ///
     /// - Parameter picture: Facebook's image model

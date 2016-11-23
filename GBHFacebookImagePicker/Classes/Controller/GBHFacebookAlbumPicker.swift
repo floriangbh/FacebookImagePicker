@@ -30,8 +30,7 @@ protocol GBHAlbumPickerTableViewControllerDelegate {
     ///
     /// - Parameter url: url of the selected picture
     func didSelecPictureInAlbum(url: String)
-    
-    
+
     /// Failed selecte picture in album
     ///
     /// - Parameter error: error
@@ -100,7 +99,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         // Add observe for end album loading
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.didReceiveAlbum),
-                                               name: Notification.Name.GBHFacebookImagePickerDidRetrieveAlbum,
+                                               name: Notification.Name.ImagePickerDidRetrieveAlbum,
                                                object: nil)
     }
     
@@ -132,7 +131,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     
     /// Start Facebook login
     fileprivate func doFacebookLogin() {
-        GBHFacebookHelper.shared.login(vc: self) { (success, error) in
+        GBHFacebookHelper.shared.login(controller: self) { (success, error) in
             if !success {
                 // Something wrong
                 if let loginError = error {
@@ -186,7 +185,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         let cancelAction = UIAlertAction(title: NSLocalizedString("Close", comment: ""),
                                          style: UIAlertActionStyle.cancel,
                                          handler: {
-                                            (action : UIAlertAction!) -> Void in
+                                            (action: UIAlertAction!) -> Void in
                                             self.dismissPicker()
         })
         
@@ -244,7 +243,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         if let imageUrl = URL(string: url) {
             // Start url loading
             URLSession.shared.dataTask(with: imageUrl as URL) { data, response, error in
-                guard let data = data , error == nil else {
+                guard let data = data, error == nil else {
                     self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
                     self.dismissPicker()
                     return
@@ -279,5 +278,3 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         }
     }
 }
-
-

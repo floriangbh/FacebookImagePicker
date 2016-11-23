@@ -177,6 +177,7 @@
 				D4347E65C0BA622A731E6780 /* [CP] Embed Pods Frameworks */,
 				765164EBC895447749794230 /* [CP] Copy Pods Resources */,
 				76F34F971DCD00480035B115 /* ShellScript */,
+				76856B5D1DE57FF00047DB6A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -305,6 +306,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GBHFacebookImagePicker_Example/Pods-GBHFacebookImagePicker_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		76856B5D1DE57FF00047DB6A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		76F34F971DCD00480035B115 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
