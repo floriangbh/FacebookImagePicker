@@ -1,6 +1,12 @@
 Changelog
 =========
 
+
+### 1.0.9
+
+- Add rotation support with autolayout 
+- Add SwitLint checker 
+
 ### 1.0.8
 
 - Automatically dismiss (#2)
