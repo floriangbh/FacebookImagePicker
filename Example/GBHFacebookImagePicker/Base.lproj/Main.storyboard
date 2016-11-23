@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,28 +22,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxw-gh-6yW">
-                                <rect key="frame" x="80" y="492" width="215" height="45"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="96T-bG-AKg">
+                                <rect key="frame" x="87" y="233" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="J5a-E8-pna"/>
+                                    <constraint firstAttribute="width" secondItem="96T-bG-AKg" secondAttribute="height" multiplier="1:1" id="1P8-g2-9AG"/>
+                                    <constraint firstAttribute="height" constant="200" id="fZ6-2B-pqg"/>
+                                    <constraint firstAttribute="width" constant="200" id="vgc-bL-naD"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxw-gh-6yW">
+                                <rect key="frame" x="16" y="597" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LUl-Ny-WYt"/>
                                 </constraints>
                                 <state key="normal" title="Show album"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="96T-bG-AKg">
-                                <rect key="frame" x="87" y="160" width="201" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="x3q-f0-dge"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="96T-bG-AKg" firstAttribute="top" secondItem="g0Q-A4-EiV" secondAttribute="bottom" constant="140" id="0gC-AC-CXc"/>
-                            <constraint firstItem="fxw-gh-6yW" firstAttribute="leading" secondItem="vZb-ve-Jud" secondAttribute="leadingMargin" constant="64" id="7Vz-MX-NTR"/>
-                            <constraint firstItem="mrj-lc-FK1" firstAttribute="top" secondItem="fxw-gh-6yW" secondAttribute="bottom" constant="130" id="KF7-YK-NWn"/>
-                            <constraint firstItem="fxw-gh-6yW" firstAttribute="centerX" secondItem="vZb-ve-Jud" secondAttribute="centerX" id="Yqy-KC-qAl"/>
-                            <constraint firstItem="96T-bG-AKg" firstAttribute="centerX" secondItem="fxw-gh-6yW" secondAttribute="centerX" id="et0-3d-GX9"/>
-                            <constraint firstItem="96T-bG-AKg" firstAttribute="leading" secondItem="vZb-ve-Jud" secondAttribute="leadingMargin" constant="71" id="qDZ-Mk-g7G"/>
+                            <constraint firstItem="mrj-lc-FK1" firstAttribute="top" secondItem="fxw-gh-6yW" secondAttribute="bottom" constant="20" id="WqV-vh-6Et"/>
+                            <constraint firstItem="fxw-gh-6yW" firstAttribute="leading" secondItem="vZb-ve-Jud" secondAttribute="leadingMargin" id="ZLA-AN-Ytb"/>
+                            <constraint firstItem="96T-bG-AKg" firstAttribute="centerY" secondItem="vZb-ve-Jud" secondAttribute="centerY" id="bSw-qZ-uZG"/>
+                            <constraint firstItem="96T-bG-AKg" firstAttribute="centerX" secondItem="vZb-ve-Jud" secondAttribute="centerX" id="yh7-xg-mdu"/>
+                            <constraint firstItem="fxw-gh-6yW" firstAttribute="trailing" secondItem="vZb-ve-Jud" secondAttribute="trailingMargin" id="z7h-GL-TXI"/>
                         </constraints>
                     </view>
                     <connections>
