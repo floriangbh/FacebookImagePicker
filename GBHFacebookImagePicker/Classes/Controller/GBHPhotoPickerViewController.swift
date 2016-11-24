@@ -28,7 +28,7 @@ import UIKit
 class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     // MARK: Var
-    
+
     fileprivate var indicator = UIActivityIndicatorView()
     fileprivate let reuseIdentifier = "Cell"
     fileprivate var pictureCollection: UICollectionView? // Collection for display album's pictures
