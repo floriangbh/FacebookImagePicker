@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-### 1.0.9
+### 1.0.11
 
 - Add rotation support with autolayout 
 - Add SwitLint checker 
