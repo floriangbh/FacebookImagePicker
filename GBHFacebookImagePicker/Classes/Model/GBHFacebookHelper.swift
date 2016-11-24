@@ -55,7 +55,7 @@ class GBHFacebookHelper {
         // Start Facebook Request
         _ = graphRequest?.start { connection, result, error in
             if error != nil {
-                print(error.debugDescription ?? "")
+                print(error.debugDescription)
                 return
             } else {
                 // Try to parse request's result
