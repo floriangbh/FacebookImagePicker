@@ -28,8 +28,8 @@ Video demonstration -> https://vimeo.com/192823627
 - [x] AppStore ready
 - [x] Swift 3 
 - [x] iPhone/iPad support  
-- [ ] Multiple selection
 - [ ] Unit & UI Test 
+- [ ] Multiple selection
 
 ## Example
 
