@@ -46,6 +46,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
         self.photoImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 15, y: 10, width: imageWidth, height: imageHeight))
         self.photoImageView?.contentMode = .scaleAspectFill
         self.photoImageView?.clipsToBounds = true
+        self.photoImageView?.layer.cornerRadius = GBHAppearanceManager.pictureCornerRadius
         if let imgView = self.photoImageView {
             self.contentView.addSubview(imgView)
         }

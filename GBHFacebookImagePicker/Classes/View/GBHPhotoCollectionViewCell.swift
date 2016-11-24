@@ -38,6 +38,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         self.albumImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
         self.albumImageView?.contentMode = .scaleAspectFill
         self.albumImageView?.clipsToBounds = true
+        self.albumImageView?.layer.cornerRadius = GBHAppearanceManager.pictureCornerRadius
         if let imgView = self.albumImageView {
             self.contentView.addSubview(imgView)
         }
