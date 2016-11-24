@@ -141,6 +141,14 @@ Here are some other Facebook's album picker libraries.
 - [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/FacebookImagePicker-iOS)
 - [bradtheappguy/BSFacebookImagePicker](https://github.com/bradtheappguy/BSFacebookImagePicker)
 
+## Applications
+
+Some applications already use this picker like :
+- Troll Generator (https://itunes.apple.com/fr/app/troll-generator/id1038097542?mt=8)
+ - Giraf (https://itunes.apple.com/fr/app/giraf/id1136592561?mt=8)
+
+What about yours ? If your application also use this picker, feel free to contact me or make pull request for the README 😁
+
 ## Author
 
 Florian Gabach, contact@floriangabach.fr
