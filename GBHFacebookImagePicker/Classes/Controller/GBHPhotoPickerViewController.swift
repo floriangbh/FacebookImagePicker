@@ -28,10 +28,10 @@ import UIKit
 class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     // MARK: Var
+    
     fileprivate var indicator = UIActivityIndicatorView()
     fileprivate let reuseIdentifier = "Cell"
     fileprivate var pictureCollection: UICollectionView? // Collection for display album's pictures
-    var albumPictureDelegate: GBHAlbumPickerTableViewControllerDelegate?
     fileprivate var imageArray: [GBHFacebookImageModel] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -39,13 +39,14 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
             }
         }
     }
+    
+    var albumPictureDelegate: GBHAlbumPickerTableViewControllerDelegate?
     var album: GBHFacebookAlbumModel? // Curent album
     
     // MARK: Init & Load
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // Prepare view
         self.prepareViewController()
@@ -65,7 +66,7 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
         // Orbserve end of picture loading
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.didReceivePicture(_:)),
-                                               name: Notification.Name.GBHFacebookImagePickerDidRetriveAlbumPicture,
+                                               name: Notification.Name.ImagePickerDidRetriveAlbumPicture,
                                                object: nil)
         
     }
@@ -79,6 +80,7 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
         self.startLoading()
     }
     
+    /// Prepare pictureCollection which will contains album's pictures
     fileprivate func prepareCollectionView() {
         let layout = UICollectionViewFlowLayout()
         self.pictureCollection = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
@@ -86,9 +88,49 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
         self.pictureCollection?.delegate = self
         self.pictureCollection?.dataSource = self
         self.pictureCollection?.backgroundColor = UIColor.white
+        self.pictureCollection?.translatesAutoresizingMaskIntoConstraints = false
         if let collection = self.pictureCollection {
             self.view.addSubview(collection)
+            self.prepareCollectionViewConstraint()
         }
+    }
+    
+    func prepareCollectionViewConstraint() {
+        // Top constraint
+        self.view.addConstraint(NSLayoutConstraint(item: self.pictureCollection,
+                                                   attribute: NSLayoutAttribute.top,
+                                                   relatedBy: NSLayoutRelation.equal,
+                                                   toItem: self.view,
+                                                   attribute: NSLayoutAttribute.top,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        
+        // Bottom constraint
+        self.view.addConstraint(NSLayoutConstraint(item: self.pictureCollection,
+                                                   attribute: NSLayoutAttribute.bottom,
+                                                   relatedBy: NSLayoutRelation.equal,
+                                                   toItem: self.view,
+                                                   attribute: NSLayoutAttribute.bottom,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        
+        // Leading constraint
+        self.view.addConstraint(NSLayoutConstraint(item: self.pictureCollection,
+                                                   attribute: NSLayoutAttribute.leading,
+                                                   relatedBy: NSLayoutRelation.equal,
+                                                   toItem: self.view,
+                                                   attribute: NSLayoutAttribute.leading,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        
+        // Trainling constraint
+        self.view.addConstraint(NSLayoutConstraint(item: self.pictureCollection,
+                                                   attribute: NSLayoutAttribute.trailing,
+                                                   relatedBy: NSLayoutRelation.equal,
+                                                   toItem: self.view,
+                                                   attribute: NSLayoutAttribute.trailing,
+                                                   multiplier: 1,
+                                                   constant: 0))
     }
     
     // MARK: - Loading indicator
@@ -117,7 +159,7 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
     fileprivate func getPhotos() {
         if let photosArray = self.album?.photos {
             self.imageArray = photosArray
-            if imageArray.isEmpty{
+            if imageArray.isEmpty {
                 self.startLoading()
                 if let album = self.album {
                     GBHFacebookHelper.shared.fbAlbumsPictureRequest(after: nil, album: album)
@@ -133,7 +175,7 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
     /// Did finish get album's pictures callback
     @objc fileprivate func didReceivePicture(_ sender: Notification) {
         self.stopLoading()
-        if let album = sender.object as? GBHFacebookAlbumModel, self.album?.id == album.id {
+        if let album = sender.object as? GBHFacebookAlbumModel, self.album?.albumId == album.albumId {
             self.imageArray = album.photos
         }
     }

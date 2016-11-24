@@ -1,5 +1,5 @@
 //
-//  GBHFacebookAlbumModel.swift
+//  GBHPhotoCollectionViewCell.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 29/09/2016.
@@ -23,24 +23,40 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-class GBHFacebookAlbumModel {
+class GBHPhotoCollectionViewCell: UICollectionViewCell {
     
-    // MARK: - Var
+    fileprivate var albumImageView: GBHImageAsyncViewLoading?
     
-    var name: String? // Album's name
-    var count: Int? // Album's pictures number
-    var coverUrl: URL? // Album's cover url
-    var id: String? // Album's id
-    var photos: [GBHFacebookImageModel] = [] // Contains album's picture
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
+        
+        // Picture contener
+        self.albumImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        self.albumImageView?.contentMode = .scaleAspectFill
+        self.albumImageView?.clipsToBounds = true
+        self.albumImageView?.layer.cornerRadius = GBHAppearanceManager.pictureCornerRadius
+        if let imgView = self.albumImageView {
+            self.contentView.addSubview(imgView)
+        }
+    }
     
-    // MARK: - Init
+    /// Configure collection cell with image
+    ///
+    /// - Parameter picture: Facebook's image model
+    func configure(picture: GBHFacebookImageModel) {
+        
+        // Set picture's url
+        if let urlPath = picture.picture,
+            let url = URL(string: urlPath) {
+            self.albumImageView?.imageUrl = url
+        }
+    }
     
-    init(name:String, count:Int, coverUrl:URL, id: String){
-        self.name = name
-        self.id = id
-        self.coverUrl = coverUrl
-        self.count = count
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

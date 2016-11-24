@@ -10,8 +10,11 @@ GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 - [🛠 Installation](#installation)
 - [🗝 Usage](#usage)
 - [👅 Translation](#translation)
+- [🚀 Contributing](./CONTRIBUTING.md)
 
-## Screenshot
+## Screenshot / Demo
+
+Video demonstration -> https://vimeo.com/192823627
 
 ![Preview](https://github.com/terflogag/GBHFacebookImagePicker/raw/develop/Ressources/preview.png)
 
@@ -19,11 +22,14 @@ GBHFacebookImagePicker is Facebook album photo picker written in Swift 3.0.
 
 - [x] Login with Facebook SDK and display user's Albums
 - [x] Display pictures of each albums 
-- [x] Handling denied photo's access 
+- [x] Handling denied Facebook photo's permission 
 - [x] Select and get URL/Image of the picked picture 
 - [x] UI Customization 
-- [ ] Multiple selection
+- [x] AppStore ready
+- [x] Swift 3 
+- [x] iPhone/iPad support  
 - [ ] Unit & UI Test 
+- [ ] Multiple selection
 
 ## Example
 
@@ -134,6 +140,14 @@ Here are some other Facebook's album picker libraries.
 - [sanche21/DSFacebookImagePicker](https://github.com/sanche21/DSFacebookImagePicker)
 - [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/FacebookImagePicker-iOS)
 - [bradtheappguy/BSFacebookImagePicker](https://github.com/bradtheappguy/BSFacebookImagePicker)
+
+## Applications
+
+Some applications already use this picker like :
+- [Troll Generator](https://itunes.apple.com/fr/app/troll-generator/id1038097542?mt=8)
+- [Giraf](https://itunes.apple.com/fr/app/giraf/id1136592561?mt=8)
+
+What about yours ? If your application also use this picker, feel free to contact me or make pull request for the README 😁
 
 ## Author
 

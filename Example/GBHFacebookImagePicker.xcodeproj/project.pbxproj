@@ -15,7 +15,6 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		6E90D1920934B013D97127C5 /* Pods_GBHFacebookImagePicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FE6C080AA2A8E245EF0707 /* Pods_GBHFacebookImagePicker_Tests.framework */; };
-		7661A0E11DC8E64F008CCBAE /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 7661A0E01DC8E64F008CCBAE /* CHANGELOG.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +176,8 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				D4347E65C0BA622A731E6780 /* [CP] Embed Pods Frameworks */,
 				765164EBC895447749794230 /* [CP] Copy Pods Resources */,
+				76F34F971DCD00480035B115 /* ShellScript */,
+				76856B5D1DE57FF00047DB6A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -306,6 +307,32 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GBHFacebookImagePicker_Example/Pods-GBHFacebookImagePicker_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		76856B5D1DE57FF00047DB6A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		76F34F971DCD00480035B115 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:\"\nfind \".\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"./Pods/*\" -print0 |\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" |\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
+		};
 		9D6AB94C20D1863A9BF0DCEE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,7 +401,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				7661A0E11DC8E64F008CCBAE /* CHANGELOG.md in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,7 +534,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 310207393B6D0DF5517A3F29 /* Pods-GBHFacebookImagePicker_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GBHFacebookImagePicker_Example.entitlements;
 				DEVELOPMENT_TEAM = 62PP362QNQ;
@@ -519,6 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -526,7 +553,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5369131254E801E54944D0DF /* Pods-GBHFacebookImagePicker_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GBHFacebookImagePicker_Example.entitlements;
 				DEVELOPMENT_TEAM = 62PP362QNQ;
@@ -537,6 +564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -46,6 +46,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
         self.photoImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 15, y: 10, width: imageWidth, height: imageHeight))
         self.photoImageView?.contentMode = .scaleAspectFill
         self.photoImageView?.clipsToBounds = true
+        self.photoImageView?.layer.cornerRadius = GBHAppearanceManager.pictureCornerRadius
         if let imgView = self.photoImageView {
             self.contentView.addSubview(imgView)
         }
@@ -66,14 +67,22 @@ class GBHAlbumTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Text layout
         let cellWidth: Int = Int(self.frame.size.width)
-        self.textLabel?.frame = CGRect(x: imageWidth + 30, y: 30, width: cellWidth - (imageWidth * 2), height: 20)
-        self.detailTextLabel?.frame = CGRect(x: imageWidth + 30, y: 50, width: cellWidth, height: 20)
+        
+        // Album's title
+        self.textLabel?.frame = CGRect(x: imageWidth + 30,
+                                       y: 30,
+                                       width: cellWidth - (imageWidth * 2),
+                                       height: 20)
+        
+        // Number of photos in the album
+        self.detailTextLabel?.frame = CGRect(x: imageWidth + 30,
+                                             y: 50,
+                                             width: cellWidth - (imageWidth * 2),
+                                             height: 20)
     }
     
     // MARK: - Configure 
-    
     
     /// Configure the cell with Facebook's album 
     ///

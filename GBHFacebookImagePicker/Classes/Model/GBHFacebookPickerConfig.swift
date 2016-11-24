@@ -1,9 +1,8 @@
 //
-//  GBHFacebookImageModel.swift
+//  GBHFacebookPickerConfig.swift
 //  GBHFacebookImagePicker
 //
-//  Created by Florian Gabach on 29/09/2016.
-//  Copyright (c) 2016 Florian Gabach <contact@floriangabach.fr>
+//  Created by Florian Gabach on 31/10/2016.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,21 +22,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-class GBHFacebookImageModel {
+public struct GBHFacebookPickerConfig {
     
-    // MARK: - Var
-    
-    var picture: String? // Picture url (string)
-    var source: String? // Source url (string)
-    var id: String? // Picture id
-    
-    // MARK: - Init
-    
-    init(picture:String, id: String, source: String){
-        self.id = id
-        self.picture = picture
-        self.source = source
+    /// Sub-stuct holding configuration relevant to UI presentation.
+    // swiftlint:disable:next type_name
+    public struct UI {
+        
+        /// Style of the navigation bar, can be .facebook , .light or .dark
+        public var style: PickerStyle = .facebook
+        
+        /// Border color of the selected image
+        var backgroundColor: UIColor = GBHAppearanceManager.whiteCustom
     }
+    
+    /// UI-specific configuration.
+    // swiftlint:disable:next variable_name
+    public var ui = UI()
 }

@@ -1,5 +1,5 @@
 //
-//  GBHPhotoCollectionViewCell.swift
+//  GBHFacebookImageModel.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 29/09/2016.
@@ -23,40 +23,21 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import UIKit
+import Foundation
 
-class GBHPhotoCollectionViewCell: UICollectionViewCell {
+class GBHFacebookImageModel {
     
-    fileprivate var albumImageView: GBHImageAsyncViewLoading?
+    // MARK: - Var
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
-        
-        // Picture contener
-        self.albumImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        self.albumImageView?.contentMode = .scaleAspectFill
-        self.albumImageView?.clipsToBounds = true
-        if let imgView = self.albumImageView {
-            self.contentView.addSubview(imgView)
-        }
-    }
+    var picture: String? // Picture url (string)
+    var source: String? // Source url (string)
+    var imageId: String? // Picture id
     
+    // MARK: - Init
     
-    /// Configure collection cell with image
-    ///
-    /// - Parameter picture: Facebook's image model
-    func configure(picture: GBHFacebookImageModel) {
-        
-        // Set picture's url
-        if let urlPath = picture.picture,
-            let url = URL(string: urlPath) {
-            self.albumImageView?.imageUrl = url
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    init(picture: String, imgId: String, source: String) {
+        self.imageId = imgId
+        self.picture = picture
+        self.source = source
     }
 }
