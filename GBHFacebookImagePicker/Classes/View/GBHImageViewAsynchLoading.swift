@@ -35,7 +35,7 @@ class GBHImageAsyncViewLoading: UIImageView {
             if let url = imageUrl {
                 // Start url loading
                 URLSession.shared.dataTask(with: url as URL) { data, response, error in
-                    guard let data = data , error == nil else {
+                    guard let data = data, error == nil else {
                         print("\nerror on download \(error)")
                         return
                     }
@@ -51,5 +51,3 @@ class GBHImageAsyncViewLoading: UIImageView {
         }
     }
 }
-
-

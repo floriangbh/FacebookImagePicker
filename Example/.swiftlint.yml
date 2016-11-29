@@ -4,23 +4,10 @@ disabled_rules: # rule identifiers to exclude from running
 
 included: 
   # View
-  - ../GBHFacebookImagePicker/Classes/View/GBHImageAsyncViewLoading.swift
-  - ../GBHFacebookImagePicker/Classes/View/GBHAlbumTableViewCell.swift
-  - ../GBHFacebookImagePicker/Classes/View/GBHPhotoCollectionViewCell.swift 
+  - ../GBHFacebookImagePicker/Classes/View 
 
   # Controller 
-  - ../GBHFacebookImagePicker/Classes/Controller/GBHFacebookAlbumPicker.swift
-  - ../GBHFacebookImagePicker/Classes/Controller/GBHFacebookImagePicker.swift
-  - ../GBHFacebookImagePicker/Classes/Controller/GBHFacebookNavigationController.swift
-  - ../GBHFacebookImagePicker/Classes/Controller/GBHPhotoPickerViewController.swift
+  - ../GBHFacebookImagePicker/Classes/Controller
 
   # Model 
-  - ../GBHFacebookImagePicker/Classes/Model/GBHAppearanceManager.swift
-  - ../GBHFacebookImagePicker/Classes/Model/GBHAssetManager.swift
-  - ../GBHFacebookImagePicker/Classes/Model/GBHFacebookAlbumModel.swift
-  - ../GBHFacebookImagePicker/Classes/Model/GBHFacebookHelper.swift
-  - ../GBHFacebookImagePicker/Classes/Model/GBHFacebookImageModel.swift
-  - ../GBHFacebookImagePicker/Classes/Model/GBHFacebookImagePickerDelegate.swift
-  - ../GBHFacebookImagePicker/Classes/Model/GBHFacebookPickerConfig.swift
-  - ../GBHFacebookImagePicker/Classes/Model/GBHFacebookPickerCustomError.swift
-  - ../GBHFacebookImagePicker/Classes/Model/GBHNotificationName.swift
+  - ../GBHFacebookImagePicker/Classes/Model
