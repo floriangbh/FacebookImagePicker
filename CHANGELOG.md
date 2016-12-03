@@ -4,6 +4,7 @@ Changelog
 ### 1.0.12
 
 - Update FacebookSDK dependency
+- Fixe Facebook login in app 
 
 ### 1.0.11
 
