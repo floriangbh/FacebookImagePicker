@@ -75,7 +75,7 @@ Just in case, for public application (which can be use in the AppStore), you nee
 GBHFacebookImagePicker is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```ruby
+```
 pod "GBHFacebookImagePicker"
 ```
 
