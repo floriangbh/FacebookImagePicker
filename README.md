@@ -69,6 +69,7 @@ Just in case, for public application (which can be use in the AppStore), you nee
 * iOS 9.0+ target deployment
 * FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
 * Facebook Application, see [usage](#usage) for explaination 
+* Swift 3 project 
 
 ## Installation
 
@@ -87,7 +88,7 @@ You need to have set up your application correctly to work with Facebook : https
 import GBHFacebookImagePicker
 ```
 
-Then, implement the `GBHFacebookImagePickerDelegate` protocol:
+Then, implement the `GBHFacebookImagePickerDelegate` protocol :
 
 ```
 // MARK: - GBHFacebookImagePicker Protocol
