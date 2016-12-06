@@ -45,7 +45,7 @@ Or to run the example project manually, clone the repo, and run `pod install` fr
 Don't forgot to replace the current Facebook App's ID with your own in the plist file (Open as > Source code). 
 Like this :
 
-```
+```xml
 <key>CFBundleURLTypes</key>
 <array>
     <dict>
@@ -76,7 +76,7 @@ Just in case, for public application (which can be use in the AppStore), you nee
 GBHFacebookImagePicker is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```
+```ruby
 pod "GBHFacebookImagePicker"
 ```
 
@@ -108,7 +108,7 @@ func facebookImagePicker(didCancelled imagePicker: UIViewController) {
 
 Display picker : 
 
-```
+```swift
 let picker = GBHFacebookImagePicker() 
 picker.presentFacebookAlbumImagePicker(from: self, delegate: self) 
 ```
@@ -117,7 +117,7 @@ picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
 
 The are three style : .facebook (default style), .light & .dark.
 
-```
+```swift
 GBHFacebookImagePicker.pickerConfig.ui.style = .facebook
 ```
 
