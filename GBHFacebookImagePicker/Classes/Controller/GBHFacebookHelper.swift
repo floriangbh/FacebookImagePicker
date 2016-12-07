@@ -40,6 +40,7 @@ class GBHFacebookHelper {
     /// Make GRAPH API's request for user's album
     ///
     /// - Parameter after: after page identifier (optional)
+    // TODO: Make after optional 
     fileprivate func fbAlbumRequest(after: String?) {
         
         // Build path album request
