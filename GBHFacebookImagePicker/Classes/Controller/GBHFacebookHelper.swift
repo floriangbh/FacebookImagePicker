@@ -40,8 +40,7 @@ class GBHFacebookHelper {
     /// Make GRAPH API's request for user's album
     ///
     /// - Parameter after: after page identifier (optional)
-    // TODO: Make after optional 
-    fileprivate func fbAlbumRequest(after: String?) {
+    fileprivate func fbAlbumRequest(after: String? = nil) {
         
         // Build path album request
         var  path = "me/albums?fields=id,name,count,cover_photo"
@@ -235,7 +234,7 @@ class GBHFacebookHelper {
                                                     completion(false, LoginError.PermissionDenied)
                                                 } else {
                                                     // "user_photos" is granted, let's get user's pictures
-                                                    self.fbAlbumRequest(after: nil)
+                                                    self.fbAlbumRequest()
                                                     completion(true, nil)
                                                 }
                                             } else {
@@ -255,7 +254,7 @@ class GBHFacebookHelper {
             // Already logged in, check User_photos permission
             if FBSDKAccessToken.current().permissions.contains("user_photos") {
                 // User_photos's permission ok
-                self.fbAlbumRequest(after: nil)
+                self.fbAlbumRequest()
                 completion(true, nil)
             } else {
                 // User_photos's permission denied
