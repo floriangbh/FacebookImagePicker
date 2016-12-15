@@ -25,13 +25,13 @@
 
 import Foundation
 
-class GBHFacebookImageModel {
+public class GBHFacebookImageModel {
     
     // MARK: - Var
     
-    var picture: String? // Picture url (string)
-    var source: String? // Source url (string)
-    var imageId: String? // Picture id
+    public var picture: String? // Picture url (string)
+    public var source: String? // Source url (string)
+    public var imageId: String? // Picture id
     
     // MARK: - Init
     
