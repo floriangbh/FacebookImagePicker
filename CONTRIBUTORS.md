@@ -3,5 +3,7 @@ Contributors
 
 Contributors to the codebase : 
 
-- <your_name> 
+| Name          | github handle | mail  |
+| ------------- |-------------  | ----- |
+|  Rodrigo      | frelei        | rodrigo.freitas.leite@gmail.com|
 

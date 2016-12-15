@@ -93,7 +93,7 @@ Then, implement the `GBHFacebookImagePickerDelegate` protocol :
 ```swift
 // MARK: - GBHFacebookImagePicker Protocol
 
-func facebookImagePicker(imagePicker: UIViewController, didSelectImage image: UIImage?, WithUrl url: String) {
+func facebookImagePicker(imagePicker: UIViewController, didSelectImage image: UIImage?, WithUrl url: String, imageId: String) {
     // Do whatever you whant with the picked image or url ...
 }
 
