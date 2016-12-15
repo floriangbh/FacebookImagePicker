@@ -35,7 +35,7 @@ public protocol GBHFacebookImagePickerDelegate {
      **/
     func facebookImagePicker(imagePicker: UIViewController,
                              didSelectImage image: UIImage?,
-                             WithUrl url: String)
+                             imageModel: GBHFacebookImageModel)
     
     /**
      * Called when facebook picker failed

@@ -28,8 +28,8 @@ import UIKit
 protocol GBHAlbumPickerTableViewControllerDelegate {
     /// Perform when picture are selected in the displayed album
     ///
-    /// - Parameter url: url of the selected picture
-    func didSelecPictureInAlbum(url: String)
+    /// - Parameter imageModel: model of the selected picture
+    func didSelecPictureInAlbum(imageModel: GBHFacebookImageModel)
 
     /// Failed selecte picture in album
     ///
@@ -239,10 +239,11 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     
     /// Did selected picture delegate
     ///
-    /// - Parameter url: url of the selected picture
-    func didSelecPictureInAlbum(url: String) {
+    /// - Parameter imageModel: model of the selected picture
+    func didSelecPictureInAlbum(imageModel: GBHFacebookImageModel) {
         
-        if let imageUrl = URL(string: url) {
+        if let url = imageModel.source,
+            let imageUrl = URL(string: url) {
             // Start url loading
             URLSession.shared.dataTask(with: imageUrl as URL) { data, response, error in
                 guard let data = data, error == nil else {
@@ -257,7 +258,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                 }
                     self.delegate?.facebookImagePicker(imagePicker: self,
                                                       didSelectImage: UIImage(data: data),
-                                                      WithUrl: url)
+                                                      imageModel: imageModel)
                 self.dismissPicker()
                 }.resume()
         } else {
