@@ -5,7 +5,7 @@ For fixes, improvements or ideas, fork the repository and issue a pull request.
 
 To get a pull request accepted, please adhere to these rules:
 - Work from the latest `develop` branch.
-- Respect current code style and respect the SwiftLint(https://github.com/realm/SwiftLint) rules (see swiftlint's file).
+- Respect current code style and respect the [SwiftLint](https://github.com/realm/SwiftLint) rules (see swiftlint's file).
 - If this is about new features, please make sure to add enable/disable configuration.
 
 Ideally, only work on one feature at a time.
