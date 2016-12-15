@@ -29,7 +29,7 @@ protocol GBHAlbumPickerTableViewControllerDelegate {
     /// Perform when picture are selected in the displayed album
     ///
     /// - Parameter url: url of the selected picture
-    func didSelecPictureInAlbum(url: String)
+    func didSelecPictureInAlbum(url: String, imageId: String)
 
     /// Failed selecte picture in album
     ///
@@ -240,7 +240,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     /// Did selected picture delegate
     ///
     /// - Parameter url: url of the selected picture
-    func didSelecPictureInAlbum(url: String) {
+    func didSelecPictureInAlbum(url: String, imageId: String) {
         
         if let imageUrl = URL(string: url) {
             // Start url loading
@@ -257,7 +257,8 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                 }
                     self.delegate?.facebookImagePicker(imagePicker: self,
                                                       didSelectImage: UIImage(data: data),
-                                                      WithUrl: url)
+                                                      WithUrl: url,
+                                                      imageId: imageId)
                 self.dismissPicker()
                 }.resume()
         } else {

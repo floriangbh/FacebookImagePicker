@@ -48,8 +48,8 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
     
     // MARK: - GBHFacebookImagePicker Protocol
 
-    func facebookImagePicker(imagePicker: UIViewController, didSelectImage image: UIImage?, WithUrl url: String) {
-        print("Image URL : \(url)")
+    func facebookImagePicker(imagePicker: UIViewController, didSelectImage image: UIImage?, WithUrl url: String, imageId: String) {
+        print("Image URL : \(url), Image ID: \(imageId)")
         if let pickedImage = image {
             self.pickerImageView.image = pickedImage
         }
