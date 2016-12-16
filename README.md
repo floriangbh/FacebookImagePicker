@@ -83,15 +83,15 @@ pod "GBHFacebookImagePicker"
 
 ## Usage
 
-You need to have set up your application correctly to work with Facebook : 
-- https://developers.facebook.com/docs/ios/getting-started
-- https://developers.facebook.com/docs/ios/ios9
+- You need to have set up your application correctly to work with Facebook : https://developers.facebook.com/docs/ios/getting-started and https://developers.facebook.com/docs/ios/ios9
+
+- Import the library : 
 
 ```swift
 import GBHFacebookImagePicker
 ```
 
-Then, implement the `GBHFacebookImagePickerDelegate` protocol :
+- Then, implement the `GBHFacebookImagePickerDelegate` protocol :
 
 ```swift
 // MARK: - GBHFacebookImagePicker Protocol
@@ -109,7 +109,7 @@ func facebookImagePicker(didCancelled imagePicker: UIViewController) {
 }
 ```
 
-Display picker : 
+- Display picker : 
 
 ```swift
 let picker = GBHFacebookImagePicker() 
