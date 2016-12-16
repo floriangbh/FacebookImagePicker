@@ -83,7 +83,9 @@ pod "GBHFacebookImagePicker"
 
 ## Usage
 
-You need to have set up your application correctly to work with Facebook : https://developers.facebook.com/docs/ios/getting-started
+You need to have set up your application correctly to work with Facebook : 
+- https://developers.facebook.com/docs/ios/getting-started
+- https://developers.facebook.com/docs/ios/ios9
 
 ```swift
 import GBHFacebookImagePicker
