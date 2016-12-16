@@ -83,7 +83,7 @@ pod "GBHFacebookImagePicker"
 
 ## Usage
 
-- You need to have set up your application correctly to work with Facebook : https://developers.facebook.com/docs/ios/getting-started and https://developers.facebook.com/docs/ios/ios9
+- You need to set up your application correctly to work with Facebook : https://developers.facebook.com/docs/ios/getting-started and https://developers.facebook.com/docs/ios/ios9
 
 - Import the library : 
 
