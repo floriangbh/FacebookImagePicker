@@ -96,8 +96,8 @@ import GBHFacebookImagePicker
 ```swift
 // MARK: - GBHFacebookImagePicker Protocol
 
-func facebookImagePicker(imagePicker: UIViewController, didSelectImage image: UIImage?, WithUrl url: String, imageModel: GBHFacebookImageModel) {
-    // Do whatever you whant with the picked image or the image model ...
+func facebookImagePicker(imagePicker: UIViewController, imageModel: GBHFacebookImageModel) {
+    // Do whatever you whant with the image model ...
 }
 
 func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
@@ -106,6 +106,17 @@ func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: 
 
 func facebookImagePicker(didCancelled imagePicker: UIViewController) {
     print("Cancelled Facebook Album picker")
+}
+```
+
+The imageModel contain : 
+
+```swift
+public class GBHFacebookImageModel {
+    public var image: UIImage? // The image, not nil only if image is selected
+    public var pictureUrl: String? // Small picture url (string)
+    public var sourceUrl: String? // Full size source url (string)
+    public var imageId: String? // Picture id
 }
 ```
 
