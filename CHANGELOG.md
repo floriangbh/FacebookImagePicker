@@ -3,7 +3,7 @@ Changelog
 
 ### 1.0.13
 
-- Return image model in delegate ( https://github.com/terflogag/FacebookImagePicker/pull/6 )
+- Return only image model in the didSelect delegate ( https://github.com/terflogag/FacebookImagePicker/pull/6 )
 
 ### 1.0.12
 
