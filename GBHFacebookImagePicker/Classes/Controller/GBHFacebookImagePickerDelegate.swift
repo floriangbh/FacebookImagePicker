@@ -27,28 +27,24 @@ import UIKit
 
 public protocol GBHFacebookImagePickerDelegate {
     
-    /**
-     * Called when image is picked
-     * Param :
-     * - imagePicker : the picker controller
-     * - imageModel : GBHFacebookImageModel which containt image url, image and image id 
-     **/
+    /// Called when image is picked
+    ///
+    /// - Parameters:
+    ///   - imagePicker: the picker controller
+    ///   - imageModel: GBHFacebookImageModel which containt image url, image and image id
     func facebookImagePicker(imagePicker: UIViewController,
                              imageModel: GBHFacebookImageModel)
-    
-    /**
-     * Called when facebook picker failed
-     * Param :
-     * - imagePicker : the picker controller
-     * - error : with description 
-     **/
+
+    /// Called when facebook picker failed
+    ///
+    /// - Parameters:
+    ///   - imagePicker: the picker controller
+    ///   - error: with description
     func facebookImagePicker(imagePicker: UIViewController,
                              didFailWithError error: Error?)
     
-    /**
-     * Called when facebook picker is cancelled without error
-     * Param :
-     * - imagePicker : the picker controller
-     **/
+     /// Called when facebook picker is cancelled without error
+     ///
+     /// - Parameter imagePicker: the picker controller
      func facebookImagePicker(didCancelled imagePicker: UIViewController)
 }
