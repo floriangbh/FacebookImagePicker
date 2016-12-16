@@ -31,10 +31,9 @@ public protocol GBHFacebookImagePickerDelegate {
      * Called when image is picked
      * Param :
      * - imagePicker : the picker controller
-     * - url : the url of the picked picture
+     * - imageModel : GBHFacebookImageModel which containt image url, image and image id 
      **/
     func facebookImagePicker(imagePicker: UIViewController,
-                             didSelectImage image: UIImage?,
                              imageModel: GBHFacebookImageModel)
     
     /**

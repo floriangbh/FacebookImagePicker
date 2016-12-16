@@ -256,8 +256,11 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                     self.dismissPicker()
                     return
                 }
-                    self.delegate?.facebookImagePicker(imagePicker: self,
-                                                      didSelectImage: UIImage(data: data),
+                
+                // Set the image
+                imageModel.image = UIImage(data: data)
+                
+                self.delegate?.facebookImagePicker(imagePicker: self,
                                                       imageModel: imageModel)
                 self.dismissPicker()
                 }.resume()
