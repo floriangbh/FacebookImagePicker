@@ -30,8 +30,8 @@ public class GBHFacebookImageModel {
     // MARK: - Var
     
     public var image: UIImage? // The image, not nil only if image is selected
-    public var pictureUrl: String? // Picture url (string)
-    public var sourceUrl: String? // Source url (string)
+    public var pictureUrl: String? // Small picture url (string)
+    public var sourceUrl: String? // Full size source url (string)
     public var imageId: String? // Picture id
     
     // MARK: - Init
