@@ -242,7 +242,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     /// - Parameter imageModel: model of the selected picture
     func didSelecPictureInAlbum(imageModel: GBHFacebookImageModel) {
         
-        if let url = imageModel.source,
+        if let url = imageModel.sourceUrl,
             let imageUrl = URL(string: url) {
             // Start url loading
             URLSession.shared.dataTask(with: imageUrl as URL) { data, response, error in

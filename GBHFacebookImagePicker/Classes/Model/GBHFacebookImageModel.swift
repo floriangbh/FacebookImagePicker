@@ -29,15 +29,16 @@ public class GBHFacebookImageModel {
     
     // MARK: - Var
     
-    public var picture: String? // Picture url (string)
-    public var source: String? // Source url (string)
+    public var image: UIImage? // The image, not nil only if image is selected
+    public var pictureUrl: String? // Picture url (string)
+    public var sourceUrl: String? // Source url (string)
     public var imageId: String? // Picture id
     
     // MARK: - Init
     
     init(picture: String, imgId: String, source: String) {
         self.imageId = imgId
-        self.picture = picture
-        self.source = source
+        self.pictureUrl = picture
+        self.sourceUrl = source
     }
 }

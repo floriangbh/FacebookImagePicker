@@ -217,9 +217,9 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
         }
         
         // Set url to the delegate
-        if let url = self.imageArray[indexPath.row].source,
+        if let url = self.imageArray[indexPath.row].sourceUrl,
             let id = self.imageArray[indexPath.row].imageId,
-            let picture = self.imageArray[indexPath.row].picture {
+            let picture = self.imageArray[indexPath.row].pictureUrl {
             
             let imageModel = self.imageArray[indexPath.row]
             // Clean collection and start loading
