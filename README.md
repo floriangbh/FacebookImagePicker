@@ -114,8 +114,8 @@ The imageModel contain :
 ```swift
 public class GBHFacebookImageModel {
     public var image: UIImage? // The image, not nil only if image is selected
-    public var pictureUrl: String? // Small picture url (string)
-    public var sourceUrl: String? // Full size source url (string)
+    public var normalSizeUrl: String? // Normal size picture url
+    public var fullSizeUrl: String? // Full size source picture url
     public var imageId: String? // Picture id
 }
 ```

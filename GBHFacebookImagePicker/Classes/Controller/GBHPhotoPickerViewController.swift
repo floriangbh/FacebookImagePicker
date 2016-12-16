@@ -216,20 +216,16 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
             cell.layer.borderColor = UIColor.black.cgColor
         }
         
-        // Set url to the delegate
-        if let url = self.imageArray[indexPath.row].sourceUrl,
-            let id = self.imageArray[indexPath.row].imageId,
-            let picture = self.imageArray[indexPath.row].pictureUrl {
+        // Get the selected image
+        let imageModel = self.imageArray[indexPath.row]
+        
+        // Clean collection and start loading
+        self.imageArray = []
+        self.startLoading()
+        self.pictureCollection?.reloadData()
             
-            let imageModel = self.imageArray[indexPath.row]
-            // Clean collection and start loading
-            self.imageArray = []
-            self.startLoading()
-            self.pictureCollection?.reloadData()
-            
-            // Delegate
-            self.albumPictureDelegate?.didSelecPictureInAlbum(imageModel: imageModel)
-        }
+        // Send to album delegate for download
+        self.albumPictureDelegate?.didSelecPictureInAlbum(imageModel: imageModel)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

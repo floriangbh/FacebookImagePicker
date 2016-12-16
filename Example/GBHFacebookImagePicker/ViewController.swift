@@ -49,7 +49,7 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
     // MARK: - GBHFacebookImagePicker Protocol
 
     func facebookImagePicker(imagePicker: UIViewController, imageModel: GBHFacebookImageModel) {
-        print("Image URL : \(imageModel.sourceUrl), Image Id: \(imageModel.imageId)")
+        print("Image URL : \(imageModel.fullSizeUrl), Image Id: \(imageModel.imageId)")
         if let pickedImage = imageModel.image {
             self.pickerImageView.image = pickedImage
         }
