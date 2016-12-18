@@ -26,6 +26,7 @@ Podfile.lock
 # others
 *.swp
 !.gitkeep
+*.numbers
 
 # Carthage
 Carthage/
