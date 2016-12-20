@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.0.14
+
+- Add optional dismissed function to the delegate ( https://github.com/terflogag/FacebookImagePicker/pull/8 ) 
+
 ### 1.0.13
 
 - Return only image model in the didSelect delegate ( https://github.com/terflogag/FacebookImagePicker/pull/6 )
