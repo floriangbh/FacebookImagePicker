@@ -34,7 +34,7 @@ public protocol GBHFacebookImagePickerDelegate {
     ///   - imageModel: GBHFacebookImageModel which containt image url, image and image id
     func facebookImagePicker(imagePicker: UIViewController,
                              imageModel: GBHFacebookImageModel)
-
+    
     /// Called when facebook picker failed
     ///
     /// - Parameters:
@@ -43,11 +43,19 @@ public protocol GBHFacebookImagePickerDelegate {
     func facebookImagePicker(imagePicker: UIViewController,
                              didFailWithError error: Error?)
     
-     /// Called when facebook picker is cancelled without error
-     ///
-     /// - Parameter imagePicker: the picker controller
-     func facebookImagePicker(didCancelled imagePicker: UIViewController)
+    /// Called when facebook picker is cancelled without error
+    ///
+    /// - Parameter imagePicker: the picker controller
+    func facebookImagePicker(didCancelled imagePicker: UIViewController)
     
-    /// Called when image picker completed dismissing
+    /// Called when image picker completed dismissing (optional)
     func facebookImagePickerDismissed()
+}
+
+/// For optional method, because Swift don't have at this time optional method in protocol which contain custom struct
+extension GBHFacebookImagePickerDelegate {
+    /// Called when image picker completed dismissing
+    func facebookImagePickerDismissed() {
+        //
+    }
 }
