@@ -3,7 +3,7 @@ Changelog
 
 ### 1.0.14
 
-- Add optional dismissed function to the delegate ( https://github.com/terflogag/FacebookImagePicker/pull/8 ) 
+- Add dismissed function to the delegate ( https://github.com/terflogag/FacebookImagePicker/pull/8 ) 
 
 ### 1.0.13
 
