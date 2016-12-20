@@ -280,7 +280,9 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     
     func dismissPicker() {
         DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                self.delegate?.facebookImagePickerDismissed()
+            })
         }
     }
 }
