@@ -108,7 +108,6 @@ func facebookImagePicker(didCancelled imagePicker: UIViewController) {
     print("Cancelled Facebook Album picker")
 }
 
-// Optional 
 func facebookImagePickerDismissed() {
     print("Picker dismissed")
 }
