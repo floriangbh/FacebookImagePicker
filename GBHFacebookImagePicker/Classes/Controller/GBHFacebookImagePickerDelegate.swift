@@ -48,7 +48,7 @@ public protocol GBHFacebookImagePickerDelegate {
     /// - Parameter imagePicker: the picker controller
     func facebookImagePicker(didCancelled imagePicker: UIViewController)
     
-    /// Called when image picker completed dismissing (optional)
+    /// Called when image picker completed dismissing 
     func facebookImagePickerDismissed()
 }
 
