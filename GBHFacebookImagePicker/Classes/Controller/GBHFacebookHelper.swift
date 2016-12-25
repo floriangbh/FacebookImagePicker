@@ -53,13 +53,13 @@ class GBHFacebookHelper {
                                              parameters: nil)
         
         // Start Facebook Request
-        _ = graphRequest?.start { connection, result, error in
+        _ = graphRequest?.start { _, result, error in
             if error != nil {
                 print(error.debugDescription)
                 return
             } else {
                 // Try to parse request's result
-                if let fbResult = result as? Dictionary<String, AnyObject> {
+                if let fbResult = result as? Dictionary<String, AnyObject> { 
                     
                     // Parse Album
                     self.parseFbAlbumResult(fbResult: fbResult)
@@ -134,7 +134,7 @@ class GBHFacebookHelper {
                                              parameters: nil)
         
         // Start Facebook's request
-        _ = graphRequest?.start { connection, result, error in
+        _ = graphRequest?.start { _, result, error in
             if error != nil {
                 print(error.debugDescription)
                 return
@@ -170,7 +170,8 @@ class GBHFacebookHelper {
     /// - Parameters:
     ///   - fbResult: album's result
     ///   - album: concerned album model
-    fileprivate func parseFbPicture(fbResult: Dictionary<String, AnyObject>, album: GBHFacebookAlbumModel) {
+    fileprivate func parseFbPicture(fbResult: Dictionary<String, AnyObject>,
+                                    album: GBHFacebookAlbumModel) {
         if let photosResult = fbResult["data"] as? [AnyObject] {
             
             // Parsing album's picture

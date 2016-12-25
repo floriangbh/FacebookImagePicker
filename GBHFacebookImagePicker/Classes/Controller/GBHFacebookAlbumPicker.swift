@@ -178,16 +178,14 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         // Done & Cancel button
         let autorizeAction = UIAlertAction(title: NSLocalizedString("Allow", comment: ""),
                                            style: UIAlertActionStyle.default,
-                                           handler: {
-                                            alert -> Void in
+                                           handler: { _ -> Void in
                                             self.doFacebookLogin()
         })
         
         // Cancel action
         let cancelAction = UIAlertAction(title: NSLocalizedString("Close", comment: ""),
                                          style: UIAlertActionStyle.cancel,
-                                         handler: {
-                                            (action: UIAlertAction!) -> Void in
+                                         handler: { (_: UIAlertAction!) -> Void in
                                             self.dismissPicker()
         })
         
