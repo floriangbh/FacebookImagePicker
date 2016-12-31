@@ -59,7 +59,7 @@ class GBHFacebookHelper {
                 return
             } else {
                 // Try to parse request's result
-                if let fbResult = result as? Dictionary<String, AnyObject> { 
+                if let fbResult = result as? [String: AnyObject] {
                     
                     // Parse Album
                     self.parseFbAlbumResult(fbResult: fbResult)
@@ -87,7 +87,7 @@ class GBHFacebookHelper {
     /// Parsing GRAPH API result for user's album in GBHFacebookAlbumModel array
     ///
     /// - Parameter fbResult: result of the Facebook's graph api
-    fileprivate func parseFbAlbumResult(fbResult: Dictionary<String, AnyObject>) {
+    fileprivate func parseFbAlbumResult(fbResult: [String: AnyObject]) {
         if let albumArray = fbResult["data"] as? [AnyObject] {
             
             // Parsing user's album
@@ -140,7 +140,7 @@ class GBHFacebookHelper {
                 return
             } else {
                 // Try to parse request's result
-                if let fbResult = result as? Dictionary<String, AnyObject> {
+                if let fbResult = result as? [String: AnyObject] {
                     // Parse Album
                     self.parseFbPicture(fbResult: fbResult,
                                         album: album)
@@ -170,7 +170,7 @@ class GBHFacebookHelper {
     /// - Parameters:
     ///   - fbResult: album's result
     ///   - album: concerned album model
-    fileprivate func parseFbPicture(fbResult: Dictionary<String, AnyObject>,
+    fileprivate func parseFbPicture(fbResult: [String: AnyObject],
                                     album: GBHFacebookAlbumModel) {
         if let photosResult = fbResult["data"] as? [AnyObject] {
             
