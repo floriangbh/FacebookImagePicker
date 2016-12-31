@@ -37,21 +37,21 @@ class GBHFacebookNavigationController: UINavigationController {
             self.navigationBar.barTintColor = GBHAppearanceManager.facebookColor
             self.navigationBar.tintColor = GBHAppearanceManager.whiteCustom
             self.navigationBar.titleTextAttributes = [
-                NSForegroundColorAttributeName : GBHAppearanceManager.whiteCustom
+                NSForegroundColorAttributeName: GBHAppearanceManager.whiteCustom
             ]
         case .dark:
             // Dark style
             self.navigationBar.barTintColor = GBHAppearanceManager.black
             self.navigationBar.tintColor = GBHAppearanceManager.whiteCustom
             self.navigationBar.titleTextAttributes = [
-                NSForegroundColorAttributeName : GBHAppearanceManager.whiteCustom
+                NSForegroundColorAttributeName: GBHAppearanceManager.whiteCustom
             ]
         case .light:
             // Light style
             self.navigationBar.barTintColor = GBHAppearanceManager.whiteCustom
             self.navigationBar.tintColor = GBHAppearanceManager.black
             self.navigationBar.titleTextAttributes = [
-                NSForegroundColorAttributeName : GBHAppearanceManager.black
+                NSForegroundColorAttributeName: GBHAppearanceManager.black
             ]
         }
     }
