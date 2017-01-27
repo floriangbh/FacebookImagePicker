@@ -44,10 +44,24 @@ class GBHImageAsyncViewLoading: UIImageView {
                         return
                     }
                     DispatchQueue.main.async {
-                        self.image = UIImage(data: data) // Display image !
+                        // Display image !
+                        if let downloadedImage = UIImage(data: data) {
+                            self.setImageWithAnimation(image: downloadedImage)
+                        }
                     }
                     }.resume()
             }
         }
+    }
+    
+    fileprivate func setImageWithAnimation(image: UIImage) {
+        self.image = image
+         self.alpha = 0
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.0,
+                       options: UIViewAnimationOptions.curveEaseOut,
+                       animations: {
+            self.alpha = 1.0
+        }, completion: nil)
     }
 }
