@@ -56,14 +56,16 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
     }
     
     func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
+        print("Cancelled Facebook Album picker with error")
         print(error.debugDescription)
     }
     
+    // Optional
     func facebookImagePicker(didCancelled imagePicker: UIViewController) {
         print("Cancelled Facebook Album picker")
     }
     
-    // Optional 
+    // Optional
     func facebookImagePickerDismissed() {
         print("Picker dismissed")
     }
