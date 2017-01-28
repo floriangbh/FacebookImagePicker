@@ -46,10 +46,19 @@ public protocol GBHFacebookImagePickerDelegate {
     /// Called when facebook picker is cancelled without error
     ///
     /// - Parameter imagePicker: the picker controller
-    // notaTODO: Make it optional
     func facebookImagePicker(didCancelled imagePicker: UIViewController)
     
-    /// Called when image picker completed dismissing     
-    // notaTODO: Make it optional
+    /// Called when image picker completed dismissing
     func facebookImagePickerDismissed()
+}
+
+// Extension to make some method optional...
+public extension GBHFacebookImagePickerDelegate {
+    func facebookImagePickerDismissed() {
+        //
+    }
+    
+    func facebookImagePicker(didCancelled imagePicker: UIViewController) {
+        //
+    }
 }
