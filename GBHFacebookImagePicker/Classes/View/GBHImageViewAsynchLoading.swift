@@ -54,6 +54,9 @@ class GBHImageAsyncViewLoading: UIImageView {
         }
     }
     
+    /// Set with animation
+    ///
+    /// - Parameter image: the image to set
     fileprivate func setImageWithAnimation(image: UIImage) {
         self.image = image
          self.alpha = 0
