@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### 1.1.0
+
+- Make some protocol method optional
+- Add image apparition animation 
+- Fix code style for SwiftLint
+
 ### 1.0.14
 
 - Add dismissed function to the delegate ( https://github.com/terflogag/FacebookImagePicker/pull/8 ) 
