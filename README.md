@@ -30,8 +30,8 @@ Video demonstration -> https://vimeo.com/192823627
 - [x] AppStore ready
 - [x] Swift 3 
 - [x] iPhone/iPad support  
-- [ ] Unit & UI Test 
-- [ ] Multiple selection
+- [ ] Unit & UI Test (feel free to make PR)
+- [ ] Multiple selection (feel free to make PR)
 
 ## Example
 
@@ -97,17 +97,23 @@ import GBHFacebookImagePicker
 // MARK: - GBHFacebookImagePicker Protocol
 
 func facebookImagePicker(imagePicker: UIViewController, imageModel: GBHFacebookImageModel) {
-    // Do whatever you whant with the image model ...
+    print("Image URL : \(imageModel.fullSizeUrl), Image Id: \(imageModel.imageId)")
+    if let pickedImage = imageModel.image {
+        self.pickerImageView.image = pickedImage
+    }
 }
 
 func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
+    print("Cancelled Facebook Album picker with error")
     print(error.debugDescription)
 }
 
+// Optional
 func facebookImagePicker(didCancelled imagePicker: UIViewController) {
     print("Cancelled Facebook Album picker")
 }
 
+// Optional
 func facebookImagePickerDismissed() {
     print("Picker dismissed")
 }
