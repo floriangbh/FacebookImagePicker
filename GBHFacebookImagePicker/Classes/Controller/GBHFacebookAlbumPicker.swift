@@ -84,7 +84,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         // Common init
         self.tableView.tableFooterView = UIView()
         self.title = NSLocalizedString("Album(s)", comment: "")
-        self.tableView.register(GBHAlbumTableViewCell.self, forCellReuseIdentifier: "AlbumCell")
+        self.tableView.register(GBHAlbumTableViewCell.self, forCellReuseIdentifier: self.reuseIdentifier)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.separatorStyle = .none
