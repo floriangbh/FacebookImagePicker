@@ -5,8 +5,6 @@
 //  Created by Florian Gabach on 07/10/2016.
 //  Copyright (c) 2016 Florian Gabach <contact@floriangabach.fr>
 
-import UIKit
-
 public enum PickerStyle {
     case facebook
     case light

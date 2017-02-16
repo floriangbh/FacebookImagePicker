@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol GBHAlbumPickerTableViewControllerDelegate {
+protocol GBHAlbumPickerTableViewControllerDelegate: class {
     /// Perform when picture are selected in the displayed album
     ///
     /// - Parameter imageModel: model of the selected picture
@@ -24,7 +24,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     // MARK: - Var
 
     private let reuseIdentifier = "AlbumCell"
-    public var delegate: GBHFacebookImagePickerDelegate?
+    public weak var delegate: GBHFacebookImagePickerDelegate?
     fileprivate var indicator = UIActivityIndicatorView() // Loading indicator
     fileprivate var albums: [GBHFacebookAlbumModel] = [] { // Albums list
         didSet {
@@ -35,7 +35,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
         }
     }
 
-    // MARK: - Init
+    // MARK: - Lifecycle
 
     override public func viewDidLoad() {
         super.viewDidLoad()

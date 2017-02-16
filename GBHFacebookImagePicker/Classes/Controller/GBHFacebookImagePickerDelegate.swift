@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol GBHFacebookImagePickerDelegate {
+public protocol GBHFacebookImagePickerDelegate: class {
 
     /// Called when image is picked
     ///

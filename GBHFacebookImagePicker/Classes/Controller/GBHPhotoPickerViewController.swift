@@ -22,10 +22,10 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
         }
     }
 
-    var albumPictureDelegate: GBHAlbumPickerTableViewControllerDelegate?
+    weak var albumPictureDelegate: GBHAlbumPickerTableViewControllerDelegate?
     var album: GBHFacebookAlbumModel? // Curent album
 
-    // MARK: Init & Load
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

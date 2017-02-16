@@ -8,6 +8,8 @@
 import UIKit
 
 class GBHFacebookNavigationController: UINavigationController {
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
