@@ -8,24 +8,27 @@
 import UIKit
 
 class GBHAlbumTableViewCell: UITableViewCell {
-    
+
     // MARK: - Var
-    
+
     fileprivate var photoImageView: GBHImageAsyncViewLoading?
     fileprivate let imageWidth = 70
     fileprivate let imageHeight = 70
-    
+
     // MARK: - Init
-    
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
         // Common init
         self.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
         self.accessoryType = .disclosureIndicator
-        
+
         // Album cover image
-        self.photoImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 15, y: 10, width: imageWidth, height: imageHeight))
+        self.photoImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 15,
+                                                                     y: 10,
+                                                                     width: imageWidth,
+                                                                     height: imageHeight))
         self.photoImageView?.contentMode = .scaleAspectFill
         self.photoImageView?.clipsToBounds = true
         self.photoImageView?.layer.cornerRadius = GBHAppearanceManager.pictureCornerRadius
@@ -33,7 +36,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
             self.contentView.addSubview(imgView)
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -45,34 +48,34 @@ class GBHAlbumTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         let cellWidth: Int = Int(self.frame.size.width)
-        
+
         // Album's title
         self.textLabel?.frame = CGRect(x: imageWidth + 30,
                                        y: 30,
                                        width: cellWidth - (imageWidth * 2),
                                        height: 20)
-        
+
         // Number of photos in the album
         self.detailTextLabel?.frame = CGRect(x: imageWidth + 30,
                                              y: 50,
                                              width: cellWidth - (imageWidth * 2),
                                              height: 20)
     }
-    
+
     // MARK: - Configure 
-    
+
     /// Configure the cell with Facebook's album 
     ///
     /// - Parameter album: Album model which contain album information
     func configure(album: GBHFacebookAlbumModel) {
         // Album title
         self.textLabel?.text = album.name ?? ""
-        
+
         // Album's pictures count
             self.detailTextLabel?.text = "\(album.count ?? 0)"
 

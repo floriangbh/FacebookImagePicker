@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol GBHFacebookImagePickerDelegate {
-    
+
     /// Called when image is picked
     ///
     /// - Parameters:
@@ -16,7 +16,7 @@ public protocol GBHFacebookImagePickerDelegate {
     ///   - imageModel: GBHFacebookImageModel which containt image url, image and image id
     func facebookImagePicker(imagePicker: UIViewController,
                              imageModel: GBHFacebookImageModel)
-    
+
     /// Called when facebook picker failed
     ///
     /// - Parameters:
@@ -24,12 +24,12 @@ public protocol GBHFacebookImagePickerDelegate {
     ///   - error: with description
     func facebookImagePicker(imagePicker: UIViewController,
                              didFailWithError error: Error?)
-    
+
     /// Called when facebook picker is cancelled without error
     ///
     /// - Parameter imagePicker: the picker controller
     func facebookImagePicker(didCancelled imagePicker: UIViewController)
-    
+
     /// Called when image picker completed dismissing
     func facebookImagePickerDismissed()
 }
@@ -39,7 +39,7 @@ public extension GBHFacebookImagePickerDelegate {
     func facebookImagePickerDismissed() {
         //
     }
-    
+
     func facebookImagePicker(didCancelled imagePicker: UIViewController) {
         //
     }

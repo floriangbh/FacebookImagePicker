@@ -8,14 +8,15 @@
 import UIKit
 
 public class GBHAssetManager {
-    
+
     /// Get image from bundle
     ///
     /// - Parameter name: name of the image
     /// - Returns: optional image 
-    public static func getImage(name: String) -> UIImage? {        
+    public static func getImage(name: String) -> UIImage? {
         var bundle = Bundle(for: GBHAssetManager.self)
-        if let bundlePath = bundle.resourcePath?.appending("/GBHFacebookImagePicker.bundle"), let ressourceBundle = Bundle(path: bundlePath) {
+        if let bundlePath = bundle.resourcePath?.appending("/GBHFacebookImagePicker.bundle"),
+            let ressourceBundle = Bundle(path: bundlePath) {
             bundle = ressourceBundle
         }
 

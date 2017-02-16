@@ -8,12 +8,12 @@
 import UIKit
 
 class GBHImageAsyncViewLoading: UIImageView {
-    
+
     var imageUrl: URL? {
         didSet {
             // Set default image
             self.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
-            
+
             if let url = imageUrl {
                 // Start url loading
                 URLSession.shared.dataTask(with: url as URL) { data, response, error in
@@ -35,7 +35,7 @@ class GBHImageAsyncViewLoading: UIImageView {
             }
         }
     }
-    
+
     /// Set with animation
     ///
     /// - Parameter image: the image to set

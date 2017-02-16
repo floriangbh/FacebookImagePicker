@@ -17,6 +17,6 @@ class GBHAppearanceManager: NSObject {
     static let whiteCustom = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1.0)
     static let facebookColor = UIColor(red: 59/255.0, green: 89/255.0, blue: 152/255.0, alpha: 1.0)
     static let black = UIColor.black
-    
+
     static let pictureCornerRadius: CGFloat = 2.0
 }
