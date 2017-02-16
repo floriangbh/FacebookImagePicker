@@ -1,8 +1,3 @@
-disabled_rules: # rule identifiers to exclude from running
-  # - line_length
-  #- trailing_whitespace
-  # - weak_delegate
-
 included: 
   # View
   - ../GBHFacebookImagePicker/Classes/View 
