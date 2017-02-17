@@ -4,7 +4,6 @@ Changelog
 ### 1.1.1
 
 - Clean code
-- Add Carthage support
 - Fix code style for SwiftLint
 
 ### 1.1.0
