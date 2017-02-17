@@ -30,4 +30,5 @@ Podfile.lock
 
 # Carthage
 Carthage/
+*.resolved
 
