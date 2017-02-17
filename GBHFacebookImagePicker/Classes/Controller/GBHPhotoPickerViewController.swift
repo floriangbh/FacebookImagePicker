@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+class GBHPhotoPickerViewController: UIViewController {
 
     // MARK: Var
 
@@ -163,35 +163,14 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
             self.imageArray = album.photos
         }
     }
+}
 
-    // MARK: UICollectionView
+extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+
+    // MARK: UICollectionViewDelegate & 
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 80)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -233,4 +212,35 @@ class GBHPhotoPickerViewController: UIViewController, UICollectionViewDataSource
 
         return cell!
     }
+
+}
+
+extension GBHPhotoPickerViewController: UICollectionViewDelegateFlowLayout {
+
+    // MARK: - UICollectionViewDelegateFlowLayout
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 80, height: 80)
+    }
+
 }

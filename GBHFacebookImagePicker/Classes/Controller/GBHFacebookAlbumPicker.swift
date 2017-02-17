@@ -19,7 +19,7 @@ protocol GBHAlbumPickerTableViewControllerDelegate: class {
     func didFailSelectPictureInAlbum(error: Error?)
 }
 
-class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewControllerDelegate {
+class GBHFacebookAlbumPicker: UITableViewController {
 
     // MARK: - Var
 
@@ -219,6 +219,19 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                                                       animated: true)
     }
 
+    // MARK: - Navigation 
+
+    func dismissPicker() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: {
+                self.delegate?.facebookImagePickerDismissed()
+            })
+        }
+    }
+}
+
+extension GBHFacebookAlbumPicker: GBHAlbumPickerTableViewControllerDelegate {
+
     // MARK: - GBHAlbumPickerTableViewControllerDelegate
 
     /// Did selected picture delegate
@@ -245,7 +258,7 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
                 imageModel.image = UIImage(data: data)
 
                 self.delegate?.facebookImagePicker(imagePicker: self,
-                                                      imageModel: imageModel)
+                                                   imageModel: imageModel)
                 self.dismissPicker()
                 }.resume()
         } else {
@@ -257,16 +270,6 @@ class GBHFacebookAlbumPicker: UITableViewController, GBHAlbumPickerTableViewCont
     func didFailSelectPictureInAlbum(error: Error?) {
         if let err = error {
             print(err.localizedDescription)
-        }
-    }
-
-    // MARK: - Navigation 
-
-    func dismissPicker() {
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: {
-                self.delegate?.facebookImagePickerDismissed()
-            })
         }
     }
 }
