@@ -25,7 +25,7 @@ This picker takes care of all authentication (from the web or with the native Fa
 
 Video demonstration -> https://vimeo.com/192823627
 
-![Preview](https://github.com/terflogag/GBHFacebookImagePicker/raw/develop/Ressources/preview.png)
+![Preview](https://github.com/terflogag/FacebookImagePicker/blob/master/Ressources/preview.png)
 
 ## Features 
 
