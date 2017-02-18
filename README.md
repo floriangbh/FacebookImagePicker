@@ -12,7 +12,7 @@
 
 <p align="center">
     <a href="#features">Features</a>
-  • <a href="installation">Installation</a>
+  • <a href="#installation">Installation</a>
   • <a href="#usage">Usage</a>
   • <a href="#translation">Translation</a>
   • <a href="#license">License</a>
