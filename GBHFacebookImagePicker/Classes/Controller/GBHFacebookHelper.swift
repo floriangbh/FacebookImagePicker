@@ -18,7 +18,9 @@ class GBHFacebookHelper {
     // MARK: - Var
 
     /// User's album list
-    fileprivate var albumList: [GBHFacebookAlbumModel] = []
+    fileprivate var albumList: [GBHFacebookAlbum] = []
+
+    /// Picture url path for the API
     fileprivate let pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
 
     // MARK: - Retrieve Facebook's Albums
@@ -90,10 +92,10 @@ class GBHFacebookHelper {
 
                     // Build Album model
                     if let coverUrl = URL(string: albumUrlPath) {
-                        let albm = GBHFacebookAlbumModel(name: albumName,
-                                                         count: albumCount,
-                                                         coverUrl: coverUrl,
-                                                         albmId: albumId)
+                        let albm = GBHFacebookAlbum(name: albumName,
+                                                    count: albumCount,
+                                                    coverUrl: coverUrl,
+                                                    albmId: albumId)
                         self.albumList.append(albm)
                     }
                 }
@@ -109,7 +111,7 @@ class GBHFacebookHelper {
     ///   - after: after page identifier (optional)
     ///   - album: album model
     func fbAlbumsPictureRequest(after: String?,
-                                album: GBHFacebookAlbumModel) {
+                                album: GBHFacebookAlbum) {
 
         // Build path album request
         guard let id = album.albumId else {
@@ -162,7 +164,7 @@ class GBHFacebookHelper {
     ///   - fbResult: album's result
     ///   - album: concerned album model
     fileprivate func parseFbPicture(fbResult: [String: AnyObject],
-                                    album: GBHFacebookAlbumModel) {
+                                    album: GBHFacebookAlbum) {
         if let photosResult = fbResult["data"] as? [AnyObject] {
 
             // Parsing album's picture
@@ -173,7 +175,9 @@ class GBHFacebookHelper {
                     let source = photoDic["source"] as? String {
 
                     // Build Picture model
-                    let photoObject = GBHFacebookImageModel(picture: picture, imgId: id, source: source)
+                    let photoObject = GBHFacebookImage(picture: picture,
+                                                       imgId: id,
+                                                       source: source)
                     album.photos.append(photoObject)
                 }
             }
@@ -191,9 +195,8 @@ class GBHFacebookHelper {
 
     /// Start login with Facebook SDK
     ///
-    /// - Parameters:
-    ///   - vc: source controller
-    ///   - completion: (success , error if needed)
+    /// - parameters vc: source controller
+    /// - parameters completion: (success , error if needed)
     func login(controller: UIViewController,
                completion: @escaping (Bool, LoginError?) -> Void) {
 
@@ -210,12 +213,12 @@ class GBHFacebookHelper {
                                     // Failed
                                     print("Failed to login")
                                     print(error.debugDescription)
-                                    completion(false, LoginError.LoginFailed)
+                                    completion(false, .loginFailed)
                                 } else {
                                     // Success
                                     if response?.isCancelled == true {
                                         // Login Cancelled
-                                        completion(false, LoginError.LoginCancelled)
+                                        completion(false, .loginCancelled)
                                     } else {
                                         if response?.token != nil {
                                             // Check "user_photos" permission statut
@@ -223,7 +226,7 @@ class GBHFacebookHelper {
                                                 if permission.contains("user_photos") {
                                                     // "user_photos" is dennied
                                                     self.logout() // Flush fb session
-                                                    completion(false, LoginError.PermissionDenied)
+                                                    completion(false, .permissionDenied)
                                                 } else {
                                                     // "user_photos" is granted, let's get user's pictures
                                                     self.fbAlbumRequest()
@@ -232,12 +235,12 @@ class GBHFacebookHelper {
                                             } else {
                                                 // Failed to get permission 
                                                 print("Failed to get permission...")
-                                                completion(false, LoginError.LoginFailed)
+                                                completion(false, .loginFailed)
                                             }
                                         } else {
                                             // Failed
                                             print("Failed to get token")
-                                            completion(false, LoginError.LoginFailed)
+                                            completion(false, .loginFailed)
                                         }
                                     }
                                 }
@@ -252,7 +255,8 @@ class GBHFacebookHelper {
                 // User_photos's permission denied
                 self.logout() // Flush fb session
                 print("Permission for user's photos are denied")
-                completion(false, LoginError.PermissionDenied)
+                completion(false,
+                           .permissionDenied)
             }
         }
     }

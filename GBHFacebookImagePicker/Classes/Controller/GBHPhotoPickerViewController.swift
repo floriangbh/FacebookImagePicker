@@ -9,21 +9,32 @@ import UIKit
 
 class GBHPhotoPickerViewController: UIViewController {
 
-    // MARK: Var
+    /// MARK: Var
 
+    /// Loading indicator 
     fileprivate var indicator = UIActivityIndicatorView()
+
+    /// Cell identifier 
     fileprivate let reuseIdentifier = "Cell"
+
+    /// The collection view where are display the pictures 
     fileprivate var pictureCollection: UICollectionView? // Collection for display album's pictures
-    fileprivate var imageArray: [GBHFacebookImageModel] = [] {
+
+    /// Array which contain image model of pictures which are in the album
+    fileprivate var imageArray: [GBHFacebookImage] = [] {
         didSet {
+            // Reload the collection
             DispatchQueue.main.async {
                 self.pictureCollection?.reloadData()
             }
         }
     }
 
+    /// Album picker controller delegate 
     weak var albumPictureDelegate: GBHAlbumPickerTableViewControllerDelegate?
-    var album: GBHFacebookAlbumModel? // Curent album
+
+    // Current album model 
+    var album: GBHFacebookAlbum? // Curent album
 
     // MARK: Lifecycle
 
@@ -38,12 +49,10 @@ class GBHPhotoPickerViewController: UIViewController {
         self.getPhotos()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     // MARK: Prepare
 
+    /// Prepare the observe 
+    /// Permit to detect when the pictures of the album did finish loading
     fileprivate func prepareObserver() {
         // Orbserve end of picture loading
         NotificationCenter.default.addObserver(self,
@@ -53,6 +62,7 @@ class GBHPhotoPickerViewController: UIViewController {
 
     }
 
+    /// Prepare the UIViewController 
     fileprivate func prepareViewController() {
         self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
         self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
@@ -77,7 +87,8 @@ class GBHPhotoPickerViewController: UIViewController {
         }
     }
 
-    func prepareCollectionViewConstraint() {
+    /// Set the collection view constraint 
+    fileprivate func prepareCollectionViewConstraint() {
         // Top constraint
         if let collection = self.pictureCollection {
             self.view.addConstraint(NSLayoutConstraint(item: collection,
@@ -119,6 +130,7 @@ class GBHPhotoPickerViewController: UIViewController {
 
     // MARK: - Loading indicator
 
+    /// Prepare UIActivityIndicatorView and display it at the center of the view
     fileprivate func prepareActivityIndicator() {
         self.indicator = UIActivityIndicatorView(frame:CGRect(x: 0, y: 0, width: 40, height: 40) )
         self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -126,12 +138,14 @@ class GBHPhotoPickerViewController: UIViewController {
         self.view.addSubview(indicator)
     }
 
+    /// Start loading : start the loader animation 
     fileprivate func startLoading() {
         self.indicator.startAnimating()
         self.indicator.backgroundColor = UIColor.clear
         self.indicator.color = UIColor.black
     }
 
+    /// Stop loading : stop and hide the loader
     fileprivate func stopLoading() {
         self.indicator.hidesWhenStopped = true
         self.indicator.stopAnimating()
@@ -159,7 +173,8 @@ class GBHPhotoPickerViewController: UIViewController {
     /// Did finish get album's pictures callback
     @objc fileprivate func didReceivePicture(_ sender: Notification) {
         self.stopLoading()
-        if let album = sender.object as? GBHFacebookAlbumModel, self.album?.albumId == album.albumId {
+        if let album = sender.object as? GBHFacebookAlbum,
+            self.album?.albumId == album.albumId {
             self.imageArray = album.photos
         }
     }
@@ -167,7 +182,7 @@ class GBHPhotoPickerViewController: UIViewController {
 
 extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
-    // MARK: UICollectionViewDelegate & 
+    // MARK: UICollectionViewDelegate & UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

@@ -15,7 +15,7 @@ public protocol GBHFacebookImagePickerDelegate: class {
     ///   - imagePicker: the picker controller
     ///   - imageModel: GBHFacebookImageModel which containt image url, image and image id
     func facebookImagePicker(imagePicker: UIViewController,
-                             imageModel: GBHFacebookImageModel)
+                             imageModel: GBHFacebookImage)
 
     /// Called when facebook picker failed
     ///
@@ -37,10 +37,10 @@ public protocol GBHFacebookImagePickerDelegate: class {
 // Extension to make some method optional...
 public extension GBHFacebookImagePickerDelegate {
     func facebookImagePickerDismissed() {
-        //
+        // Override in your controller to make your own implementation ! 
     }
 
     func facebookImagePicker(didCancelled imagePicker: UIViewController) {
-        //
+        // Override in your controller to make your own implementation ! 
     }
 }

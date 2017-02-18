@@ -10,12 +10,12 @@ import UIKit
 protocol GBHAlbumPickerTableViewControllerDelegate: class {
     /// Perform when picture are selected in the displayed album
     ///
-    /// - Parameter imageModel: model of the selected picture
-    func didSelecPictureInAlbum(imageModel: GBHFacebookImageModel)
+    /// - parameter imageModel: model of the selected picture
+    func didSelecPictureInAlbum(imageModel: GBHFacebookImage)
 
     /// Failed selecte picture in album
     ///
-    /// - Parameter error: error
+    /// - parameter error: error
     func didFailSelectPictureInAlbum(error: Error?)
 }
 
@@ -23,10 +23,17 @@ class GBHFacebookAlbumPicker: UITableViewController {
 
     // MARK: - Var
 
+    /// The image picker delegate 
+    weak var delegate: GBHFacebookImagePickerDelegate?
+
+    /// Album cell identifier 
     private let reuseIdentifier = "AlbumCell"
-    public weak var delegate: GBHFacebookImagePickerDelegate?
+
+    /// Loading indicator 
     fileprivate var indicator = UIActivityIndicatorView() // Loading indicator
-    fileprivate var albums: [GBHFacebookAlbumModel] = [] { // Albums list
+
+    /// Array which contains all the album of the facebook account
+    fileprivate var albums: [GBHFacebookAlbum] = [] { // Albums list
         didSet {
             // Reload table data
             DispatchQueue.main.async {
@@ -47,16 +54,6 @@ class GBHFacebookAlbumPicker: UITableViewController {
 
         // Start Facebook login
         self.doFacebookLogin()
-    }
-
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
     }
 
     // MARK: - Prepare
@@ -120,15 +117,15 @@ class GBHFacebookAlbumPicker: UITableViewController {
                 // Something wrong
                 if let loginError = error {
                     switch loginError {
-                    case .LoginCancelled:
+                    case .loginCancelled:
                         // Cancelled login
                         self.delegate?.facebookImagePicker(didCancelled: self)
                         self.dismissPicker()
-                    case .LoginFailed:
+                    case .loginFailed:
                         // Failed to login with Facebook
                         self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
                         self.dismissPicker()
-                    case .PermissionDenied:
+                    case .permissionDenied:
                         // "user_photos" permission are denied, we need to ask permission !
                         self.showDeniedPermissionPopup()
                     }
@@ -145,7 +142,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
 
     /// Handler for did retrieve album list
     func didReceiveAlbum(_ sender: Notification) {
-        if let albums =  sender.object as? [GBHFacebookAlbumModel] {
+        if let albums =  sender.object as? [GBHFacebookAlbum] {
             self.albums = albums
             self.stopLoading()
         }
@@ -211,6 +208,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
         return 90
     }
 
+    /// When album are selected 
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let albumDetailVC = GBHPhotoPickerViewController()
         albumDetailVC.albumPictureDelegate = self
@@ -221,6 +219,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
 
     // MARK: - Navigation 
 
+    /// Dismiss the picker 
     func dismissPicker() {
         DispatchQueue.main.async {
             self.dismiss(animated: true, completion: {
@@ -236,8 +235,8 @@ extension GBHFacebookAlbumPicker: GBHAlbumPickerTableViewControllerDelegate {
 
     /// Did selected picture delegate
     ///
-    /// - Parameter imageModel: model of the selected picture
-    func didSelecPictureInAlbum(imageModel: GBHFacebookImageModel) {
+    /// - parameter imageModel: model of the selected picture
+    func didSelecPictureInAlbum(imageModel: GBHFacebookImage) {
 
         if let url = imageModel.fullSizeUrl,
             let imageUrl = URL(string: url) {
@@ -267,6 +266,9 @@ extension GBHFacebookAlbumPicker: GBHAlbumPickerTableViewControllerDelegate {
         }
     }
 
+    /// Performed when an error occured 
+    ///
+    /// - Parameter error: the happened error
     func didFailSelectPictureInAlbum(error: Error?) {
         if let err = error {
             print(err.localizedDescription)

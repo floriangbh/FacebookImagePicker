@@ -9,15 +9,21 @@ public class GBHAssetManager {
 
     /// Get image from bundle
     ///
-    /// - Parameter name: name of the image
-    /// - Returns: optional image 
+    /// - parameter name: name of the image
+    ///
+    /// - returns: return the retrieved image 
     public static func getImage(name: String) -> UIImage? {
+
+        // Retrieved the main bundle
         var bundle = Bundle(for: GBHAssetManager.self)
         if let bundlePath = bundle.resourcePath?.appending("/GBHFacebookImagePicker.bundle"),
             let ressourceBundle = Bundle(path: bundlePath) {
+
+            // Bundle with the new path
             bundle = ressourceBundle
         }
 
+        // Return the bundle image
         return UIImage(named: name, in: bundle, compatibleWith: nil) ?? UIImage()
     }
 }

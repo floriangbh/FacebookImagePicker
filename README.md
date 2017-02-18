@@ -104,7 +104,7 @@ import GBHFacebookImagePicker
 ```swift
 // MARK: - GBHFacebookImagePicker Protocol
 
-func facebookImagePicker(imagePicker: UIViewController, imageModel: GBHFacebookImageModel) {
+func facebookImagePicker(imagePicker: UIViewController, imageModel: GBHFacebookImage) {
     print("Image URL : \(imageModel.fullSizeUrl), Image Id: \(imageModel.imageId)")
     if let pickedImage = imageModel.image {
         self.pickerImageView.image = pickedImage
@@ -130,7 +130,7 @@ func facebookImagePickerDismissed() {
 The imageModel contain : 
 
 ```swift
-public class GBHFacebookImageModel {
+public class GBHFacebookImage {
     public var image: UIImage? // The image, not nil only if image is selected
     public var normalSizeUrl: String? // Normal size picture url
     public var fullSizeUrl: String? // Full size source picture url

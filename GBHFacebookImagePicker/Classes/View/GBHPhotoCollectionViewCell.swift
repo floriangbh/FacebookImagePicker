@@ -9,15 +9,23 @@ import UIKit
 
 class GBHPhotoCollectionViewCell: UICollectionViewCell {
 
+    /// The album cover photo 
     fileprivate var albumImageView: GBHImageAsyncViewLoading?
 
+    /// Override the initializer 
+    ///
+    /// - Parameter frame: the new frame of the cell
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        // Cell background
         self.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
 
         // Picture contener
-        self.albumImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        self.albumImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0,
+                                                                     y: 0,
+                                                                     width: 80,
+                                                                     height: 80))
         self.albumImageView?.contentMode = .scaleAspectFill
         self.albumImageView?.clipsToBounds = true
         self.albumImageView?.layer.cornerRadius = GBHAppearanceManager.pictureCornerRadius
@@ -29,7 +37,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     /// Configure collection cell with image
     ///
     /// - Parameter picture: Facebook's image model
-    func configure(picture: GBHFacebookImageModel) {
+    func configure(picture: GBHFacebookImage) {
 
         // Set picture's url
         if let urlPath = picture.normalSizeUrl,
@@ -38,6 +46,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    /// Required init for deserialization
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

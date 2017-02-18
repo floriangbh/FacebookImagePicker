@@ -11,14 +11,25 @@ class GBHAlbumTableViewCell: UITableViewCell {
 
     // MARK: - Var
 
+    /// Album's cover image views
     fileprivate var photoImageView: GBHImageAsyncViewLoading?
+
+    /// Width of the album's cover 
     fileprivate let imageWidth = 70
+
+    /// Height of the album's cover 
     fileprivate let imageHeight = 70
 
     // MARK: - Init
 
+    /// Initialize the cell
+    ///
+    /// - Parameters:
+    ///   - style: the style of the cell (subtitle for this case)
+    ///   - reuseIdentifier: the reuse identifier of the cell
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        super.init(style: style,
+                   reuseIdentifier: reuseIdentifier)
 
         // Common init
         self.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
@@ -37,21 +48,16 @@ class GBHAlbumTableViewCell: UITableViewCell {
         }
     }
 
+    /// Required for deserialization
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
+    /// Define the layout of the album name label and number of picture label
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        // The cell width 
         let cellWidth: Int = Int(self.frame.size.width)
 
         // Album's title
@@ -72,7 +78,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
     /// Configure the cell with Facebook's album 
     ///
     /// - Parameter album: Album model which contain album information
-    func configure(album: GBHFacebookAlbumModel) {
+    func configure(album: GBHFacebookAlbum) {
         // Album title
         self.textLabel?.text = album.name ?? ""
 

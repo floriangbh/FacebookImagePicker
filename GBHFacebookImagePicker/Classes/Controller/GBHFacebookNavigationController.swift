@@ -11,6 +11,7 @@ class GBHFacebookNavigationController: UINavigationController {
 
     // MARK: - Lifecycle
 
+    /// Initialize the navigation controller after didLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,9 +39,5 @@ class GBHFacebookNavigationController: UINavigationController {
                 NSForegroundColorAttributeName: GBHAppearanceManager.black
             ]
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }

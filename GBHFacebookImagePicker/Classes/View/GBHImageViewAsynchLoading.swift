@@ -9,6 +9,7 @@ import UIKit
 
 class GBHImageAsyncViewLoading: UIImageView {
 
+    /// The image URL 
     var imageUrl: URL? {
         didSet {
             // Set default image
@@ -36,12 +37,16 @@ class GBHImageAsyncViewLoading: UIImageView {
         }
     }
 
-    /// Set with animation
+    /// Set the image with animation
     ///
     /// - Parameter image: the image to set
     fileprivate func setImageWithAnimation(image: UIImage) {
+
+        // Set initial state 
         self.image = image
         self.alpha = 0
+
+        // Start animation to final state 
         UIView.animate(withDuration: 0.3,
                        delay: 0.0,
                        options: UIViewAnimationOptions.curveEaseOut,

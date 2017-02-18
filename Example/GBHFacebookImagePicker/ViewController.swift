@@ -10,13 +10,13 @@ import UIKit
 import GBHFacebookImagePicker
 
 class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
-    
+
     @IBOutlet weak var pickerImageView: UIImageView!
     @IBOutlet weak var showAlbumButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Prepare picker button
         self.showAlbumButton.setTitle("Show picker", for: .normal)
         self.showAlbumButton.setTitleColor(UIColor.white, for: .normal)
@@ -25,10 +25,10 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         self.showAlbumButton.addTarget(self,
                                        action: #selector(self.showAlbumClick),
                                        for: UIControlEvents.touchUpInside)
-        
+
         // Background color
         self.view.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1.0)
-        
+
         // Default image
         self.pickerImageView.image = UIImage(named: "bigLogo")
     }
@@ -36,35 +36,36 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func showAlbumClick() {
         print(self, #function)
-        
+
         // Init & Show picker
         let picker = GBHFacebookImagePicker()
         GBHFacebookImagePicker.pickerConfig.ui.style = .facebook
         picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
     }
-    
+
     // MARK: - GBHFacebookImagePicker Protocol
 
-    func facebookImagePicker(imagePicker: UIViewController, imageModel: GBHFacebookImageModel) {
+    func facebookImagePicker(imagePicker: UIViewController, 
+                             imageModel: GBHFacebookImage) {
         print("Image URL : \(imageModel.fullSizeUrl), Image Id: \(imageModel.imageId)")
         if let pickedImage = imageModel.image {
             self.pickerImageView.image = pickedImage
         }
     }
-    
+
     func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
         print("Cancelled Facebook Album picker with error")
         print(error.debugDescription)
     }
-    
+
     // Optional
     func facebookImagePicker(didCancelled imagePicker: UIViewController) {
         print("Cancelled Facebook Album picker")
     }
-    
+
     // Optional
     func facebookImagePickerDismissed() {
         print("Picker dismissed")
