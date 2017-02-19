@@ -4,7 +4,8 @@ Changelog
 ### 1.1.2
 
 - Add documentation
-- Rename model
+- Rename GBHFacebookImageModel to GBHFacebookImage
+- Rename GBHFacebookAlbumModel to GBHFacebookAlbum
 
 ### 1.1.1
 
