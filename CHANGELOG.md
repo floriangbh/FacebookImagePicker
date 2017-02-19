@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 1.1.3
+
+- Fix number of picture in album
+
 ### 1.1.2
 
 - Add documentation
