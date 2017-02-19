@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+### 1.1.2
+
+- Add documentation
+- Rename model
+
 ### 1.1.1
 
 - Clean code
