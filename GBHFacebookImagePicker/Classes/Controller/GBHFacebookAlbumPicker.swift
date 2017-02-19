@@ -196,7 +196,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier,
                                                  for: indexPath) as? GBHAlbumTableViewCell
         if cell == nil {
-            cell = GBHAlbumTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: self.reuseIdentifier)
+            cell = GBHAlbumTableViewCell(style: .subtitle, reuseIdentifier: self.reuseIdentifier)
         }
 
         cell?.configure(album: albums[indexPath.row])
