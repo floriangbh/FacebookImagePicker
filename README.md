@@ -18,8 +18,8 @@
   • <a href="#license">License</a>
 </p>
 
-GBHFacebookImagePicker is ***Facebook's*** album photo picker written in Swift, built to provide a simple way to pick picture into Facebook account. The picker provide a simple interface like the native iOS photo picker. 
-This picker takes care of all authentication (from the web or with the native Facebook app) when necessary. It the photo permission isn't accepted during the login, the picker promp another access. 
+GBHFacebookImagePicker is ***Facebook's*** album photo picker written in Swift, built to provide a simple way to pick picture into Facebook account. The picker provides a simple interface like the native iOS photo picker. 
+This picker takes care of all authentication (from the web or with the native Facebook app) when necessary. It the photo's permission isn't accepted during the login, the picker prompts another permission's request. 
 
 ## Screenshot / Demo
 
