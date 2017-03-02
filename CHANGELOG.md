@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 1.1.4
+
+- Bump FBSDK Dependency 
+
 ### 1.1.3
 
 - Fix number of picture in album
