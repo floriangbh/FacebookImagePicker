@@ -191,3 +191,5 @@ Inspired by [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/Fac
 ## License
 
 GBHFacebookImagePicker is available under the [MIT license](LICENSE).
+
+If your application use this picker consider to add the licence in your Credits/About section. You can use [this library to do it](https://github.com/terflogag/OpenSourceController).
