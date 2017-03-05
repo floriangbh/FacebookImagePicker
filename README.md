@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-    <a href="https://cocoapods.org/pods/OpenSourceController" target="_blank"><img src="https://img.shields.io/cocoapods/v/OpenSourceController.svg?style=flat" alt="Cocoapods version" /></a>
-    <a href="http://cocoapods.org/pods/OpenSourceController" target="_blank"><img src="https://img.shields.io/cocoapods/l/OpenSourceController.svg?style=flat" alt="Cocoapods licence" /></a>
-    <a href="http://cocoapods.org/pods/OpenSourceController" target="_blank"><img src="https://img.shields.io/cocoapods/p/OpenSourceController.svg?style=flat" alt="Cocoapods plateform" /></a>
+    <a href="https://cocoapods.org/pods/FacebookImagePicker" target="_blank"><img src="https://img.shields.io/cocoapods/v/FacebookImagePicker.svg?style=flat" alt="Cocoapods version" /></a>
+    <a href="http://cocoapods.org/pods/FacebookImagePicker" target="_blank"><img src="https://img.shields.io/cocoapods/l/FacebookImagePicker.svg?style=flat" alt="Cocoapods licence" /></a>
+    <a href="http://cocoapods.org/pods/FacebookImagePicker" target="_blank"><img src="https://img.shields.io/cocoapods/p/FacebookImagePicker.svg?style=flat" alt="Cocoapods plateform" /></a>
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="Prs welcome" />
 </p>
 
