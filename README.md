@@ -3,10 +3,9 @@
 </p>
 
 <p align="center">
-    <a href="http://cocoapods.org/pods/GBHFacebookImagePicker" target="_blank"><img src="https://img.shields.io/cocoapods/v/GBHFacebookImagePicker.svg?style=flat" alt="Cocoapods version" /></a>
-    <a href="http://cocoapods.org/pods/GBHFacebookImagePicker" target="_blank"><img src="https://img.shields.io/cocoapods/l/GBHFacebookImagePicker.svg?style=flat" alt="Cocoapods licence" /></a>
-    <a href="http://cocoapods.org/pods/GBHFacebookImagePicker" target="_blank"><img src="https://travis-ci.org/terflogag/FacebookImagePicker.svg?branch=master" alt="Travis CI" /></a>
-    <a href="http://cocoapods.org/pods/GBHFacebookImagePicker" target="_blank"><img src="https://img.shields.io/cocoapods/p/GBHFacebookImagePicker.svg?style=flat" alt="Cocoapods plateform" /></a>
+    <a href="https://cocoapods.org/pods/OpenSourceController" target="_blank"><img src="https://img.shields.io/cocoapods/v/OpenSourceController.svg?style=flat" alt="Cocoapods version" /></a>
+    <a href="http://cocoapods.org/pods/OpenSourceController" target="_blank"><img src="https://img.shields.io/cocoapods/l/OpenSourceController.svg?style=flat" alt="Cocoapods licence" /></a>
+    <a href="http://cocoapods.org/pods/OpenSourceController" target="_blank"><img src="https://img.shields.io/cocoapods/p/OpenSourceController.svg?style=flat" alt="Cocoapods plateform" /></a>
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="Prs welcome" />
 </p>
 
