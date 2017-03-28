@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 1.1.5
+
+- Update to Swift 3.1
+
 ### 1.1.4
 
 - Bump FBSDK Dependency 
