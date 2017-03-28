@@ -50,7 +50,7 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
 
     func facebookImagePicker(imagePicker: UIViewController, 
                              imageModel: GBHFacebookImage) {
-        print("Image URL : \(imageModel.fullSizeUrl), Image Id: \(imageModel.imageId)")
+        print("Image URL : \(String(describing: imageModel.fullSizeUrl)), Image Id: \(String(describing: imageModel.imageId))")
         if let pickedImage = imageModel.image {
             self.pickerImageView.image = pickedImage
         }

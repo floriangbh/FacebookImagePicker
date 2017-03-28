@@ -19,7 +19,7 @@ class GBHImageAsyncViewLoading: UIImageView {
                 // Start url loading
                 URLSession.shared.dataTask(with: url as URL) { data, response, error in
                     guard let data = data, error == nil else {
-                        print("\nerror on download \(error)")
+                        print("\nerror on download \(String(describing: error))")
                         return
                     }
                     if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
