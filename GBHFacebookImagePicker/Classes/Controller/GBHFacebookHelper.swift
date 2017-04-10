@@ -54,7 +54,7 @@ class GBHFacebookHelper {
 
                     // Try to find next page
                     if let paging = fbResult["paging"] as? [String: AnyObject],
-                        let _ = paging["next"] as? String,
+                        paging["next"] != nil,
                         let cursors = paging["cursors"] as? [String: AnyObject],
                         let after = cursors["after"] as? String {
 
@@ -140,7 +140,7 @@ class GBHFacebookHelper {
 
                     // Try to find next page
                     if let paging = fbResult["paging"] as? [String: AnyObject],
-                        let _ = paging["next"] as? String,
+                        paging["next"] != nil,
                         let cursors = paging["cursors"] as? [String: AnyObject],
                         let after = cursors["after"] as? String {
 
