@@ -32,7 +32,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
                    reuseIdentifier: reuseIdentifier)
 
         // Common init
-        self.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
+        self.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
         self.accessoryType = .disclosureIndicator
 
         // Album cover image
@@ -46,6 +46,10 @@ class GBHAlbumTableViewCell: UITableViewCell {
         if let imgView = self.photoImageView {
             self.contentView.addSubview(imgView)
         }
+
+        // Label
+        self.textLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor ?? .black
+        self.detailTextLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor ?? .black
     }
 
     /// Required for deserialization

@@ -65,7 +65,7 @@ class GBHPhotoPickerViewController: UIViewController {
     /// Prepare the UIViewController 
     fileprivate func prepareViewController() {
         self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
-        self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
+        self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
 
         self.prepareCollectionView()
         self.prepareActivityIndicator()
@@ -79,7 +79,7 @@ class GBHPhotoPickerViewController: UIViewController {
         self.pictureCollection?.register(GBHPhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.pictureCollection?.delegate = self
         self.pictureCollection?.dataSource = self
-        self.pictureCollection?.backgroundColor = UIColor.white
+        self.pictureCollection?.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
         self.pictureCollection?.translatesAutoresizingMaskIntoConstraints = false
         if let collection = self.pictureCollection {
             self.view.addSubview(collection)

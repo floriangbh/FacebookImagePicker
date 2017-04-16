@@ -15,28 +15,20 @@ class GBHFacebookNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Set style
-        switch GBHFacebookImagePicker.pickerConfig.ui.style {
-        case .facebook:
-            // Facebook style
-            self.navigationBar.barTintColor = GBHAppearanceManager.facebookColor
-            self.navigationBar.tintColor = GBHAppearanceManager.whiteCustom
+        // Apply barTintColor if specified in config struct 
+        if let barTintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.navBarTintColor {
+            self.navigationBar.barTintColor = barTintColor
+        }
+
+        // Apply tintColor if specified in config struct 
+        if let tintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.navTintColor {
+            self.navigationBar.tintColor = tintColor
+        }
+
+        // Apply navigation bar title color if specified in config struct 
+        if let tintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.navTitleColor {
             self.navigationBar.titleTextAttributes = [
-                NSForegroundColorAttributeName: GBHAppearanceManager.whiteCustom
-            ]
-        case .dark:
-            // Dark style
-            self.navigationBar.barTintColor = GBHAppearanceManager.black
-            self.navigationBar.tintColor = GBHAppearanceManager.whiteCustom
-            self.navigationBar.titleTextAttributes = [
-                NSForegroundColorAttributeName: GBHAppearanceManager.whiteCustom
-            ]
-        case .light:
-            // Light style
-            self.navigationBar.barTintColor = GBHAppearanceManager.whiteCustom
-            self.navigationBar.tintColor = GBHAppearanceManager.black
-            self.navigationBar.titleTextAttributes = [
-                NSForegroundColorAttributeName: GBHAppearanceManager.black
+                NSForegroundColorAttributeName: tintColor
             ]
         }
     }

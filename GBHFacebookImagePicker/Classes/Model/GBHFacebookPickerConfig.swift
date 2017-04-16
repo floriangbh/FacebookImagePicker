@@ -7,20 +7,36 @@
 
 import UIKit
 
+/// Simple struct to hold settings 
 public struct GBHFacebookPickerConfig {
 
-    /// Sub-stuct holding configuration relevant to UI presentation.
-    // swiftlint:disable:next type_name
-    public struct UI {
+    /// Sub-stuct holding configuration relevant to UI presentation ! 
+    public struct UIConfig {
+        /// Will be applied to the navigation bar 
+        public var navBarTintColor: UIColor?
 
-        /// Style of the navigation bar, can be .facebook , .light or .dark
-        public var style: PickerStyle = .facebook
+        /// Will be applied to navigation bar title color 
+        public var navTitleColor: UIColor?
 
-        /// Border color of the selected image
-        var backgroundColor: UIColor = GBHAppearanceManager.whiteCustom
+        /// Will be applied to navigation bar tintColor  
+        public var navTintColor: UIColor?
+
+        /// Will be applied to the navigation bar 
+        public var backgroundColor: UIColor?
+
+        /// Will be applied to the navigation bar 
+        public var closeButtonColor: UIColor?
+
+        /// Will be applied to album's title color 
+        public var albumsTitleColor: UIColor?
+
+        /// Will be applied to album's pictures number 
+        public var albumsCountColor: UIColor?
     }
 
+    /// Will be applied to the album's navigation bar title
+    public var title: String = "Album(s)"
+
     /// UI-specific configuration.
-    // swiftlint:disable:next variable_name
-    public var ui = UI()
+    public var uiConfig = UIConfig()
 }

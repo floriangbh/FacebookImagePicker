@@ -144,12 +144,34 @@ let picker = GBHFacebookImagePicker()
 picker.presentFacebookAlbumImagePicker(from: self, delegate: self) 
 ```
 
-## Customization 
+## Customisation
 
-The are three style : .facebook (default style), .light & .dark.
+You can apply some customisation. To do it you can use the GBHFacebookPickerConfig structure like this :
 
 ```swift
-GBHFacebookImagePicker.pickerConfig.ui.style = .facebook
+// Navigation bar title 
+GBHFacebookImagePicker.pickerConfig.title = "MyCustomTitle"
+
+// Navigation barTintColor
+GBHFacebookImagePicker.pickerConfig.uiConfig.navBarTintColor = UIColor.red
+
+// Close button color 
+GBHFacebookImagePicker.pickerConfig.uiConfig.closeButtonColor = UIColor.white
+
+// Global backgroundColor 
+GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor = UIColor.red
+
+// Navigation bar title color
+GBHFacebookImagePicker.pickerConfig.uiConfig.navTitleColor = UIColor.white
+
+// Navigation bar tintColor
+GBHFacebookImagePicker.pickerConfig.uiConfig.navTintColor = UIColor.white
+
+// Album's name color 
+GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor = UIColor.white
+
+// Album's count color 
+GBHFacebookImagePicker.pickerConfig.uiConfig.albumsCountColor = UIColor.white
 ```
 
 

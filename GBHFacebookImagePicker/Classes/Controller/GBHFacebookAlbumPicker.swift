@@ -62,16 +62,20 @@ class GBHFacebookAlbumPicker: UITableViewController {
     fileprivate func prepareTableView() {
         // Common init
         self.tableView.tableFooterView = UIView()
-        self.title = NSLocalizedString("Album(s)", comment: "")
-        self.tableView.register(GBHAlbumTableViewCell.self, forCellReuseIdentifier: self.reuseIdentifier)
+        self.title = GBHFacebookImagePicker.pickerConfig.title
+        self.tableView.register(GBHAlbumTableViewCell.self,
+                                forCellReuseIdentifier: self.reuseIdentifier)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.separatorStyle = .none
         self.tableView.cellLayoutMarginsFollowReadableWidth = false
-        self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.ui.backgroundColor
+        self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
 
         // Close button (on the right corner of navigation bar)
-        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(self.closePicker))
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop,
+                                          target: self,
+                                          action: #selector(self.closePicker))
+        closeButton.tintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.closeButtonColor ?? .black
         self.navigationItem.rightBarButtonItem = closeButton
     }
 
@@ -88,7 +92,10 @@ class GBHFacebookAlbumPicker: UITableViewController {
 
     /// Create & add activity indicator to the center of view
     fileprivate func prepareActivityIndicator() {
-        self.indicator = UIActivityIndicatorView(frame:CGRect(x: 0, y: 0, width: 40, height: 40) )
+        self.indicator = UIActivityIndicatorView(frame:CGRect(x: 0,
+                                                              y: 0,
+                                                              width: 40,
+                                                              height: 40) )
         self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         self.indicator.center = self.view.center
         self.view.addSubview(indicator)

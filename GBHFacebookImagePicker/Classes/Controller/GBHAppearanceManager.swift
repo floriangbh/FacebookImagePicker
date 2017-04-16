@@ -18,14 +18,3 @@ class GBHAppearanceManager: NSObject {
     // The picture corner raidius. Used for display album cover and album's picture.
     static let pictureCornerRadius: CGFloat = 2.0
 }
-
-/// PickerStyle is the UI style of the picker.
-///
-/// - facebook: white title and Facebook's blue color for the navigation bar.
-/// - light: black title and white navigation bar.
-/// - dark: white title and dark navigation bar.
-public enum PickerStyle {
-    case facebook
-    case light
-    case dark
-}

@@ -10,14 +10,14 @@ import UIKit
 public class GBHFacebookImagePicker: NSObject {
 
     // Picker configuration settings
-    public static var pickerConfig = GBHFacebookPickerConfig()
+    open static var pickerConfig = GBHFacebookPickerConfig()
 
     /// Present album picker
     ///
     /// - Parameters:
     ///   - from: controller where we want present the picker
     ///   - delegate: delegate for GBHFacebookImagePickerDelegate
-    public final func presentFacebookAlbumImagePicker(from: UIViewController, navBgColor:UIColor?,
+    public final func presentFacebookAlbumImagePicker(from: UIViewController,
                                                       delegate: GBHFacebookImagePickerDelegate) {
 
         // Create album picker
@@ -26,13 +26,8 @@ public class GBHFacebookImagePicker: NSObject {
 
         // Embed in navigation controller
         let navi = GBHFacebookNavigationController(rootViewController: albumPicker)
-        
-        // Set Custom NavigationBar Background Color here if you'd like.
-        if navBgColor != nil {
-            navi.navigationBar.backgroundColor = navBGcolor
-        }
-        
-        
+
+        // Present the picker 
         from.present(navi, animated: true)
     }
 

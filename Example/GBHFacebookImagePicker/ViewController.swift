@@ -11,8 +11,13 @@ import GBHFacebookImagePicker
 
 class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
 
+    // MARK: - IBOutlet 
+
     @IBOutlet weak var pickerImageView: UIImageView!
+
     @IBOutlet weak var showAlbumButton: UIButton!
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,34 +26,67 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         self.showAlbumButton.setTitle("Show picker", for: .normal)
         self.showAlbumButton.setTitleColor(UIColor.white, for: .normal)
         self.showAlbumButton.layer.cornerRadius = 3.0
-        self.showAlbumButton.backgroundColor = UIColor(red: 59/255.0, green: 89/255.0, blue: 152/255.0, alpha: 1.0)
+        self.showAlbumButton.backgroundColor = UIColor(red: 59/255.0,
+                                                       green: 89/255.0,
+                                                       blue: 152/255.0,
+                                                       alpha: 1.0)
         self.showAlbumButton.addTarget(self,
                                        action: #selector(self.showAlbumClick),
                                        for: UIControlEvents.touchUpInside)
 
         // Background color
-        self.view.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 246/255.0,
+                                            green: 246/255.0,
+                                            blue: 246/255.0, alpha: 1.0)
 
         // Default image
         self.pickerImageView.image = UIImage(named: "bigLogo")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    fileprivate func someCustomisation() {
+        // Navigation bar title 
+        GBHFacebookImagePicker.pickerConfig.title = "MyCustomTitle"
+
+        // Navigation barTintColor
+        GBHFacebookImagePicker.pickerConfig.uiConfig.navBarTintColor = UIColor.red
+
+        // Close button color 
+        GBHFacebookImagePicker.pickerConfig.uiConfig.closeButtonColor = UIColor.white
+
+        // Global backgroundColor 
+        GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor = UIColor.red
+
+        // Navigation bar title color
+        GBHFacebookImagePicker.pickerConfig.uiConfig.navTitleColor = UIColor.white
+
+        // Navigation bar tintColor
+        GBHFacebookImagePicker.pickerConfig.uiConfig.navTintColor = UIColor.white
+
+        // Album's name color 
+        GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor = UIColor.white
+
+        // Album's count color 
+        GBHFacebookImagePicker.pickerConfig.uiConfig.albumsCountColor = UIColor.white
     }
+
+    // MARK: - Action
 
     func showAlbumClick() {
         print(self, #function)
 
         // Init & Show picker
         let picker = GBHFacebookImagePicker()
-        GBHFacebookImagePicker.pickerConfig.ui.style = .facebook
-        picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
+
+        // Make some customisation
+        self.someCustomisation()
+
+        picker.presentFacebookAlbumImagePicker(from: self,
+                                               delegate: self)
     }
 
     // MARK: - GBHFacebookImagePicker Protocol
 
-    func facebookImagePicker(imagePicker: UIViewController, 
+    func facebookImagePicker(imagePicker: UIViewController,
                              imageModel: GBHFacebookImage) {
         print("Image URL : \(String(describing: imageModel.fullSizeUrl)), Image Id: \(String(describing: imageModel.imageId))")
         if let pickedImage = imageModel.image {
