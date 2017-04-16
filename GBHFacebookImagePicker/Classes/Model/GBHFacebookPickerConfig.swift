@@ -35,9 +35,9 @@ public struct GBHFacebookPickerConfig {
     }
 
     /// Will be applied to the album's navigation bar title
-    public var title: String = NSLocalizedString("Album(s)", 
+    public var title: String = NSLocalizedString("Album(s)",
                                                  comment: "")
-    
+
     // The picture corner radius. Used for display album cover and album's picture.
     public var pictureCornerRadius: CGFloat = 2.0
 
