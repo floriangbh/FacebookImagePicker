@@ -14,7 +14,4 @@ class GBHAppearanceManager: NSObject {
 
     // Black color  : http://www.color-hex.com/color/000000
     static let black = UIColor.black
-
-    // The picture corner raidius. Used for display album cover and album's picture.
-    static let pictureCornerRadius: CGFloat = 2.0
 }

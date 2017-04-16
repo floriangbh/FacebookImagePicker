@@ -28,7 +28,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
                                                                      height: 80))
         self.albumImageView?.contentMode = .scaleAspectFill
         self.albumImageView?.clipsToBounds = true
-        self.albumImageView?.layer.cornerRadius = GBHAppearanceManager.pictureCornerRadius
+        self.albumImageView?.layer.cornerRadius = GBHFacebookImagePicker.pickerConfig.pictureCornerRadius
         if let imgView = self.albumImageView {
             self.contentView.addSubview(imgView)
         }

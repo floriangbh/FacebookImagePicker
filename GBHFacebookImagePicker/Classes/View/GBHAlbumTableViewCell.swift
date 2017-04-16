@@ -42,7 +42,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
                                                                      height: imageHeight))
         self.photoImageView?.contentMode = .scaleAspectFill
         self.photoImageView?.clipsToBounds = true
-        self.photoImageView?.layer.cornerRadius = GBHAppearanceManager.pictureCornerRadius
+        self.photoImageView?.layer.cornerRadius = GBHFacebookImagePicker.pickerConfig.pictureCornerRadius
         if let imgView = self.photoImageView {
             self.contentView.addSubview(imgView)
         }

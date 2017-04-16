@@ -74,12 +74,13 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
     func showAlbumClick() {
         print(self, #function)
 
-        // Init & Show picker
+        // Init picker 
         let picker = GBHFacebookImagePicker()
 
         // Make some customisation
         // self.someCustomisation()
 
+        // Present picker 
         picker.presentFacebookAlbumImagePicker(from: self,
                                                delegate: self)
     }
