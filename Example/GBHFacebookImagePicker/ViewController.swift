@@ -78,7 +78,7 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         let picker = GBHFacebookImagePicker()
 
         // Make some customisation
-        self.someCustomisation()
+        // self.someCustomisation()
 
         picker.presentFacebookAlbumImagePicker(from: self,
                                                delegate: self)
