@@ -35,7 +35,8 @@ public struct GBHFacebookPickerConfig {
     }
 
     /// Will be applied to the album's navigation bar title
-    public var title: String = "Album(s)"
+    public var title: String = NSLocalizedString("Album(s)", 
+                                                 comment: "")
 
     /// UI-specific configuration.
     public var uiConfig = UIConfig()
