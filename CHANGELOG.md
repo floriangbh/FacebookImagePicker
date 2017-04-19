@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 1.1.8
+
+- Bump FBSDK Dependency 
+
 ### 1.1.7
 
 - Customisation way, see https://github.com/terflogag/FacebookImagePicker#customisation section. 
