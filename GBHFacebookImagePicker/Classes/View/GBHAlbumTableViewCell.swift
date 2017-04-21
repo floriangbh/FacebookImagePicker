@@ -49,7 +49,7 @@ class GBHAlbumTableViewCell: UITableViewCell {
 
         // Label
         self.textLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor ?? .black
-        self.detailTextLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor ?? .black
+        self.detailTextLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsCountColor ?? .black
     }
 
     /// Required for deserialization
