@@ -7,5 +7,5 @@ Contributors to the codebase :
 | ------------- |-------------  | ----- |
 |  Rodrigo      | frelei        | rodrigo.freitas.leite@gmail.com|
 |  Adrian Coroian      | acoroian        | acoroian@spark.net|
-|  /     | mgt-la        | / |
+|  Truman     | mgt-la        | dev@mgt.la |
 
