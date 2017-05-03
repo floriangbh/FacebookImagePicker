@@ -35,10 +35,10 @@ Video demonstration -> https://vimeo.com/192823627
 - [x] UI Customization 
 - [x] AppStore ready
 - [x] Swift 3 
-- [x] iPhone/iPad support  
+- [x] iPhone/iPad support 
+- [ ] Multiple selection (comming soon in next realease)
 - [ ] Carthage support (feel free to make PR)
 - [ ] Unit & UI Test (feel free to make PR)
-- [ ] Multiple selection (feel free to make PR)
 
 ## Example
 
