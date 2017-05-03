@@ -35,6 +35,17 @@ class GBHPhotoPickerViewController: UIViewController {
 
     // Current album model 
     var album: GBHFacebookAlbum? // Curent album
+    
+    //
+    public var selectedImages = [GBHFacebookImage]() {
+        didSet {
+            let count = self.selectedImages.count
+            self.selectBarButton?.title = "Select\(count > 0 ? " (\(count))" : "")"
+        }
+    }
+    
+    //
+    fileprivate(set) var selectBarButton: UIBarButtonItem?
 
     // MARK: Lifecycle
 
@@ -66,6 +77,16 @@ class GBHPhotoPickerViewController: UIViewController {
     fileprivate func prepareViewController() {
         self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
         self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
+        
+        self.selectBarButton = UIBarButtonItem(
+            title: "Select",
+            style: .plain,
+            target: self,
+            action: #selector(actionSelectBarButton(sender:))
+        )
+        if let barButton = self.selectBarButton {
+            self.navigationItem.rightBarButtonItems = [barButton]
+        }
 
         self.prepareCollectionView()
         self.prepareActivityIndicator()
@@ -79,6 +100,7 @@ class GBHPhotoPickerViewController: UIViewController {
         self.pictureCollection?.register(GBHPhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.pictureCollection?.delegate = self
         self.pictureCollection?.dataSource = self
+        self.pictureCollection?.allowsMultipleSelection = true
         self.pictureCollection?.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
         self.pictureCollection?.translatesAutoresizingMaskIntoConstraints = false
         if let collection = self.pictureCollection {
@@ -178,6 +200,15 @@ class GBHPhotoPickerViewController: UIViewController {
             self.imageArray = album.photos
         }
     }
+    
+    func actionSelectBarButton(sender: UIBarButtonItem) {
+        // Clean collection and start loading
+        self.imageArray = []
+        self.startLoading()
+        
+        // Send to album delegate for download
+        self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: self.selectedImages)
+    }
 }
 
 extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -195,23 +226,17 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        // Set sellection style
-        if let cell = collectionView.cellForItem(at: indexPath) {
-            cell.layer.borderColor = .none
-            cell.layer.borderWidth = 2.0
-            cell.layer.borderColor = UIColor.black.cgColor
-        }
-
         // Get the selected image
         let imageModel = self.imageArray[indexPath.row]
-
-        // Clean collection and start loading
-        self.imageArray = []
-        self.startLoading()
-        self.pictureCollection?.reloadData()
-
-        // Send to album delegate for download
-        self.albumPictureDelegate?.didSelecPictureInAlbum(imageModel: imageModel)
+        self.selectedImages.append(imageModel)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        // Remove selected image
+        let imageModel = self.imageArray[indexPath.row]
+        if let index = self.selectedImages.index(where: { $0.imageId == imageModel.imageId }) {
+            self.selectedImages.remove(at: index)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,

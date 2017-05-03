@@ -9,13 +9,15 @@
 import UIKit
 import GBHFacebookImagePicker
 
-class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
+class ViewController: UIViewController, GBHFacebookImagePickerDelegate, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - IBOutlet 
-
-    @IBOutlet weak var pickerImageView: UIImageView!
+    
+    @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var showAlbumButton: UIButton!
+    
+    var imageModels = [GBHFacebookImage]()
 
     // MARK: - Lifecycle
 
@@ -38,9 +40,6 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
         self.view.backgroundColor = UIColor(red: 246/255.0,
                                             green: 246/255.0,
                                             blue: 246/255.0, alpha: 1.0)
-
-        // Default image
-        self.pickerImageView.image = UIImage(named: "bigLogo")
     }
 
     fileprivate func someCustomisation() {
@@ -86,13 +85,13 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
     }
 
     // MARK: - GBHFacebookImagePicker Protocol
-
-    func facebookImagePicker(imagePicker: UIViewController,
-                             imageModel: GBHFacebookImage) {
-        print("Image URL : \(String(describing: imageModel.fullSizeUrl)), Image Id: \(String(describing: imageModel.imageId))")
-        if let pickedImage = imageModel.image {
-            self.pickerImageView.image = pickedImage
+    
+    func facebookImagePicker(imagePicker: UIViewController, successImageModels: [GBHFacebookImage], errorImageModels: [GBHFacebookImage], errors: [Error?]) {
+        for imageModel in successImageModels {
+            print("Image URL : \(String(describing: imageModel.fullSizeUrl)), Image Id: \(String(describing: imageModel.imageId))")
         }
+        self.imageModels = successImageModels
+        self.tableView.reloadData()
     }
 
     func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
@@ -109,4 +108,31 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate {
     func facebookImagePickerDismissed() {
         print("Picker dismissed")
     }
+    
+    // MARK: - UITableViewDelegate, UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.imageModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCellId") as! ImageCell
+        cell.ivImageView.image = self.imageModels[indexPath.row].image
+        return cell
+    }
+    
 }
+
+
+
+
+class ImageCell: UITableViewCell {
+    
+    @IBOutlet weak var ivImageView: UIImageView!
+    
+}
+
+
+
+
+
