@@ -172,6 +172,12 @@ GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor = UIColor.white
 
 // Album's count color 
 GBHFacebookImagePicker.pickerConfig.uiConfig.albumsCountColor = UIColor.white
+
+// Selected border color 
+GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderColor = UIColor.red
+
+// Selected border width 
+GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
 ```
 
 

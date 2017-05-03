@@ -32,6 +32,12 @@ public struct GBHFacebookPickerConfig {
 
         /// Will be applied to album's pictures number 
         public var albumsCountColor: UIColor?
+
+        /// Will be applied to image border when selected 
+        public var selectedBorderColor: UIColor?
+
+        /// Will be applied to image border width when selected 
+        public var selectedBorderWidth: CGFloat?
     }
 
     /// Will be applied to the album's navigation bar title

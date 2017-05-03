@@ -13,7 +13,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     fileprivate var albumImageView: GBHImageAsyncViewLoading?
 
     /// Selection hover view
-    fileprivate let selectView = SelectView()
+    fileprivate let selectView = GBHSelectedView()
 
     /// Override the initializer 
     ///
@@ -65,20 +65,5 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         didSet {
             self.selectView.isHidden = !super.isSelected
         }
-    }
-
-    class SelectView: UIView {
-
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-
-            self.layer.borderWidth = 5
-            self.layer.borderColor = UIColor.blue.cgColor
-        }
-
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
     }
 }
