@@ -11,7 +11,7 @@ protocol GBHAlbumPickerTableViewControllerDelegate: class {
     /// Perform when picture are selected in the displayed album
     ///
     /// - parameter imageModel: model of the selected picture
-    func didSelecPictureInAlbum(imageModel: GBHFacebookImage)
+    func didSelecPicturesInAlbum(imageModels: [GBHFacebookImage])
 
     /// Failed selecte picture in album
     ///
@@ -242,38 +242,58 @@ extension GBHFacebookAlbumPicker: GBHAlbumPickerTableViewControllerDelegate {
 
     /// Did selected picture delegate
     ///
-    /// - parameter imageModel: model of the selected picture
-    func didSelecPictureInAlbum(imageModel: GBHFacebookImage) {
-
-        if let url = imageModel.fullSizeUrl,
-            let imageUrl = URL(string: url) {
-            // Start url loading
-            URLSession.shared.dataTask(with: imageUrl as URL) { data, response, error in
-                guard let data = data, error == nil else {
-                    self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
-                    self.dismissPicker()
-                    return
-                }
-                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                    self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
-                    self.dismissPicker()
-                    return
-                }
-
-                // Set the image
-                imageModel.image = UIImage(data: data)
-
-                self.delegate?.facebookImagePicker(imagePicker: self,
-                                                   imageModel: imageModel)
+    /// - parameter imageModels: model of the selected pictures
+    func didSelecPicturesInAlbum(imageModels: [GBHFacebookImage]) {
+        
+        var successModels = [GBHFacebookImage]()
+        var errorModels = [GBHFacebookImage]()
+        var errors = [Error?]()
+        
+        func callback() {
+            if successModels.count + errors.count == imageModels.count {
+                self.delegate?.facebookImagePicker(
+                    imagePicker: self,
+                    successImageModels: successModels,
+                    errorImageModels: errorModels,
+                    errors: errors
+                )
                 self.dismissPicker()
-                }.resume()
-        } else {
-            self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: nil)
-            self.dismissPicker()
+            }
         }
+        
+        for imageModel in imageModels {
+            if let url = imageModel.fullSizeUrl, let imageUrl = URL(string: url) {
+                // Start url loading
+                URLSession.shared.dataTask(with: imageUrl as URL) { data, response, error in
+                    guard let data = data, error == nil else {
+                        errorModels.append(imageModel)
+                        errors.append(error)
+                        callback()
+                        return
+                    }
+                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                        errorModels.append(imageModel)
+                        errors.append(error)
+                        callback()
+                        return
+                    }
+                    
+                    // Set the image
+                    imageModel.image = UIImage(data: data)
+                    
+                    successModels.append(imageModel)
+                    callback()
+                    }.resume()
+            } else {
+                errorModels.append(imageModel)
+                errors.append(nil)
+                callback()
+            }
+        }
+        
     }
 
-    /// Performed when an error occured 
+    /// Performed when an error occured
     ///
     /// - Parameter error: the happened error
     func didFailSelectPictureInAlbum(error: Error?) {
