@@ -72,7 +72,14 @@
                             <constraint firstItem="fxw-gh-6yW" firstAttribute="trailing" secondItem="vZb-ve-Jud" secondAttribute="trailingMargin" id="z7h-GL-TXI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ppu-N5-N0M"/>
+                    <navigationItem key="navigationItem" id="ppu-N5-N0M">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="sSS-Ki-sdl">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="doDeleteClick:" destination="7CW-VE-VXJ" id="Wea-Ng-V7K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="showAlbumButton" destination="fxw-gh-6yW" id="h47-g4-O10"/>
                         <outlet property="tableView" destination="Ktn-az-bka" id="Bq2-7i-kOJ"/>

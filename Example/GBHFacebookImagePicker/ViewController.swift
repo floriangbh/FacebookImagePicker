@@ -19,7 +19,13 @@ class ViewController: UIViewController {
 
     // MARK: - Var 
 
-    fileprivate var imageModels = [GBHFacebookImage]()
+    fileprivate var imageModels = [GBHFacebookImage]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     // MARK: - Lifecycle
 
@@ -30,8 +36,10 @@ class ViewController: UIViewController {
         self.title = "Facebook Image Picker"
 
         // Prepare picker button
-        self.showAlbumButton.setTitle("Show picker", for: .normal)
-        self.showAlbumButton.setTitleColor(UIColor.white, for: .normal)
+        self.showAlbumButton.setTitle("Show picker", 
+                                      for: .normal)
+        self.showAlbumButton.setTitleColor(UIColor.white, 
+                                           for: .normal)
         self.showAlbumButton.layer.cornerRadius = 3.0
         self.showAlbumButton.backgroundColor = UIColor(red: 59/255.0,
                                                        green: 89/255.0,
@@ -97,18 +105,23 @@ class ViewController: UIViewController {
         picker.presentFacebookAlbumImagePicker(from: self,
                                                delegate: self)
     }
+    
+    @IBAction func doDeleteClick(_ sender: Any) {
+        // Clear data src 
+        self.imageModels = [GBHFacebookImage]()
+    }
 }
 
 extension ViewController: GBHFacebookImagePickerDelegate {
 
     // MARK: - GBHFacebookImagePicker Protocol
 
-    func facebookImagePicker(imagePicker: UIViewController, successImageModels: [GBHFacebookImage], errorImageModels: [GBHFacebookImage], errors: [Error?]) {
-        for imageModel in successImageModels {
-            print("Image URL : \(String(describing: imageModel.fullSizeUrl)), Image Id: \(String(describing: imageModel.imageId))")
-        }
-        self.imageModels = successImageModels
-        self.tableView.reloadData()
+    func facebookImagePicker(imagePicker: UIViewController, 
+                             successImageModels: [GBHFacebookImage], 
+                             errorImageModels: [GBHFacebookImage], 
+                             errors: [Error?]) {
+        // Append selected image s
+        self.imageModels.append(contentsOf: successImageModels)
     }
 
     func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
