@@ -11,7 +11,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
 
     /// The album cover photo 
     fileprivate var albumImageView: GBHImageAsyncViewLoading?
-    
+
     /// Selection hover view
     fileprivate let selectView = SelectView()
 
@@ -35,11 +35,12 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         if let imgView = self.albumImageView {
             self.contentView.addSubview(imgView)
         }
-        
+
         self.selectView.frame = self.bounds
-        self.selectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.selectView.autoresizingMask = [.flexibleWidth,
+                                            .flexibleHeight]
         self.contentView.addSubview(self.selectView)
-        
+
         self.isSelected = false
     }
 
@@ -59,27 +60,25 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+
     override var isSelected: Bool {
         didSet {
             self.selectView.isHidden = !super.isSelected
         }
     }
-    
-    
+
     class SelectView: UIView {
-        
+
         override init(frame: CGRect) {
             super.init(frame: frame)
-            
+
             self.layer.borderWidth = 5
             self.layer.borderColor = UIColor.blue.cgColor
         }
-        
+
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-        
+
     }
 }

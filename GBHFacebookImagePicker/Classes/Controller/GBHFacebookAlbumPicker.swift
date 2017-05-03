@@ -244,11 +244,11 @@ extension GBHFacebookAlbumPicker: GBHAlbumPickerTableViewControllerDelegate {
     ///
     /// - parameter imageModels: model of the selected pictures
     func didSelecPicturesInAlbum(imageModels: [GBHFacebookImage]) {
-        
+
         var successModels = [GBHFacebookImage]()
         var errorModels = [GBHFacebookImage]()
         var errors = [Error?]()
-        
+
         func callback() {
             if successModels.count + errors.count == imageModels.count {
                 self.delegate?.facebookImagePicker(
@@ -260,7 +260,7 @@ extension GBHFacebookAlbumPicker: GBHAlbumPickerTableViewControllerDelegate {
                 self.dismissPicker()
             }
         }
-        
+
         for imageModel in imageModels {
             if let url = imageModel.fullSizeUrl, let imageUrl = URL(string: url) {
                 // Start url loading
@@ -277,10 +277,10 @@ extension GBHFacebookAlbumPicker: GBHAlbumPickerTableViewControllerDelegate {
                         callback()
                         return
                     }
-                    
+
                     // Set the image
                     imageModel.image = UIImage(data: data)
-                    
+
                     successModels.append(imageModel)
                     callback()
                     }.resume()
@@ -290,7 +290,7 @@ extension GBHFacebookAlbumPicker: GBHAlbumPickerTableViewControllerDelegate {
                 callback()
             }
         }
-        
+
     }
 
     /// Performed when an error occured

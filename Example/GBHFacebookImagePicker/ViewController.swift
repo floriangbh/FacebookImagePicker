@@ -9,20 +9,25 @@
 import UIKit
 import GBHFacebookImagePicker
 
-class ViewController: UIViewController, GBHFacebookImagePickerDelegate, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController {
 
     // MARK: - IBOutlet 
-    
+
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var showAlbumButton: UIButton!
-    
-    var imageModels = [GBHFacebookImage]()
+
+    // MARK: - Var 
+
+    fileprivate var imageModels = [GBHFacebookImage]()
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Controlelr title 
+        self.title = "Facebook Image Picker"
 
         // Prepare picker button
         self.showAlbumButton.setTitle("Show picker", for: .normal)
@@ -35,6 +40,9 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate, UITableV
         self.showAlbumButton.addTarget(self,
                                        action: #selector(self.showAlbumClick),
                                        for: UIControlEvents.touchUpInside)
+
+        // 
+        self.tableView.backgroundColor = .clear
 
         // Background color
         self.view.backgroundColor = UIColor(red: 246/255.0,
@@ -83,9 +91,12 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate, UITableV
         picker.presentFacebookAlbumImagePicker(from: self,
                                                delegate: self)
     }
+}
+
+extension ViewController: GBHFacebookImagePickerDelegate {
 
     // MARK: - GBHFacebookImagePicker Protocol
-    
+
     func facebookImagePicker(imagePicker: UIViewController, successImageModels: [GBHFacebookImage], errorImageModels: [GBHFacebookImage], errors: [Error?]) {
         for imageModel in successImageModels {
             print("Image URL : \(String(describing: imageModel.fullSizeUrl)), Image Id: \(String(describing: imageModel.imageId))")
@@ -108,31 +119,19 @@ class ViewController: UIViewController, GBHFacebookImagePickerDelegate, UITableV
     func facebookImagePickerDismissed() {
         print("Picker dismissed")
     }
-    
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
     // MARK: - UITableViewDelegate, UITableViewDataSource
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.imageModels.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCellId") as! ImageCell
-        cell.ivImageView.image = self.imageModels[indexPath.row].image
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCellId") as! PhotoTableViewCell
+        cell.selectedImageView.image = self.imageModels[indexPath.row].image
         return cell
     }
-    
 }
-
-
-
-
-class ImageCell: UITableViewCell {
-    
-    @IBOutlet weak var ivImageView: UIImageView!
-    
-}
-
-
-
-
-

@@ -35,7 +35,7 @@ class GBHPhotoPickerViewController: UIViewController {
 
     // Current album model 
     var album: GBHFacebookAlbum? // Curent album
-    
+
     //
     public var selectedImages = [GBHFacebookImage]() {
         didSet {
@@ -43,7 +43,7 @@ class GBHPhotoPickerViewController: UIViewController {
             self.selectBarButton?.title = "Select\(count > 0 ? " (\(count))" : "")"
         }
     }
-    
+
     //
     fileprivate(set) var selectBarButton: UIBarButtonItem?
 
@@ -77,7 +77,7 @@ class GBHPhotoPickerViewController: UIViewController {
     fileprivate func prepareViewController() {
         self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
         self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
-        
+
         self.selectBarButton = UIBarButtonItem(
             title: "Select",
             style: .plain,
@@ -200,12 +200,12 @@ class GBHPhotoPickerViewController: UIViewController {
             self.imageArray = album.photos
         }
     }
-    
+
     func actionSelectBarButton(sender: UIBarButtonItem) {
         // Clean collection and start loading
         self.imageArray = []
         self.startLoading()
-        
+
         // Send to album delegate for download
         self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: self.selectedImages)
     }
@@ -230,7 +230,7 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
         let imageModel = self.imageArray[indexPath.row]
         self.selectedImages.append(imageModel)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         // Remove selected image
         let imageModel = self.imageArray[indexPath.row]

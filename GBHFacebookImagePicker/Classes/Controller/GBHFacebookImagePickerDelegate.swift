@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol GBHFacebookImagePickerDelegate: class {
-    
+
     /// Called when image is picked
     ///
     /// - Parameters:
