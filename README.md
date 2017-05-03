@@ -149,6 +149,9 @@ picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
 You can apply some customisation. To do it you can use the GBHFacebookPickerConfig structure like this :
 
 ```swift
+// Multiple selection settings 
+GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = false
+
 // Navigation bar title 
 GBHFacebookImagePicker.pickerConfig.title = "MyCustomTitle"
 

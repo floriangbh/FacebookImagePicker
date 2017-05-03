@@ -75,22 +75,31 @@ class GBHPhotoPickerViewController: UIViewController {
 
     /// Prepare the UIViewController 
     fileprivate func prepareViewController() {
+        // Title & Background
         self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
         self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
 
-        self.selectBarButton = UIBarButtonItem(
-            title: "Select",
-            style: .plain,
-            target: self,
-            action: #selector(actionSelectBarButton(sender:))
-        )
-        if let barButton = self.selectBarButton {
-            self.navigationItem.rightBarButtonItems = [barButton]
-        }
-
+        // Prepare component 
         self.prepareCollectionView()
         self.prepareActivityIndicator()
+        self.prepareMultipleSelectionButton()
+
+        // Start loading 
         self.startLoading()
+    }
+
+    fileprivate func prepareMultipleSelectionButton() {
+        if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
+            self.selectBarButton = UIBarButtonItem(
+                title: "Select",
+                style: .plain,
+                target: self,
+                action: #selector(actionSelectBarButton(sender:))
+            )
+            if let barButton = self.selectBarButton {
+                self.navigationItem.rightBarButtonItems = [barButton]
+            }
+        }
     }
 
     /// Prepare pictureCollection which will contains album's pictures
@@ -226,9 +235,17 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        // Get the selected image
+        // Retrieve the selected image
         let imageModel = self.imageArray[indexPath.row]
-        self.selectedImages.append(imageModel)
+
+        if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
+            // Multiple selection mode 
+            self.selectedImages.append(imageModel)
+        } else {
+            // Single selection mode  
+            // Send to album delegate for download
+            self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: [imageModel])
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

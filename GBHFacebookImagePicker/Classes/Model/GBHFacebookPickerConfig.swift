@@ -47,6 +47,9 @@ public struct GBHFacebookPickerConfig {
     // The picture corner radius. Used for display album cover and album's picture.
     public var pictureCornerRadius: CGFloat = 2.0
 
+    // Allow multiple pictures selection
+    public var allowMultipleSelection: Bool = false
+
     /// UI-specific configuration.
     public var uiConfig = UIConfig()
 }

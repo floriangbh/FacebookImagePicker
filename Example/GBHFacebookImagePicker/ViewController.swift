@@ -36,9 +36,9 @@ class ViewController: UIViewController {
         self.title = "Facebook Image Picker"
 
         // Prepare picker button
-        self.showAlbumButton.setTitle("Show picker", 
+        self.showAlbumButton.setTitle("Show picker",
                                       for: .normal)
-        self.showAlbumButton.setTitleColor(UIColor.white, 
+        self.showAlbumButton.setTitleColor(UIColor.white,
                                            for: .normal)
         self.showAlbumButton.layer.cornerRadius = 3.0
         self.showAlbumButton.backgroundColor = UIColor(red: 59/255.0,
@@ -88,6 +88,9 @@ class ViewController: UIViewController {
 
         // Selected border width 
         GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
+
+        // Multiple selection settings 
+        GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = false
     }
 
     // MARK: - Action
@@ -97,6 +100,7 @@ class ViewController: UIViewController {
 
         // Init picker 
         let picker = GBHFacebookImagePicker()
+        GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
 
         // Make some customisation
         // self.someCustomisation()
@@ -105,7 +109,7 @@ class ViewController: UIViewController {
         picker.presentFacebookAlbumImagePicker(from: self,
                                                delegate: self)
     }
-    
+
     @IBAction func doDeleteClick(_ sender: Any) {
         // Clear data src 
         self.imageModels = [GBHFacebookImage]()
@@ -116,9 +120,9 @@ extension ViewController: GBHFacebookImagePickerDelegate {
 
     // MARK: - GBHFacebookImagePicker Protocol
 
-    func facebookImagePicker(imagePicker: UIViewController, 
-                             successImageModels: [GBHFacebookImage], 
-                             errorImageModels: [GBHFacebookImage], 
+    func facebookImagePicker(imagePicker: UIViewController,
+                             successImageModels: [GBHFacebookImage],
+                             errorImageModels: [GBHFacebookImage],
                              errors: [Error?]) {
         // Append selected image s
         self.imageModels.append(contentsOf: successImageModels)
