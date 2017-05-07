@@ -36,11 +36,13 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
             self.contentView.addSubview(imgView)
         }
 
+        // Selected view 
         self.selectView.frame = self.bounds
         self.selectView.autoresizingMask = [.flexibleWidth,
                                             .flexibleHeight]
         self.contentView.addSubview(self.selectView)
 
+        // Selected state 
         self.isSelected = false
     }
 

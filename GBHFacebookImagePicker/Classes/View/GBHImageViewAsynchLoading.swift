@@ -18,20 +18,27 @@ class GBHImageAsyncViewLoading: UIImageView {
             if let url = imageUrl {
                 // Start url loading
                 URLSession.shared.dataTask(with: url as URL) { data, response, error in
+                    // In error 
                     guard let data = data, error == nil else {
                         print("\nerror on download \(String(describing: error))")
                         return
                     }
+
+                    // Check success code (200)
                     if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                         print("statusCode != 200; \(httpResponse.statusCode)")
                         return
                     }
+
+                    // Set image 
                     DispatchQueue.main.async {
                         // Display image !
                         if let downloadedImage = UIImage(data: data) {
                             self.setImageWithAnimation(image: downloadedImage)
                         }
                     }
+
+                    // resume task
                     }.resume()
             }
         }

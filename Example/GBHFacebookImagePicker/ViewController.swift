@@ -49,8 +49,9 @@ class ViewController: UIViewController {
                                        action: #selector(self.showAlbumClick),
                                        for: UIControlEvents.touchUpInside)
 
-        // 
+        // Prepare TableView 
         self.tableView.backgroundColor = .clear
+        self.tableView.tableFooterView = UIView()
 
         // Background color
         self.view.backgroundColor = UIColor(red: 246/255.0,

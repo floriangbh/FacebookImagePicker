@@ -39,7 +39,17 @@ class GBHPhotoPickerViewController: UIViewController {
     //
     public var selectedImages = [GBHFacebookImage]() {
         didSet {
+            // How many image selected
             let count = self.selectedImages.count
+
+            // Manage disable/enable state 
+            if count > 0 {
+                self.selectBarButton?.isEnabled = true
+            } else {
+                self.selectBarButton?.isEnabled = false
+            }
+
+            // Update button title 
             self.selectBarButton?.title = "Select\(count > 0 ? " (\(count))" : "")"
         }
     }
@@ -96,6 +106,7 @@ class GBHPhotoPickerViewController: UIViewController {
                 target: self,
                 action: #selector(actionSelectBarButton(sender:))
             )
+            self.selectBarButton?.isEnabled = false
             if let barButton = self.selectBarButton {
                 self.navigationItem.rightBarButtonItems = [barButton]
             }
@@ -105,8 +116,10 @@ class GBHPhotoPickerViewController: UIViewController {
     /// Prepare pictureCollection which will contains album's pictures
     fileprivate func prepareCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        self.pictureCollection = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
-        self.pictureCollection?.register(GBHPhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.pictureCollection = UICollectionView(frame: self.view.bounds,
+                                                  collectionViewLayout: layout)
+        self.pictureCollection?.register(GBHPhotoCollectionViewCell.self,
+                                         forCellWithReuseIdentifier: reuseIdentifier)
         self.pictureCollection?.delegate = self
         self.pictureCollection?.dataSource = self
         self.pictureCollection?.allowsMultipleSelection = true
@@ -163,7 +176,10 @@ class GBHPhotoPickerViewController: UIViewController {
 
     /// Prepare UIActivityIndicatorView and display it at the center of the view
     fileprivate func prepareActivityIndicator() {
-        self.indicator = UIActivityIndicatorView(frame:CGRect(x: 0, y: 0, width: 40, height: 40) )
+        self.indicator = UIActivityIndicatorView(frame:CGRect(x: 0,
+                                                              y: 0,
+                                                              width: 40,
+                                                              height: 40) )
         self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         self.indicator.center = self.view.center
         self.view.addSubview(indicator)
@@ -299,5 +315,4 @@ extension GBHPhotoPickerViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 80)
     }
-
 }
