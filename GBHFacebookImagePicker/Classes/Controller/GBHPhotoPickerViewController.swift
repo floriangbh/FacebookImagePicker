@@ -135,6 +135,7 @@ class GBHPhotoPickerViewController: UIViewController {
     fileprivate func prepareCollectionViewConstraint() {
         // Top constraint
         if let collection = self.pictureCollection {
+            // Top constraint 
             self.view.addConstraint(NSLayoutConstraint(item: collection,
                                                        attribute: NSLayoutAttribute.top,
                                                        relatedBy: NSLayoutRelation.equal,

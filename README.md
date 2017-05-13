@@ -36,7 +36,7 @@ Video demonstration -> https://vimeo.com/192823627
 - [x] AppStore ready
 - [x] Swift 3 
 - [x] iPhone/iPad support 
-- [ ] Multiple selection (comming soon in next realease)
+- [x] Multiple selection in one album
 - [ ] Carthage support (feel free to make PR)
 - [ ] Unit & UI Test (feel free to make PR)
 
@@ -103,11 +103,13 @@ import GBHFacebookImagePicker
 ```swift
 // MARK: - GBHFacebookImagePicker Protocol
 
-func facebookImagePicker(imagePicker: UIViewController, imageModel: GBHFacebookImage) {
-    print("Image URL : \(imageModel.fullSizeUrl), Image Id: \(imageModel.imageId)")
-    if let pickedImage = imageModel.image {
-        self.pickerImageView.image = pickedImage
-    }
+func facebookImagePicker(imagePicker: UIViewController,
+                         successImageModels: [GBHFacebookImage],
+                         errorImageModels: [GBHFacebookImage],
+                         errors: [Error?]) {
+    // Append selected image(s)
+    // Do what you want with selected image 
+    self.imageModels.append(contentsOf: successImageModels)
 }
 
 func facebookImagePicker(imagePicker: UIViewController, didFailWithError error: Error?) {
@@ -150,7 +152,7 @@ You can apply some customisation. To do it you can use the GBHFacebookPickerConf
 
 ```swift
 // Multiple selection settings 
-GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = false
+GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true // False by default  
 
 // Navigation bar title 
 GBHFacebookImagePicker.pickerConfig.title = "MyCustomTitle"

@@ -89,9 +89,6 @@ class ViewController: UIViewController {
 
         // Selected border width 
         GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
-
-        // Multiple selection settings 
-        GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = false
     }
 
     // MARK: - Action
@@ -101,10 +98,12 @@ class ViewController: UIViewController {
 
         // Init picker 
         let picker = GBHFacebookImagePicker()
+
+        // Allow multiple selection (false by default)
         GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
 
         // Make some customisation
-        // self.someCustomisation()
+        //self.someCustomisation()
 
         // Present picker 
         picker.presentFacebookAlbumImagePicker(from: self,
@@ -125,7 +124,8 @@ extension ViewController: GBHFacebookImagePickerDelegate {
                              successImageModels: [GBHFacebookImage],
                              errorImageModels: [GBHFacebookImage],
                              errors: [Error?]) {
-        // Append selected image s
+        // Append selected image(s)
+        // Do what you want with selected image 
         self.imageModels.append(contentsOf: successImageModels)
     }
 
