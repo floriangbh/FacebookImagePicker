@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+### 1.2.0
+
+- Multiple selection in one album 
+- Bump FBSDK Dependency  
+
 ### 1.1.8
 
 - Bump FBSDK Dependency 
