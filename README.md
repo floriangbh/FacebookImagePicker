@@ -37,7 +37,6 @@ Video demonstration -> https://vimeo.com/192823627
 - [x] Swift 3 
 - [x] iPhone/iPad support 
 - [x] Multiple selection in one album
-- [ ] Carthage support (feel free to make PR)
 - [ ] Unit & UI Test (feel free to make PR)
 
 ## Example
