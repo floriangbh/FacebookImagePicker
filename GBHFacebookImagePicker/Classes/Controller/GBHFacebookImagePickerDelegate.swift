@@ -9,12 +9,12 @@ import UIKit
 
 public protocol GBHFacebookImagePickerDelegate: class {
 
-    /// Called when image is picked
+    /// Called when one or more images are picked
     ///
     /// - Parameters:
     ///   - imagePicker: the picker controller
-    ///   - successImageModels: GBHFacebookImageModel which containt image url, image and image id
-    ///   - errorImageModels: GBHFacebookImageModel which cause error
+    ///   - successImageModels: GBHFacebookImageModels which contain image URLs, images, and image IDs
+    ///   - errorImageModels: GBHFacebookImageModels which caused an error
     ///   - errors: with description
     func facebookImagePicker(
         imagePicker: UIViewController,
