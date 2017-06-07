@@ -71,23 +71,6 @@ Like this :
 
 Just in case, for public application (which can be use in the AppStore), you need to send your Facebook's App in review to have user's photos permission.  
 
-## Requirements
-
-* Xcode 8 
-* iOS 9.0+ target deployment
-* FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
-* Facebook Application, see [usage](#usage) for explaination 
-* Swift 3 project 
-
-## Installation
-
-GBHFacebookImagePicker is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "GBHFacebookImagePicker"
-```
-
 ## Usage
 
 - You need to set up your application correctly to work with Facebook : https://developers.facebook.com/docs/ios/getting-started and https://developers.facebook.com/docs/ios/ios9
@@ -197,6 +180,23 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 "Allow" = "<your_translation>";
 "Close" = "<your_translation>";
 "Album(s)" = "<your_translation>";
+```
+
+## Requirements
+
+* Xcode 8 
+* iOS 9.0+ target deployment
+* FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
+* Facebook Application, see [usage](#usage) for explaination 
+* Swift 3 project 
+
+## Installation
+
+GBHFacebookImagePicker is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "GBHFacebookImagePicker"
 ```
 
 ## Alternative solutions
