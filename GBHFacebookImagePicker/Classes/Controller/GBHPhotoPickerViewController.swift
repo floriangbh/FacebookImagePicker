@@ -257,7 +257,17 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
 
         if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
             // Multiple selection mode 
-            self.selectedImages.append(imageModel)
+            if GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures == nil {
+                self.selectedImages.append(imageModel)
+            } else {
+                if self.selectedImages.count < GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures! {
+                    self.selectedImages.append(imageModel)
+                } else {
+                    if let cell = collectionView.cellForItem(at: indexPath) as? GBHPhotoCollectionViewCell {
+                        cell.selectView.isHidden = true
+                    }
+                }
+            }
         } else {
             // Single selection mode  
             // Send to album delegate for download
