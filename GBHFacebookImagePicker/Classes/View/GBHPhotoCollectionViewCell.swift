@@ -13,7 +13,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     fileprivate var albumImageView: GBHImageAsyncViewLoading?
 
     /// Selection hover view
-    fileprivate let selectView = GBHSelectedView()
+    let selectView = GBHSelectedView()
 
     /// Override the initializer 
     ///

@@ -49,6 +49,9 @@ public struct GBHFacebookPickerConfig {
 
     // Allow multiple pictures selection
     public var allowMultipleSelection: Bool = false
+    
+    // Maximum selected pictures
+    public var maximumSelectedPictures: Int?
 
     /// UI-specific configuration.
     public var uiConfig = UIConfig()
