@@ -44,13 +44,13 @@ public struct GBHFacebookPickerConfig {
     public var title: String = NSLocalizedString("Album(s)",
                                                  comment: "")
 
-    // The picture corner radius. Used for display album cover and album's picture.
+    /// The picture corner radius. Used for display album cover and album's picture.
     public var pictureCornerRadius: CGFloat = 2.0
 
-    // Allow multiple pictures selection
+    /// Allow multiple pictures selection
     public var allowMultipleSelection: Bool = false
-    
-    // Maximum selected pictures
+
+    /// Maximum selected pictures
     public var maximumSelectedPictures: Int?
 
     /// UI-specific configuration.

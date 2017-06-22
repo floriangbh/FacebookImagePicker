@@ -89,6 +89,9 @@ class ViewController: UIViewController {
 
         // Selected border width 
         GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
+        
+        // Maximum selected pictures 
+        GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
     }
 
     // MARK: - Action
@@ -101,9 +104,10 @@ class ViewController: UIViewController {
 
         // Allow multiple selection (false by default)
         GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
+        GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
 
         // Make some customisation
-        //self.someCustomisation()
+        // self.someCustomisation()
 
         // Present picker 
         picker.presentFacebookAlbumImagePicker(from: self,

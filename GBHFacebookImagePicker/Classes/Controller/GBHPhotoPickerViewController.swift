@@ -260,7 +260,8 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
             if GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures == nil {
                 self.selectedImages.append(imageModel)
             } else {
-                if self.selectedImages.count < GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures! {
+                let maximum = GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures ?? 1
+                if self.selectedImages.count < maximum {
                     self.selectedImages.append(imageModel)
                 } else {
                     if let cell = collectionView.cellForItem(at: indexPath) as? GBHPhotoCollectionViewCell {
