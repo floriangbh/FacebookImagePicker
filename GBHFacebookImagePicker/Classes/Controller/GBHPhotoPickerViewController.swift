@@ -285,9 +285,10 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
 
         return cell!
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures == nil || self.selectedImages.count != (GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures ?? 1)
+        return GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures == nil
+            || self.selectedImages.count != (GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures ?? 1)
     }
 
 }
