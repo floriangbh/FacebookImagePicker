@@ -256,19 +256,7 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
         let imageModel = self.imageArray[indexPath.row]
 
         if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
-            // Multiple selection mode 
-            if GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures == nil {
-                self.selectedImages.append(imageModel)
-            } else {
-                let maximum = GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures ?? 1
-                if self.selectedImages.count < maximum {
-                    self.selectedImages.append(imageModel)
-                } else {
-                    if let cell = collectionView.cellForItem(at: indexPath) as? GBHPhotoCollectionViewCell {
-                        cell.selectView.isHidden = true
-                    }
-                }
-            }
+            self.selectedImages.append(imageModel)
         } else {
             // Single selection mode  
             // Send to album delegate for download
@@ -296,6 +284,10 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
         cell?.configure(picture: self.imageArray[indexPath.row])
 
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures == nil || self.selectedImages.count != (GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures ?? 1)
     }
 
 }
