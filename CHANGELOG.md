@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+### 1.2.3
+
+- Fix multiple selection 
+- Bump FBSDK Dependency  
+
 ### 1.2.2
 
 - Add multiple selection settings  
