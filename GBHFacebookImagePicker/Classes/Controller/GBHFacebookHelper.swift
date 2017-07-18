@@ -22,6 +22,9 @@ class GBHFacebookHelper {
 
     /// Picture url path for the API
     fileprivate let pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
+    
+    /// Custom id for custom album
+    fileprivate let idTaggedPhotosAlbum = "idPhotosOfYouTagged"
 
     // MARK: - Retrieve Facebook's Albums
 
@@ -51,6 +54,17 @@ class GBHFacebookHelper {
 
                     // Parse Album
                     self.parseFbAlbumResult(fbResult: fbResult)
+                    
+                    // I can't find how define default image for this album :(
+                    if let url = URL(string: "http://www.google.com") {
+                        let taggedPhotosAlbum = GBHFacebookAlbum(
+                            name: "Photos of You",
+                            count: 0,
+                            coverUrl: url,
+                            albmId: self.idTaggedPhotosAlbum
+                        )
+                        self.albumList.insert(taggedPhotosAlbum, at: 0)
+                    }
 
                     // Try to find next page
                     if let paging = fbResult["paging"] as? [String: AnyObject],
@@ -117,7 +131,9 @@ class GBHFacebookHelper {
         guard let id = album.albumId else {
             return
         }
-        var  path = "/\(id)/photos?fields=picture,source,id"
+        var  path = id == self.idTaggedPhotosAlbum
+            ? "/me/photos?fields=picture,source,id"
+            : "/\(id)/photos?fields=picture,source,id"
         if let afterPath = after {
             path = path.appendingFormat("&after=%@", afterPath)
         }
