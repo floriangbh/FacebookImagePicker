@@ -18,6 +18,7 @@ class GBHFacebookNavigationController: UINavigationController {
         // Apply barTintColor if specified in config struct 
         if let barTintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.navBarTintColor {
             self.navigationBar.barTintColor = barTintColor
+            self.navigationBar.isTranslucent = false
         }
 
         // Apply tintColor if specified in config struct 
