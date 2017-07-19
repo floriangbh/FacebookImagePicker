@@ -40,6 +40,9 @@ public struct GBHFacebookPickerConfig {
         /// Will be applied to image border width when selected 
         @available(*, deprecated)
         public var selectedBorderWidth: CGFloat?
+        
+        /// Show check view
+        public var showCheckView: Bool = false
     }
 
     /// Will be applied to the album's navigation bar title
