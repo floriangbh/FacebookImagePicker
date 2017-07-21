@@ -22,9 +22,9 @@ class GBHFacebookHelper {
 
     /// Picture url path for the API
     fileprivate let pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
-    
+
     /// Custom id for custom album
-    fileprivate let idTaggedPhotosAlbum = "idPhotosOfYouTagged"
+    static let idTaggedPhotosAlbum = "idPhotosOfYouTagged"
 
     // MARK: - Retrieve Facebook's Albums
 
@@ -54,16 +54,20 @@ class GBHFacebookHelper {
 
                     // Parse Album
                     self.parseFbAlbumResult(fbResult: fbResult)
-                    
+
                     // I can't find how define default image for this album :(
-                    if let url = URL(string: "http://www.google.com") {
-                        let taggedPhotosAlbum = GBHFacebookAlbum(
-                            name: "Photos of You",
-                            count: 0,
-                            coverUrl: url,
-                            albmId: self.idTaggedPhotosAlbum
-                        )
-                        self.albumList.insert(taggedPhotosAlbum, at: 0)
+                    // Add tagged album if needed 
+                    if GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum {
+                        if let url = URL(string: "http://www.google.com") {
+                            let taggedPhotosAlbum = GBHFacebookAlbum(
+                                name: "Photos of You",
+                                count: 0,
+                                coverUrl: url,
+                                albmId: GBHFacebookHelper.idTaggedPhotosAlbum
+                            )
+                            self.albumList.insert(taggedPhotosAlbum,
+                                                  at: 0)
+                        }
                     }
 
                     // Try to find next page
@@ -131,13 +135,13 @@ class GBHFacebookHelper {
         guard let id = album.albumId else {
             return
         }
-        var  path = id == self.idTaggedPhotosAlbum
+        var  path = id == GBHFacebookHelper.idTaggedPhotosAlbum
             ? "/me/photos?fields=picture,source,id"
             : "/\(id)/photos?fields=picture,source,id"
         if let afterPath = after {
             path = path.appendingFormat("&after=%@", afterPath)
         }
-
+        //print(path)
         // Build Facebook's request
         let graphRequest = FBSDKGraphRequest(graphPath: path,
                                              parameters: nil)
@@ -151,6 +155,7 @@ class GBHFacebookHelper {
                 // Try to parse request's result
                 if let fbResult = result as? [String: AnyObject] {
                     // Parse Album
+                    //print(fbResult)
                     self.parseFbPicture(fbResult: fbResult,
                                         album: album)
 
@@ -219,11 +224,11 @@ class GBHFacebookHelper {
         self.albumList = [] // Clear Album
 
         if FBSDKAccessToken.current() == nil {
-            // No token, we need to login
+            // No token, we need to log in
 
             // Start Facebook's login
             let loginManager = FBSDKLoginManager()
-            loginManager.logIn(withReadPermissions: ["user_photos"],
+            loginManager.logIn(withReadPermissions: ["user_photos", "public_profile"],
                                from: controller) { (response, error) in
                                 if error != nil {
                                     // Failed
@@ -274,6 +279,41 @@ class GBHFacebookHelper {
                 completion(false,
                            .permissionDenied)
             }
+        }
+    }
+
+    func getProfilePicture(_ completion: @escaping ((Bool, String?) -> Void)) {
+        if FBSDKAccessToken.current() != nil {
+            let param = ["fields": "picture.width(600).height(600)"]
+            let graphRequest = FBSDKGraphRequest(graphPath: "me",
+                                                 parameters: param)
+            _ = graphRequest?.start(completionHandler: { (_, result, error) -> Void in
+                if error != nil {
+                    // KO
+                    print("Error")
+                    completion(false, nil)
+                } else {
+                    // OK
+                    if let result = result as? [String: AnyObject] {
+                        // Facebook profil pic URL
+                        if result["picture"] != nil {
+                            if let FBpictureData = result["picture"] as? [String: AnyObject],
+                                let FBpicData = FBpictureData["data"] as? [String: AnyObject],
+                                let FBpicurl = FBpicData["url"] as? String {
+                                //self.pictureProfilUrl = FBpicurl
+                                print(FBpicurl)
+                                completion(true, FBpicurl)
+                            }
+                        }
+                    } 
+                    
+                    completion(false, nil)
+                }
+            })
+        } else {
+            // KO
+            completion(false, nil)
+            print("Token error")
         }
     }
 }

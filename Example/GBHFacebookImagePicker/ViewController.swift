@@ -92,6 +92,12 @@ class ViewController: UIViewController {
         
         // Maximum selected pictures 
         GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
+        
+        // Display tagged album 
+        GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
+        
+        // Tagged album name
+        GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
     }
 
     // MARK: - Action
@@ -105,6 +111,7 @@ class ViewController: UIViewController {
         // Allow multiple selection (false by default)
         GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
         GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
+        GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = false
 
         // Make some customisation
         // self.someCustomisation()

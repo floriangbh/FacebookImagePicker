@@ -183,6 +183,7 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 "Allow" = "<your_translation>";
 "Close" = "<your_translation>";
 "Album(s)" = "<your_translation>";
+"Photos of You" = "<your_translation>";
 ```
 
 ## Requirements

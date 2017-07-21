@@ -53,6 +53,13 @@ public struct GBHFacebookPickerConfig {
     /// Maximum selected pictures
     public var maximumSelectedPictures: Int?
 
+    /// Display tagged album 
+    public var displayTaggedAlbum: Bool = false
+
+    // Tagged album name 
+    public var taggedAlbumName: String = NSLocalizedString("Photos of You",
+                                                            comment: "")
+
     /// UI-specific configuration.
     public var uiConfig = UIConfig()
 }
