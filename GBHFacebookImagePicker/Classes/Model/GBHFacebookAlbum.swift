@@ -35,7 +35,7 @@ class GBHFacebookAlbum {
     ///   - albmId: the album id 
     init(name: String,
          count: Int? = nil,
-         coverUrl: URL,
+         coverUrl: URL? = nil,
          albmId: String) {
         self.name = name
         self.albumId = albmId

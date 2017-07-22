@@ -10,39 +10,39 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 
 class GBHFacebookManager {
-
+    
     // MARK: - Singleton 
-
+    
     static let shared = GBHFacebookManager()
-
+    
     // MARK: - Var
-
+    
     /// User's album list
     fileprivate var albumList: [GBHFacebookAlbum] = []
-
+    
     /// Picture url path for the API
     fileprivate let pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
-
+    
     /// Custom id for custom album
     static let idTaggedPhotosAlbum = "idPhotosOfYouTagged"
-
+    
     // MARK: - Retrieve Facebook's Albums
-
+    
     /// Make GRAPH API's request for user's album
     ///
     /// - Parameter after: after page identifier (optional)
     fileprivate func fbAlbumRequest(after: String? = nil) {
-
+        
         // Build path album request
         var  path = "me/albums?fields=id,name,count,cover_photo"
         if let afterPath = after {
             path = path.appendingFormat("&after=%@", afterPath)
         }
-
+        
         // Build Facebook's request
         let graphRequest = FBSDKGraphRequest(graphPath: path,
                                              parameters: nil)
-
+        
         // Start Facebook Request
         _ = graphRequest?.start { _, result, error in
             if error != nil {
@@ -51,34 +51,34 @@ class GBHFacebookManager {
             } else {
                 // Try to parse request's result
                 if let fbResult = result as? [String: AnyObject] {
-
+                    
                     // Parse Album
                     self.parseFbAlbumResult(fbResult: fbResult)
-
-                    // I can't find how define default image for this album :(
+                    
                     // Add tagged album if needed 
                     if GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum {
-                        if let url = URL(string: "http://www.google.com") {
-                            let taggedPhotosAlbum = GBHFacebookAlbum(
-                                name: GBHFacebookImagePicker.pickerConfig.taggedAlbumName,
-                                coverUrl: url,
-                                albmId: GBHFacebookManager.idTaggedPhotosAlbum
-                            )
-                            self.albumList.insert(taggedPhotosAlbum,
-                                                  at: 0)
-                        }
+                        
+                        // Create tagged album 
+                        let taggedPhotosAlbum = GBHFacebookAlbum(
+                            name: GBHFacebookImagePicker.pickerConfig.taggedAlbumName,
+                            albmId: GBHFacebookManager.idTaggedPhotosAlbum
+                        )
+                        
+                        // Add to albums 
+                        self.albumList.insert(taggedPhotosAlbum,
+                                              at: 0)
                     }
-
+                    
                     // Try to find next page
                     if let paging = fbResult["paging"] as? [String: AnyObject],
                         paging["next"] != nil,
                         let cursors = paging["cursors"] as? [String: AnyObject],
                         let after = cursors["after"] as? String {
-
+                        
                         // Restart album request for next page
                         self.fbAlbumRequest(after: after)
                     } else {
-
+                        
                         print("Found \(self.albumList.count) album(s) with this Facebook account.")
                         // Notifie controller with albums
                         NotificationCenter.default.post(name: Notification.Name.ImagePickerDidRetrieveAlbum,
@@ -88,25 +88,25 @@ class GBHFacebookManager {
             }
         }
     }
-
+    
     /// Parsing GRAPH API result for user's album in GBHFacebookAlbumModel array
     ///
     /// - Parameter fbResult: result of the Facebook's graph api
     fileprivate func parseFbAlbumResult(fbResult: [String: AnyObject]) {
         if let albumArray = fbResult["data"] as? [AnyObject] {
-
+            
             // Parsing user's album
             for album in albumArray {
                 if let albumDic = album as? [String:AnyObject],
                     let albumName = albumDic["name"] as? String,
                     let albumId = albumDic["id"] as? String,
                     let albumCount = albumDic["count"] as? Int {
-
+                    
                     // Album's cover url
                     let albumUrlPath = String(format : self.pictureUrl,
                                               albumId,
                                               FBSDKAccessToken.current().tokenString)
-
+                    
                     // Build Album model
                     if let coverUrl = URL(string: albumUrlPath) {
                         let albm = GBHFacebookAlbum(name: albumName,
@@ -119,9 +119,9 @@ class GBHFacebookManager {
             }
         }
     }
-
+    
     // MARK: - Retrieve Facebook's Picture
-
+    
     /// Make GRAPH API's request for album's pictures
     ///
     /// - Parameters:
@@ -129,7 +129,7 @@ class GBHFacebookManager {
     ///   - album: album model
     func fbAlbumsPictureRequest(after: String?,
                                 album: GBHFacebookAlbum) {
-
+        
         // Build path album request
         guard let id = album.albumId else {
             return
@@ -144,7 +144,7 @@ class GBHFacebookManager {
         // Build Facebook's request
         let graphRequest = FBSDKGraphRequest(graphPath: path,
                                              parameters: nil)
-
+        
         // Start Facebook's request
         _ = graphRequest?.start { _, result, error in
             if error != nil {
@@ -157,13 +157,13 @@ class GBHFacebookManager {
                     //print(fbResult)
                     self.parseFbPicture(fbResult: fbResult,
                                         album: album)
-
+                    
                     // Try to find next page
                     if let paging = fbResult["paging"] as? [String: AnyObject],
                         paging["next"] != nil,
                         let cursors = paging["cursors"] as? [String: AnyObject],
                         let after = cursors["after"] as? String {
-
+                        
                         // Restart album request for next page
                         self.fbAlbumsPictureRequest(after: after,
                                                     album: album)
@@ -177,7 +177,7 @@ class GBHFacebookManager {
             }
         }
     }
-
+    
     /// Parsing GRAPH API result for album's picture in GBHFacebookAlbumModel
     ///
     /// - Parameters:
@@ -186,14 +186,14 @@ class GBHFacebookManager {
     fileprivate func parseFbPicture(fbResult: [String: AnyObject],
                                     album: GBHFacebookAlbum) {
         if let photosResult = fbResult["data"] as? [AnyObject] {
-
+            
             // Parsing album's picture
             for photo in photosResult {
                 if let photoDic = photo as? [String : AnyObject],
                     let id = photoDic["id"] as? String,
                     let picture = photoDic["picture"] as? String,
                     let source = photoDic["source"] as? String {
-
+                    
                     // Build Picture model
                     let photoObject = GBHFacebookImage(picture: picture,
                                                        imgId: id,
@@ -203,28 +203,28 @@ class GBHFacebookManager {
             }
         }
     }
-
+    
     // MARK: - Logout
-
+    
     /// Logout with clear session, token & user's album
     fileprivate func logout() {
         FBSDKLoginManager().logOut()
     }
-
+    
     // MARK: - Login
-
+    
     /// Start login with Facebook SDK
     ///
     /// - parameters vc: source controller
     /// - parameters completion: (success , error if needed)
     func login(controller: UIViewController,
                completion: @escaping (Bool, LoginError?) -> Void) {
-
+        
         self.albumList = [] // Clear Album
-
+        
         if FBSDKAccessToken.current() == nil {
             // No token, we need to log in
-
+            
             // Start Facebook's login
             let loginManager = FBSDKLoginManager()
             loginManager.logIn(withReadPermissions: ["user_photos", "public_profile"],
@@ -280,7 +280,7 @@ class GBHFacebookManager {
             }
         }
     }
-
+    
     func getProfilePicture(_ completion: @escaping ((Bool, String?) -> Void)) {
         if FBSDKAccessToken.current() != nil {
             let param = ["fields": "picture.width(600).height(600)"]
@@ -305,7 +305,7 @@ class GBHFacebookManager {
                             }
                         }
                     }
-
+                    
                     completion(false, nil)
                 }
             })
