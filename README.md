@@ -180,7 +180,7 @@ GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
 
 ## Aditionals informations 
 
-- About tagged photos : the tagged photos are displayed in an album (hide by default, see customisation section to display it) with name "Photos of You". You can change this default name in settings. The tagged album's cover is the facebook account profile picture, which are retrieved with special call to the graph API. 
+- About tagged photos : the tagged photos are displayed in an album (hide by default, see customisation section to display it) with the name "Photos of You". You can change this default name in the settings. The tagged album's cover is the facebook account profile picture, which are retrieved with a special call to the graph API. 
 
 ## Translation 
 
