@@ -170,7 +170,6 @@ GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
 // Maximum selected pictures 
 GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
 
-
 // Display tagged album 
 GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
 
