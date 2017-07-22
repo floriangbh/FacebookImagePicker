@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 1.3.0
+
+- Add tagged photos album option 
+
 ### 1.2.3
 
 - Fix multiple selection 

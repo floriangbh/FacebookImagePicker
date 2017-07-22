@@ -109,8 +109,8 @@ class ViewController: UIViewController {
         let picker = GBHFacebookImagePicker()
 
         // Allow multiple selection (false by default)
-        GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
-        GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 20
+//        GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
+//        GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 20
 //        GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
 //        GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
 
