@@ -171,7 +171,6 @@ GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
 GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
 ```
 
-
 ## Translation 
 
 GBHFacebookImagePicker is currently write in english. If you need translation for the permission popup (or whatever thing), just add this line in your localized file  :
@@ -210,6 +209,13 @@ Here are some other Facebook's album picker libraries.
 - [sanche21/DSFacebookImagePicker](https://github.com/sanche21/DSFacebookImagePicker) 
 - [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/FacebookImagePicker-iOS) 
 - [bradtheappguy/BSFacebookImagePicker](https://github.com/bradtheappguy/BSFacebookImagePicker) 
+
+## Communication
+
+- If you **need help**, open an issue.
+- If you **found a bug**, open an issue.
+- If you **have a feature request**, open an issue.
+- If you **want to contribute**, submit a pull request and **read** the [contributing file](CONTRIBUTING).
 
 ## Applications
 
