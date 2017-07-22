@@ -28,10 +28,10 @@ Video demonstration -> https://vimeo.com/192823627
 
 ## Features 
 
-- [x] Login with Facebook SDK and display user's Albums
+- [x] Login with Facebook SDK and display user's Albums or tagged photos
 - [x] Display pictures of each albums 
 - [x] Handling denied Facebook photo's permission 
-- [x] Select and get URL/Image of the picked picture 
+- [x] Select and get URL/Image of the selected pictures 
 - [x] UI Customization 
 - [x] AppStore ready
 - [x] Swift 3 
@@ -169,7 +169,18 @@ GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
 
 // Maximum selected pictures 
 GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
+
+
+// Display tagged album 
+GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
+
+// Tagged album name
+GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
 ```
+
+## Aditionals informations 
+
+- About tagged photos : the tagged photos are displayed in an album (hide by default, see customisation section to display it) with name "Photos of You". You can change this default name in settings. The tagged album's cover is the facebook account profile picture, which are retrieved with special call to the graph API. 
 
 ## Translation 
 
