@@ -87,12 +87,21 @@ final class GBHAlbumTableViewCell: UITableViewCell {
         self.textLabel?.text = album.name ?? ""
 
         // Album's pictures count
-            self.detailTextLabel?.text = "\(album.count ?? 0)"
+        if let count = album.count {
+            self.detailTextLabel?.text = "\(count)"
+        } else {
+            self.detailTextLabel?.text = ""
+        }
 
         // Album cover image
-        if let url = album.coverUrl {
+        if album.albumId == GBHFacebookManager.idTaggedPhotosAlbum {
+            GBHFacebookManager.shared.getProfilePicture({ (_, url) in
+                if let stringUrl = url, let url = URL(string: stringUrl) {
+                    self.photoImageView?.imageUrl = url
+                }
+            })
+        } else if let url = album.coverUrl {
             self.photoImageView?.imageUrl = url
         }
     }
-
 }

@@ -9,12 +9,24 @@ import UIKit
 
 class GBHImageAsyncViewLoading: UIImageView {
 
+    /// Initializer 
+    ///
+    /// - Parameter frame: imageView frame 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        // Set default image
+        self.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
+    }
+
+    /// Required for deserialization
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     /// The image URL 
     var imageUrl: URL? {
         didSet {
-            // Set default image
-            self.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
-
             if let url = imageUrl {
                 // Start url loading
                 URLSession.shared.dataTask(with: url as URL) { data, response, error in

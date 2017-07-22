@@ -33,7 +33,10 @@ class GBHFacebookAlbum {
     ///   - count: the number of picture in the album
     ///   - coverUrl: the string url of the cover picture 
     ///   - albmId: the album id 
-    init(name: String, count: Int, coverUrl: URL, albmId: String) {
+    init(name: String,
+         count: Int? = nil,
+         coverUrl: URL,
+         albmId: String) {
         self.name = name
         self.albumId = albmId
         self.coverUrl = coverUrl
