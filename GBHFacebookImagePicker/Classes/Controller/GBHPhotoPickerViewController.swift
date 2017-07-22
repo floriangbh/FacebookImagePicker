@@ -208,7 +208,7 @@ class GBHPhotoPickerViewController: UIViewController {
             if imageArray.isEmpty {
                 self.startLoading()
                 if let album = self.album {
-                    GBHFacebookHelper.shared.fbAlbumsPictureRequest(after: nil, album: album)
+                    GBHFacebookManager.shared.fbAlbumsPictureRequest(after: nil, album: album)
                 } else {
                     self.albumPictureDelegate?.didFailSelectPictureInAlbum(error: nil)
                 }

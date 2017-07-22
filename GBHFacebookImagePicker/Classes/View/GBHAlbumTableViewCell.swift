@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GBHAlbumTableViewCell: UITableViewCell {
+final class GBHAlbumTableViewCell: UITableViewCell {
 
     // MARK: - Var
 

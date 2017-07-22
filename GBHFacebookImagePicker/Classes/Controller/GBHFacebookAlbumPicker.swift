@@ -128,7 +128,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
 
     /// Start Facebook login
     fileprivate func doFacebookLogin() {
-        GBHFacebookHelper.shared.login(controller: self) { (success, error) in
+        GBHFacebookManager.shared.login(controller: self) { (success, error) in
             if !success {
                 // Something wrong
                 if let loginError = error {

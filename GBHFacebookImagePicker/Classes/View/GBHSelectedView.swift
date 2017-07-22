@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GBHSelectedView: UIView {
+final class GBHSelectedView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

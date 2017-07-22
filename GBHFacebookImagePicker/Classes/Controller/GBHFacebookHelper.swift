@@ -9,11 +9,11 @@ import Foundation
 import FBSDKLoginKit
 import FBSDKCoreKit
 
-class GBHFacebookHelper {
+class GBHFacebookManager {
 
     // MARK: - Singleton 
 
-    static let shared = GBHFacebookHelper()
+    static let shared = GBHFacebookManager()
 
     // MARK: - Var
 
@@ -63,7 +63,7 @@ class GBHFacebookHelper {
                                 name: "Photos of You",
                                 count: 0,
                                 coverUrl: url,
-                                albmId: GBHFacebookHelper.idTaggedPhotosAlbum
+                                albmId: GBHFacebookManager.idTaggedPhotosAlbum
                             )
                             self.albumList.insert(taggedPhotosAlbum,
                                                   at: 0)
@@ -135,7 +135,7 @@ class GBHFacebookHelper {
         guard let id = album.albumId else {
             return
         }
-        var  path = id == GBHFacebookHelper.idTaggedPhotosAlbum
+        var  path = id == GBHFacebookManager.idTaggedPhotosAlbum
             ? "/me/photos?fields=picture,source,id"
             : "/\(id)/photos?fields=picture,source,id"
         if let afterPath = after {
@@ -305,8 +305,8 @@ class GBHFacebookHelper {
                                 completion(true, FBpicurl)
                             }
                         }
-                    } 
-                    
+                    }
+
                     completion(false, nil)
                 }
             })
