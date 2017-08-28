@@ -15,6 +15,8 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     /// Selection hover view
     let selectView = GBHSelectedView()
 
+    // MARK: - Lifecycle 
+
     /// Override the initializer 
     ///
     /// - Parameter frame: the new frame of the cell
@@ -46,6 +48,21 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         self.isSelected = false
     }
 
+    /// Override prepare for reuse 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        // Set default image
+        self.albumImageView?.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
+    }
+
+    /// Required init for deserialization
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Configure 
+
     /// Configure collection cell with image
     ///
     /// - Parameter picture: Facebook's image model
@@ -56,11 +73,6 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
             let url = URL(string: urlPath) {
             self.albumImageView?.imageUrl = url
         }
-    }
-
-    /// Required init for deserialization
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override var isSelected: Bool {

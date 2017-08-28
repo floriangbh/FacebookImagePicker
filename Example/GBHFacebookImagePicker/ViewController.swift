@@ -89,13 +89,13 @@ class ViewController: UIViewController {
 
         // Selected border width 
         GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
-        
+
         // Maximum selected pictures 
         GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
-        
+
         // Display tagged album 
         GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
-        
+
         // Tagged album name
         GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
     }
@@ -112,7 +112,7 @@ class ViewController: UIViewController {
 //        GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
 //        GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 20
 //        GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
-//        GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
+        GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
 
         // Make some customisation
         // self.someCustomisation()

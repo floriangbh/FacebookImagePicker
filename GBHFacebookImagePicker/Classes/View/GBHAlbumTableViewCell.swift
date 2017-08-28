@@ -20,6 +20,16 @@ final class GBHAlbumTableViewCell: UITableViewCell {
     /// Height of the album's cover 
     fileprivate let imageHeight = 70
 
+    // MARK: - Reuse 
+
+    /// Override prepare for reuse 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        // Set default image
+        self.photoImageView?.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
+    }
+
     // MARK: - Init
 
     /// Initialize the cell
