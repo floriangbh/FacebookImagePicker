@@ -3,6 +3,11 @@ Changelog
 
 ### 1.3.0
 
+- Bump FBSDK from v4.24 to v4.26
+- Improve cell reusability
+
+### 1.3.0
+
 - Add tagged photos album option 
 
 ### 1.2.3
