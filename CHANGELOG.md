@@ -1,10 +1,12 @@
 Changelog
 ==========
 
-### 1.3.0
+### 1.3.1
 
 - Bump FBSDK from v4.24 to v4.26
 - Improve cell reusability
+- Fix potential memory leak 
+- Fix potential multiple tagged album 
 
 ### 1.3.0
 
