@@ -26,6 +26,9 @@ class GBHFacebookManager {
     /// Custom id for custom album
     static let idTaggedPhotosAlbum = "idPhotosOfYouTagged"
 
+    /// Boolean to check if we have already added the tagged album, prevent multiple addition when fetching next cursor 
+    fileprivate var alreadyAddTagged: Bool = false
+
     // MARK: - Retrieve Facebook's Albums
 
     /// Make GRAPH API's request for user's album
@@ -44,7 +47,9 @@ class GBHFacebookManager {
                                              parameters: nil)
 
         // Start Facebook Request
-        _ = graphRequest?.start { _, result, error in
+        _ = graphRequest?.start { [weak self] _, result, error in
+            guard let selfStrong = self else { return }
+
             if error != nil {
                 print(error.debugDescription)
                 return
@@ -53,10 +58,11 @@ class GBHFacebookManager {
                 if let fbResult = result as? [String: AnyObject] {
 
                     // Parse Album
-                    self.parseFbAlbumResult(fbResult: fbResult)
+                    selfStrong.parseFbAlbumResult(fbResult: fbResult)
 
                     // Add tagged album if needed 
-                    if GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum {
+                    if GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum
+                        && selfStrong.alreadyAddTagged == false {
 
                         // Create tagged album 
                         let taggedPhotosAlbum = GBHFacebookAlbum(
@@ -65,8 +71,11 @@ class GBHFacebookManager {
                         )
 
                         // Add to albums 
-                        self.albumList.insert(taggedPhotosAlbum,
+                        selfStrong.albumList.insert(taggedPhotosAlbum,
                                               at: 0)
+
+                        // Update flag 
+                        selfStrong.alreadyAddTagged = true
                     }
 
                     // Try to find next page
@@ -76,13 +85,13 @@ class GBHFacebookManager {
                         let after = cursors["after"] as? String {
 
                         // Restart album request for next page
-                        self.fbAlbumRequest(after: after)
+                        selfStrong.fbAlbumRequest(after: after)
                     } else {
 
-                        print("Found \(self.albumList.count) album(s) with this Facebook account.")
+                        print("Found \(selfStrong.albumList.count) album(s) with this Facebook account.")
                         // Notifie controller with albums
                         NotificationCenter.default.post(name: Notification.Name.ImagePickerDidRetrieveAlbum,
-                                                        object: self.albumList)
+                                                        object: selfStrong.albumList)
                     }
                 }
             }
@@ -146,7 +155,9 @@ class GBHFacebookManager {
                                              parameters: nil)
 
         // Start Facebook's request
-        _ = graphRequest?.start { _, result, error in
+        _ = graphRequest?.start { [weak self] _, result, error in
+            guard let selfStrong = self else { return }
+
             if error != nil {
                 print(error.debugDescription)
                 return
@@ -155,7 +166,7 @@ class GBHFacebookManager {
                 if let fbResult = result as? [String: AnyObject] {
                     // Parse Album
                     //print(fbResult)
-                    self.parseFbPicture(fbResult: fbResult,
+                    selfStrong.parseFbPicture(fbResult: fbResult,
                                         album: album)
 
                     // Try to find next page
@@ -165,7 +176,7 @@ class GBHFacebookManager {
                         let after = cursors["after"] as? String {
 
                         // Restart album request for next page
-                        self.fbAlbumsPictureRequest(after: after,
+                        selfStrong.fbAlbumsPictureRequest(after: after,
                                                     album: album)
                     } else {
                         print("Found \(album.photos.count) photos for the \"\(album.name!)\" album.")
@@ -228,7 +239,10 @@ class GBHFacebookManager {
             // Start Facebook's login
             let loginManager = FBSDKLoginManager()
             loginManager.logIn(withReadPermissions: ["user_photos"],
-                               from: controller) { (response, error) in
+                               from: controller) { [weak self] (response, error) in
+
+                                guard let selfStrong = self else { return }
+
                                 if error != nil {
                                     // Failed
                                     print("Failed to login")
@@ -245,11 +259,11 @@ class GBHFacebookManager {
                                             if let permission = response?.declinedPermissions {
                                                 if permission.contains("user_photos") {
                                                     // "user_photos" is dennied
-                                                    self.logout() // Flush fb session
+                                                    selfStrong.logout() // Flush fb session
                                                     completion(false, .permissionDenied)
                                                 } else {
                                                     // "user_photos" is granted, let's get user's pictures
-                                                    self.fbAlbumRequest()
+                                                    selfStrong.fbAlbumRequest()
                                                     completion(true, nil)
                                                 }
                                             } else {
@@ -286,7 +300,7 @@ class GBHFacebookManager {
             let param = ["fields": "picture.width(600).height(600)"]
             let graphRequest = FBSDKGraphRequest(graphPath: "me",
                                                  parameters: param)
-            _ = graphRequest?.start(completionHandler: { (_, result, error) -> Void in
+            _ = graphRequest?.start(completionHandler: { [weak self] (_, result, error) -> Void in
                 if error != nil {
                     // KO
                     print("Error")
@@ -299,8 +313,7 @@ class GBHFacebookManager {
                             if let FBpictureData = result["picture"] as? [String: AnyObject],
                                 let FBpicData = FBpictureData["data"] as? [String: AnyObject],
                                 let FBPicUrl = FBpicData["url"] as? String {
-                                //self.pictureProfilUrl = FBpicurl
-                                print(FBPicUrl)
+
                                 completion(true, FBPicUrl)
                             }
                         }
