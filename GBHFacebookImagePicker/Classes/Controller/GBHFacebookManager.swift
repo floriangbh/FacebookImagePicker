@@ -300,7 +300,7 @@ class GBHFacebookManager {
             let param = ["fields": "picture.width(600).height(600)"]
             let graphRequest = FBSDKGraphRequest(graphPath: "me",
                                                  parameters: param)
-            _ = graphRequest?.start(completionHandler: { [weak self] (_, result, error) -> Void in
+            _ = graphRequest?.start(completionHandler: { (_, result, error) -> Void in
                 if error != nil {
                     // KO
                     print("Error")
