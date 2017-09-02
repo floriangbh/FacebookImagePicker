@@ -102,7 +102,7 @@ class ViewController: UIViewController {
 
     // MARK: - Action
 
-    func showAlbumClick() {
+    @objc func showAlbumClick() {
         print(self, #function)
 
         // Init picker 

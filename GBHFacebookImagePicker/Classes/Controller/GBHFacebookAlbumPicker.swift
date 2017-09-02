@@ -157,7 +157,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
     }
 
     /// Handler for did retrieve album list
-    func didReceiveAlbum(_ sender: Notification) {
+    @objc func didReceiveAlbum(_ sender: Notification) {
         if let albums =  sender.object as? [GBHFacebookAlbum] {
             self.albums = albums
             self.stopLoading()
