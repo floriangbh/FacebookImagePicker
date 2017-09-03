@@ -20,17 +20,7 @@ final class GBHAlbumTableViewCell: UITableViewCell {
     /// Height of the album's cover 
     fileprivate let imageHeight = 70
 
-    // MARK: - Reuse 
-
-    /// Override prepare for reuse 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-
-        // Set default image
-        self.photoImageView?.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
-    }
-
-    // MARK: - Init
+    // MARK: - Lifecycle
 
     /// Initialize the cell
     ///
@@ -65,6 +55,14 @@ final class GBHAlbumTableViewCell: UITableViewCell {
     /// Required for deserialization
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    /// Overriding prepare for reuse 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Set default image
+        self.photoImageView?.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
     }
 
     /// Define the layout of the album name label and number of picture label
