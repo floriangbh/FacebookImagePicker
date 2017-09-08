@@ -204,15 +204,19 @@ class GBHFacebookAlbumPicker: UITableViewController {
         return 1
     }
 
-    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(_ tableView: UITableView,
+                                   numberOfRowsInSection section: Int) -> Int {
         return self.albums.count
     }
 
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override public func tableView(_ tableView: UITableView,
+                                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Dequeue the cell 
         var cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier,
                                                  for: indexPath) as? GBHAlbumTableViewCell
         if cell == nil {
-            cell = GBHAlbumTableViewCell(style: .subtitle, reuseIdentifier: self.reuseIdentifier)
+            cell = GBHAlbumTableViewCell(style: .subtitle,
+                                         reuseIdentifier: self.reuseIdentifier)
         }
 
         cell?.configure(album: albums[indexPath.row])
@@ -220,7 +224,8 @@ class GBHFacebookAlbumPicker: UITableViewController {
         return cell!
     }
 
-    override public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override public func tableView(_ tableView: UITableView,
+                                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
 

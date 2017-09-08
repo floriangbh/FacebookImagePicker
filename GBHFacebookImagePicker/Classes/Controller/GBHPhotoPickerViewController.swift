@@ -30,6 +30,9 @@ class GBHPhotoPickerViewController: UIViewController {
         }
     }
 
+    /// Did already load album 
+    fileprivate var alreadyLoaded: Bool = false
+
     /// Album picker controller delegate 
     weak var albumPictureDelegate: GBHAlbumPickerTableViewControllerDelegate?
 
@@ -220,7 +223,13 @@ class GBHPhotoPickerViewController: UIViewController {
 
     /// Did finish get album's pictures callback
     @objc fileprivate func didReceivePicture(_ sender: Notification) {
+        // Update UI 
         self.stopLoading()
+
+        // Update flag 
+        self.alreadyLoaded = true
+
+        // Set album's picture 
         if let album = sender.object as? GBHFacebookAlbum,
             self.album?.albumId == album.albumId {
             self.imageArray = album.photos
@@ -242,6 +251,23 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
     // MARK: UICollectionViewDelegate & UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if imageArray.count <= 0, self.alreadyLoaded {
+            // No picture in this album, add empty placeholder 
+            // Should happen only for tagged album, when we can't have the album's picture count 
+            let emptyLabel = UILabel(frame: CGRect(x: 0,
+                                                   y: 0,
+                                                   width: self.pictureCollection?.frame.size.width ?? 0,
+                                                   height: self.pictureCollection?.frame.size.height ?? 0))
+            emptyLabel.textAlignment = .center
+            emptyLabel.text = "No picture(s) in this album."
+            emptyLabel.font = UIFont.italicSystemFont(ofSize: 16)
+            emptyLabel.textColor = UIColor.lightGray
+            self.pictureCollection?.backgroundView = emptyLabel
+            return 0
+        }
+
+        // Display photos 
+        self.pictureCollection?.backgroundView = nil
         return 1
     }
 
@@ -256,6 +282,7 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
         let imageModel = self.imageArray[indexPath.row]
 
         if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
+            // Multiple selection mode 
             self.selectedImages.append(imageModel)
         } else {
             // Single selection mode  

@@ -56,11 +56,11 @@ final class GBHAlbumTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     /// Overriding prepare for reuse 
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         // Set default image
         self.photoImageView?.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
     }
