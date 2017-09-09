@@ -17,6 +17,15 @@ class GBHPhotoPickerViewController: UIViewController {
     /// Cell identifier 
     fileprivate let reuseIdentifier = "Cell"
 
+    /// Cell size 
+    fileprivate var cellSize: CGFloat?
+
+    /// Number of cell for each row 
+    fileprivate let cellPerRow: CGFloat = GBHFacebookImagePicker.pickerConfig.picturePerRow
+
+    /// Spacing beetween cell 
+    fileprivate let cellSpacing: CGFloat = 5.0
+
     /// The collection view where are display the pictures 
     fileprivate var pictureCollection: UICollectionView? // Collection for display album's pictures
 
@@ -71,6 +80,13 @@ class GBHPhotoPickerViewController: UIViewController {
 
         // Fetch photos if empty
         self.getPhotos()
+    }
+
+    deinit {
+        // Remove picture loading observer 
+        NotificationCenter.default.removeObserver(self,
+                                                  name: Notification.Name.ImagePickerDidRetriveAlbumPicture,
+                                                  object: nil)
     }
 
     // MARK: Prepare
@@ -131,6 +147,11 @@ class GBHPhotoPickerViewController: UIViewController {
         if let collection = self.pictureCollection {
             self.view.addSubview(collection)
             self.prepareCollectionViewConstraint()
+        }
+
+        // Define cell size 
+        if let collectionWidth = self.pictureCollection?.frame.width {
+            self.cellSize = (collectionWidth - (self.cellSpacing * (self.cellPerRow + 1.0))) / self.cellPerRow
         }
     }
 
@@ -333,18 +354,22 @@ extension GBHPhotoPickerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return self.cellSpacing
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: self.cellSpacing,
+                            left: self.cellSpacing,
+                            bottom: self.cellSpacing,
+                            right: self.cellSpacing)
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 80)
+        return CGSize(width: self.cellSize ?? 0,
+                      height: self.cellSize ?? 0)
     }
 }

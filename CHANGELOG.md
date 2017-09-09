@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+### 2.0
+
+- Swift 4 
+- Handle empty album and display placeholder message 
+- Add some configuration options
+- Update UI for albums and pictures 
+
 ### 1.3.1
 
 - Bump FBSDK from v4.24 to v4.26

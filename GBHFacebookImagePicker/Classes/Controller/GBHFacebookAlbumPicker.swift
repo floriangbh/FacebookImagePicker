@@ -67,7 +67,6 @@ class GBHFacebookAlbumPicker: UITableViewController {
                                 forCellReuseIdentifier: self.reuseIdentifier)
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.separatorStyle = .none
         self.tableView.cellLayoutMarginsFollowReadableWidth = false
         self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
 

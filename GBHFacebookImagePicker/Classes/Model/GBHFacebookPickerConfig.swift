@@ -53,6 +53,9 @@ public struct GBHFacebookPickerConfig {
     /// Maximum selected pictures
     public var maximumSelectedPictures: Int?
 
+    /// Number of picture per row
+    public var picturePerRow: CGFloat = 3.0
+
     /// Display tagged album 
     public var displayTaggedAlbum: Bool = false
 

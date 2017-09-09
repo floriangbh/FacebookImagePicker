@@ -98,6 +98,9 @@ class ViewController: UIViewController {
 
         // Tagged album name
         GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
+        
+        /// Number of picture per row (3 by default)
+        GBHFacebookImagePicker.pickerConfig.picturePerRow = 4
     }
 
     // MARK: - Action
@@ -109,8 +112,8 @@ class ViewController: UIViewController {
         let picker = GBHFacebookImagePicker()
 
         // Allow multiple selection (false by default)
-//        GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
-//        GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 20
+        GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
+        GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 20
 //        GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
         GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
 

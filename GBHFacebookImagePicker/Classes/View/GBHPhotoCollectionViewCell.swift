@@ -29,8 +29,8 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         // Picture contener
         self.albumImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0,
                                                                      y: 0,
-                                                                     width: 80,
-                                                                     height: 80))
+                                                                     width: self.frame.width,
+                                                                     height: self.frame.height))
         self.albumImageView?.contentMode = .scaleAspectFill
         self.albumImageView?.clipsToBounds = true
         self.albumImageView?.layer.cornerRadius = GBHFacebookImagePicker.pickerConfig.pictureCornerRadius

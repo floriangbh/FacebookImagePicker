@@ -47,9 +47,13 @@ final class GBHAlbumTableViewCell: UITableViewCell {
             self.contentView.addSubview(imgView)
         }
 
-        // Label
+        // Album title label 
+        self.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         self.textLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor ?? .black
-        self.detailTextLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsCountColor ?? .black
+
+        // Photo count label 
+        let defaultColor = UIColor.lightGray
+        self.detailTextLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsCountColor ?? defaultColor
     }
 
     /// Required for deserialization
