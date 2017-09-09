@@ -259,6 +259,7 @@ class GBHPhotoPickerViewController: UIViewController {
 
     @objc func actionSelectBarButton(sender: UIBarButtonItem) {
         // Clean collection and start loading
+        self.alreadyLoaded = false
         self.imageArray = []
         self.startLoading()
 
