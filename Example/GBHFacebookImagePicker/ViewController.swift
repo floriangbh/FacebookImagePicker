@@ -98,7 +98,7 @@ class ViewController: UIViewController {
 
         // Tagged album name
         GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
-        
+
         /// Number of picture per row (3 by default)
         GBHFacebookImagePicker.pickerConfig.picturePerRow = 4
     }

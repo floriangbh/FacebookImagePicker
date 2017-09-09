@@ -328,10 +328,17 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
             cell = GBHPhotoCollectionViewCell()
         }
 
-        // Configure cell with image
-        cell?.configure(picture: self.imageArray[indexPath.row])
-
         return cell!
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+
+        if let cell = cell as? GBHPhotoCollectionViewCell {
+            // Configure cell with image
+            cell.configure(picture: self.imageArray[indexPath.row])
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

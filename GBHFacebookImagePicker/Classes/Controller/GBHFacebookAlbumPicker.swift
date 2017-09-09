@@ -218,9 +218,17 @@ class GBHFacebookAlbumPicker: UITableViewController {
                                          reuseIdentifier: self.reuseIdentifier)
         }
 
-        cell?.configure(album: albums[indexPath.row])
-
         return cell!
+    }
+
+    override func tableView(_ tableView: UITableView,
+                            willDisplay cell: UITableViewCell,
+                            forRowAt indexPath: IndexPath) {
+
+        if let cell = cell as? GBHAlbumTableViewCell {
+            // Configure the cell 
+            cell.configure(album: albums[indexPath.row])
+        }
     }
 
     override public func tableView(_ tableView: UITableView,

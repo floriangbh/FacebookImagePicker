@@ -107,12 +107,14 @@ final class GBHAlbumTableViewCell: UITableViewCell {
 
         // Album cover image
         if album.albumId == GBHFacebookManager.idTaggedPhotosAlbum {
+            // Special cover for tagged album : user facebook account picture 
             GBHFacebookManager.shared.getProfilePicture({ (_, url) in
                 if let stringUrl = url, let url = URL(string: stringUrl) {
                     self.photoImageView?.imageUrl = url
                 }
             })
         } else if let url = album.coverUrl {
+            // Regular album, load the album cover from de Graph API url 
             self.photoImageView?.imageUrl = url
         }
     }
