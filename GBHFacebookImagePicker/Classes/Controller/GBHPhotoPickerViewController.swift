@@ -24,7 +24,7 @@ class GBHPhotoPickerViewController: UIViewController {
     fileprivate let cellPerRow: CGFloat = GBHFacebookImagePicker.pickerConfig.picturePerRow
 
     /// Spacing beetween cell 
-    fileprivate let cellSpacing: CGFloat = 5.0
+    fileprivate let cellSpacing: CGFloat = GBHFacebookImagePicker.pickerConfig.cellSpacing
 
     /// The collection view where are display the pictures 
     fileprivate var pictureCollection: UICollectionView? // Collection for display album's pictures

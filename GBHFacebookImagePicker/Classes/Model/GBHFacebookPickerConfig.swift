@@ -55,6 +55,9 @@ public struct GBHFacebookPickerConfig {
 
     /// Number of picture per row
     public var picturePerRow: CGFloat = 3.0
+    
+    /// Space beetween cell 
+    public var cellSpacing: CGFloat = 1.5
 
     /// Display tagged album 
     public var displayTaggedAlbum: Bool = false
