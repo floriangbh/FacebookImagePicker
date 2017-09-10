@@ -7,6 +7,8 @@ Changelog
 - Handle empty album and display placeholder message 
 - Add some configuration options
 - Update UI for albums and pictures 
+- Update UI for pictures selection
+- Deprecated `selectedBorderWidth` & `selectedBorderColor` configuration
 
 ### 1.3.1
 

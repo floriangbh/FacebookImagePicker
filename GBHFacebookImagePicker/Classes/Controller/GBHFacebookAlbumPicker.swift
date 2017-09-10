@@ -99,8 +99,8 @@ class GBHFacebookAlbumPicker: UITableViewController {
 
         // Style 
         self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-
-        // Position 
+        
+        // Position
         self.indicator.center = self.view.center
 
         // Add 

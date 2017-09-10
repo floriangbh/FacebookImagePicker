@@ -16,7 +16,7 @@ class GBHImageAsyncViewLoading: UIImageView {
         super.init(frame: frame)
 
         // Set default image
-        self.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
+        self.image = GBHAssetManager.getImage(name: GBHAssetImage.loader)
     }
 
     /// Required for deserialization

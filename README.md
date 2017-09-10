@@ -176,8 +176,8 @@ GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
 // Tagged album name
 GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
 
-/// Number of picture per row (3 by default)
-GBHFacebookImagePicker.pickerConfig.picturePerRow = 4
+/// Number of picture per row (4 by default)
+GBHFacebookImagePicker.pickerConfig.picturePerRow = 3
 
 /// Space beetween album photo cell (1.5 by default)
 GBHFacebookImagePicker.pickerConfig.cellSpacing = 2.0

@@ -24,6 +24,12 @@ public class GBHAssetManager {
         }
 
         // Return the bundle image
-        return UIImage(named: name, in: bundle, compatibleWith: nil) ?? UIImage()
+        if let imageFromBundle = UIImage(named: name, in: bundle, compatibleWith: nil) {
+            return imageFromBundle
+        }
+
+        // Error occured 
+        print("Failed to get \(name) from bundle :-(")
+        return UIImage()
     }
 }

@@ -34,9 +34,11 @@ public struct GBHFacebookPickerConfig {
         public var albumsCountColor: UIColor?
 
         /// Will be applied to image border when selected 
+        @available(*, deprecated)
         public var selectedBorderColor: UIColor?
 
         /// Will be applied to image border width when selected 
+        @available(*, deprecated)
         public var selectedBorderWidth: CGFloat?
     }
 
@@ -54,8 +56,8 @@ public struct GBHFacebookPickerConfig {
     public var maximumSelectedPictures: Int?
 
     /// Number of picture per row
-    public var picturePerRow: CGFloat = 3.0
-    
+    public var picturePerRow: CGFloat = 4.0
+
     /// Space beetween cell 
     public var cellSpacing: CGFloat = 1.5
 

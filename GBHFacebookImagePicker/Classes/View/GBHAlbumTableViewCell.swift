@@ -66,7 +66,7 @@ final class GBHAlbumTableViewCell: UITableViewCell {
         super.prepareForReuse()
 
         // Set default image
-        self.photoImageView?.image = GBHAssetManager.getImage(name: "GBHFacebookImagePickerDefaultImageLoading")
+        self.photoImageView?.image = GBHAssetManager.getImage(name: GBHAssetImage.loader)
     }
 
     /// Define the layout of the album name label and number of picture label
