@@ -9,6 +9,8 @@ Changelog
 - Update UI for albums and pictures 
 - Update UI for pictures selection
 - Deprecated `selectedBorderWidth` & `selectedBorderColor` configuration
+- Add cache system for image loading 
+- Fix some bugs...
 
 ### 1.3.1
 

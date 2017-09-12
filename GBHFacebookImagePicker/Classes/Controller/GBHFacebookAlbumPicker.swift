@@ -95,11 +95,11 @@ class GBHFacebookAlbumPicker: UITableViewController {
         self.indicator = UIActivityIndicatorView(frame:CGRect(x: 0,
                                                               y: 0,
                                                               width: 40,
-                                                              height: 40) )
+                                                              height: 40))
 
         // Style 
         self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        
+
         // Position
         self.indicator.center = self.view.center
 
@@ -213,6 +213,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
         // Dequeue the cell 
         var cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier,
                                                  for: indexPath) as? GBHAlbumTableViewCell
+
         if cell == nil {
             cell = GBHAlbumTableViewCell(style: .subtitle,
                                          reuseIdentifier: self.reuseIdentifier)
@@ -250,6 +251,10 @@ class GBHFacebookAlbumPicker: UITableViewController {
     /// Dismiss the picker 
     func dismissPicker() {
         DispatchQueue.main.async {
+            // Reset flag
+            GBHFacebookManager.shared.reset()
+
+            // Dismiss and call delegate 
             self.dismiss(animated: true, completion: {
                 self.delegate?.facebookImagePickerDismissed()
             })

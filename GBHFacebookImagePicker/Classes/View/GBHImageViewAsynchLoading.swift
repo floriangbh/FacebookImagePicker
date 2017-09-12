@@ -28,30 +28,47 @@ class GBHImageAsyncViewLoading: UIImageView {
     var imageUrl: URL? {
         didSet {
             if let url = imageUrl {
-                // Start url loading
-                URLSession.shared.dataTask(with: url as URL) { data, response, error in
-                    // In error 
-                    guard let data = data, error == nil else {
-                        print("\nerror on download \(String(describing: error))")
-                        return
-                    }
 
-                    // Check success code (200)
-                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                        print("statusCode != 200; \(httpResponse.statusCode)")
-                        return
-                    }
-
-                    // Set image 
-                    DispatchQueue.main.async {
-                        // Display image !
-                        if let downloadedImage = UIImage(data: data) {
-                            self.setImageWithAnimation(image: downloadedImage)
+                if let cachedImage = GBHImageCacheManager.shared.getImage(forUrl: url.absoluteString) {
+                    // Retrieved image from cache 
+                    self.image = cachedImage
+                } else {
+                    // Image aren't in the cache, let's download it 
+                    // Start url loading
+                    URLSession.shared.dataTask(with: url as URL) { [weak self] data, response, error in
+                        // Get strong self 
+                        guard let strongSelf = self else {
+                            print("Can't get strong self.")
+                            return
                         }
-                    }
 
-                    // resume task
-                    }.resume()
+                        // In error 
+                        guard let data = data, error == nil else {
+                            print("Error on download \(String(describing: error))")
+                            return
+                        }
+
+                        // Check success code (200)
+                        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                            print("statusCode != 200 : \(httpResponse.statusCode)")
+                            return
+                        }
+
+                        DispatchQueue.main.async {
+                            // Display the image !
+                            if let downloadedImage = UIImage(data: data) {
+                                // Cache the image 
+                                GBHImageCacheManager.shared.setImage(forUrl: url.absoluteString,
+                                                                     image: downloadedImage)
+
+                                // Set the image with animation
+                                strongSelf.setImageWithAnimation(image: downloadedImage)
+                            }
+                        }
+
+                        // resume task
+                        }.resume()
+                }
             }
         }
     }

@@ -21,10 +21,13 @@ class GBHFacebookManager {
     fileprivate var albumList: [GBHFacebookAlbum] = []
 
     /// Picture url path for the API
-    fileprivate let pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
+    fileprivate var pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
 
     /// Custom id for custom album
     static let idTaggedPhotosAlbum = "idPhotosOfYouTagged"
+
+    /// Profile picture url, to prevent multiple fetch 
+    fileprivate var profilePictureUrl: String?
 
     /// Boolean to check if we have already added the tagged album, prevent multiple addition when fetching next cursor 
     fileprivate var alreadyAddTagged: Bool = false
@@ -72,7 +75,7 @@ class GBHFacebookManager {
 
                         // Add to albums 
                         selfStrong.albumList.insert(taggedPhotosAlbum,
-                                              at: 0)
+                                                    at: 0)
 
                         // Update flag 
                         selfStrong.alreadyAddTagged = true
@@ -167,7 +170,7 @@ class GBHFacebookManager {
                     // Parse Album
                     //print(fbResult)
                     selfStrong.parseFbPicture(fbResult: fbResult,
-                                        album: album)
+                                              album: album)
 
                     // Try to find next page
                     if let paging = fbResult["paging"] as? [String: AnyObject],
@@ -177,7 +180,7 @@ class GBHFacebookManager {
 
                         // Restart album request for next page
                         selfStrong.fbAlbumsPictureRequest(after: after,
-                                                    album: album)
+                                                          album: album)
                     } else {
                         print("Found \(album.photos.count) photos for the \"\(album.name!)\" album.")
                         // Notifie controller with albums & photos
@@ -296,36 +299,55 @@ class GBHFacebookManager {
     }
 
     func getProfilePicture(_ completion: @escaping ((Bool, String?) -> Void)) {
-        if FBSDKAccessToken.current() != nil {
-            let param = ["fields": "picture.width(600).height(600)"]
-            let graphRequest = FBSDKGraphRequest(graphPath: "me",
-                                                 parameters: param)
-            _ = graphRequest?.start(completionHandler: { (_, result, error) -> Void in
-                if error != nil {
-                    // KO
-                    print("Error")
-                    completion(false, nil)
-                } else {
-                    // OK
-                    if let result = result as? [String: AnyObject] {
-                        // Facebook profil pic URL
-                        if result["picture"] != nil {
-                            if let FBpictureData = result["picture"] as? [String: AnyObject],
-                                let FBpicData = FBpictureData["data"] as? [String: AnyObject],
-                                let FBPicUrl = FBpicData["url"] as? String {
+        if let profilUrl = self.profilePictureUrl {
+            // Return saved url 
+            completion(true, profilUrl)
+        } else {
+            // Retrieve profile url form Graph API
+            if FBSDKAccessToken.current() != nil {
+                let param = ["fields": "picture.width(600).height(600)"]
+                let graphRequest = FBSDKGraphRequest(graphPath: "me",
+                                                     parameters: param)
+                _ = graphRequest?.start(completionHandler: { (_, result, error) -> Void in
+                    if error != nil {
+                        // KO
+                        print("Error")
+                        completion(false, nil)
+                    } else {
+                        // OK
+                        if let result = result as? [String: AnyObject] {
+                            // Facebook profil pic URL
+                            if result["picture"] != nil {
+                                if let FBpictureData = result["picture"] as? [String: AnyObject],
+                                    let FBpicData = FBpictureData["data"] as? [String: AnyObject],
+                                    let FBPicUrl = FBpicData["url"] as? String {
 
-                                completion(true, FBPicUrl)
+                                    // Save url 
+                                    self.profilePictureUrl = FBPicUrl
+
+                                    // Start completion 
+                                    completion(true, FBPicUrl)
+                                }
                             }
                         }
-                    }
 
-                    completion(false, nil)
-                }
-            })
-        } else {
-            // KO
-            completion(false, nil)
-            print("Token error")
+                        completion(false, nil)
+                    }
+                })
+            } else {
+                // KO
+                completion(false, nil)
+                print("Token error")
+            }
         }
+    }
+
+    /// Reset manager 
+    func reset() {
+        // Reset tagged flag 
+        self.alreadyAddTagged = false
+
+        // Reset profil picture url 
+        self.profilePictureUrl = nil
     }
 }
