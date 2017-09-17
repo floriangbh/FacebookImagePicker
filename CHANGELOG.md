@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 2.0.1
+
+- Fix simple selection loading
+
 ### 2.0
 
 - Swift 4 
