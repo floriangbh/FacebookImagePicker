@@ -55,7 +55,8 @@ final class GBHSelectedView: UIView {
 
     /// Prepare view constraints
     fileprivate func prepareConstraint() {
-        // Apply checkmark constraint 
+        // Apply checkmark constraint
+        guard let checkMarkView = self.checkMarkView else { return }
         self.addConstraint(NSLayoutConstraint(item: checkMarkView,
                                               attribute: NSLayoutAttribute.bottom,
                                               relatedBy: NSLayoutRelation.equal,
