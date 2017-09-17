@@ -32,7 +32,7 @@ This picker takes care of all authentication (from the web or with the native Fa
 - [x] Select and get URL/Image of the selected pictures 
 - [x] UI Customization 
 - [x] AppStore ready
-- [x] Swift 3 
+- [x] Swift 3 & Swift 4
 - [x] iPhone/iPad support 
 - [x] Multiple selection in one album
 - [ ] MVC to MVVM (feel free to make PR)
@@ -201,11 +201,11 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 
 ## Requirements
 
-* Xcode 8 
+* Xcode 9
 * iOS 9.0+ target deployment
 * FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
 * Facebook Application, see [usage](#usage) for explaination 
-* Swift 3 project 
+* Swift 3 or Swift 4 project
 
 ## Installation
 
@@ -213,7 +213,9 @@ GBHFacebookImagePicker is available through [CocoaPods](http://cocoapods.org). T
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "GBHFacebookImagePicker"
+pod "GBHFacebookImagePicker", '~> 2.0'
+
+pod "GBHFacebookImagePicker", '~> 1.3.1' # For Swift 3.1
 ```
 
 ## Alternative solutions
