@@ -28,4 +28,7 @@ profile
 Carthage/
 *.resolved
 
+#Cocoapods 
+Pods/
+
 
