@@ -92,10 +92,10 @@ class GBHFacebookAlbumPicker: UITableViewController {
     /// Create & add activity indicator to the center of view
     fileprivate func prepareActivityIndicator() {
         // Init 
-        self.indicator = UIActivityIndicatorView(frame:CGRect(x: 0,
-                                                              y: 0,
-                                                              width: 40,
-                                                              height: 40))
+        self.indicator = UIActivityIndicatorView(frame: CGRect(x: 0,
+                                                               y: 0,
+                                                               width: 40,
+                                                               height: 40))
 
         // Style 
         self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray

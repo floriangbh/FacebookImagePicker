@@ -109,13 +109,13 @@ class GBHFacebookManager {
 
             // Parsing user's album
             for album in albumArray {
-                if let albumDic = album as? [String:AnyObject],
+                if let albumDic = album as? [String: AnyObject],
                     let albumName = albumDic["name"] as? String,
                     let albumId = albumDic["id"] as? String,
                     let albumCount = albumDic["count"] as? Int {
 
                     // Album's cover url
-                    let albumUrlPath = String(format : self.pictureUrl,
+                    let albumUrlPath = String(format: self.pictureUrl,
                                               albumId,
                                               FBSDKAccessToken.current().tokenString)
 
@@ -203,7 +203,7 @@ class GBHFacebookManager {
 
             // Parsing album's picture
             for photo in photosResult {
-                if let photoDic = photo as? [String : AnyObject],
+                if let photoDic = photo as? [String: AnyObject],
                     let id = photoDic["id"] as? String,
                     let picture = photoDic["picture"] as? String,
                     let source = photoDic["source"] as? String {

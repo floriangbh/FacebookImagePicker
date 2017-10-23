@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Open URL
 
     // Needed for handle Facebook callback url
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
         let annotation = options[UIApplicationOpenURLOptionsKey.annotation] as? String
         FBSDKApplicationDelegate.sharedInstance().application(app,

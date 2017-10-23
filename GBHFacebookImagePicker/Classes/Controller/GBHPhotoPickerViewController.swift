@@ -201,7 +201,7 @@ class GBHPhotoPickerViewController: UIViewController {
 
     /// Prepare UIActivityIndicatorView and display it at the center of the view
     fileprivate func prepareActivityIndicator() {
-        self.indicator = UIActivityIndicatorView(frame:CGRect(x: 0,
+        self.indicator = UIActivityIndicatorView(frame: CGRect(x: 0,
                                                               y: 0,
                                                               width: 40,
                                                               height: 40) )
