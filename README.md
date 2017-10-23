@@ -48,7 +48,7 @@ pod try GBHFacebookImagePicker
 
 Or to run the example project manually, clone the repo, and run `pod install` from the Example directory first.
 
-Don't forgot to replace the current Facebook App's ID with your own in the plist file (Open as > Source code). 
+Don't forget to replace the current Facebook App's ID with your own in the plist file (Open as > Source code). 
 Like this :
 
 ```xml
