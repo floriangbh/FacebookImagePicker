@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 2.0.2
+
+- Bump FBSDK to 4.27.1
+
 ### 2.0.1
 
 - Fix simple selection loading
