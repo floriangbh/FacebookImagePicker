@@ -319,6 +319,10 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
             // Send to album delegate for download
             self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: [imageModel])
         }
+        
+        if GBHFacebookImagePicker.pickerConfig.performTapAnimation, let cell = collectionView.cellForItem(at: indexPath) as? GBHPhotoCollectionViewCell {
+            cell.tapAnimation()
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -326,6 +330,10 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
         let imageModel = self.imageArray[indexPath.row]
         if let index = self.selectedImages.index(where: { $0.imageId == imageModel.imageId }) {
             self.selectedImages.remove(at: index)
+        }
+        
+        if GBHFacebookImagePicker.pickerConfig.performTapAnimation, let cell = collectionView.cellForItem(at: indexPath) as? GBHPhotoCollectionViewCell {
+            cell.tapAnimation()
         }
     }
 

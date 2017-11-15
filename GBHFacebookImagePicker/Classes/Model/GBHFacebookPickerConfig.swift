@@ -40,6 +40,9 @@ public struct GBHFacebookPickerConfig {
         /// Will be applied to image border width when selected 
         @available(*, deprecated)
         public var selectedBorderWidth: CGFloat?
+        
+        /// Show check view
+        public var showCheckView: Bool = false
     }
 
     /// Will be applied to the album's navigation bar title
@@ -48,6 +51,9 @@ public struct GBHFacebookPickerConfig {
 
     /// The picture corner radius. Used for display album cover and album's picture.
     public var pictureCornerRadius: CGFloat = 2.0
+    
+    /// Tap animation
+    public var performTapAnimation: Bool = false
 
     /// Allow multiple pictures selection
     public var allowMultipleSelection: Bool = false
