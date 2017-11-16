@@ -346,7 +346,6 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
         if cell == nil {
             cell = GBHPhotoCollectionViewCell()
         }
-
         return cell!
     }
 

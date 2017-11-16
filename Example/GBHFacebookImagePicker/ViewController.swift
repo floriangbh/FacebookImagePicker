@@ -93,11 +93,17 @@ class ViewController: UIViewController {
         // Tagged album name
         GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
 
-        /// Number of picture per row (4 by default)
+        // Number of picture per row (4 by default)
         GBHFacebookImagePicker.pickerConfig.picturePerRow = 3
 
-        /// Space beetween album photo cell (1.5 by default)
+        // Space beetween album photo cell (1.5 by default)
         GBHFacebookImagePicker.pickerConfig.cellSpacing = 2.0
+        
+        // Perform animation on picture tap (false by default)
+        GBHFacebookImagePicker.pickerConfig.performTapAnimation = true
+        
+        // Show check style with image and layer (true by default)
+        GBHFacebookImagePicker.pickerConfig.uiConfig.showCheckView = false 
     }
 
     // MARK: - Action
@@ -111,7 +117,7 @@ class ViewController: UIViewController {
         // Allow multiple selection (false by default)
         GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
         GBHFacebookImagePicker.pickerConfig.picturePerRow = 3
-        GBHFacebookImagePicker.pickerConfig.performTapAnimation = true
+        GBHFacebookImagePicker.pickerConfig.performTapAnimation = false
 
         // Make some customisation
         // self.someCustomisation()
