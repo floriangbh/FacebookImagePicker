@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+### 2.1.0
+
+- Add selection animation 
+- Mode customisation with `showCheckView` and `performTapAnimation`
+- Bump FBSDK to 4.28
+
 ### 2.0.2
 
 - Bump FBSDK to 4.27.1

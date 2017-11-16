@@ -33,14 +33,6 @@ public struct GBHFacebookPickerConfig {
         /// Will be applied to album's pictures number 
         public var albumsCountColor: UIColor?
 
-        /// Will be applied to image border when selected 
-        @available(*, deprecated)
-        public var selectedBorderColor: UIColor?
-
-        /// Will be applied to image border width when selected 
-        @available(*, deprecated)
-        public var selectedBorderWidth: CGFloat?
-
         /// Show check view
         public var showCheckView: Bool = true
     }
