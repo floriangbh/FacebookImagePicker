@@ -59,6 +59,9 @@ final class GBHSelectedView: UIView {
         // Apply checkmark constraint
         self.prepareConstraint()
 
+        // Border
+        self.layer.borderColor = GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderColor?.cgColor
+        self.layer.borderWidth = GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth
     }
 
     /// Prepare view constraints
