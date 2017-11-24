@@ -20,7 +20,8 @@ final class GBHSelectedView: UIView {
     // MARK: - Private var
     private var didSetupConstraints = false
 
-    private var checkMarkView: UIImageView?
+    private var checkMarkView: UIView?
+    private let checkMarkViewSize = CGSize(width: 20, height: 20)
 
     // MARK: - Lifecycle
     override init(frame: CGRect) {
@@ -46,14 +47,63 @@ final class GBHSelectedView: UIView {
         // Apply alpha
         self.backgroundColor = UIColor.white.withAlphaComponent(0.3)
 
-        // Add checkmark image
-        let checkMarkImage = GBHAssetManager.getImage(name: GBHAssetImage.checkMark)
-        self.checkMarkView = UIImageView(image: checkMarkImage)
+        // Add checkmark view
+        self.checkMarkView = UIView()
+
+        let backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor ?? .blue
+
+        self.checkMarkView?.layer.borderWidth = 1.5
+        self.checkMarkView?.layer.borderColor = UIColor.white.cgColor
+        self.checkMarkView?.backgroundColor = backgroundColor
         self.checkMarkView?.translatesAutoresizingMaskIntoConstraints = false
         self.checkMarkView?.frame.size = CGSize(width: 20, height: 20)
-        self.checkMarkView?.image = checkMarkImage
         if let view = self.checkMarkView {
             self.addSubview(view)
+        }
+
+        // Add checkmark image view
+        if let checkView = self.checkMarkView {
+            let checkImageView = UIImageView()
+
+            let widthConstant = self.checkMarkViewSize.width / 2
+            let heightConstant = self.checkMarkViewSize.height / 2
+            let checkImageViewSize = CGSize(width: widthConstant, height: heightConstant)
+
+            checkImageView.image = GBHAssetManager.getImage(name: GBHAssetImage.checkMark)
+            checkImageView.backgroundColor = .clear
+
+            checkView.addSubview(checkImageView)
+
+            checkImageView.translatesAutoresizingMaskIntoConstraints = false
+
+            let centerX = NSLayoutConstraint(item: checkView,
+                                             attribute: .centerX,
+                                             relatedBy: .equal,
+                                             toItem: checkImageView,
+                                             attribute: .centerX,
+                                             multiplier: 1,
+                                             constant: 0)
+            let centerY = NSLayoutConstraint(item: checkView,
+                                             attribute: .centerY,
+                                             relatedBy: .equal,
+                                             toItem: checkImageView,
+                                             attribute: .centerY,
+                                             multiplier: 1,
+                                             constant: 0)
+            let width = NSLayoutConstraint(item: checkImageView,
+                                           attribute: .width,
+                                           relatedBy: .equal,
+                                           toItem: nil, attribute: .notAnAttribute,
+                                           multiplier: 1,
+                                           constant: widthConstant)
+            let height = NSLayoutConstraint(item: checkImageView,
+                                            attribute: .height,
+                                            relatedBy: .equal, toItem: nil,
+                                            attribute: .notAnAttribute,
+                                            multiplier: 1,
+                                            constant: heightConstant)
+
+            checkView.addConstraints([centerX, centerY, width, height])
         }
 
         // Apply checkmark constraint
@@ -69,8 +119,11 @@ final class GBHSelectedView: UIView {
         // Apply checkmark constraint
         guard let checkMarkView = self.checkMarkView else { return }
 
-        // define margin
-        let margin: CGFloat = 2
+        // Define margin
+        var margin: CGFloat = 2
+
+        // Extend margin if borderWidth is chosen
+        margin += GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth
 
         // Place vertical constraint
         self.applyVerticalConstraints(margin: margin)
@@ -85,14 +138,18 @@ final class GBHSelectedView: UIView {
                                               toItem: nil,
                                               attribute: NSLayoutAttribute.notAnAttribute,
                                               multiplier: 1,
-                                              constant: 25))
+                                              constant: self.checkMarkViewSize.width))
         self.addConstraint(NSLayoutConstraint(item: checkMarkView,
                                               attribute: NSLayoutAttribute.height,
                                               relatedBy: NSLayoutRelation.equal,
                                               toItem: nil,
                                               attribute: NSLayoutAttribute.notAnAttribute,
                                               multiplier: 1,
-                                              constant: 25))
+                                              constant: self.checkMarkViewSize.height))
+
+        // Rounding
+        checkMarkView.layer.cornerRadius = self.checkMarkViewSize.height / 2
+        checkMarkView.clipsToBounds = true
     }
 
     fileprivate func applyVerticalConstraints(margin: CGFloat) {

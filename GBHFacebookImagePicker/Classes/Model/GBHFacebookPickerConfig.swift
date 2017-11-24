@@ -44,6 +44,9 @@ public struct GBHFacebookPickerConfig {
 
         /// Selected border width
         public var selectedBorderWidth: CGFloat = 0
+
+        /// Check view background color
+        public var checkViewBackgroundColor: UIColor?
     }
 
     /// Will be applied to the album's navigation bar title
