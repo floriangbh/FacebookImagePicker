@@ -38,6 +38,12 @@ public struct GBHFacebookPickerConfig {
 
         /// Place checkView
         public var placeCheckView: CheckViewPosition = .bottomRight
+
+        /// Selected border color
+        public var selectedBorderColor: UIColor?
+
+        /// Selected border width
+        public var selectedBorderWidth: CGFloat = 0
     }
 
     /// Will be applied to the album's navigation bar title
