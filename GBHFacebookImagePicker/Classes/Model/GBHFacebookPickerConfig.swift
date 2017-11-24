@@ -35,6 +35,9 @@ public struct GBHFacebookPickerConfig {
 
         /// Show check view
         public var showCheckView: Bool = true
+
+        /// Place checkView
+        public var placeCheckView: CheckViewPosition = .bottomRight
     }
 
     /// Will be applied to the album's navigation bar title
