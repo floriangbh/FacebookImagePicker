@@ -128,8 +128,8 @@ final class GBHSelectedView: UIView {
         // Place vertical constraint
         self.applyVerticalConstraints(margin: margin)
 
-        // Place horisontal constraint
-        self.applyHorisontalConstraints(margin: margin)
+        // Place horizontal constraint
+        self.applyHorizontalConstraints(margin: margin)
 
         // Apply width and height
         self.addConstraint(NSLayoutConstraint(item: checkMarkView,
@@ -173,7 +173,7 @@ final class GBHSelectedView: UIView {
         }
     }
 
-    fileprivate func applyHorisontalConstraints(margin: CGFloat) {
+    fileprivate func applyHorizontalConstraints(margin: CGFloat) {
         switch GBHFacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
         case .topLeft, .bottomLeft:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
