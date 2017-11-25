@@ -56,7 +56,8 @@ final class GBHSelectedView: UIView {
                                         height: self.checkMarkViewSize.height)
 
         // Checkmark background color
-        let backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor ?? GBHAppearanceManager.facebookColor
+        let configurationColor = GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor
+        let backgroundColor = configurationColor ?? GBHAppearanceManager.facebookColor
 
         self.checkMarkView?.layer.borderWidth = 1.5
         self.checkMarkView?.layer.borderColor = UIColor.white.cgColor
