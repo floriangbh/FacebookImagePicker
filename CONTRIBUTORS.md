@@ -9,5 +9,5 @@ Contributors to the codebase :
 |  Adrian Coroian      | acoroian        | acoroian@spark.net|
 |  Truman     | mgt-la        | dev@mgt.la |
 |  Elshad Yarmetov     | Elshad        | http://brainstorage.me/aznix |
-|  /     | pak-amsiq        | info@amsiq.com |
+|  Patrick Kaalund     | pak-amsiq        | pak@amsiq.com |
 
