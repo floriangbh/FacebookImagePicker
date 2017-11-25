@@ -5,7 +5,6 @@ Changelog
 
 - Add `checkViewBackgroundColor` configuration
 - Allow  `selectedBorderWidth` & `selectedBorderColor` configuration
-- Bump FBSDK to 4.28
 
 ### 2.1.0
 
