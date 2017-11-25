@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+### 2.2.0
+
+- Add `checkViewBackgroundColor` configuration
+- Allow  `selectedBorderWidth` & `selectedBorderColor` configuration
+- Bump FBSDK to 4.28
+
 ### 2.1.0
 
 - Add selection animation 

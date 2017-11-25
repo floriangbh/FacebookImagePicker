@@ -99,11 +99,14 @@ class ViewController: UIViewController {
         // Space beetween album photo cell (1.5 by default)
         GBHFacebookImagePicker.pickerConfig.cellSpacing = 2.0
         
-        // Perform animation on picture tap (false by default)
+        // Perform animation on picture tap (true by default)
         GBHFacebookImagePicker.pickerConfig.performTapAnimation = true
         
         // Show check style with image and layer (true by default)
-        GBHFacebookImagePicker.pickerConfig.uiConfig.showCheckView = false 
+        GBHFacebookImagePicker.pickerConfig.uiConfig.showCheckView = true
+        
+        // Change checkview background color
+        GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor = UIColor.red
     }
 
     // MARK: - Action
@@ -117,10 +120,10 @@ class ViewController: UIViewController {
         // Allow multiple selection (false by default)
         GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
         GBHFacebookImagePicker.pickerConfig.picturePerRow = 3
-        GBHFacebookImagePicker.pickerConfig.performTapAnimation = false
+        GBHFacebookImagePicker.pickerConfig.performTapAnimation = true
 
         // Make some customisation
-        // self.someCustomisation()
+        self.someCustomisation()
 
         // Present picker 
         picker.presentFacebookAlbumImagePicker(from: self,

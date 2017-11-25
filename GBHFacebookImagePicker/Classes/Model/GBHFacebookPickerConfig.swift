@@ -57,7 +57,7 @@ public struct GBHFacebookPickerConfig {
     public var pictureCornerRadius: CGFloat = 2.0
 
     /// Tap animation
-    public var performTapAnimation: Bool = false
+    public var performTapAnimation: Bool = true
 
     /// Allow multiple pictures selection
     public var allowMultipleSelection: Bool = false

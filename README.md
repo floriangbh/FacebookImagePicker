@@ -180,11 +180,14 @@ GBHFacebookImagePicker.pickerConfig.picturePerRow = 3
 // Space beetween album photo cell (1.5 by default)
 GBHFacebookImagePicker.pickerConfig.cellSpacing = 2.0
 
-// Perform animation on picture tap (false by default)
+// Perform animation on picture tap (true by default)
 GBHFacebookImagePicker.pickerConfig.performTapAnimation = true
 
 // Show check style with image and layer (true by default)
 GBHFacebookImagePicker.pickerConfig.uiConfig.showCheckView = false
+
+// Change checkview background color
+GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor = UIColor.red
 ```
 
 ## Aditionals informations 

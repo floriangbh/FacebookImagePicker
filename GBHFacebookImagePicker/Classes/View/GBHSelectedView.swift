@@ -18,12 +18,13 @@ public enum CheckViewPosition {
 final class GBHSelectedView: UIView {
 
     // MARK: - Private var
-    private var didSetupConstraints = false
 
     private var checkMarkView: UIView?
-    private let checkMarkViewSize = CGSize(width: 20, height: 20)
+
+    private var checkMarkViewSize: CGSize = CGSize(width: 20.0, height: 20.0)
 
     // MARK: - Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -50,7 +51,12 @@ final class GBHSelectedView: UIView {
         // Add checkmark view
         self.checkMarkView = UIView()
 
-        let backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor ?? .blue
+        // Check mark view size
+        self.checkMarkViewSize = CGSize(width: self.checkMarkViewSize.width,
+                                        height: self.checkMarkViewSize.height)
+
+        // Checkmark background color
+        let backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor ?? GBHAppearanceManager.facebookColor
 
         self.checkMarkView?.layer.borderWidth = 1.5
         self.checkMarkView?.layer.borderColor = UIColor.white.cgColor
@@ -63,47 +69,7 @@ final class GBHSelectedView: UIView {
 
         // Add checkmark image view
         if let checkView = self.checkMarkView {
-            let checkImageView = UIImageView()
-
-            let widthConstant = self.checkMarkViewSize.width / 2
-            let heightConstant = self.checkMarkViewSize.height / 2
-            let checkImageViewSize = CGSize(width: widthConstant, height: heightConstant)
-
-            checkImageView.image = GBHAssetManager.getImage(name: GBHAssetImage.checkMark)
-            checkImageView.backgroundColor = .clear
-
-            checkView.addSubview(checkImageView)
-
-            checkImageView.translatesAutoresizingMaskIntoConstraints = false
-
-            let centerX = NSLayoutConstraint(item: checkView,
-                                             attribute: .centerX,
-                                             relatedBy: .equal,
-                                             toItem: checkImageView,
-                                             attribute: .centerX,
-                                             multiplier: 1,
-                                             constant: 0)
-            let centerY = NSLayoutConstraint(item: checkView,
-                                             attribute: .centerY,
-                                             relatedBy: .equal,
-                                             toItem: checkImageView,
-                                             attribute: .centerY,
-                                             multiplier: 1,
-                                             constant: 0)
-            let width = NSLayoutConstraint(item: checkImageView,
-                                           attribute: .width,
-                                           relatedBy: .equal,
-                                           toItem: nil, attribute: .notAnAttribute,
-                                           multiplier: 1,
-                                           constant: widthConstant)
-            let height = NSLayoutConstraint(item: checkImageView,
-                                            attribute: .height,
-                                            relatedBy: .equal, toItem: nil,
-                                            attribute: .notAnAttribute,
-                                            multiplier: 1,
-                                            constant: heightConstant)
-
-            checkView.addConstraints([centerX, centerY, width, height])
+            self.prepareCheckMarkView()
         }
 
         // Apply checkmark constraint
@@ -112,6 +78,50 @@ final class GBHSelectedView: UIView {
         // Border
         self.layer.borderColor = GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderColor?.cgColor
         self.layer.borderWidth = GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth
+    }
+
+    fileprivate func prepareCheckMarkView() {
+        guard let checkView = self.checkMarkView else { return }
+
+        // Add checkmark image from assets
+        let checkImageView = UIImageView()
+        checkImageView.image = GBHAssetManager.getImage(name: GBHAssetImage.checkMark)
+        checkImageView.backgroundColor = .clear
+        checkView.addSubview(checkImageView)
+
+        // Apply constraints
+        checkImageView.translatesAutoresizingMaskIntoConstraints = false
+
+        let centerX = NSLayoutConstraint(item: checkView,
+                                         attribute: .centerX,
+                                         relatedBy: .equal,
+                                         toItem: checkImageView,
+                                         attribute: .centerX,
+                                         multiplier: 1,
+                                         constant: 0)
+        let centerY = NSLayoutConstraint(item: checkView,
+                                         attribute: .centerY,
+                                         relatedBy: .equal,
+                                         toItem: checkImageView,
+                                         attribute: .centerY,
+                                         multiplier: 1,
+                                         constant: 0)
+        let width = NSLayoutConstraint(item: checkImageView,
+                                       attribute: .width,
+                                       relatedBy: .equal,
+                                       toItem: nil,
+                                       attribute: .notAnAttribute,
+                                       multiplier: 1,
+                                       constant: self.checkMarkViewSize.width / 2)
+        let height = NSLayoutConstraint(item: checkImageView,
+                                        attribute: .height,
+                                        relatedBy: .equal,
+                                        toItem: nil,
+                                        attribute: .notAnAttribute,
+                                        multiplier: 1,
+                                        constant: self.checkMarkViewSize.height / 2)
+
+        checkView.addConstraints([centerX, centerY, width, height])
     }
 
     /// Prepare view constraints
