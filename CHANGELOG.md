@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 2.2.1
+
+- Bump FBSDK to 4.29
+
 ### 2.2.0
 
 - Add `checkViewBackgroundColor` configuration

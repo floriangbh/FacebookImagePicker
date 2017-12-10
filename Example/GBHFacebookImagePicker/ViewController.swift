@@ -123,7 +123,7 @@ class ViewController: UIViewController {
         GBHFacebookImagePicker.pickerConfig.performTapAnimation = true
 
         // Make some customisation
-        self.someCustomisation()
+        //self.someCustomisation()
 
         // Present picker 
         picker.presentFacebookAlbumImagePicker(from: self,
