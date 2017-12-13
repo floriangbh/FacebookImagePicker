@@ -252,7 +252,7 @@ What about yours ? If your application also use this picker, feel free to conta
 
 ## Author
 
-Florian Gabach, contact@floriangabach.fr
+Florian Gabach, florian.gabach@gmail.com
 
 Inspired by [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/FacebookImagePicker-iOS) (Objective-C)
 
