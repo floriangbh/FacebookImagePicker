@@ -147,6 +147,9 @@ GBHFacebookImagePicker.pickerConfig.uiConfig.closeButtonColor = UIColor.white
 // Global backgroundColor 
 GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor = UIColor.red
 
+// Status bar style (.default style by default)
+GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle = .lightContent
+
 // Navigation bar title color
 GBHFacebookImagePicker.pickerConfig.uiConfig.navTitleColor = UIColor.white
 
