@@ -9,6 +9,11 @@ import UIKit
 
 class GBHPhotoPickerViewController: UIViewController {
 
+    // Status bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
+    }
+
     /// MARK: Var
 
     /// Loading indicator 

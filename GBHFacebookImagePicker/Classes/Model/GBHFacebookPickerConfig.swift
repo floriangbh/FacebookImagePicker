@@ -12,6 +12,9 @@ public struct GBHFacebookPickerConfig {
 
     /// Sub-stuct holding configuration relevant to UI presentation ! 
     public struct UIConfig {
+        /// Statusbar style
+        public var statusbarStyle: UIStatusBarStyle = .default
+
         /// Will be applied to the navigation bar 
         public var navBarTintColor: UIColor?
 

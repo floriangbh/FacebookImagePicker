@@ -98,13 +98,13 @@ class ViewController: UIViewController {
 
         // Space beetween album photo cell (1.5 by default)
         GBHFacebookImagePicker.pickerConfig.cellSpacing = 2.0
-        
+
         // Perform animation on picture tap (true by default)
         GBHFacebookImagePicker.pickerConfig.performTapAnimation = true
-        
+
         // Show check style with image and layer (true by default)
         GBHFacebookImagePicker.pickerConfig.uiConfig.showCheckView = true
-        
+
         // Change checkview background color
         GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor = UIColor.red
     }

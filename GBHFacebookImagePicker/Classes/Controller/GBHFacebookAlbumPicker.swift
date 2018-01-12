@@ -21,6 +21,11 @@ protocol GBHAlbumPickerTableViewControllerDelegate: class {
 
 class GBHFacebookAlbumPicker: UITableViewController {
 
+    // Status bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
+    }
+
     // MARK: - Var
 
     /// The image picker delegate 

@@ -9,6 +9,11 @@ import UIKit
 
 class GBHFacebookNavigationController: UINavigationController {
 
+    // Status bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
+    }
+
     // MARK: - Lifecycle
 
     /// Initialize the navigation controller after didLoad
