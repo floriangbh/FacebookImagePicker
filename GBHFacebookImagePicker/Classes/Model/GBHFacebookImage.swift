@@ -5,6 +5,11 @@
 //  Created by Florian Gabach on 29/09/2016.
 //  Copyright (c) 2016 Florian Gabach <contact@floriangabach.fr>
 
+public enum ImageSize {
+    case normal
+    case full
+}
+
 public class GBHFacebookImage {
 
     // MARK: - Var

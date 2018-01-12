@@ -50,6 +50,9 @@ public struct GBHFacebookPickerConfig {
 
         /// Check view background color
         public var checkViewBackgroundColor: UIColor?
+
+        /// Preview photos size (normal by default)
+        public var previewPhotoSize: ImageSize = .normal
     }
 
     /// Will be applied to the album's navigation bar title

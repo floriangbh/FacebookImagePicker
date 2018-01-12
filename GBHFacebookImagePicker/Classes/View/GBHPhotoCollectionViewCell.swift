@@ -69,8 +69,9 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     func configure(picture: GBHFacebookImage) {
 
         // Set picture's url
-        if let urlPath = picture.normalSizeUrl,
-            let url = URL(string: urlPath) {
+        let urlPath = GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize == .normal ? picture.normalSizeUrl : picture.fullSizeUrl
+        if let _urlPath = urlPath,
+            let url = URL(string: _urlPath) {
             self.albumImageView?.imageUrl = url
         }
     }
