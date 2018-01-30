@@ -10,7 +10,7 @@ import UIKit
 extension UIView {
     
     /// Add layout constraint to the passed view to fit the view 
-    func fit(view: UIView) {
+    public func fit(view: UIView) {
         // Top constraint
         self.addConstraint(NSLayoutConstraint(item: view,
                                               attribute: NSLayoutAttribute.top,

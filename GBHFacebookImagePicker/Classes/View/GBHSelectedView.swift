@@ -69,9 +69,7 @@ final class GBHSelectedView: UIView {
         }
 
         // Add checkmark image view
-        if let checkView = self.checkMarkView {
-            self.prepareCheckMarkView()
-        }
+        self.prepareCheckMarkView()
 
         // Apply checkmark constraint
         self.prepareConstraint()
@@ -164,6 +162,7 @@ final class GBHSelectedView: UIView {
     }
 
     fileprivate func applyVerticalConstraints(margin: CGFloat) {
+        guard let checkMarkView = self.checkMarkView else { return }
         switch GBHFacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
         case .topLeft, .topRight:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
@@ -185,6 +184,7 @@ final class GBHSelectedView: UIView {
     }
 
     fileprivate func applyHorizontalConstraints(margin: CGFloat) {
+        guard let checkMarkView = self.checkMarkView else { return }
         switch GBHFacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
         case .topLeft, .bottomLeft:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
