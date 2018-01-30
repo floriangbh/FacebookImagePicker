@@ -13,7 +13,7 @@ protocol GBHAlbumPickerTableViewControllerDelegate: class {
     /// - parameter imageModel: model of the selected picture
     func didSelecPicturesInAlbum(imageModels: [GBHFacebookImage])
 
-    /// Failed selecte picture in album
+    /// Failed to select picture in album
     ///
     /// - parameter error: error
     func didFailSelectPictureInAlbum(error: Error?)

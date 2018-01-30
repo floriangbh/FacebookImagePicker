@@ -151,54 +151,12 @@ class GBHPhotoPickerViewController: UIViewController {
         self.pictureCollection?.translatesAutoresizingMaskIntoConstraints = false
         if let collection = self.pictureCollection {
             self.view.addSubview(collection)
-            self.prepareCollectionViewConstraint()
+            self.view.fit(view: collection)
         }
 
         // Define cell size 
         if let collectionWidth = self.pictureCollection?.frame.width {
             self.cellSize = (collectionWidth - (self.cellSpacing * (self.cellPerRow + 1.0))) / self.cellPerRow
-        }
-    }
-
-    /// Set the collection view constraint 
-    fileprivate func prepareCollectionViewConstraint() {
-        // Top constraint
-        if let collection = self.pictureCollection {
-            // Top constraint 
-            self.view.addConstraint(NSLayoutConstraint(item: collection,
-                                                       attribute: NSLayoutAttribute.top,
-                                                       relatedBy: NSLayoutRelation.equal,
-                                                       toItem: self.view,
-                                                       attribute: NSLayoutAttribute.top,
-                                                       multiplier: 1,
-                                                       constant: 0))
-
-            // Bottom constraint
-            self.view.addConstraint(NSLayoutConstraint(item: collection,
-                                                       attribute: NSLayoutAttribute.bottom,
-                                                       relatedBy: NSLayoutRelation.equal,
-                                                       toItem: self.view,
-                                                       attribute: NSLayoutAttribute.bottom,
-                                                       multiplier: 1,
-                                                       constant: 0))
-
-            // Leading constraint
-            self.view.addConstraint(NSLayoutConstraint(item: collection,
-                                                       attribute: NSLayoutAttribute.leading,
-                                                       relatedBy: NSLayoutRelation.equal,
-                                                       toItem: self.view,
-                                                       attribute: NSLayoutAttribute.leading,
-                                                       multiplier: 1,
-                                                       constant: 0))
-
-            // Trainling constraint
-            self.view.addConstraint(NSLayoutConstraint(item: collection,
-                                                       attribute: NSLayoutAttribute.trailing,
-                                                       relatedBy: NSLayoutRelation.equal,
-                                                       toItem: self.view,
-                                                       attribute: NSLayoutAttribute.trailing,
-                                                       multiplier: 1,
-                                                       constant: 0))
         }
     }
 
