@@ -169,7 +169,7 @@ GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderColor = UIColor.red
 GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
 
 /// Preview photos size (normal by default)
-public var previewPhotoSize: ImageSize = .full
+GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize = .full
 
 // Maximum selected pictures 
 GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4

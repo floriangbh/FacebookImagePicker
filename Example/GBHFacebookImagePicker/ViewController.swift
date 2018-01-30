@@ -107,6 +107,9 @@ class ViewController: UIViewController {
 
         // Change checkview background color
         GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor = UIColor.red
+        
+        /// Preview photos size (normal by default)
+        GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize = .full
     }
 
     // MARK: - Action
@@ -119,8 +122,7 @@ class ViewController: UIViewController {
 
         // Allow multiple selection (false by default)
         GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
-        GBHFacebookImagePicker.pickerConfig.picturePerRow = 3
-        GBHFacebookImagePicker.pickerConfig.performTapAnimation = true
+//        GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize = .full
 
         // Make some customisation
         //self.someCustomisation()
