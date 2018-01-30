@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+### 2.3.0
+
+- Bump FBSDK to 4.30
+- More customisation with `previewPhotoSize` 
+
 ### 2.2.1
 
 - Bump FBSDK to 4.29
