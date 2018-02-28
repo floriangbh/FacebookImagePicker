@@ -9,12 +9,12 @@ import UIKit
 
 class GBHPhotoPickerViewController: UIViewController {
 
-    // Status bar
+    /// MARK: Var
+
+    /// Status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
     }
-
-    /// MARK: Var
 
     /// Loading indicator 
     fileprivate var indicator = UIActivityIndicatorView()
@@ -85,13 +85,6 @@ class GBHPhotoPickerViewController: UIViewController {
 
         // Fetch photos if empty
         self.getPhotos()
-    }
-
-    deinit {
-        // Remove picture loading observer 
-        NotificationCenter.default.removeObserver(self,
-                                                  name: Notification.Name.ImagePickerDidRetriveAlbumPicture,
-                                                  object: nil)
     }
 
     // MARK: Prepare
