@@ -39,4 +39,32 @@ public class GBHFacebookImage {
         self.normalSizeUrl = picture
         self.fullSizeUrl = source
     }
+
+    // MARK: - Download
+
+    /// Download the image
+    ///
+    /// - Parameter completion: completion handler with optional error 
+    internal func download(completion: @escaping (Error?) -> Void) {
+        guard let stringUrl = self.fullSizeUrl,
+            let url = URL(string: stringUrl) else {
+                completion(DownloadError.invalidUrl)
+                return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil,
+                let data = data,
+                let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 200 else {
+                    completion(DownloadError.downloadError)
+                    return
+            }
+
+            // Set the image
+            self.image = UIImage(data: data)
+            completion(nil)
+            }
+            .resume()
+    }
 }

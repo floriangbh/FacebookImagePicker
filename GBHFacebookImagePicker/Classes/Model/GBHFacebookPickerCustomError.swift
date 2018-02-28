@@ -15,3 +15,8 @@ enum LoginError: Error {
     case permissionDenied
     case loginFailed
 }
+
+enum DownloadError: Error {
+    case invalidUrl
+    case downloadError
+}

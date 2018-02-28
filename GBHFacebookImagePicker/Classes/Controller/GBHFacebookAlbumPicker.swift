@@ -280,52 +280,38 @@ extension GBHFacebookAlbumPicker: GBHAlbumPickerTableViewControllerDelegate {
         var errorModels = [GBHFacebookImage]()
         var errors = [Error?]()
 
-        func callback() {
-            // Check if all image finished loading 
-            if successModels.count + errors.count == imageModels.count {
-                // Call success delegate 
-                self.delegate?.facebookImagePicker(
-                    imagePicker: self,
-                    successImageModels: successModels,
-                    errorImageModels: errorModels,
-                    errors: errors
-                )
-
-                // Dismiss picker 
-                self.dismissPicker()
-            }
-        }
+        let downloadGroup = DispatchGroup()
 
         for imageModel in imageModels {
-            if let url = imageModel.fullSizeUrl, let imageUrl = URL(string: url) {
-                // Start url loading
-                URLSession.shared.dataTask(with: imageUrl as URL) { data, response, error in
-                    guard let data = data, error == nil else {
-                        errorModels.append(imageModel)
-                        errors.append(error)
-                        callback()
-                        return
-                    }
-                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                        errorModels.append(imageModel)
-                        errors.append(error)
-                        callback()
-                        return
-                    }
+            downloadGroup.enter()
 
-                    // Set the image
-                    imageModel.image = UIImage(data: data)
-
+            // Download the image from the full size url
+            imageModel.download(completion: { (error) in
+                if error != nil {
+                    // Error case
+                    errors.append(error)
+                    errorModels.append(imageModel)
+                } else {
+                    // Success case 
                     successModels.append(imageModel)
-                    callback()
-                    }.resume()
-            } else {
-                errorModels.append(imageModel)
-                errors.append(nil)
-                callback()
-            }
+                }
+
+                downloadGroup.leave()
+            })
         }
 
+        downloadGroup.notify(queue: .main) {
+            // Call success delegate
+            self.delegate?.facebookImagePicker(
+                imagePicker: self,
+                successImageModels: successModels,
+                errorImageModels: errorModels,
+                errors: errors
+            )
+
+            // Dismiss picker
+            self.dismissPicker()
+        }
     }
 
     /// Performed when an error occured
