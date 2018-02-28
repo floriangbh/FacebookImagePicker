@@ -25,10 +25,10 @@ public class GBHFacebookImagePicker: NSObject {
         albumPicker.delegate = delegate
 
         // Embed in navigation controller
-        let navi = GBHFacebookNavigationController(rootViewController: albumPicker)
+        let navigationController = GBHFacebookNavigationController(rootViewController: albumPicker)
 
         // Present the picker 
-        from.present(navi, animated: true)
+        from.present(navigationController, animated: true)
     }
 
 }

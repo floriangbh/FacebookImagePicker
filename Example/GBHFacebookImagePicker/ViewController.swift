@@ -107,7 +107,7 @@ class ViewController: UIViewController {
 
         // Change checkview background color
         GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor = UIColor.red
-        
+
         /// Preview photos size (normal by default)
         GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize = .full
     }

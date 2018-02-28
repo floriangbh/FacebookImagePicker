@@ -18,10 +18,10 @@ class GBHFacebookAlbum {
     /// Album's cover url
     var coverUrl: URL?
 
-    // Album's id
+    /// Album's id
     var albumId: String?
 
-    // Contains album's picture
+    /// Contains album's picture
     var photos: [GBHFacebookImage] = []
 
     // MARK: - Init
