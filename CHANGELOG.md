@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+### 2.3.1
+
+- Bump FBSDK to 4.31
+- Improve image multiple selection download 
+
 ### 2.3.0
 
 - Bump FBSDK to 4.30
