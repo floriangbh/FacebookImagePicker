@@ -31,12 +31,9 @@ This picker takes care of all authentication (from the web or with the native Fa
 - [x] Handling denied Facebook photo's permission 
 - [x] Select and get URL/Image of the selected pictures 
 - [x] UI Customization 
-- [x] AppStore ready
-- [x] Swift 3 & Swift 4
 - [x] iPhone/iPad support 
 - [x] Multiple selection in one album
-- [ ] MVC to MVVM (feel free to make PR)
-- [ ] Unit & UI Test (feel free to make PR)
+- [ ] Select all 
 
 ## Example
 
@@ -247,14 +244,6 @@ Here are some other Facebook's album picker libraries.
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request and **read** the [contributing file](CONTRIBUTING.md).
-
-## Applications
-
-Some applications already use this picker like :
-- [Troll Generator](https://itunes.apple.com/fr/app/troll-generator/id1038097542?mt=8)
-- [Giraf](https://itunes.apple.com/fr/app/giraf/id1136592561?mt=8)
-
-What about yours ? If your application also use this picker, feel free to contact me or make pull request on the README 😁
 
 ## Author
 
