@@ -178,7 +178,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				D4347E65C0BA622A731E6780 /* [CP] Embed Pods Frameworks */,
-				765164EBC895447749794230 /* [CP] Copy Pods Resources */,
 				76F34F971DCD00480035B115 /* ShellScript */,
 				7610E86F1DE746C100D5518A /* ShellScript */,
 			);
@@ -199,8 +198,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				D3701EA0B9B08FD5C4153D4C /* [CP] Embed Pods Frameworks */,
-				9D6AB94C20D1863A9BF0DCEE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -312,21 +309,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
-		765164EBC895447749794230 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GBHFacebookImagePicker_Example/Pods-GBHFacebookImagePicker_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		76F34F971DCD00480035B115 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,36 +321,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "KEYWORDS=\"TODO:|FIXME:\"\nfind \".\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"./Pods/*\" -print0 |\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" |\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
-		};
-		9D6AB94C20D1863A9BF0DCEE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GBHFacebookImagePicker_Tests/Pods-GBHFacebookImagePicker_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D3701EA0B9B08FD5C4153D4C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GBHFacebookImagePicker_Tests/Pods-GBHFacebookImagePicker_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		D4347E65C0BA622A731E6780 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
