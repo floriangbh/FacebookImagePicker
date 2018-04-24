@@ -27,14 +27,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1759801157620759</string>
+				<string>fb390236178046553</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>1759801157620759</string>
+	<string>390236178046553</string>
 	<key>FacebookDisplayName</key>
 	<string>GBHFacebookImagePicker</string>
 	<key>LSApplicationQueriesSchemes</key>
