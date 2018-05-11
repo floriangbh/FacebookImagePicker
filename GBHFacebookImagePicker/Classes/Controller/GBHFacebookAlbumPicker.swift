@@ -34,9 +34,6 @@ class GBHFacebookAlbumPicker: UITableViewController {
     /// Album cell identifier 
     private let reuseIdentifier = "AlbumCell"
 
-    /// Loading indicator 
-    fileprivate var indicator = UIActivityIndicatorView() // Loading indicator
-
     /// Array which contains all the album of the facebook account
     fileprivate var albums: [GBHFacebookAlbum] = [] { // Albums list
         didSet {
@@ -47,6 +44,18 @@ class GBHFacebookAlbumPicker: UITableViewController {
         }
     }
 
+    fileprivate lazy var loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(frame: CGRect(x: 0,
+                                                              y: 0,
+                                                              width: 40,
+                                                              height: 40) )
+        indicator.hidesWhenStopped = true
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        indicator.backgroundColor = UIColor.clear
+        indicator.color = UIColor.black
+        return indicator
+    }()
+
     // MARK: - Lifecycle
 
     override public func viewDidLoad() {
@@ -55,9 +64,9 @@ class GBHFacebookAlbumPicker: UITableViewController {
         // Prepare view
         self.prepareTableView()
         self.prepareObserver()
-        self.prepareActivityIndicator()
 
         // Start Facebook login
+        self.startLoading()
         self.doFacebookLogin()
     }
 
@@ -74,6 +83,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
         self.tableView.delegate = self
         self.tableView.cellLayoutMarginsFollowReadableWidth = false
         self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
+        self.tableView.backgroundView = self.loadingIndicator
 
         // Close button (on the right corner of navigation bar)
         let closeButton = UIBarButtonItem(barButtonSystemItem: .stop,
@@ -93,39 +103,13 @@ class GBHFacebookAlbumPicker: UITableViewController {
     }
 
     // MARK: - Loading indicator
-
-    /// Create & add activity indicator to the center of view
-    fileprivate func prepareActivityIndicator() {
-        // Init 
-        self.indicator = UIActivityIndicatorView(frame: CGRect(x: 0,
-                                                               y: 0,
-                                                               width: 40,
-                                                               height: 40))
-
-        // Style 
-        self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-
-        // Position
-        self.indicator.center = self.view.center
-
-        // Add 
-        self.view.addSubview(indicator)
-
-        // Start loading animation 
-        self.startLoading()
-    }
-
-    /// Start loading indicator
+    
     fileprivate func startLoading() {
-        self.indicator.startAnimating()
-        self.indicator.backgroundColor = UIColor.clear
-        self.indicator.color = UIColor.black
+        self.loadingIndicator.startAnimating()
     }
 
-    /// Stop & hide loading indicator
     fileprivate func stopLoading() {
-        self.indicator.stopAnimating()
-        self.indicator.hidesWhenStopped = true
+        self.loadingIndicator.stopAnimating()
     }
 
     // MARK: - Action

@@ -16,9 +16,6 @@ class GBHPhotoPickerViewController: UIViewController {
         return GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
     }
 
-    /// Loading indicator 
-    fileprivate var indicator = UIActivityIndicatorView()
-
     /// Cell identifier 
     fileprivate let reuseIdentifier = "Cell"
 
@@ -30,9 +27,6 @@ class GBHPhotoPickerViewController: UIViewController {
 
     /// Spacing beetween cell 
     fileprivate let cellSpacing: CGFloat = GBHFacebookImagePicker.pickerConfig.cellSpacing
-
-    /// The collection view where are display the pictures 
-    fileprivate var pictureCollection: UICollectionView? // Collection for display album's pictures
 
     /// Array which contain image model of pictures which are in the album
     fileprivate var imageArray: [GBHFacebookImage] = [] {
@@ -92,16 +86,39 @@ class GBHPhotoPickerViewController: UIViewController {
         return selectAllBarButton
     }()
 
+    fileprivate lazy var emptyLabel: UILabel = {
+        let emptyLabel = UILabel(frame: CGRect(x: 0,
+                                               y: 0,
+                                               width: self.pictureCollection?.frame.size.width ?? 0.0,
+                                               height: self.pictureCollection?.frame.size.height ?? 0.0))
+        emptyLabel.textAlignment = .center
+        emptyLabel.text = NSLocalizedString("No picture(s) in this album.",
+                                            comment: "")
+        emptyLabel.font = UIFont.italicSystemFont(ofSize: 16)
+        emptyLabel.textColor = UIColor.lightGray
+        return emptyLabel
+    }()
+
+    fileprivate lazy var loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(frame: CGRect(x: 0,
+                                                               y: 0,
+                                                               width: 40,
+                                                               height: 40) )
+        indicator.hidesWhenStopped = true
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        indicator.backgroundColor = UIColor.clear
+        indicator.color = UIColor.black
+        return indicator
+    }()
+
+    /// The collection view where are display the pictures
+    fileprivate var pictureCollection: UICollectionView? // Collection for display album's pictures
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Prepare view
         self.prepareViewController()
-        self.prepareObserver()
-
-        // Fetch photos if empty
         self.getPhotos()
     }
 
@@ -121,7 +138,6 @@ class GBHPhotoPickerViewController: UIViewController {
                                                selector: #selector(self.didReceivePicture(_:)),
                                                name: Notification.Name.ImagePickerDidRetriveAlbumPicture,
                                                object: nil)
-
     }
 
     /// Prepare the UIViewController 
@@ -130,10 +146,9 @@ class GBHPhotoPickerViewController: UIViewController {
         self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
         self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
 
-        // Prepare component 
-        self.prepareCollectionView()
-        self.prepareActivityIndicator()
         self.prepareMultipleSelectionButton()
+        self.prepareCollectionView()
+        self.prepareObserver()
 
         // Start loading 
         self.startLoading()
@@ -141,7 +156,7 @@ class GBHPhotoPickerViewController: UIViewController {
 
     fileprivate func prepareMultipleSelectionButton() {
         var items: [UIBarButtonItem] = [UIBarButtonItem.flexibleSpaceItem()]
-        
+
         if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
             items.append(selectBarButton)
         }
@@ -149,10 +164,10 @@ class GBHPhotoPickerViewController: UIViewController {
         if GBHFacebookImagePicker.pickerConfig.allowAllSelection {
             items.insert(selectAllBarButton, at: 0)
         }
-        
+
         if items.count > 1 {
             self.toolbarItems = items
-            self.navigationController?.setToolbarHidden(false, animated: true)
+            self.navigationController?.setToolbarHidden(true, animated: false)
         }
     }
 
@@ -173,7 +188,7 @@ class GBHPhotoPickerViewController: UIViewController {
             self.view.fit(view: collection)
         }
 
-        // Define cell size 
+        // Define cell size
         if let collectionWidth = self.pictureCollection?.frame.width {
             self.cellSize = (collectionWidth - (self.cellSpacing * (self.cellPerRow + 1.0))) / self.cellPerRow
         }
@@ -181,28 +196,12 @@ class GBHPhotoPickerViewController: UIViewController {
 
     // MARK: - Loading indicator
 
-    /// Prepare UIActivityIndicatorView and display it at the center of the view
-    fileprivate func prepareActivityIndicator() {
-        self.indicator = UIActivityIndicatorView(frame: CGRect(x: 0,
-                                                              y: 0,
-                                                              width: 40,
-                                                              height: 40) )
-        self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        self.indicator.center = self.view.center
-        self.view.addSubview(indicator)
-    }
-
-    /// Start loading : start the loader animation 
     fileprivate func startLoading() {
-        self.indicator.startAnimating()
-        self.indicator.backgroundColor = UIColor.clear
-        self.indicator.color = UIColor.black
+        self.loadingIndicator.startAnimating()
     }
 
-    /// Stop loading : stop and hide the loader
     fileprivate func stopLoading() {
-        self.indicator.hidesWhenStopped = true
-        self.indicator.stopAnimating()
+        self.loadingIndicator.stopAnimating()
     }
 
     // MARK: - Action
@@ -236,6 +235,7 @@ class GBHPhotoPickerViewController: UIViewController {
         if let album = sender.object as? GBHFacebookAlbum,
             self.album?.albumId == album.albumId {
             self.imageArray = album.photos
+            self.navigationController?.setToolbarHidden(!(album.photos.count > 0), animated: true)
         }
     }
 
@@ -266,21 +266,19 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if imageArray.count <= 0, self.alreadyLoaded {
             // No picture in this album, add empty placeholder 
-            // Should happen only for tagged album, when we can't have the album's picture count 
-            let emptyLabel = UILabel(frame: CGRect(x: 0,
-                                                   y: 0,
-                                                   width: self.pictureCollection?.frame.size.width ?? 0,
-                                                   height: self.pictureCollection?.frame.size.height ?? 0))
-            emptyLabel.textAlignment = .center
-            emptyLabel.text = "No picture(s) in this album."
-            emptyLabel.font = UIFont.italicSystemFont(ofSize: 16)
-            emptyLabel.textColor = UIColor.lightGray
+            // Should happen only for tagged album, when we can't have the album's picture count
             self.pictureCollection?.backgroundView = emptyLabel
             return 0
         }
 
-        // Display photos 
-        self.pictureCollection?.backgroundView = nil
+        if alreadyLoaded == false {
+            // Display loader
+            self.pictureCollection?.backgroundView = self.loadingIndicator
+        } else {
+            // Display photos
+            self.pictureCollection?.backgroundView = nil
+        }
+    
         return 1
     }
 

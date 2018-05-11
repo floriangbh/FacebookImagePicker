@@ -212,6 +212,7 @@ GBHFacebookImagePicker is currently write in english. If you need translation fo
 "Close" = "<your_translation>";
 "Album(s)" = "<your_translation>";
 "Photos of You" = "<your_translation>";
+""No picture(s) in this album." = "<your_translation>";"
 ```
 
 ## Requirements

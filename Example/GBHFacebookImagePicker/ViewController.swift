@@ -110,7 +110,7 @@ class ViewController: UIViewController {
 
         // Preview photos size (normal by default)
         GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize = .full
-        
+
         // Show the "Select all" button 
         GBHFacebookImagePicker.pickerConfig.allowAllSelection = true
     }
@@ -128,6 +128,7 @@ class ViewController: UIViewController {
         GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize = .full
         GBHFacebookImagePicker.pickerConfig.allowAllSelection = true
         GBHFacebookImagePicker.pickerConfig.picturePerRow = 3
+        GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
 
         // Make some customisation
         //self.someCustomisation()
