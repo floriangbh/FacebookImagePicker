@@ -103,7 +103,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
     }
 
     // MARK: - Loading indicator
-    
+
     fileprivate func startLoading() {
         self.loadingIndicator.startAnimating()
     }

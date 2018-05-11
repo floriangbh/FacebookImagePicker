@@ -83,6 +83,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Tap animation
+
     func tapAnimation() {
         let duration = 0.1
 

@@ -10,6 +10,8 @@ import UIKit
 /// Simple struct to hold settings 
 public struct GBHFacebookPickerConfig {
 
+    // MARK: - Configurable
+
     /// Sub-stuct holding configuration relevant to UI presentation ! 
     public struct UIConfig {
         /// Statusbar style
@@ -83,10 +85,16 @@ public struct GBHFacebookPickerConfig {
     /// Display tagged album 
     public var displayTaggedAlbum: Bool = false
 
-    // Tagged album name 
+    /// Tagged album name
     public var taggedAlbumName: String = NSLocalizedString("Photos of You",
                                                             comment: "")
 
     /// UI-specific configuration.
     public var uiConfig = UIConfig()
+
+    // MARK: - Internal
+
+    internal var shouldDisplayToolbar: Bool {
+        return self.allowMultipleSelection
+    }
 }

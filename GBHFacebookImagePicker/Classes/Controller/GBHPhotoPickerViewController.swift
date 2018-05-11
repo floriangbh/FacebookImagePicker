@@ -28,6 +28,10 @@ class GBHPhotoPickerViewController: UIViewController {
     /// Spacing beetween cell 
     fileprivate let cellSpacing: CGFloat = GBHFacebookImagePicker.pickerConfig.cellSpacing
 
+    fileprivate var shouldDisplayToolbar: Bool {
+        return (self.album?.photos.count ?? 0 > 0) && GBHFacebookImagePicker.pickerConfig.shouldDisplayToolbar
+    }
+
     /// Array which contain image model of pictures which are in the album
     fileprivate var imageArray: [GBHFacebookImage] = [] {
         didSet {
@@ -125,7 +129,7 @@ class GBHPhotoPickerViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        self.navigationController?.setToolbarHidden(true, animated: false)
+        self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: false)
     }
 
     // MARK: Prepare
@@ -159,15 +163,15 @@ class GBHPhotoPickerViewController: UIViewController {
 
         if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
             items.append(selectBarButton)
-        }
 
-        if GBHFacebookImagePicker.pickerConfig.allowAllSelection {
-            items.insert(selectAllBarButton, at: 0)
+            if GBHFacebookImagePicker.pickerConfig.allowAllSelection {
+                items.insert(selectAllBarButton, at: 0)
+            }
         }
 
         if items.count > 1 {
             self.toolbarItems = items
-            self.navigationController?.setToolbarHidden(true, animated: false)
+            self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: false)
         }
     }
 
@@ -218,6 +222,8 @@ class GBHPhotoPickerViewController: UIViewController {
                     self.albumPictureDelegate?.didFailSelectPictureInAlbum(error: nil)
                 }
             } else {
+                self.navigationController?.setToolbarHidden(!shouldDisplayToolbar,
+                                                            animated: true)
                 self.stopLoading()
             }
         }
@@ -235,7 +241,8 @@ class GBHPhotoPickerViewController: UIViewController {
         if let album = sender.object as? GBHFacebookAlbum,
             self.album?.albumId == album.albumId {
             self.imageArray = album.photos
-            self.navigationController?.setToolbarHidden(!(album.photos.count > 0), animated: true)
+            self.navigationController?.setToolbarHidden(!shouldDisplayToolbar,
+                                                        animated: true)
         }
     }
 
@@ -248,7 +255,8 @@ class GBHPhotoPickerViewController: UIViewController {
     }
 
     @objc func didSelectAllPicture(sender: UIBarButtonItem) {
-        print(self, #function)
+        self.pictureCollection?.selectAllCell()
+        self.selectedImages = self.imageArray.map({$0})
     }
 
     fileprivate func cleanController() {
@@ -278,7 +286,7 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
             // Display photos
             self.pictureCollection?.backgroundView = nil
         }
-    
+
         return 1
     }
 

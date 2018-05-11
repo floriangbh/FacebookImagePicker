@@ -7,7 +7,7 @@
 
 import UIKit
 
-public extension UIBarButtonItem {
+extension UIBarButtonItem {
     public class func flexibleSpaceItem() -> UIBarButtonItem {
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         return spaceItem
