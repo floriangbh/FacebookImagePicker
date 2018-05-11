@@ -33,7 +33,7 @@ This picker takes care of all authentication (from the web or with the native Fa
 - [x] UI Customization 
 - [x] iPhone/iPad support 
 - [x] Multiple selection in one album
-- [ ] Select all 
+- [x] Select all 
 
 ## Example
 
@@ -191,6 +191,9 @@ GBHFacebookImagePicker.pickerConfig.uiConfig.showCheckView = false
 
 // Change checkview background color
 GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor = UIColor.red
+
+// Show the "Select all" button 
+GBHFacebookImagePicker.pickerConfig.allowAllSelection = true
 ```
 
 ## Aditionals informations 
@@ -225,7 +228,7 @@ GBHFacebookImagePicker is available through [CocoaPods](http://cocoapods.org). T
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "GBHFacebookImagePicker", '~> 2.0'
+pod "GBHFacebookImagePicker", '~> 2.4'
 
 pod "GBHFacebookImagePicker", '~> 1.3.1' # For Swift 3.1
 ```
