@@ -61,18 +61,36 @@ class GBHPhotoPickerViewController: UIViewController {
 
             // Manage disable/enable state 
             if count > 0 {
-                self.selectBarButton?.isEnabled = true
+                self.selectBarButton.isEnabled = true
             } else {
-                self.selectBarButton?.isEnabled = false
+                self.selectBarButton.isEnabled = false
             }
 
             // Update button title 
-            self.selectBarButton?.title = "Select\(count > 0 ? " (\(count))" : "")"
+            self.selectBarButton.title = "Select\(count > 0 ? " (\(count))" : "")"
         }
     }
 
-    //
-    fileprivate(set) var selectBarButton: UIBarButtonItem?
+    fileprivate lazy var selectBarButton: UIBarButtonItem = {
+        let selectBarButton = UIBarButtonItem(
+            title: "Select",
+            style: .plain,
+            target: self,
+            action: #selector(actionSelectBarButton(sender:))
+        )
+        selectBarButton.isEnabled = false
+        return selectBarButton
+    }()
+
+    fileprivate lazy var selectAllBarButton: UIBarButtonItem = {
+        let selectAllBarButton = UIBarButtonItem(
+            title: "Select all",
+            style: .plain,
+            target: self,
+            action: #selector(didSelectAllPicture(sender:))
+        )
+        return selectAllBarButton
+    }()
 
     // MARK: Lifecycle
 
@@ -85,6 +103,12 @@ class GBHPhotoPickerViewController: UIViewController {
 
         // Fetch photos if empty
         self.getPhotos()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        self.navigationController?.setToolbarHidden(true, animated: false)
     }
 
     // MARK: Prepare
@@ -116,17 +140,19 @@ class GBHPhotoPickerViewController: UIViewController {
     }
 
     fileprivate func prepareMultipleSelectionButton() {
+        var items: [UIBarButtonItem] = [UIBarButtonItem.flexibleSpaceItem()]
+        
         if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
-            self.selectBarButton = UIBarButtonItem(
-                title: "Select",
-                style: .plain,
-                target: self,
-                action: #selector(actionSelectBarButton(sender:))
-            )
-            self.selectBarButton?.isEnabled = false
-            if let barButton = self.selectBarButton {
-                self.navigationItem.rightBarButtonItems = [barButton]
-            }
+            items.append(selectBarButton)
+        }
+
+        if GBHFacebookImagePicker.pickerConfig.allowAllSelection {
+            items.insert(selectAllBarButton, at: 0)
+        }
+        
+        if items.count > 1 {
+            self.toolbarItems = items
+            self.navigationController?.setToolbarHidden(false, animated: true)
         }
     }
 
@@ -219,6 +245,10 @@ class GBHPhotoPickerViewController: UIViewController {
 
         // Send to album delegate for download
         self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: self.selectedImages)
+    }
+
+    @objc func didSelectAllPicture(sender: UIBarButtonItem) {
+        print(self, #function)
     }
 
     fileprivate func cleanController() {

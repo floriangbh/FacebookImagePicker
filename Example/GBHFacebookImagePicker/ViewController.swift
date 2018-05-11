@@ -123,6 +123,8 @@ class ViewController: UIViewController {
         // Allow multiple selection (false by default)
         GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true
         GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize = .full
+        GBHFacebookImagePicker.pickerConfig.allowAllSelection = true
+         GBHFacebookImagePicker.pickerConfig.picturePerRow = 3
 
         // Make some customisation
         //self.someCustomisation()
