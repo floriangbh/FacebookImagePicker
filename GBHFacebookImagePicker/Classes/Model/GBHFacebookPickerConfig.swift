@@ -55,11 +55,41 @@ public struct GBHFacebookPickerConfig {
 
         /// Preview photos size (normal by default)
         public var previewPhotoSize: ImageSize = .normal
+  
     }
-
-    /// Will be applied to the album's navigation bar title
-    public var title: String = NSLocalizedString("Album(s)",
-                                                 comment: "")
+    
+    public struct TextConfig {
+        /// Will be applied to the album's navigation bar title
+        public var localizedTitle: String = NSLocalizedString("Album(s)",
+                                                              comment: "")
+        /// Tagged album name
+        public var localizedTaggedAlbumName: String = NSLocalizedString("Photos of You",
+                                                                        comment: "")
+        /// Name for Pictures
+        public var localizedPictures: String = NSLocalizedString("Pictures",
+                                                                 comment: "")
+        /// Name for title in popup
+        public var localizedOups: String = NSLocalizedString("Oups",
+                                                             comment: "")
+        /// Name for need photo permission in popup
+        public var localizedAllowPhotoPermission: String = NSLocalizedString("You need to allow photo's permission.",
+                                                                             comment: "")
+        /// Name for allow in popup
+        public var localizedAllow: String =  NSLocalizedString("Allow",
+                                                               comment: "")
+        /// Name for close in popup
+        public var localizedClose: String =  NSLocalizedString("Close",
+                                                               comment: "")
+        /// Naviagtion bar button name
+        public var localizedSelect: String = NSLocalizedString("Select",
+                                                               comment: "")
+        /// Name for Select all
+        public var localizedSelectAll: String = NSLocalizedString("Select all",
+                                                                  comment: "")
+        /// Name for no pictures in the albue
+        public var localizedNoPicturesInAlbum: String = NSLocalizedString("No picture(s) in this album.",
+                                                                          comment: "")
+    }
 
     /// The picture corner radius. Used for display album cover and album's picture.
     public var pictureCornerRadius: CGFloat = 2.0
@@ -85,12 +115,11 @@ public struct GBHFacebookPickerConfig {
     /// Display tagged album 
     public var displayTaggedAlbum: Bool = false
 
-    /// Tagged album name
-    public var taggedAlbumName: String = NSLocalizedString("Photos of You",
-                                                            comment: "")
-
     /// UI-specific configuration.
     public var uiConfig = UIConfig()
+    
+    /// Text-specific configuration.
+    public var textConfig = TextConfig()
 
     // MARK: - Internal
 
