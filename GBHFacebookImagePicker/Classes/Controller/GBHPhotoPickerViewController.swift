@@ -65,7 +65,8 @@ class GBHPhotoPickerViewController: UIViewController {
             }
 
             // Update button title
-            self.selectBarButton.title = "\(GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelect)\(count > 0 ? " (\(count))" : "")"
+            let text = GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelect
+            self.selectBarButton.title = "\(text)\(count > 0 ? " (\(count))" : "")"
         }
     }
 

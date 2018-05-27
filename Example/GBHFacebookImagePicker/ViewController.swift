@@ -61,7 +61,7 @@ class ViewController: UIViewController {
 
     fileprivate func someCustomisation() {
         // Navigation bar title 
-        GBHFacebookImagePicker.pickerConfig.title = "MyCustomTitle"
+        GBHFacebookImagePicker.pickerConfig.textConfig.localizedTitle = "MyCustomTitle"
 
         // Navigation barTintColor
         GBHFacebookImagePicker.pickerConfig.uiConfig.navBarTintColor = UIColor.red
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
 
         // Display tagged album 
-        GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
+        GBHFacebookImagePicker.pickerConfig.textConfig.localizedTaggedAlbumName = "Tagged photos"
 
         // Tagged album name
         GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true

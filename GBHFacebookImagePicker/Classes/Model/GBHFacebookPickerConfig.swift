@@ -55,9 +55,9 @@ public struct GBHFacebookPickerConfig {
 
         /// Preview photos size (normal by default)
         public var previewPhotoSize: ImageSize = .normal
-  
+
     }
-    
+
     public struct TextConfig {
         /// Will be applied to the album's navigation bar title
         public var localizedTitle: String = NSLocalizedString("Album(s)",
@@ -117,7 +117,7 @@ public struct GBHFacebookPickerConfig {
 
     /// UI-specific configuration.
     public var uiConfig = UIConfig()
-    
+
     /// Text-specific configuration.
     public var textConfig = TextConfig()
 
