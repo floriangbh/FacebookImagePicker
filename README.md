@@ -131,7 +131,7 @@ picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
 
 ## Customisation
 
-You can apply some customisation. To do it you can use the [GBHFacebookPickerConfig structure](CUSTOMISATION). 
+You can apply some customisation. To do it you can use the [GBHFacebookPickerConfig structure](CUSTOMISATION.md). 
 
 ## Aditionals informations 
 
