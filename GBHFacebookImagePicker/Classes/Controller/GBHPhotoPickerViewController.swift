@@ -186,10 +186,9 @@ class GBHPhotoPickerViewController: UIViewController {
         self.pictureCollection?.dataSource = self
         self.pictureCollection?.allowsMultipleSelection = true
         self.pictureCollection?.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
-        self.pictureCollection?.translatesAutoresizingMaskIntoConstraints = false
         if let collection = self.pictureCollection {
             self.view.addSubview(collection)
-            self.view.fit(view: collection)
+            self.view.pinEdges(to: collection)
         }
 
         // Define cell size
