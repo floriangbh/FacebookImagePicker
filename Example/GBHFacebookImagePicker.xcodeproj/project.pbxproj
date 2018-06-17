@@ -47,6 +47,7 @@
 		7661A0E01DC8E64F008CCBAE /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		76B7FB4E1D9FFE00002C45C5 /* GBHFacebookImagePicker_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GBHFacebookImagePicker_Example.entitlements; sourceTree = "<group>"; };
 		76E09DF21EB9DA1C0099B265 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		C39EB56620D6E84A00EC214F /* CUSTOMISATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CUSTOMISATION.md; path = ../CUSTOMISATION.md; sourceTree = "<group>"; };
 		D771BFA97E88D64C5F62D5E2 /* Pods_GBHFacebookImagePicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBHFacebookImagePicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E437BF19FF9AF287714980F5 /* Pods-GBHFacebookImagePicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBHFacebookImagePicker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GBHFacebookImagePicker_Tests/Pods-GBHFacebookImagePicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		EBBECDEDEE69303E2A07B3A2 /* Pods-GBHFacebookImagePicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBHFacebookImagePicker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GBHFacebookImagePicker_Tests/Pods-GBHFacebookImagePicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				513BF7BF9DC712BFCA01CD79 /* GBHFacebookImagePicker.podspec */,
+				C39EB56620D6E84A00EC214F /* CUSTOMISATION.md */,
 				663B846C1D24CEE4306EAFC1 /* README.md */,
 				FF26E06E633513D8B3E6CD2E /* LICENSE */,
 				7661A0E01DC8E64F008CCBAE /* CHANGELOG.md */,
