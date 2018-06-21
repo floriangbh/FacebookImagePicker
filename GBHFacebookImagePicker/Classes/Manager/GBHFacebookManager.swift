@@ -115,6 +115,15 @@ class GBHFacebookManager {
                     let albumCount = albumDic["count"] as? Int {
 
                     // Album's cover url
+                    switch  GBHFacebookImagePicker.pickerConfig.uiConfig.albumCoverSize {
+                    case .thumbnail:
+                        self.pictureUrl = "https://graph.facebook.com/%@/picture?type=thumbnail&access_token=%@"
+                    case .small:
+                        self.pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
+                    case .album:
+                        self.pictureUrl = "https://graph.facebook.com/%@/picture?type=album&access_token=%@"
+                    }
+                    
                     let albumUrlPath = String(format: self.pictureUrl,
                                               albumId,
                                               FBSDKAccessToken.current().tokenString)
