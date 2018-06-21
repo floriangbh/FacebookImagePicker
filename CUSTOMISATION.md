@@ -1,12 +1,15 @@
-//
-//  GBHFacebookPickerConfig.swift
-//  GBHFacebookImagePicker
-//
-//  Created by Florian Gabach on 29/09/2016.
-//  Copyright (c) 2016 Florian Gabach <contact@floriangabach.fr>
+## Customisation
 
-import UIKit
+You can apply some customisations. To do it you can use the `GBHFacebookPickerConfig` structure like this :
 
+```swift
+// Multiple selection settings 
+GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true // False by default  
+```
+
+Here is the `GBHFacebookPickerConfig`  with default value : 
+
+```swift
 /// Simple struct to hold settings 
 public struct GBHFacebookPickerConfig {
 
@@ -55,42 +58,39 @@ public struct GBHFacebookPickerConfig {
 
         /// Preview photos size (normal by default)
         public var previewPhotoSize: ImageSize = .normal
-        
-        /// Set album cover image size type (small by default)
-        public var albumCoverSize: AlbumCoverSize = .small
     }
 
     public struct TextConfig {
         /// Will be applied to the album's navigation bar title
         public var localizedTitle: String = NSLocalizedString("Album(s)",
-                                                              comment: "")
+        comment: "")
         /// Tagged album name
         public var localizedTaggedAlbumName: String = NSLocalizedString("Photos of You",
-                                                                        comment: "")
+        comment: "")
         /// Name for Pictures
         public var localizedPictures: String = NSLocalizedString("Pictures",
-                                                                 comment: "")
+        comment: "")
         /// Name for title in popup
         public var localizedOups: String = NSLocalizedString("Oups",
-                                                             comment: "")
+        comment: "")
         /// Name for need photo permission in popup
         public var localizedAllowPhotoPermission: String = NSLocalizedString("You need to allow photo's permission.",
-                                                                             comment: "")
+        comment: "")
         /// Name for allow in popup
         public var localizedAllow: String =  NSLocalizedString("Allow",
-                                                               comment: "")
+        comment: "")
         /// Name for close in popup
         public var localizedClose: String =  NSLocalizedString("Close",
-                                                               comment: "")
+        comment: "")
         /// Naviagtion bar button name
         public var localizedSelect: String = NSLocalizedString("Select",
-                                                               comment: "")
+        comment: "")
         /// Name for Select all
         public var localizedSelectAll: String = NSLocalizedString("Select all",
-                                                                  comment: "")
+        comment: "")
         /// Name for no pictures in the albue
         public var localizedNoPicturesInAlbum: String = NSLocalizedString("No picture(s) in this album.",
-                                                                          comment: "")
+        comment: "")
     }
 
     /// The picture corner radius. Used for display album cover and album's picture.
@@ -122,10 +122,5 @@ public struct GBHFacebookPickerConfig {
 
     /// Text-specific configuration.
     public var textConfig = TextConfig()
-
-    // MARK: - Internal
-
-    internal var shouldDisplayToolbar: Bool {
-        return self.allowMultipleSelection
-    }
 }
+```

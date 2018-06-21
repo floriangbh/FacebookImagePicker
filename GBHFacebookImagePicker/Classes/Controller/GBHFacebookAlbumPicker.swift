@@ -76,7 +76,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
     fileprivate func prepareTableView() {
         // Common init
         self.tableView.tableFooterView = UIView()
-        self.title = GBHFacebookImagePicker.pickerConfig.title
+        self.title = GBHFacebookImagePicker.pickerConfig.textConfig.localizedTitle
         self.tableView.register(GBHAlbumTableViewCell.self,
                                 forCellReuseIdentifier: self.reuseIdentifier)
         self.tableView.dataSource = self
@@ -154,23 +154,19 @@ class GBHFacebookAlbumPicker: UITableViewController {
 
     /// Show popup with ask user_photos permission
     fileprivate func showDeniedPermissionPopup() {
-        let alertController = UIAlertController(title: NSLocalizedString("Oups",
-                                                                         comment: ""),
-                                                message: NSLocalizedString("You need to allow photo's permission.",
-                                                                           comment: ""),
+        let alertController = UIAlertController(title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedOups,
+                                                message: GBHFacebookImagePicker.pickerConfig.textConfig.localizedAllowPhotoPermission,
                                                 preferredStyle: UIAlertControllerStyle.alert)
 
         // Done & Cancel button
-        let autorizeAction = UIAlertAction(title: NSLocalizedString("Allow",
-                                                                    comment: ""),
+        let autorizeAction = UIAlertAction(title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedAllow,
                                            style: UIAlertActionStyle.default,
                                            handler: { _ -> Void in
                                             self.doFacebookLogin()
         })
 
         // Cancel action
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Close",
-                                                                  comment: ""),
+        let cancelAction = UIAlertAction(title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedClose,
                                          style: UIAlertActionStyle.cancel,
                                          handler: { (_: UIAlertAction!) -> Void in
                                             self.dismissPicker()

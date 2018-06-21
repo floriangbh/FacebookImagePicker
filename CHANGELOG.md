@@ -1,6 +1,16 @@
 Changelog
 ==========
 
+### 2.4.0
+
+- Add "all selection" feature 
+- Moving action button to a toolbar 
+- Bump to FBSDK 4.33
+- Texts configuration refactoring 
+- Layout : refactoring with anchor (to be continue)
+
+Some breaking change can occur with the text localization. 
+
 ### 2.3.2
 
 - Bump to FBSDK 4.32

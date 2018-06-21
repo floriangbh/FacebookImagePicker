@@ -64,14 +64,15 @@ class GBHPhotoPickerViewController: UIViewController {
                 self.selectBarButton.isEnabled = false
             }
 
-            // Update button title 
-            self.selectBarButton.title = "Select\(count > 0 ? " (\(count))" : "")"
+            // Update button title
+            let text = GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelect
+            self.selectBarButton.title = "\(text)\(count > 0 ? " (\(count))" : "")"
         }
     }
 
     fileprivate lazy var selectBarButton: UIBarButtonItem = {
         let selectBarButton = UIBarButtonItem(
-            title: "Select",
+            title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelect,
             style: .plain,
             target: self,
             action: #selector(actionSelectBarButton(sender:))
@@ -82,7 +83,7 @@ class GBHPhotoPickerViewController: UIViewController {
 
     fileprivate lazy var selectAllBarButton: UIBarButtonItem = {
         let selectAllBarButton = UIBarButtonItem(
-            title: "Select all",
+            title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelectAll,
             style: .plain,
             target: self,
             action: #selector(didSelectAllPicture(sender:))
@@ -96,8 +97,7 @@ class GBHPhotoPickerViewController: UIViewController {
                                                width: self.pictureCollection?.frame.size.width ?? 0.0,
                                                height: self.pictureCollection?.frame.size.height ?? 0.0))
         emptyLabel.textAlignment = .center
-        emptyLabel.text = NSLocalizedString("No picture(s) in this album.",
-                                            comment: "")
+        emptyLabel.text = GBHFacebookImagePicker.pickerConfig.textConfig.localizedNoPicturesInAlbum
         emptyLabel.font = UIFont.italicSystemFont(ofSize: 16)
         emptyLabel.textColor = UIColor.lightGray
         return emptyLabel
@@ -147,7 +147,7 @@ class GBHPhotoPickerViewController: UIViewController {
     /// Prepare the UIViewController 
     fileprivate func prepareViewController() {
         // Title & Background
-        self.title = self.album?.name ?? NSLocalizedString("Pictures", comment: "")
+        self.title = self.album?.name ?? GBHFacebookImagePicker.pickerConfig.textConfig.localizedPictures
         self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
 
         self.prepareMultipleSelectionButton()
@@ -186,10 +186,9 @@ class GBHPhotoPickerViewController: UIViewController {
         self.pictureCollection?.dataSource = self
         self.pictureCollection?.allowsMultipleSelection = true
         self.pictureCollection?.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
-        self.pictureCollection?.translatesAutoresizingMaskIntoConstraints = false
         if let collection = self.pictureCollection {
             self.view.addSubview(collection)
-            self.view.fit(view: collection)
+            self.view.pinEdges(to: collection)
         }
 
         // Define cell size

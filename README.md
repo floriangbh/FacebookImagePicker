@@ -35,6 +35,11 @@ This picker takes care of all authentication (from the web or with the native Fa
 - [x] Multiple selection in one album
 - [x] Select all 
 
+## TODOs
+
+- [  ] Use Anchor for layout (make the layout code cleaner and readable
+- [  ] UI & Unit tests
+
 ## Example
 
 In your terminal :
@@ -126,75 +131,7 @@ picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
 
 ## Customisation
 
-You can apply some customisation. To do it you can use the GBHFacebookPickerConfig structure like this :
-
-```swift
-// Multiple selection settings 
-GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true // False by default  
-
-// Navigation bar title 
-GBHFacebookImagePicker.pickerConfig.title = "MyCustomTitle"
-
-// Navigation barTintColor
-GBHFacebookImagePicker.pickerConfig.uiConfig.navBarTintColor = UIColor.red
-
-// Close button color 
-GBHFacebookImagePicker.pickerConfig.uiConfig.closeButtonColor = UIColor.white
-
-// Global backgroundColor 
-GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor = UIColor.red
-
-// Status bar style (.default style by default)
-GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle = .lightContent
-
-// Navigation bar title color
-GBHFacebookImagePicker.pickerConfig.uiConfig.navTitleColor = UIColor.white
-
-// Navigation bar tintColor
-GBHFacebookImagePicker.pickerConfig.uiConfig.navTintColor = UIColor.white
-
-// Album's name color 
-GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor = UIColor.white
-
-// Album's count color 
-GBHFacebookImagePicker.pickerConfig.uiConfig.albumsCountColor = UIColor.white
-
-// Selected border color 
-GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderColor = UIColor.red
-
-// Selected border width 
-GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth = 4.0
-
-/// Preview photos size (normal by default)
-GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize = .full
-
-// Maximum selected pictures 
-GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures = 4
-
-// Display tagged album 
-GBHFacebookImagePicker.pickerConfig.taggedAlbumName = "Tagged photos"
-
-// Tagged album name
-GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum = true
-
-// Number of picture per row (4 by default)
-GBHFacebookImagePicker.pickerConfig.picturePerRow = 3
-
-// Space beetween album photo cell (1.5 by default)
-GBHFacebookImagePicker.pickerConfig.cellSpacing = 2.0
-
-// Perform animation on picture tap (true by default)
-GBHFacebookImagePicker.pickerConfig.performTapAnimation = true
-
-// Show check style with image and layer (true by default)
-GBHFacebookImagePicker.pickerConfig.uiConfig.showCheckView = false
-
-// Change checkview background color
-GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor = UIColor.red
-
-// Show the "Select all" button 
-GBHFacebookImagePicker.pickerConfig.allowAllSelection = true
-```
+You can apply some customisation. To do it you can use the [GBHFacebookPickerConfig structure](CUSTOMISATION.md). 
 
 ## Aditionals informations 
 

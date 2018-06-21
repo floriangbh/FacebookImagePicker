@@ -69,7 +69,7 @@ class GBHFacebookManager {
 
                         // Create tagged album 
                         let taggedPhotosAlbum = GBHFacebookAlbum(
-                            name: GBHFacebookImagePicker.pickerConfig.taggedAlbumName,
+                            name: GBHFacebookImagePicker.pickerConfig.textConfig.localizedTaggedAlbumName,
                             albmId: GBHFacebookManager.idTaggedPhotosAlbum
                         )
 
