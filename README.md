@@ -37,7 +37,7 @@ This picker takes care of all authentication (from the web or with the native Fa
 
 ## TODOs
 
-- [  ] Use Anchor for layout (make the layout code cleaner and readable
+- [  ] Use Anchor for layout (make the layout code cleaner and readable)
 - [  ] UI & Unit tests
 
 ## Example
