@@ -139,7 +139,7 @@ You can apply some customisation. To do it you can use the [GBHFacebookPickerCon
 
 ## Translation 
 
-GBHFacebookImagePicker is currently write in english. If you need translation for the permission popup (or whatever thing), just add this line in your localized file  :
+GBHFacebookImagePicker is currently written in english. If you need translation for the permission popup (or whatever thing), just add this line in your localized file  :
 
 ```
 "Pictures" = "<your_translation>";
