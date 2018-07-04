@@ -100,7 +100,7 @@ final class GBHAlbumTableViewCell: UITableViewCell {
 
         // Album's pictures count
         if let count = album.count {
-            self.detailTextLabel?.text = "\(count)"
+            self.detailTextLabel?.text = "\(count.locallyFormattedString())"
         } else {
             self.detailTextLabel?.text = ""
         }
