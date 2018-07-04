@@ -57,16 +57,17 @@ class GBHPhotoPickerViewController: UIViewController {
             // How many image selected
             let count = self.selectedImages.count
 
-            // Manage disable/enable state 
-            if count > 0 {
-                self.selectBarButton.isEnabled = true
-            } else {
-                self.selectBarButton.isEnabled = false
-            }
+            // Manage disable/enable state
+            self.selectBarButton.isEnabled = count > 0
 
             // Update button title
-            let text = GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelect
-            self.selectBarButton.title = "\(text)\(count > 0 ? " (\(count))" : "")"
+            var text = GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelect
+
+            if count > 0 {
+                text.append(" (\(count.locallyFormattedString()))")
+            }
+
+            self.selectBarButton.title = text
         }
     }
 
