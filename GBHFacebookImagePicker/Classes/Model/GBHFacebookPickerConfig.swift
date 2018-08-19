@@ -55,7 +55,9 @@ public struct GBHFacebookPickerConfig {
 
         /// Preview photos size (normal by default)
         public var previewPhotoSize: ImageSize = .normal
-
+        
+        /// Set album cover image size type (small by default)
+        public var albumCoverSize: AlbumCoverSize = .small
     }
 
     public struct TextConfig {
