@@ -1,4 +1,4 @@
-# This repository is no longer maintained. Feel free to make fork. Thanks
+# This repository is no longer maintained. Feel free to make a fork. Thanks
 
 <p align="center">
     <img src="https://github.com/terflogag/FacebookImagePicker/blob/master/Ressources/welcome_img.png" alt="FacebookImagePicker" />
