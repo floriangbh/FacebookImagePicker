@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 2.4.1
+
+- Bump to FBSDK 4.37
+
 ### 2.4.0
 
 - Add "all selection" feature 
