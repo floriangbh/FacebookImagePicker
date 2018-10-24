@@ -5,13 +5,13 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - FBSDKCoreKit (4.34.0):
+  - FBSDKCoreKit (4.37.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.34.0):
+  - FBSDKLoginKit (4.37.0):
     - FBSDKCoreKit
   - GBHFacebookImagePicker (2.4.0):
-    - FBSDKCoreKit (~> 4.34.0)
-    - FBSDKLoginKit (~> 4.34.0)
+    - FBSDKCoreKit (~> 4.37.0)
+    - FBSDKLoginKit (~> 4.37.0)
 
 DEPENDENCIES:
   - GBHFacebookImagePicker (from `../`)
@@ -28,9 +28,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
-  FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
-  GBHFacebookImagePicker: 4d538a9409e513bb9c4ae47c63f34e0537153b02
+  FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
+  FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
+  GBHFacebookImagePicker: 189911eca858c47b66bae9470a36b7c7212db058
 
 PODFILE CHECKSUM: c7986fba07718931af896e9c40736ace0ccbfe4e
 
