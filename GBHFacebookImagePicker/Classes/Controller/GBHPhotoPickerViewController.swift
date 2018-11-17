@@ -110,7 +110,7 @@ class GBHPhotoPickerViewController: UIViewController {
                                                                width: 40,
                                                                height: 40) )
         indicator.hidesWhenStopped = true
-        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        indicator.style = UIActivityIndicatorView.Style.gray
         indicator.backgroundColor = UIColor.clear
         indicator.color = UIColor.black
         return indicator

@@ -34,7 +34,7 @@ class GBHFacebookNavigationController: UINavigationController {
         // Apply navigation bar title color if specified in config struct 
         if let tintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.navTitleColor {
             self.navigationBar.titleTextAttributes = [
-                NSAttributedStringKey.foregroundColor: tintColor
+                NSAttributedString.Key.foregroundColor: tintColor
             ]
         }
     }

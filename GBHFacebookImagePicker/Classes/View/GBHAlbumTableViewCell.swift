@@ -27,7 +27,7 @@ final class GBHAlbumTableViewCell: UITableViewCell {
     /// - Parameters:
     ///   - style: the style of the cell (subtitle for this case)
     ///   - reuseIdentifier: the reuse identifier of the cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle,
                    reuseIdentifier: reuseIdentifier)
 

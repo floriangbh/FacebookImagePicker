@@ -50,7 +50,7 @@ class GBHFacebookAlbumPicker: UITableViewController {
                                                               width: 40,
                                                               height: 40) )
         indicator.hidesWhenStopped = true
-        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        indicator.style = UIActivityIndicatorView.Style.gray
         indicator.backgroundColor = UIColor.clear
         indicator.color = UIColor.black
         return indicator
@@ -156,18 +156,18 @@ class GBHFacebookAlbumPicker: UITableViewController {
     fileprivate func showDeniedPermissionPopup() {
         let alertController = UIAlertController(title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedOups,
                                                 message: GBHFacebookImagePicker.pickerConfig.textConfig.localizedAllowPhotoPermission,
-                                                preferredStyle: UIAlertControllerStyle.alert)
+                                                preferredStyle: UIAlertController.Style.alert)
 
         // Done & Cancel button
         let autorizeAction = UIAlertAction(title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedAllow,
-                                           style: UIAlertActionStyle.default,
+                                           style: UIAlertAction.Style.default,
                                            handler: { _ -> Void in
                                             self.doFacebookLogin()
         })
 
         // Cancel action
         let cancelAction = UIAlertAction(title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedClose,
-                                         style: UIAlertActionStyle.cancel,
+                                         style: UIAlertAction.Style.cancel,
                                          handler: { (_: UIAlertAction!) -> Void in
                                             self.dismissPicker()
         })

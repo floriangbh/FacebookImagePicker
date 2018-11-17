@@ -85,7 +85,7 @@ class GBHImageAsyncViewLoading: UIImageView {
         // Start animation to final state 
         UIView.animate(withDuration: 0.3,
                        delay: 0.0,
-                       options: UIViewAnimationOptions.curveEaseOut,
+                       options: UIView.AnimationOptions.curveEaseOut,
                        animations: {
                         self.alpha = 1.0
         }, completion: nil)

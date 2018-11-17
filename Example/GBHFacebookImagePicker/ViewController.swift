@@ -47,7 +47,7 @@ class ViewController: UIViewController {
                                                        alpha: 1.0)
         self.showAlbumButton.addTarget(self,
                                        action: #selector(self.showAlbumClick),
-                                       for: UIControlEvents.touchUpInside)
+                                       for: UIControl.Event.touchUpInside)
 
         // Prepare TableView 
         self.tableView.backgroundColor = .clear

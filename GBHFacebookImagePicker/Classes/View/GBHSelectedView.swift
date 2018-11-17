@@ -142,17 +142,17 @@ final class GBHSelectedView: UIView {
 
         // Apply width and height
         self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                              attribute: NSLayoutAttribute.width,
-                                              relatedBy: NSLayoutRelation.equal,
+                                              attribute: NSLayoutConstraint.Attribute.width,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                               toItem: nil,
-                                              attribute: NSLayoutAttribute.notAnAttribute,
+                                              attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                               multiplier: 1,
                                               constant: self.checkMarkViewSize.width))
         self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                              attribute: NSLayoutAttribute.height,
-                                              relatedBy: NSLayoutRelation.equal,
+                                              attribute: NSLayoutConstraint.Attribute.height,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                               toItem: nil,
-                                              attribute: NSLayoutAttribute.notAnAttribute,
+                                              attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                               multiplier: 1,
                                               constant: self.checkMarkViewSize.height))
 
@@ -166,18 +166,18 @@ final class GBHSelectedView: UIView {
         switch GBHFacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
         case .topLeft, .topRight:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                                  attribute: NSLayoutAttribute.top,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.top,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: self,
-                                                  attribute: NSLayoutAttribute.top,
+                                                  attribute: NSLayoutConstraint.Attribute.top,
                                                   multiplier: 1,
                                                   constant: margin))
         case .bottomLeft, .bottomRight:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                                  attribute: NSLayoutAttribute.bottom,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.bottom,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: self,
-                                                  attribute: NSLayoutAttribute.bottom,
+                                                  attribute: NSLayoutConstraint.Attribute.bottom,
                                                   multiplier: 1,
                                                   constant: -margin))
         }
@@ -188,18 +188,18 @@ final class GBHSelectedView: UIView {
         switch GBHFacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
         case .topLeft, .bottomLeft:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                                  attribute: NSLayoutAttribute.leading,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.leading,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: self,
-                                                  attribute: NSLayoutAttribute.leading,
+                                                  attribute: NSLayoutConstraint.Attribute.leading,
                                                   multiplier: 1,
                                                   constant: margin))
         case .topRight, .bottomRight:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                                  attribute: NSLayoutAttribute.trailing,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.trailing,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: self,
-                                                  attribute: NSLayoutAttribute.trailing,
+                                                  attribute: NSLayoutConstraint.Attribute.trailing,
                                                   multiplier: 1,
                                                   constant: -margin))
         }

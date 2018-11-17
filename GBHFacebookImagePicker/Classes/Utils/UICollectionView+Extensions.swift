@@ -8,7 +8,7 @@
 import UIKit
 
 extension UICollectionView {
-    public func selectAllCell(toPosition position: UICollectionViewScrollPosition = []) {
+    public func selectAllCell(toPosition position: UICollectionView.ScrollPosition = []) {
         for section in 0..<self.numberOfSections {
             for item in 0..<self.numberOfItems(inSection: section) {
                 let index = IndexPath(row: item, section: section)
