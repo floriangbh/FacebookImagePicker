@@ -57,7 +57,7 @@ final class GBHSelectedView: UIView {
 
         // Checkmark background color
         let customColor = GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor
-        let backgroundColor = customColor ?? GBHAppearanceManager.facebookColor
+        let backgroundColor = customColor ?? Colors.facebookColor
 
         self.checkMarkView?.layer.borderWidth = 1.5
         self.checkMarkView?.layer.borderColor = UIColor.white.cgColor
@@ -84,7 +84,7 @@ final class GBHSelectedView: UIView {
 
         // Add checkmark image from assets
         let checkImageView = UIImageView()
-        checkImageView.image = GBHAssetManager.getImage(name: GBHAssetImage.checkMark)
+        checkImageView.image = AssetsController.getImage(name: GBHAssetImage.checkMark)
         checkImageView.backgroundColor = .clear
         checkView.addSubview(checkImageView)
 

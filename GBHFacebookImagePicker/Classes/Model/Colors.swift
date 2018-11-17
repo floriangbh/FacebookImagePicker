@@ -1,11 +1,11 @@
 //
-//  GBHAppearanceManager.swift
+//  Colors.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 07/10/2016.
 //  Copyright (c) 2016 Florian Gabach <contact@floriangabach.fr>
 
-class GBHAppearanceManager: NSObject {
+struct Colors {
     // White color : http://www.color-hex.com/color/ffffff
     static let whiteCustom = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1.0)
 

@@ -9,11 +9,11 @@ import Foundation
 import FBSDKLoginKit
 import FBSDKCoreKit
 
-class GBHFacebookManager {
+class FacebookController {
 
     // MARK: - Singleton 
 
-    static let shared = GBHFacebookManager()
+    static let shared = FacebookController()
 
     // MARK: - Var
 
@@ -70,7 +70,7 @@ class GBHFacebookManager {
                         // Create tagged album 
                         let taggedPhotosAlbum = GBHFacebookAlbum(
                             name: GBHFacebookImagePicker.pickerConfig.textConfig.localizedTaggedAlbumName,
-                            albmId: GBHFacebookManager.idTaggedPhotosAlbum
+                            albmId: FacebookController.idTaggedPhotosAlbum
                         )
 
                         // Add to albums 
@@ -143,12 +143,12 @@ class GBHFacebookManager {
                                 album: GBHFacebookAlbum) {
 
         // Build path album request
-        guard let id = album.albumId else {
+        guard let identifier = album.albumId else {
             return
         }
-        var path = id == GBHFacebookManager.idTaggedPhotosAlbum
+        var path = identifier == FacebookController.idTaggedPhotosAlbum
             ? "/me/photos?fields=picture,source,id"
-            : "/\(id)/photos?fields=picture,source,id"
+            : "/\(identifier)/photos?fields=picture,source,id"
         if let afterPath = after {
             path = path.appendingFormat("&after=%@", afterPath)
         }
@@ -204,13 +204,13 @@ class GBHFacebookManager {
             // Parsing album's picture
             for photo in photosResult {
                 if let photoDic = photo as? [String: AnyObject],
-                    let id = photoDic["id"] as? String,
+                    let identifier = photoDic["id"] as? String,
                     let picture = photoDic["picture"] as? String,
                     let source = photoDic["source"] as? String {
 
                     // Build Picture model
                     let photoObject = GBHFacebookImage(picture: picture,
-                                                       imgId: id,
+                                                       imgId: identifier,
                                                        source: source)
                     album.photos.append(photoObject)
                 }

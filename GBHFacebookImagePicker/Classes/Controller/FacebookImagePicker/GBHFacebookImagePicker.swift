@@ -21,7 +21,7 @@ public class GBHFacebookImagePicker: NSObject {
                                                       delegate: GBHFacebookImagePickerDelegate) {
 
         // Create album picker
-        let albumPicker = GBHFacebookAlbumPicker()
+        let albumPicker = FacebookAlbumController()
         albumPicker.delegate = delegate
 
         // Embed in navigation controller

@@ -1,13 +1,14 @@
 //
 //  ContentStateViewController.swift
-//  Bolts
+//  SkyBreathe
 //
-//  Created by Florian Gabach on 14/11/2018.
+//  Created by Florian Gabach on 25/10/2018.
+//  Copyright © 2018 OpenAirlines. All rights reserved.
 //
 
 import UIKit
 
-class ContentStateViewController: UIViewController {
+final class ContentStateViewController: UIViewController {
 
     // MARK: - Var
 
@@ -36,13 +37,13 @@ class ContentStateViewController: UIViewController {
     }
 }
 
-extension ContentStateViewController {
+private extension ContentStateViewController {
     func viewController(for state: State) -> UIViewController {
         switch state {
         case .loading:
             return LoadingViewController()
         case .failed:
-            return ErrorViewController()
+            return MessageViewController()
         case .render(let viewController):
             return viewController
         }

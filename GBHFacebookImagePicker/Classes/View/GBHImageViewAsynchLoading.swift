@@ -16,7 +16,7 @@ class GBHImageAsyncViewLoading: UIImageView {
         super.init(frame: frame)
 
         // Set default image
-        self.image = GBHAssetManager.getImage(name: GBHAssetImage.loader)
+        self.image = AssetsController.getImage(name: GBHAssetImage.loader)
     }
 
     /// Required for deserialization
@@ -29,7 +29,7 @@ class GBHImageAsyncViewLoading: UIImageView {
         didSet {
             if let url = imageUrl {
 
-                if let cachedImage = GBHImageCacheManager.shared.getImage(forUrl: url.absoluteString) {
+                if let cachedImage = ImageCacheController.shared.getImage(forUrl: url.absoluteString) {
                     // Retrieved image from cache 
                     self.image = cachedImage
                 } else {
@@ -58,7 +58,7 @@ class GBHImageAsyncViewLoading: UIImageView {
                             // Display the image !
                             if let downloadedImage = UIImage(data: data) {
                                 // Cache the image 
-                                GBHImageCacheManager.shared.setImage(forUrl: url.absoluteString,
+                                ImageCacheController.shared.setImage(forUrl: url.absoluteString,
                                                                      image: downloadedImage)
 
                                 // Set the image with animation

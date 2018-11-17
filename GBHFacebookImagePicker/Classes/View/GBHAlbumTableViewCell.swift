@@ -66,7 +66,7 @@ final class GBHAlbumTableViewCell: UITableViewCell {
         super.prepareForReuse()
 
         // Set default image
-        self.photoImageView?.image = GBHAssetManager.getImage(name: GBHAssetImage.loader)
+        self.photoImageView?.image = AssetsController.getImage(name: GBHAssetImage.loader)
     }
 
     /// Define the layout of the album name label and number of picture label
@@ -106,9 +106,9 @@ final class GBHAlbumTableViewCell: UITableViewCell {
         }
 
         // Album cover image
-        if album.albumId == GBHFacebookManager.idTaggedPhotosAlbum {
+        if album.albumId == FacebookController.idTaggedPhotosAlbum {
             // Special cover for tagged album : user facebook account picture 
-            GBHFacebookManager.shared.getProfilePicture({ (_, url) in
+            FacebookController.shared.getProfilePicture({ (_, url) in
                 if let stringUrl = url, let url = URL(string: stringUrl) {
                     self.photoImageView?.imageUrl = url
                 }

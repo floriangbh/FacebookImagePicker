@@ -1,5 +1,5 @@
 //
-//  GBHPhotoPickerViewController.swift
+//  PhotoPickerViewController.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 29/09/2016.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GBHPhotoPickerViewController: UIViewController {
+class PhotoPickerViewController: UIViewController {
 
     /// MARK: Var
 
@@ -46,7 +46,7 @@ class GBHPhotoPickerViewController: UIViewController {
     fileprivate var alreadyLoaded: Bool = false
 
     /// Album picker controller delegate 
-    weak var albumPictureDelegate: GBHAlbumPickerTableViewControllerDelegate?
+    weak var albumPictureDelegate: FacebookAlbumPickerDelegate?
 
     // Current album model 
     var album: GBHFacebookAlbum? // Curent album
@@ -217,7 +217,7 @@ class GBHPhotoPickerViewController: UIViewController {
             if imageArray.isEmpty {
                 self.startLoading()
                 if let album = self.album {
-                    GBHFacebookManager.shared.fbAlbumsPictureRequest(after: nil, album: album)
+                    FacebookController.shared.fbAlbumsPictureRequest(after: nil, album: album)
                 } else {
                     self.albumPictureDelegate?.didFailSelectPictureInAlbum(error: nil)
                 }
@@ -267,7 +267,7 @@ class GBHPhotoPickerViewController: UIViewController {
     }
 }
 
-extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension PhotoPickerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     // MARK: UICollectionViewDelegate & UICollectionViewDataSource
 
@@ -358,7 +358,7 @@ extension GBHPhotoPickerViewController: UICollectionViewDataSource, UICollection
 
 }
 
-extension GBHPhotoPickerViewController: UICollectionViewDelegateFlowLayout {
+extension PhotoPickerViewController: UICollectionViewDelegateFlowLayout {
 
     // MARK: - UICollectionViewDelegateFlowLayout
 

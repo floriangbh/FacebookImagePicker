@@ -15,7 +15,7 @@ extension UIView {
         self.topAnchor.constraint(equalTo: other.topAnchor, constant: size).isActive = true
         self.bottomAnchor.constraint(equalTo: other.bottomAnchor, constant: -size).isActive = true
     }
-    
+
     func pinCenter(to other: UIView) {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.centerXAnchor.constraint(equalTo: other.centerXAnchor).isActive = true

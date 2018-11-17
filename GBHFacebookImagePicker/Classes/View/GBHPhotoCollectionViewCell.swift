@@ -53,7 +53,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
 
         // Set default image
-        self.albumImageView?.image = GBHAssetManager.getImage(name: GBHAssetImage.loader)
+        self.albumImageView?.image = AssetsController.getImage(name: GBHAssetImage.loader)
     }
 
     /// Required init for deserialization
