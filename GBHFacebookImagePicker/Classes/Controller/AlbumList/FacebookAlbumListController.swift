@@ -14,29 +14,30 @@ final class FacebookAlbumListController: UITableViewController {
     
     // MARK: - Var
     
-    /// The image picker delegate
     weak var delegate: FacebookImagePickerDelegate?
-    
-    /// Album cell identifier
+
     private let reuseIdentifier = "AlbumCell"
-    
-    /// Array which contains all the album of the facebook account
-    fileprivate var albums: [FacebookAlbum] = [] { // Albums list
-        didSet {
-            // Reload table data
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
+
+    fileprivate var albums: [FacebookAlbum]
     
     // MARK: - Lifecycle
     
+    init(albums: [FacebookAlbum]) {
+        self.albums = albums
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.title = FacebookImagePicker.pickerConfig.textConfig.localizedTitle
+        self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
+        
         self.prepareTableView()
-        self.prepareObserver()
     }
     
     // MARK: - Prepare
@@ -45,35 +46,11 @@ final class FacebookAlbumListController: UITableViewController {
     fileprivate func prepareTableView() {
         // Common init
         self.tableView.tableFooterView = UIView()
-        self.title = FacebookImagePicker.pickerConfig.textConfig.localizedTitle
         self.tableView.register(AlbumTableViewCell.self,
                                 forCellReuseIdentifier: self.reuseIdentifier)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.cellLayoutMarginsFollowReadableWidth = false
-        self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
-        
-        // Close button (on the right corner of navigation bar)
-        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop,
-                                          target: self,
-                                          action: #selector(self.closePicker))
-        closeButton.tintColor = FacebookImagePicker.pickerConfig.uiConfig.closeButtonColor ?? .black
-        self.navigationItem.rightBarButtonItem = closeButton
-    }
-    
-    /// Prepare observe for album retrieve & picture retrieve
-    fileprivate func prepareObserver() {
-        // Add observe for end album loading
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.didReceiveAlbum),
-                                               name: Notification.Name.ImagePickerDidRetrieveAlbum,
-                                               object: nil)
-    }
-    
-    /// Handler for click on close button
-    @objc fileprivate func closePicker() {
-        self.delegate?.facebookImagePicker(didCancelled: self)
-        self.dismissPicker()
     }
     
     /// Handler for did retrieve album list
@@ -132,22 +109,6 @@ final class FacebookAlbumListController: UITableViewController {
         let albumDetailVC = PhotoPickerViewController()
         //albumDetailVC.albumPictureDelegate = self
         albumDetailVC.album = self.albums[indexPath.row]
-        self.navigationController?.pushViewController(albumDetailVC,
-                                                      animated: true)
-    }
-    
-    // MARK: - Navigation
-    
-    /// Dismiss the picker
-    func dismissPicker() {
-        DispatchQueue.main.async {
-            // Reset flag
-            FacebookController.shared.reset()
-            
-            // Dismiss and call delegate
-            self.dismiss(animated: true, completion: {
-                self.delegate?.facebookImagePickerDismissed()
-            })
-        }
+        self.navigationController?.pushViewController(albumDetailVC, animated: true)
     }
 }

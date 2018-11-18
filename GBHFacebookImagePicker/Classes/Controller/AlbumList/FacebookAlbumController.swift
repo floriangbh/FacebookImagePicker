@@ -24,9 +24,6 @@ final class FacebookAlbumController: UIViewController {
     /// Album cell identifier
     private let reuseIdentifier = "AlbumCell"
 
-    /// Array which contains all the album of the facebook account
-    fileprivate var albums: [FacebookAlbum] = []
-
     // MARK: - Lifecycle
 
     override public func viewDidLoad() {
@@ -34,6 +31,16 @@ final class FacebookAlbumController: UIViewController {
 
         self.add(stateViewController)
         self.prepareObserver()
+        
+        self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
+        
+        // Close button (on the right corner of navigation bar)
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop,
+                                          target: self,
+                                          action: #selector(self.closePicker))
+        closeButton.tintColor = FacebookImagePicker.pickerConfig.uiConfig.closeButtonColor ?? .black
+        self.navigationItem.rightBarButtonItem = closeButton
+        
         self.doFacebookLogin()
     }
 
@@ -80,13 +87,6 @@ final class FacebookAlbumController: UIViewController {
         self.dismissPicker()
     }
 
-    /// Handler for did retrieve album list
-    @objc func didReceiveAlbum(_ sender: Notification) {
-        if let albums =  sender.object as? [FacebookAlbum] {
-            self.albums = albums
-        }
-    }
-
     /// Show popup with ask user_photos permission
     fileprivate func showDeniedPermissionPopup() {
         let alertController = UIAlertController(title: FacebookImagePicker.pickerConfig.textConfig.localizedOups,
@@ -111,6 +111,21 @@ final class FacebookAlbumController: UIViewController {
         alertController.addAction(autorizeAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Renders
+    
+    /// Handler for did retrieve album list
+    @objc func didReceiveAlbum(_ sender: Notification) {
+        if let albums =  sender.object as? [FacebookAlbum] {
+            self.render(albums)
+        }
+    }
+    
+    private func render(_ albums: [FacebookAlbum]) {
+        let albumsListController = FacebookAlbumListController(albums: albums)
+        //albumsListController.journalDelegate = self
+        self.stateViewController.transition(to: .render(albumsListController))
     }
 
     // MARK: - Navigation

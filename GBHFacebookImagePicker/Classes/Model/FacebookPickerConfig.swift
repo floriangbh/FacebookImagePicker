@@ -27,7 +27,7 @@ public struct FacebookPickerConfig {
         public var navTintColor: UIColor?
 
         /// Will be applied to the navigation bar 
-        public var backgroundColor: UIColor?
+        public var backgroundColor: UIColor = .white
 
         /// Will be applied to the navigation bar 
         public var closeButtonColor: UIColor?

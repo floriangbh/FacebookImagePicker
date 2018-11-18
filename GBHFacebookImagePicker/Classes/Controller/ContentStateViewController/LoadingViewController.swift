@@ -31,7 +31,7 @@ final class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //self.view.backgroundColor = self.config.uiConfig.backgroundColor
+        self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
 
         self.view.addSubview(self.activityIndicator)
         self.activityIndicator.pinCenter(to: self.view)
