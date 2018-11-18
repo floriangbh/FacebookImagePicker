@@ -11,7 +11,7 @@ protocol FacebookAlbumPickerDelegate: class {
     /// Perform when picture are selected in the displayed album
     ///
     /// - parameter imageModel: model of the selected picture
-    func didSelecPicturesInAlbum(imageModels: [GBHFacebookImage])
+    func didSelecPicturesInAlbum(imageModels: [FacebookImage])
 
     /// Failed to select picture in album
     ///

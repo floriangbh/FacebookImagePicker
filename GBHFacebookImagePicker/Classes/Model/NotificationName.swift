@@ -1,5 +1,5 @@
 //
-//  GBHNotificationName.swift
+//  NotificationName.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 01/10/2016.

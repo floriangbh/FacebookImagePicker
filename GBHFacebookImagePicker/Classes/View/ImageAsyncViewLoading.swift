@@ -1,5 +1,5 @@
 //
-//  GBHImageAsyncViewLoading.swift
+//  ImageAsyncViewLoading.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 01/10/2016.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GBHImageAsyncViewLoading: UIImageView {
+class ImageAsyncViewLoading: UIImageView {
 
     /// Initializer 
     ///
@@ -16,7 +16,7 @@ class GBHImageAsyncViewLoading: UIImageView {
         super.init(frame: frame)
 
         // Set default image
-        self.image = AssetsController.getImage(name: GBHAssetImage.loader)
+        self.image = AssetsController.getImage(name: AssetImage.loader)
     }
 
     /// Required for deserialization

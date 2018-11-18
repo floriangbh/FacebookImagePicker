@@ -1,5 +1,5 @@
 //
-//  GBHFacebookPickerConfig.swift
+//  FacebookPickerConfig.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 29/09/2016.
@@ -8,7 +8,7 @@
 import UIKit
 
 /// Simple struct to hold settings 
-public struct GBHFacebookPickerConfig {
+public struct FacebookPickerConfig {
 
     // MARK: - Configurable
 

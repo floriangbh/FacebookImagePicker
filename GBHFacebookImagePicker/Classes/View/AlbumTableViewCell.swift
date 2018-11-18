@@ -1,5 +1,5 @@
 //
-//  GBHAlbumTableViewCell.swift
+//  AlbumTableViewCell.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 29/09/2016.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class GBHAlbumTableViewCell: UITableViewCell {
+final class AlbumTableViewCell: UITableViewCell {
 
     // MARK: - Var
 
     /// Album's cover image views
-    fileprivate var photoImageView: GBHImageAsyncViewLoading?
+    fileprivate var photoImageView: ImageAsyncViewLoading?
 
     /// Width of the album's cover 
     fileprivate let imageWidth = 70
@@ -32,28 +32,28 @@ final class GBHAlbumTableViewCell: UITableViewCell {
                    reuseIdentifier: reuseIdentifier)
 
         // Common init
-        self.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
+        self.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
         self.accessoryType = .disclosureIndicator
 
         // Album cover image
-        self.photoImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 15,
+        self.photoImageView = ImageAsyncViewLoading(frame: CGRect(x: 15,
                                                                      y: 10,
                                                                      width: imageWidth,
                                                                      height: imageHeight))
         self.photoImageView?.contentMode = .scaleAspectFill
         self.photoImageView?.clipsToBounds = true
-        self.photoImageView?.layer.cornerRadius = GBHFacebookImagePicker.pickerConfig.pictureCornerRadius
+        self.photoImageView?.layer.cornerRadius = FacebookImagePicker.pickerConfig.pictureCornerRadius
         if let imgView = self.photoImageView {
             self.contentView.addSubview(imgView)
         }
 
         // Album title label 
         self.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        self.textLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor ?? .black
+        self.textLabel?.textColor = FacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor ?? .black
 
         // Photo count label 
         let defaultColor = UIColor.lightGray
-        self.detailTextLabel?.textColor = GBHFacebookImagePicker.pickerConfig.uiConfig.albumsCountColor ?? defaultColor
+        self.detailTextLabel?.textColor = FacebookImagePicker.pickerConfig.uiConfig.albumsCountColor ?? defaultColor
     }
 
     /// Required for deserialization
@@ -66,7 +66,7 @@ final class GBHAlbumTableViewCell: UITableViewCell {
         super.prepareForReuse()
 
         // Set default image
-        self.photoImageView?.image = AssetsController.getImage(name: GBHAssetImage.loader)
+        self.photoImageView?.image = AssetsController.getImage(name: AssetImage.loader)
     }
 
     /// Define the layout of the album name label and number of picture label
@@ -94,7 +94,7 @@ final class GBHAlbumTableViewCell: UITableViewCell {
     /// Configure the cell with Facebook's album 
     ///
     /// - Parameter album: Album model which contain album information
-    func configure(album: GBHFacebookAlbum) {
+    func configure(album: FacebookAlbum) {
         // Album title
         self.textLabel?.text = album.name ?? ""
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ImageCacheController {
+final class ImageCacheController {
 
     // MARK: - Singleton 
 

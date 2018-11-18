@@ -1,17 +1,17 @@
 ## Customisation
 
-You can apply some customisations. To do it you can use the `GBHFacebookPickerConfig` structure like this :
+You can apply some customisations. To do it you can use the `FacebookPickerConfig` structure like this :
 
 ```swift
 // Multiple selection settings 
 GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true // False by default  
 ```
 
-Here is the `GBHFacebookPickerConfig`  with default value : 
+Here is the `FacebookPickerConfig`  with default value : 
 
 ```swift
 /// Simple struct to hold settings 
-public struct GBHFacebookPickerConfig {
+public struct FacebookPickerConfig {
 
     // MARK: - Configurable
 

@@ -5,23 +5,23 @@
 //  Created by Florian Gabach on 17/11/2018.
 //
 
-class FacebookAlbumListController: UITableViewController {
+final class FacebookAlbumListController: UITableViewController {
     
     // Status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
+        return FacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
     }
     
     // MARK: - Var
     
     /// The image picker delegate
-    weak var delegate: GBHFacebookImagePickerDelegate?
+    weak var delegate: FacebookImagePickerDelegate?
     
     /// Album cell identifier
     private let reuseIdentifier = "AlbumCell"
     
     /// Array which contains all the album of the facebook account
-    fileprivate var albums: [GBHFacebookAlbum] = [] { // Albums list
+    fileprivate var albums: [FacebookAlbum] = [] { // Albums list
         didSet {
             // Reload table data
             DispatchQueue.main.async {
@@ -45,19 +45,19 @@ class FacebookAlbumListController: UITableViewController {
     fileprivate func prepareTableView() {
         // Common init
         self.tableView.tableFooterView = UIView()
-        self.title = GBHFacebookImagePicker.pickerConfig.textConfig.localizedTitle
-        self.tableView.register(GBHAlbumTableViewCell.self,
+        self.title = FacebookImagePicker.pickerConfig.textConfig.localizedTitle
+        self.tableView.register(AlbumTableViewCell.self,
                                 forCellReuseIdentifier: self.reuseIdentifier)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.cellLayoutMarginsFollowReadableWidth = false
-        self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
+        self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
         
         // Close button (on the right corner of navigation bar)
         let closeButton = UIBarButtonItem(barButtonSystemItem: .stop,
                                           target: self,
                                           action: #selector(self.closePicker))
-        closeButton.tintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.closeButtonColor ?? .black
+        closeButton.tintColor = FacebookImagePicker.pickerConfig.uiConfig.closeButtonColor ?? .black
         self.navigationItem.rightBarButtonItem = closeButton
     }
     
@@ -78,7 +78,7 @@ class FacebookAlbumListController: UITableViewController {
     
     /// Handler for did retrieve album list
     @objc func didReceiveAlbum(_ sender: Notification) {
-        if let albums =  sender.object as? [GBHFacebookAlbum] {
+        if let albums =  sender.object as? [FacebookAlbum] {
             self.albums = albums
         }
     }
@@ -102,10 +102,10 @@ class FacebookAlbumListController: UITableViewController {
                                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Dequeue the cell
         var cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier,
-                                                 for: indexPath) as? GBHAlbumTableViewCell
+                                                 for: indexPath) as? AlbumTableViewCell
         
         if cell == nil {
-            cell = GBHAlbumTableViewCell(style: .subtitle,
+            cell = AlbumTableViewCell(style: .subtitle,
                                          reuseIdentifier: self.reuseIdentifier)
         }
         
@@ -116,7 +116,7 @@ class FacebookAlbumListController: UITableViewController {
                             willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         
-        if let cell = cell as? GBHAlbumTableViewCell {
+        if let cell = cell as? AlbumTableViewCell {
             // Configure the cell
             cell.configure(album: albums[indexPath.row])
         }

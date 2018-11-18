@@ -7,13 +7,13 @@
 
 import UIKit
 
-class PhotoPickerViewController: UIViewController {
+final class PhotoPickerViewController: UIViewController {
 
     /// MARK: Var
 
     /// Status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
+        return FacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
     }
 
     /// Cell identifier 
@@ -23,17 +23,17 @@ class PhotoPickerViewController: UIViewController {
     fileprivate var cellSize: CGFloat?
 
     /// Number of cell for each row 
-    fileprivate let cellPerRow: CGFloat = GBHFacebookImagePicker.pickerConfig.picturePerRow
+    fileprivate let cellPerRow: CGFloat = FacebookImagePicker.pickerConfig.picturePerRow
 
     /// Spacing beetween cell 
-    fileprivate let cellSpacing: CGFloat = GBHFacebookImagePicker.pickerConfig.cellSpacing
+    fileprivate let cellSpacing: CGFloat = FacebookImagePicker.pickerConfig.cellSpacing
 
     fileprivate var shouldDisplayToolbar: Bool {
-        return (self.album?.photos.count ?? 0 > 0) && GBHFacebookImagePicker.pickerConfig.shouldDisplayToolbar
+        return (self.album?.photos.count ?? 0 > 0) && FacebookImagePicker.pickerConfig.shouldDisplayToolbar
     }
 
     /// Array which contain image model of pictures which are in the album
-    fileprivate var imageArray: [GBHFacebookImage] = [] {
+    fileprivate var imageArray: [FacebookImage] = [] {
         didSet {
             // Reload the collection
             DispatchQueue.main.async {
@@ -49,10 +49,10 @@ class PhotoPickerViewController: UIViewController {
     weak var albumPictureDelegate: FacebookAlbumPickerDelegate?
 
     // Current album model 
-    var album: GBHFacebookAlbum? // Curent album
+    var album: FacebookAlbum? // Curent album
 
     //
-    public var selectedImages = [GBHFacebookImage]() {
+    public var selectedImages = [FacebookImage]() {
         didSet {
             // How many image selected
             let count = self.selectedImages.count
@@ -61,7 +61,7 @@ class PhotoPickerViewController: UIViewController {
             self.selectBarButton.isEnabled = count > 0
 
             // Update button title
-            var text = GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelect
+            var text = FacebookImagePicker.pickerConfig.textConfig.localizedSelect
 
             if count > 0 {
                 text.append(" (\(count.locallyFormattedString()))")
@@ -73,7 +73,7 @@ class PhotoPickerViewController: UIViewController {
 
     fileprivate lazy var selectBarButton: UIBarButtonItem = {
         let selectBarButton = UIBarButtonItem(
-            title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelect,
+            title: FacebookImagePicker.pickerConfig.textConfig.localizedSelect,
             style: .plain,
             target: self,
             action: #selector(actionSelectBarButton(sender:))
@@ -84,7 +84,7 @@ class PhotoPickerViewController: UIViewController {
 
     fileprivate lazy var selectAllBarButton: UIBarButtonItem = {
         let selectAllBarButton = UIBarButtonItem(
-            title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedSelectAll,
+            title: FacebookImagePicker.pickerConfig.textConfig.localizedSelectAll,
             style: .plain,
             target: self,
             action: #selector(didSelectAllPicture(sender:))
@@ -98,7 +98,7 @@ class PhotoPickerViewController: UIViewController {
                                                width: self.pictureCollection?.frame.size.width ?? 0.0,
                                                height: self.pictureCollection?.frame.size.height ?? 0.0))
         emptyLabel.textAlignment = .center
-        emptyLabel.text = GBHFacebookImagePicker.pickerConfig.textConfig.localizedNoPicturesInAlbum
+        emptyLabel.text = FacebookImagePicker.pickerConfig.textConfig.localizedNoPicturesInAlbum
         emptyLabel.font = UIFont.italicSystemFont(ofSize: 16)
         emptyLabel.textColor = UIColor.lightGray
         return emptyLabel
@@ -148,8 +148,8 @@ class PhotoPickerViewController: UIViewController {
     /// Prepare the UIViewController 
     fileprivate func prepareViewController() {
         // Title & Background
-        self.title = self.album?.name ?? GBHFacebookImagePicker.pickerConfig.textConfig.localizedPictures
-        self.view.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
+        self.title = self.album?.name ?? FacebookImagePicker.pickerConfig.textConfig.localizedPictures
+        self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
 
         self.prepareMultipleSelectionButton()
         self.prepareCollectionView()
@@ -162,10 +162,10 @@ class PhotoPickerViewController: UIViewController {
     fileprivate func prepareMultipleSelectionButton() {
         var items: [UIBarButtonItem] = [UIBarButtonItem.flexibleSpaceItem()]
 
-        if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
+        if FacebookImagePicker.pickerConfig.allowMultipleSelection {
             items.append(selectBarButton)
 
-            if GBHFacebookImagePicker.pickerConfig.allowAllSelection {
+            if FacebookImagePicker.pickerConfig.allowAllSelection {
                 items.insert(selectAllBarButton, at: 0)
             }
         }
@@ -181,12 +181,12 @@ class PhotoPickerViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         self.pictureCollection = UICollectionView(frame: self.view.bounds,
                                                   collectionViewLayout: layout)
-        self.pictureCollection?.register(GBHPhotoCollectionViewCell.self,
+        self.pictureCollection?.register(PhotoCollectionViewCell.self,
                                          forCellWithReuseIdentifier: reuseIdentifier)
         self.pictureCollection?.delegate = self
         self.pictureCollection?.dataSource = self
         self.pictureCollection?.allowsMultipleSelection = true
-        self.pictureCollection?.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
+        self.pictureCollection?.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor ?? .white
         if let collection = self.pictureCollection {
             self.view.addSubview(collection)
             self.view.pinEdges(to: collection)
@@ -238,7 +238,7 @@ class PhotoPickerViewController: UIViewController {
         self.alreadyLoaded = true
 
         // Set album's picture 
-        if let album = sender.object as? GBHFacebookAlbum,
+        if let album = sender.object as? FacebookAlbum,
             self.album?.albumId == album.albumId {
             self.imageArray = album.photos
             self.navigationController?.setToolbarHidden(!shouldDisplayToolbar,
@@ -256,7 +256,7 @@ class PhotoPickerViewController: UIViewController {
 
     @objc func didSelectAllPicture(sender: UIBarButtonItem) {
         self.pictureCollection?.selectAllCell()
-        self.selectedImages = self.imageArray.map({$0})
+        self.selectedImages = self.imageArray.map {$0}
     }
 
     fileprivate func cleanController() {
@@ -300,7 +300,7 @@ extension PhotoPickerViewController: UICollectionViewDataSource, UICollectionVie
         // Retrieve the selected image
         let imageModel = self.imageArray[indexPath.row]
 
-        if GBHFacebookImagePicker.pickerConfig.allowMultipleSelection {
+        if FacebookImagePicker.pickerConfig.allowMultipleSelection {
             // Multiple selection mode 
             self.selectedImages.append(imageModel)
         } else {
@@ -312,8 +312,8 @@ extension PhotoPickerViewController: UICollectionViewDataSource, UICollectionVie
             self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: [imageModel])
         }
 
-        if GBHFacebookImagePicker.pickerConfig.performTapAnimation,
-            let cell = collectionView.cellForItem(at: indexPath) as? GBHPhotoCollectionViewCell {
+        if FacebookImagePicker.pickerConfig.performTapAnimation,
+            let cell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell {
             cell.tapAnimation()
         }
     }
@@ -325,8 +325,8 @@ extension PhotoPickerViewController: UICollectionViewDataSource, UICollectionVie
             self.selectedImages.remove(at: index)
         }
 
-        if GBHFacebookImagePicker.pickerConfig.performTapAnimation,
-            let cell = collectionView.cellForItem(at: indexPath) as? GBHPhotoCollectionViewCell {
+        if FacebookImagePicker.pickerConfig.performTapAnimation,
+            let cell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell {
             cell.tapAnimation()
         }
     }
@@ -334,9 +334,9 @@ extension PhotoPickerViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                                                      for: indexPath) as? GBHPhotoCollectionViewCell
+                                                      for: indexPath) as? PhotoCollectionViewCell
         if cell == nil {
-            cell = GBHPhotoCollectionViewCell()
+            cell = PhotoCollectionViewCell()
         }
         return cell!
     }
@@ -345,15 +345,15 @@ extension PhotoPickerViewController: UICollectionViewDataSource, UICollectionVie
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
 
-        if let cell = cell as? GBHPhotoCollectionViewCell {
+        if let cell = cell as? PhotoCollectionViewCell {
             // Configure cell with image
             cell.configure(picture: self.imageArray[indexPath.row])
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures == nil
-            || self.selectedImages.count != (GBHFacebookImagePicker.pickerConfig.maximumSelectedPictures ?? 1)
+        return FacebookImagePicker.pickerConfig.maximumSelectedPictures == nil
+            || self.selectedImages.count != (FacebookImagePicker.pickerConfig.maximumSelectedPictures ?? 1)
     }
 
 }

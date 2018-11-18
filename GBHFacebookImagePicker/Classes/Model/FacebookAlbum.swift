@@ -1,11 +1,11 @@
 //
-//  GBHFacebookAlbumModel.swift
+//  FacebookAlbumModel.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 29/09/2016.
 //  Copyright (c) 2016 Florian Gabach <contact@floriangabach.fr>
 
-class GBHFacebookAlbum {
+class FacebookAlbum {
 
     // MARK: - Var
 
@@ -22,7 +22,7 @@ class GBHFacebookAlbum {
     var albumId: String?
 
     /// Contains album's picture
-    var photos: [GBHFacebookImage] = []
+    var photos: [FacebookImage] = []
 
     // MARK: - Init
 

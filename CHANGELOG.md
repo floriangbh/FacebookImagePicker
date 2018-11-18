@@ -121,7 +121,7 @@ Some breaking change can occur with the text localization.
 
 - Add documentation
 - Rename GBHFacebookImageModel to GBHFacebookImage
-- Rename GBHFacebookAlbumModel to GBHFacebookAlbum
+- Rename FacebookAlbumModel to FacebookAlbum
 
 ### 1.1.1
 

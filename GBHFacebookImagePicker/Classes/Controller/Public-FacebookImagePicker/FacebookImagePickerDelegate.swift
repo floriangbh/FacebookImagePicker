@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol GBHFacebookImagePickerDelegate: class {
+public protocol FacebookImagePickerDelegate: class {
 
     /// Called when one or more images are picked
     ///
@@ -18,8 +18,8 @@ public protocol GBHFacebookImagePickerDelegate: class {
     ///   - errors: with description
     func facebookImagePicker(
         imagePicker: UIViewController,
-        successImageModels: [GBHFacebookImage],
-        errorImageModels: [GBHFacebookImage],
+        successImageModels: [FacebookImage],
+        errorImageModels: [FacebookImage],
         errors: [Error?]
     )
 
@@ -41,7 +41,7 @@ public protocol GBHFacebookImagePickerDelegate: class {
 }
 
 // Extension to make some method optional...
-public extension GBHFacebookImagePickerDelegate {
+public extension FacebookImagePickerDelegate {
     func facebookImagePickerDismissed() {
         // Override in your controller to make your own implementation ! 
     }

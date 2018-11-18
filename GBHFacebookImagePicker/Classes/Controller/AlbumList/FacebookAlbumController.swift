@@ -7,11 +7,11 @@
 
 import UIKit
 
-class FacebookAlbumController: UIViewController {
+final class FacebookAlbumController: UIViewController {
 
     // Status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
+        return FacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
     }
 
     // MARK: - Var
@@ -19,13 +19,13 @@ class FacebookAlbumController: UIViewController {
     fileprivate lazy var stateViewController = ContentStateViewController()
 
     /// The image picker delegate
-    weak var delegate: GBHFacebookImagePickerDelegate?
+    weak var delegate: FacebookImagePickerDelegate?
 
     /// Album cell identifier
     private let reuseIdentifier = "AlbumCell"
 
     /// Array which contains all the album of the facebook account
-    fileprivate var albums: [GBHFacebookAlbum] = []
+    fileprivate var albums: [FacebookAlbum] = []
 
     // MARK: - Lifecycle
 
@@ -82,26 +82,26 @@ class FacebookAlbumController: UIViewController {
 
     /// Handler for did retrieve album list
     @objc func didReceiveAlbum(_ sender: Notification) {
-        if let albums =  sender.object as? [GBHFacebookAlbum] {
+        if let albums =  sender.object as? [FacebookAlbum] {
             self.albums = albums
         }
     }
 
     /// Show popup with ask user_photos permission
     fileprivate func showDeniedPermissionPopup() {
-        let alertController = UIAlertController(title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedOups,
-                                                message: GBHFacebookImagePicker.pickerConfig.textConfig.localizedAllowPhotoPermission,
+        let alertController = UIAlertController(title: FacebookImagePicker.pickerConfig.textConfig.localizedOups,
+                                                message: FacebookImagePicker.pickerConfig.textConfig.localizedAllowPhotoPermission,
                                                 preferredStyle: UIAlertController.Style.alert)
 
         // Done & Cancel button
-        let autorizeAction = UIAlertAction(title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedAllow,
+        let autorizeAction = UIAlertAction(title: FacebookImagePicker.pickerConfig.textConfig.localizedAllow,
                                            style: UIAlertAction.Style.default,
                                            handler: { _ -> Void in
                                             self.doFacebookLogin()
         })
 
         // Cancel action
-        let cancelAction = UIAlertAction(title: GBHFacebookImagePicker.pickerConfig.textConfig.localizedClose,
+        let cancelAction = UIAlertAction(title: FacebookImagePicker.pickerConfig.textConfig.localizedClose,
                                          style: UIAlertAction.Style.cancel,
                                          handler: { (_: UIAlertAction!) -> Void in
                                             self.dismissPicker()
@@ -136,10 +136,10 @@ extension FacebookAlbumController: FacebookAlbumPickerDelegate {
     /// Did selected picture delegate
     ///
     /// - parameter imageModels: model of the selected pictures
-    func didSelecPicturesInAlbum(imageModels: [GBHFacebookImage]) {
+    func didSelecPicturesInAlbum(imageModels: [FacebookImage]) {
 
-        var successModels = [GBHFacebookImage]()
-        var errorModels = [GBHFacebookImage]()
+        var successModels = [FacebookImage]()
+        var errorModels = [FacebookImage]()
         var errors = [Error?]()
 
         let downloadGroup = DispatchGroup()

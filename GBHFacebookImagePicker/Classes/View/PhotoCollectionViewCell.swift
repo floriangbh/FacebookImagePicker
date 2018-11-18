@@ -1,5 +1,5 @@
 //
-//  GBHPhotoCollectionViewCell.swift
+//  PhotoCollectionViewCell.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 29/09/2016.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class GBHPhotoCollectionViewCell: UICollectionViewCell {
+class PhotoCollectionViewCell: UICollectionViewCell {
 
     /// The album cover photo 
-    fileprivate var albumImageView: GBHImageAsyncViewLoading?
+    fileprivate var albumImageView: ImageAsyncViewLoading?
 
     /// Selection hover view
-    let selectView = GBHSelectedView()
+    let selectView = SelectedView()
 
     // MARK: - Lifecycle 
 
@@ -24,16 +24,16 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
 
         // Cell background
-        self.backgroundColor = GBHFacebookImagePicker.pickerConfig.uiConfig.backgroundColor
+        self.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
 
         // Picture contener
-        self.albumImageView = GBHImageAsyncViewLoading(frame: CGRect(x: 0,
+        self.albumImageView = ImageAsyncViewLoading(frame: CGRect(x: 0,
                                                                      y: 0,
                                                                      width: self.frame.width,
                                                                      height: self.frame.height))
         self.albumImageView?.contentMode = .scaleAspectFill
         self.albumImageView?.clipsToBounds = true
-        self.albumImageView?.layer.cornerRadius = GBHFacebookImagePicker.pickerConfig.pictureCornerRadius
+        self.albumImageView?.layer.cornerRadius = FacebookImagePicker.pickerConfig.pictureCornerRadius
         if let imgView = self.albumImageView {
             self.contentView.addSubview(imgView)
         }
@@ -53,7 +53,7 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
 
         // Set default image
-        self.albumImageView?.image = AssetsController.getImage(name: GBHAssetImage.loader)
+        self.albumImageView?.image = AssetsController.getImage(name: AssetImage.loader)
     }
 
     /// Required init for deserialization
@@ -66,9 +66,9 @@ class GBHPhotoCollectionViewCell: UICollectionViewCell {
     /// Configure collection cell with image
     ///
     /// - Parameter picture: Facebook's image model
-    func configure(picture: GBHFacebookImage) {
+    func configure(picture: FacebookImage) {
         // Set picture's url
-        let urlPath = GBHFacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize == .normal
+        let urlPath = FacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize == .normal
             ? picture.normalSizeUrl : picture.fullSizeUrl
         if let urlPath = urlPath,
             let url = URL(string: urlPath) {

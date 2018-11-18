@@ -9,7 +9,7 @@ import Foundation
 import FBSDKLoginKit
 import FBSDKCoreKit
 
-class FacebookController {
+final class FacebookController {
 
     // MARK: - Singleton 
 
@@ -18,7 +18,7 @@ class FacebookController {
     // MARK: - Var
 
     /// User's album list
-    fileprivate var albumList: [GBHFacebookAlbum] = []
+    fileprivate var albumList: [FacebookAlbum] = []
 
     /// Picture url path for the API
     fileprivate var pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
@@ -64,12 +64,12 @@ class FacebookController {
                     selfStrong.parseFbAlbumResult(fbResult: fbResult)
 
                     // Add tagged album if needed 
-                    if GBHFacebookImagePicker.pickerConfig.displayTaggedAlbum
+                    if FacebookImagePicker.pickerConfig.displayTaggedAlbum
                         && selfStrong.alreadyAddTagged == false {
 
                         // Create tagged album 
-                        let taggedPhotosAlbum = GBHFacebookAlbum(
-                            name: GBHFacebookImagePicker.pickerConfig.textConfig.localizedTaggedAlbumName,
+                        let taggedPhotosAlbum = FacebookAlbum(
+                            name: FacebookImagePicker.pickerConfig.textConfig.localizedTaggedAlbumName,
                             albmId: FacebookController.idTaggedPhotosAlbum
                         )
 
@@ -101,7 +101,7 @@ class FacebookController {
         }
     }
 
-    /// Parsing GRAPH API result for user's album in GBHFacebookAlbumModel array
+    /// Parsing GRAPH API result for user's album in FacebookAlbumModel array
     ///
     /// - Parameter fbResult: result of the Facebook's graph api
     fileprivate func parseFbAlbumResult(fbResult: [String: AnyObject]) {
@@ -121,7 +121,7 @@ class FacebookController {
 
                     // Build Album model
                     if let coverUrl = URL(string: albumUrlPath) {
-                        let albm = GBHFacebookAlbum(name: albumName,
+                        let albm = FacebookAlbum(name: albumName,
                                                     count: albumCount,
                                                     coverUrl: coverUrl,
                                                     albmId: albumId)
@@ -140,7 +140,7 @@ class FacebookController {
     ///   - after: after page identifier (optional)
     ///   - album: album model
     func fbAlbumsPictureRequest(after: String?,
-                                album: GBHFacebookAlbum) {
+                                album: FacebookAlbum) {
 
         // Build path album request
         guard let identifier = album.albumId else {
@@ -192,13 +192,13 @@ class FacebookController {
         }
     }
 
-    /// Parsing GRAPH API result for album's picture in GBHFacebookAlbumModel
+    /// Parsing GRAPH API result for album's picture in FacebookAlbumModel
     ///
     /// - Parameters:
     ///   - fbResult: album's result
     ///   - album: concerned album model
     fileprivate func parseFbPicture(fbResult: [String: AnyObject],
-                                    album: GBHFacebookAlbum) {
+                                    album: FacebookAlbum) {
         if let photosResult = fbResult["data"] as? [AnyObject] {
 
             // Parsing album's picture
@@ -209,7 +209,7 @@ class FacebookController {
                     let source = photoDic["source"] as? String {
 
                     // Build Picture model
-                    let photoObject = GBHFacebookImage(picture: picture,
+                    let photoObject = FacebookImage(picture: picture,
                                                        imgId: identifier,
                                                        source: source)
                     album.photos.append(photoObject)
