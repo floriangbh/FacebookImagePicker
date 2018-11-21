@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AlbumTableViewCell: UITableViewCell {
+final class AlbumTableViewCell: UITableViewCell, Reusable {
 
     // MARK: - Var
 

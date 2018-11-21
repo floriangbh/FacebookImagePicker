@@ -8,13 +8,5 @@
 import Foundation
 
 protocol FacebookAlbumPickerDelegate: class {
-    /// Perform when picture are selected in the displayed album
-    ///
-    /// - parameter imageModel: model of the selected picture
-    func didSelecPicturesInAlbum(imageModels: [FacebookImage])
-
-    /// Failed to select picture in album
-    ///
-    /// - parameter error: error
-    func didFailSelectPictureInAlbum(error: Error?)
+    func didSelectAlbum(album: FacebookAlbum)
 }

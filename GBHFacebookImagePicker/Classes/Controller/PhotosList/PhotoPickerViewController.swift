@@ -119,7 +119,18 @@ final class PhotoPickerViewController: UIViewController {
     /// The collection view where are display the pictures
     fileprivate var pictureCollection: UICollectionView? // Collection for display album's pictures
 
-    // MARK: Lifecycle
+    var facebookController: FacebookController
+    
+    // MARK: - Lifecycle
+    
+    init(facebookController: FacebookController) {
+        self.facebookController = facebookController
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -219,7 +230,7 @@ final class PhotoPickerViewController: UIViewController {
                 if let album = self.album {
                     FacebookController.shared.fbAlbumsPictureRequest(after: nil, album: album)
                 } else {
-                    self.albumPictureDelegate?.didFailSelectPictureInAlbum(error: nil)
+                    //self.albumPictureDelegate?.didFailSelectPictureInAlbum(error: nil)
                 }
             } else {
                 self.navigationController?.setToolbarHidden(!shouldDisplayToolbar,
@@ -251,7 +262,7 @@ final class PhotoPickerViewController: UIViewController {
         self.cleanController()
 
         // Send to album delegate for download
-        self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: self.selectedImages)
+        //self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: self.selectedImages)
     }
 
     @objc func didSelectAllPicture(sender: UIBarButtonItem) {
@@ -309,7 +320,7 @@ extension PhotoPickerViewController: UICollectionViewDataSource, UICollectionVie
 
             // Single selection mode  
             // Send to album delegate for download
-            self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: [imageModel])
+            //self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: [imageModel])
         }
 
         if FacebookImagePicker.pickerConfig.performTapAnimation,

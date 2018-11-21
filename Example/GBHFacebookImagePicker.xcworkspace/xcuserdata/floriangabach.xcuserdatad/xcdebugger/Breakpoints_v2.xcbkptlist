@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../GBHFacebookImagePicker/Classes/Controller/AlbumList/FacebookAlbumController.swift"
-            timestampString = "564248541.0346479"
+            timestampString = "564506681.986838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "doFacebookLogin()"
-            landmarkType = "7">
+            landmarkName = "FacebookAlbumController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"

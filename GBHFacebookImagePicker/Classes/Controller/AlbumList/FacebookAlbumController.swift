@@ -9,23 +9,25 @@ import UIKit
 
 final class FacebookAlbumController: UIViewController {
 
-    // Status bar
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return FacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
-    }
-
     // MARK: - Var
     
     fileprivate lazy var stateViewController = ContentStateViewController()
 
-    /// The image picker delegate
     weak var delegate: FacebookImagePickerDelegate?
-
-    /// Album cell identifier
-    private let reuseIdentifier = "AlbumCell"
+    
+    var facebookController: FacebookController
 
     // MARK: - Lifecycle
-
+    
+    init(facebookController: FacebookController) {
+        self.facebookController = facebookController
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,7 +61,7 @@ final class FacebookAlbumController: UIViewController {
 
     /// Start Facebook login
     fileprivate func doFacebookLogin() {
-        FacebookController.shared.login(controller: self) { (success, error) in
+        self.facebookController.login(controller: self) { (success, error) in
             if !success {
                 // Something wrong
                 if let loginError = error {
@@ -83,6 +85,7 @@ final class FacebookAlbumController: UIViewController {
 
     /// Handler for click on close button
     @objc fileprivate func closePicker() {
+        print("OK")
         self.delegate?.facebookImagePicker(didCancelled: self)
         self.dismissPicker()
     }
@@ -124,7 +127,7 @@ final class FacebookAlbumController: UIViewController {
     
     private func render(_ albums: [FacebookAlbum]) {
         let albumsListController = FacebookAlbumListController(albums: albums)
-        //albumsListController.journalDelegate = self
+        albumsListController.delegate = self
         self.stateViewController.transition(to: .render(albumsListController))
     }
 
@@ -134,7 +137,7 @@ final class FacebookAlbumController: UIViewController {
     func dismissPicker() {
         DispatchQueue.main.async {
             // Reset flag
-            FacebookController.shared.reset()
+            self.facebookController.reset()
 
             // Dismiss and call delegate
             self.dismiss(animated: true, completion: {
@@ -145,58 +148,65 @@ final class FacebookAlbumController: UIViewController {
 }
 
 extension FacebookAlbumController: FacebookAlbumPickerDelegate {
-
-    // MARK: - FacebookAlbumPickerDelegate
-
-    /// Did selected picture delegate
-    ///
-    /// - parameter imageModels: model of the selected pictures
-    func didSelecPicturesInAlbum(imageModels: [FacebookImage]) {
-
-        var successModels = [FacebookImage]()
-        var errorModels = [FacebookImage]()
-        var errors = [Error?]()
-
-        let downloadGroup = DispatchGroup()
-
-        for imageModel in imageModels {
-            downloadGroup.enter()
-
-            // Download the image from the full size url
-            imageModel.download(completion: { (error) in
-                if error != nil {
-                    // Error case
-                    errors.append(error)
-                    errorModels.append(imageModel)
-                } else {
-                    // Success case
-                    successModels.append(imageModel)
-                }
-
-                downloadGroup.leave()
-            })
-        }
-
-        downloadGroup.notify(queue: .main) {
-            // Call success delegate
-            self.delegate?.facebookImagePicker(
-                imagePicker: self,
-                successImageModels: successModels,
-                errorImageModels: errorModels,
-                errors: errors
-            )
-
-            // Dismiss picker
-            self.dismissPicker()
-        }
-    }
-
-    /// Performed when an error occured
-    ///
-    /// - Parameter error: the happened error
-    func didFailSelectPictureInAlbum(error: Error?) {
-        if let err = error {
-            print(err.localizedDescription)
-        }
+    func didSelectAlbum(album: FacebookAlbum) {
+        let albumDetailVC = PhotoPickerViewController(facebookController: self.facebookController)
+        //albumDetailVC.albumPictureDelegate = self
+        albumDetailVC.album = album
+        self.navigationController?.pushViewController(albumDetailVC, animated: true)
     }
 }
+
+//    // MARK: - FacebookAlbumPickerDelegate
+//
+//    /// Did selected picture delegate
+//    ///
+//    /// - parameter imageModels: model of the selected pictures
+//    func didSelecPicturesInAlbum(imageModels: [FacebookImage]) {
+//
+//        var successModels = [FacebookImage]()
+//        var errorModels = [FacebookImage]()
+//        var errors = [Error?]()
+//
+//        let downloadGroup = DispatchGroup()
+//
+//        for imageModel in imageModels {
+//            downloadGroup.enter()
+//
+//            // Download the image from the full size url
+//            imageModel.download(completion: { (error) in
+//                if error != nil {
+//                    // Error case
+//                    errors.append(error)
+//                    errorModels.append(imageModel)
+//                } else {
+//                    // Success case
+//                    successModels.append(imageModel)
+//                }
+//
+//                downloadGroup.leave()
+//            })
+//        }
+//
+//        downloadGroup.notify(queue: .main) {
+//            // Call success delegate
+//            self.delegate?.facebookImagePicker(
+//                imagePicker: self,
+//                successImageModels: successModels,
+//                errorImageModels: errorModels,
+//                errors: errors
+//            )
+//
+//            // Dismiss picker
+//            self.dismissPicker()
+//        }
+//    }
+//
+//    /// Performed when an error occured
+//    ///
+//    /// - Parameter error: the happened error
+//    func didFailSelectPictureInAlbum(error: Error?) {
+//        if let err = error {
+//            print(err.localizedDescription)
+//        }
+//    }
+//}
