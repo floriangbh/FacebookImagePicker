@@ -8,15 +8,15 @@
 import UIKit
 
 final class FacebookAlbumController: UIViewController {
-
+    
     // MARK: - Var
     
     fileprivate lazy var stateViewController = ContentStateViewController()
-
+    
     weak var delegate: FacebookImagePickerDelegate?
     
-    var facebookController: FacebookController
-
+    fileprivate var facebookController: FacebookController
+    
     // MARK: - Lifecycle
     
     init(facebookController: FacebookController) {
@@ -30,35 +30,39 @@ final class FacebookAlbumController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.add(stateViewController)
+        
         self.prepareObserver()
-        
-        self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
-        
-        // Close button (on the right corner of navigation bar)
-        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop,
-                                          target: self,
-                                          action: #selector(self.closePicker))
-        closeButton.tintColor = FacebookImagePicker.pickerConfig.uiConfig.closeButtonColor ?? .black
-        self.navigationItem.rightBarButtonItem = closeButton
+        self.prepareController()
+        self.prepareCloseButton()
         
         self.doFacebookLogin()
     }
-
+    
     // MARK: - Prepare
-
-    /// Prepare observe for album retrieve & picture retrieve
+    
+    fileprivate func prepareController() {
+        self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
+    }
+    
     fileprivate func prepareObserver() {
-        // Add observe for end album loading
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.didReceiveAlbum),
                                                name: Notification.Name.ImagePickerDidRetrieveAlbum,
                                                object: nil)
     }
-
+    
+    fileprivate func prepareCloseButton() {
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop,
+                                          target: self,
+                                          action: #selector(self.closePicker))
+        closeButton.tintColor = FacebookImagePicker.pickerConfig.uiConfig.closeButtonColor ?? .black
+        self.navigationItem.rightBarButtonItem = closeButton
+    }
+    
     // MARK: - Action
-
+    
     /// Start Facebook login
     fileprivate func doFacebookLogin() {
         self.facebookController.login(controller: self) { (success, error) in
@@ -82,38 +86,20 @@ final class FacebookAlbumController: UIViewController {
             }
         }
     }
-
+    
     /// Handler for click on close button
     @objc fileprivate func closePicker() {
-        print("OK")
         self.delegate?.facebookImagePicker(didCancelled: self)
         self.dismissPicker()
     }
-
-    /// Show popup with ask user_photos permission
+    
     fileprivate func showDeniedPermissionPopup() {
-        let alertController = UIAlertController(title: FacebookImagePicker.pickerConfig.textConfig.localizedOups,
-                                                message: FacebookImagePicker.pickerConfig.textConfig.localizedAllowPhotoPermission,
-                                                preferredStyle: UIAlertController.Style.alert)
-
-        // Done & Cancel button
-        let autorizeAction = UIAlertAction(title: FacebookImagePicker.pickerConfig.textConfig.localizedAllow,
-                                           style: UIAlertAction.Style.default,
-                                           handler: { _ -> Void in
-                                            self.doFacebookLogin()
+        AlertController.showPermissionAlert(fromController: self,
+                                            allowCompletionHandler: {
+                                                self.doFacebookLogin()
+        }, closeCompletionaHandler: {
+            self.dismissPicker()
         })
-
-        // Cancel action
-        let cancelAction = UIAlertAction(title: FacebookImagePicker.pickerConfig.textConfig.localizedClose,
-                                         style: UIAlertAction.Style.cancel,
-                                         handler: { (_: UIAlertAction!) -> Void in
-                                            self.dismissPicker()
-        })
-
-        // Add button & show
-        alertController.addAction(autorizeAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Renders
@@ -130,15 +116,15 @@ final class FacebookAlbumController: UIViewController {
         albumsListController.delegate = self
         self.stateViewController.transition(to: .render(albumsListController))
     }
-
+    
     // MARK: - Navigation
-
+    
     /// Dismiss the picker
     func dismissPicker() {
         DispatchQueue.main.async {
             // Reset flag
             self.facebookController.reset()
-
+            
             // Dismiss and call delegate
             self.dismiss(animated: true, completion: {
                 self.delegate?.facebookImagePickerDismissed()
@@ -149,10 +135,10 @@ final class FacebookAlbumController: UIViewController {
 
 extension FacebookAlbumController: FacebookAlbumPickerDelegate {
     func didSelectAlbum(album: FacebookAlbum) {
-        let albumDetailVC = PhotoPickerViewController(facebookController: self.facebookController)
+        let albumController = AlbumDetailController(facebookController: self.facebookController)
         //albumDetailVC.albumPictureDelegate = self
-        albumDetailVC.album = album
-        self.navigationController?.pushViewController(albumDetailVC, animated: true)
+        albumController.album = album
+        self.navigationController?.pushViewController(albumController, animated: true)
     }
 }
 

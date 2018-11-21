@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotoCollectionViewCell: UICollectionViewCell {
+class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
 
     /// The album cover photo 
     fileprivate var albumImageView: ImageAsyncViewLoading?
