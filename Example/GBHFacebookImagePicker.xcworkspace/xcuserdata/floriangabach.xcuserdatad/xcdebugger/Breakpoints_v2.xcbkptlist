@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../GBHFacebookImagePicker/Classes/Controller/AlbumList/FacebookAlbumListController.swift"
-            timestampString = "564248541.034537"
+            timestampString = "564687819.206895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "init(albums:)"
-            landmarkType = "7">
+            landmarkName = "FacebookAlbumListController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../GBHFacebookImagePicker/Classes/Controller/AlbumList/FacebookAlbumListController.swift"
-            timestampString = "564248541.034593"
+            timestampString = "564687819.2070791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "prepareController()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../GBHFacebookImagePicker/Classes/Controller/AlbumList/FacebookAlbumController.swift"
-            timestampString = "564522588.48541"
+            timestampString = "564687819.207145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
             endingLineNumber = "66"
-            landmarkName = "prepareCloseButton()"
+            landmarkName = "doFacebookLogin()"
             landmarkType = "7">
             <Locations>
                <Location

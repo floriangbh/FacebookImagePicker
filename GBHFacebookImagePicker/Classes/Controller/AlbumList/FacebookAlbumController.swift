@@ -33,7 +33,6 @@ final class FacebookAlbumController: UIViewController {
         
         self.add(stateViewController)
         
-        self.prepareObserver()
         self.prepareController()
         self.prepareCloseButton()
         
@@ -46,17 +45,8 @@ final class FacebookAlbumController: UIViewController {
         self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
     }
     
-    fileprivate func prepareObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.didReceiveAlbum),
-                                               name: Notification.Name.ImagePickerDidRetrieveAlbum,
-                                               object: nil)
-    }
-    
     fileprivate func prepareCloseButton() {
-        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop,
-                                          target: self,
-                                          action: #selector(self.closePicker))
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(self.closePicker))
         closeButton.tintColor = FacebookImagePicker.pickerConfig.uiConfig.closeButtonColor ?? .black
         self.navigationItem.rightBarButtonItem = closeButton
     }
@@ -83,11 +73,18 @@ final class FacebookAlbumController: UIViewController {
                         self.showDeniedPermissionPopup()
                     }
                 }
+            } else {
+                self.getFacebookAlbums()
             }
         }
     }
     
-    /// Handler for click on close button
+    fileprivate func getFacebookAlbums() {
+        self.facebookController.fetchFacebookAlbums(completion: { (albums) in
+            self.render(albums)
+        })
+    }
+    
     @objc fileprivate func closePicker() {
         self.delegate?.facebookImagePicker(didCancelled: self)
         self.dismissPicker()
@@ -103,13 +100,6 @@ final class FacebookAlbumController: UIViewController {
     }
     
     // MARK: - Renders
-    
-    /// Handler for did retrieve album list
-    @objc func didReceiveAlbum(_ sender: Notification) {
-        if let albums =  sender.object as? [FacebookAlbum] {
-            self.render(albums)
-        }
-    }
     
     private func render(_ albums: [FacebookAlbum]) {
         let albumsListController = FacebookAlbumListController(albums: albums)
