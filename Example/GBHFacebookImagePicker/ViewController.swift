@@ -123,7 +123,7 @@ class ViewController: UIViewController {
         // Init picker 
         let picker = FacebookImagePicker()
 
-        FacebookImagePicker.pickerConfig.allowMultipleSelection = true
+        FacebookImagePicker.pickerConfig.maximumSelectedPictures = 5
         FacebookImagePicker.pickerConfig.uiConfig.previewPhotoSize = .full
         FacebookImagePicker.pickerConfig.allowAllSelection = true
         FacebookImagePicker.pickerConfig.picturePerRow = 3

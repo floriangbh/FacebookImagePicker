@@ -15,14 +15,9 @@ final class AlbumDetailController: UIViewController {
         return (self.album?.photos.count ?? 0 > 0) && FacebookImagePicker.pickerConfig.shouldDisplayToolbar
     }
     
-    /// Did already load album
-    fileprivate var alreadyLoaded: Bool = false
+    weak var delegate: FacebookAlbumDetailPickerDelegate?
     
-    /// Album picker controller delegate
-    weak var albumPictureDelegate: FacebookAlbumPickerDelegate?
-    
-    // Current album model
-    var album: FacebookAlbum? // Curent album
+    var album: FacebookAlbum?
     
     //
     public var selectedImages = [FacebookImage]() {
@@ -120,7 +115,7 @@ final class AlbumDetailController: UIViewController {
     fileprivate func prepareMultipleSelectionButton() {
         var items: [UIBarButtonItem] = [UIBarButtonItem.flexibleSpaceItem()]
         
-        if FacebookImagePicker.pickerConfig.allowMultipleSelection {
+        if FacebookImagePicker.pickerConfig.maximumSelectedPictures > 1 {
             items.append(selectBarButton)
             
             if FacebookImagePicker.pickerConfig.allowAllSelection {
@@ -158,8 +153,7 @@ final class AlbumDetailController: UIViewController {
             
             self.render(album.photos)
             
-            self.navigationController?.setToolbarHidden(!shouldDisplayToolbar,
-                                                        animated: true)
+            self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: true)
         }
     }
     
@@ -188,12 +182,25 @@ final class AlbumDetailController: UIViewController {
 }
 
 extension AlbumDetailController: AlbumDetailDelegate {
-    func didSelectImage(image: FacebookAlbum) {
-        //
+    func didSelectImage(image: FacebookImage) {
+        if FacebookImagePicker.pickerConfig.maximumSelectedPictures > 0 {
+            self.selectedImages.append(image)
+        } else {
+            // Clean collection and start loading, single selection mode
+            self.cleanController()
+            // Single selection mode
+            // Send to album delegate for download
+            //self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: [imageModel])
+        }
+    }
+    
+    func didDeselectImage(image: FacebookImage) {
+        if let index = self.selectedImages.index(where: { $0.imageId == image.imageId }) {
+            self.selectedImages.remove(at: index)
+        }
     }
     
     func shouldSelectImage() -> Bool {
-        return FacebookImagePicker.pickerConfig.maximumSelectedPictures == nil
-            || self.selectedImages.count != (FacebookImagePicker.pickerConfig.maximumSelectedPictures ?? 1)
+        return self.selectedImages.count != FacebookImagePicker.pickerConfig.maximumSelectedPictures
     }
 }

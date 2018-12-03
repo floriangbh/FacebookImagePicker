@@ -58,45 +58,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../GBHFacebookImagePicker/Classes/Controller/AlbumList/FacebookAlbumController.swift"
-            timestampString = "564687819.207145"
+            timestampString = "565553824.207638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "doFacebookLogin()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GBHFacebookImagePicker.FacebookAlbumController.(doFacebookLogin in _E09A005D24322BDB366310E0FDBC6FBE)() -&gt; ()"
-                  moduleName = "GBHFacebookImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/floriangabach/Documents/Side_Project/FacebookImagePicker/GBHFacebookImagePicker/Classes/Controller/AlbumList/FacebookAlbumController.swift"
-                  timestampString = "564248542.288028"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;GBHFacebookImagePicker.LoginError&gt;) -&gt; () in GBHFacebookImagePicker.FacebookAlbumController.(doFacebookLogin in _E09A005D24322BDB366310E0FDBC6FBE)() -&gt; ()"
-                  moduleName = "GBHFacebookImagePicker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/floriangabach/Documents/Side_Project/FacebookImagePicker/GBHFacebookImagePicker/Classes/Controller/AlbumList/FacebookAlbumController.swift"
-                  timestampString = "564248542.29045"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../GBHFacebookImagePicker/Classes/Controller/PhotosList/AlbumDetailListController.swift"
+            timestampString = "565553860.16388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "collectionView(_:shouldSelectItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

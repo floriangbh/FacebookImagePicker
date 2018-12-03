@@ -96,15 +96,12 @@ public struct FacebookPickerConfig {
 
     /// Tap animation
     public var performTapAnimation: Bool = true
-
-    /// Allow multiple pictures selection
-    public var allowMultipleSelection: Bool = false
-
+    
     /// Allow multiple pictures selection
     public var allowAllSelection: Bool = false
 
     /// Maximum selected pictures
-    public var maximumSelectedPictures: Int?
+    public var maximumSelectedPictures: Int = 1
 
     /// Number of picture per row
     public var picturePerRow: CGFloat = 4.0
@@ -124,6 +121,6 @@ public struct FacebookPickerConfig {
     // MARK: - Internal
 
     internal var shouldDisplayToolbar: Bool {
-        return self.allowMultipleSelection
+        return self.maximumSelectedPictures > 1
     }
 }

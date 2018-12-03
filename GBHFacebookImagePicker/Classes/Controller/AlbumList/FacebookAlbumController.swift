@@ -39,6 +39,12 @@ final class FacebookAlbumController: UIViewController {
         self.doFacebookLogin()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setToolbarHidden(true, animated: false)
+    }
+    
     // MARK: - Prepare
     
     fileprivate func prepareController() {
@@ -126,9 +132,19 @@ final class FacebookAlbumController: UIViewController {
 extension FacebookAlbumController: FacebookAlbumPickerDelegate {
     func didSelectAlbum(album: FacebookAlbum) {
         let albumController = AlbumDetailController(facebookController: self.facebookController)
-        //albumDetailVC.albumPictureDelegate = self
+        albumController.delegate = self
         albumController.album = album
         self.navigationController?.pushViewController(albumController, animated: true)
+    }
+}
+
+extension FacebookAlbumController: FacebookAlbumDetailPickerDelegate {
+    func didPressFinishSelection() {
+        //
+    }
+    
+    func didSelectImage(image: FacebookImage) {
+        //
     }
 }
 

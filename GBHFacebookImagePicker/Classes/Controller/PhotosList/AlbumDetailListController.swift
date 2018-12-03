@@ -75,22 +75,9 @@ extension AlbumDetailListController: UICollectionViewDataSource, UICollectionVie
         return imageArray.count
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
-//        // Retrieve the selected image
-//        let imageModel = self.imageArray[indexPath.row]
-//
-//        if FacebookImagePicker.pickerConfig.allowMultipleSelection {
-//            // Multiple selection mode
-//            self.selectedImages.append(imageModel)
-//        } else {
-//            // Clean collection and start loading
-//            self.cleanController()
-//
-//            // Single selection mode
-//            // Send to album delegate for download
-//            //self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: [imageModel])
-//        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let imageModel = self.imageArray.get(at: indexPath.row) else { return }
+        self.delegate?.didSelectImage(image: imageModel)
         
         if FacebookImagePicker.pickerConfig.performTapAnimation,
             let cell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell {
@@ -99,12 +86,9 @@ extension AlbumDetailListController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        // Remove selected image
-//        let imageModel = self.imageArray[indexPath.row]
-//        if let index = self.selectedImages.index(where: { $0.imageId == imageModel.imageId }) {
-//            self.selectedImages.remove(at: index)
-//        }
-        
+        guard let imageModel = self.imageArray.get(at: indexPath.row) else { return }
+        self.delegate?.didDeselectImage(image: imageModel)
+
         if FacebookImagePicker.pickerConfig.performTapAnimation,
             let cell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell {
             cell.tapAnimation()
