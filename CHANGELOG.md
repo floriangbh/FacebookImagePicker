@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+### 3.0.0
+
+- Bump to FBSDK 4.X
+- Remove allowMultipleSelection, instead use maximumSelectedPictures property 
+
 ### 2.4.1
 
 - Bump to FBSDK 4.37

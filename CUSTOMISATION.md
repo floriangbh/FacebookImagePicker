@@ -98,10 +98,7 @@ public struct FacebookPickerConfig {
 
     /// Tap animation
     public var performTapAnimation: Bool = true
-
-    /// Allow multiple pictures selection
-    public var allowMultipleSelection: Bool = false
-
+    
     /// Allow multiple pictures selection
     public var allowAllSelection: Bool = false
 

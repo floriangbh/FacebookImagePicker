@@ -36,27 +36,18 @@ class ViewController: UIViewController {
         self.title = "Facebook Image Picker"
 
         // Prepare picker button
-        self.showAlbumButton.setTitle("Show picker",
-                                      for: .normal)
-        self.showAlbumButton.setTitleColor(UIColor.white,
-                                           for: .normal)
+        self.showAlbumButton.setTitle("Show picker", for: .normal)
+        self.showAlbumButton.setTitleColor(UIColor.white, for: .normal)
         self.showAlbumButton.layer.cornerRadius = 3.0
-        self.showAlbumButton.backgroundColor = UIColor(red: 59/255.0,
-                                                       green: 89/255.0,
-                                                       blue: 152/255.0,
-                                                       alpha: 1.0)
-        self.showAlbumButton.addTarget(self,
-                                       action: #selector(self.showAlbumClick),
-                                       for: UIControl.Event.touchUpInside)
+        self.showAlbumButton.backgroundColor = UIColor(red: 59/255.0, green: 89/255.0, blue: 152/255.0, alpha: 1.0)
+        self.showAlbumButton.addTarget(self, action: #selector(self.showAlbumClick), for: UIControl.Event.touchUpInside)
 
         // Prepare TableView 
         self.tableView.backgroundColor = .clear
         self.tableView.tableFooterView = UIView()
 
         // Background color
-        self.view.backgroundColor = UIColor(red: 246/255.0,
-                                            green: 246/255.0,
-                                            blue: 246/255.0, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1.0)
     }
 
     fileprivate func someCustomisation() {
@@ -147,12 +138,8 @@ extension ViewController: FacebookImagePickerDelegate {
 
     // MARK: - GBHFacebookImagePicker Protocol
 
-    func facebookImagePicker(imagePicker: UIViewController,
-                             successImageModels: [FacebookImage],
-                             errorImageModels: [FacebookImage],
-                             errors: [Error?]) {
-        // Append selected image(s)
-        // Do what you want with selected image 
+    func facebookImagePicker(imagePicker: UIViewController, successImageModels: [FacebookImage],
+                             errorImageModels: [FacebookImage], errors: [Error?]) {
         self.imageModels.append(contentsOf: successImageModels)
     }
 

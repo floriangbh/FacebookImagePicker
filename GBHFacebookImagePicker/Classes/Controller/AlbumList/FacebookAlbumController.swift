@@ -49,6 +49,7 @@ final class FacebookAlbumController: UIViewController {
     
     fileprivate func prepareController() {
         self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
+        self.title = FacebookImagePicker.pickerConfig.textConfig.localizedTitle
     }
     
     fileprivate func prepareCloseButton() {
@@ -139,59 +140,49 @@ extension FacebookAlbumController: FacebookAlbumPickerDelegate {
 }
 
 extension FacebookAlbumController: FacebookAlbumDetailPickerDelegate {
-    func didPressFinishSelection() {
+    func didPressFinishSelection(images: [FacebookImage]) {
         //
     }
     
-    func didSelectImage(image: FacebookImage) {
-        //
+    func didSelectImages(images: [FacebookImage]) {
+        var successModels = [FacebookImage]()
+        var errorModels = [FacebookImage]()
+        var errors = [Error?]()
+        
+        let downloadGroup = DispatchGroup()
+        
+        for imageModel in images {
+            downloadGroup.enter()
+            
+            // Download the image from the full size url
+            imageModel.download(completion: { (error) in
+                if error != nil {
+                    // Error case
+                    errors.append(error)
+                    errorModels.append(imageModel)
+                } else {
+                    // Success case
+                    successModels.append(imageModel)
+                }
+                
+                downloadGroup.leave()
+            })
+        }
+        
+        downloadGroup.notify(queue: .main) {
+            // Call success delegate
+            self.delegate?.facebookImagePicker(
+                imagePicker: self,
+                successImageModels: successModels,
+                errorImageModels: errorModels,
+                errors: errors
+            )
+            
+            // Dismiss picker
+            self.dismissPicker()
+        }
     }
 }
-
-//    // MARK: - FacebookAlbumPickerDelegate
-//
-//    /// Did selected picture delegate
-//    ///
-//    /// - parameter imageModels: model of the selected pictures
-//    func didSelecPicturesInAlbum(imageModels: [FacebookImage]) {
-//
-//        var successModels = [FacebookImage]()
-//        var errorModels = [FacebookImage]()
-//        var errors = [Error?]()
-//
-//        let downloadGroup = DispatchGroup()
-//
-//        for imageModel in imageModels {
-//            downloadGroup.enter()
-//
-//            // Download the image from the full size url
-//            imageModel.download(completion: { (error) in
-//                if error != nil {
-//                    // Error case
-//                    errors.append(error)
-//                    errorModels.append(imageModel)
-//                } else {
-//                    // Success case
-//                    successModels.append(imageModel)
-//                }
-//
-//                downloadGroup.leave()
-//            })
-//        }
-//
-//        downloadGroup.notify(queue: .main) {
-//            // Call success delegate
-//            self.delegate?.facebookImagePicker(
-//                imagePicker: self,
-//                successImageModels: successModels,
-//                errorImageModels: errorModels,
-//                errors: errors
-//            )
-//
-//            // Dismiss picker
-//            self.dismissPicker()
-//        }
-//    }
 //
 //    /// Performed when an error occured
 //    ///

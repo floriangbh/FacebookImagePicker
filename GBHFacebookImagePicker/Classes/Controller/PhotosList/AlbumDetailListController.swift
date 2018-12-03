@@ -60,6 +60,12 @@ final class AlbumDetailListController: UIViewController {
         self.view.pinEdges(to: collectionView)
         self.cellSize = (collectionView.frame.width - (self.cellSpacing * (self.cellPerRow + 1.0))) / self.cellPerRow
     }
+    
+    // MARK: Action
+    
+    internal func selectAllCell() {
+        self.pictureCollection?.selectAllCell()
+    }
 }
 
 extension AlbumDetailListController: UICollectionViewDataSource, UICollectionViewDelegate {

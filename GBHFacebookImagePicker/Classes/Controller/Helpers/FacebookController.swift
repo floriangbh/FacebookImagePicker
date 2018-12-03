@@ -136,8 +136,9 @@ final class FacebookController {
     /// - Parameters:
     ///   - after: after page identifier (optional)
     ///   - album: album model
-    func fbAlbumsPictureRequest(after: String?,
-                                album: FacebookAlbum) {
+    func fbAlbumsPictureRequest(after: String? = nil,
+                                album: FacebookAlbum,
+                                completion: ((FacebookAlbum) -> Void)? = nil) {
         
         // Build path album request
         guard let identifier = album.albumId else {
@@ -181,8 +182,7 @@ final class FacebookController {
                     } else {
                         print("Found \(album.photos.count) photos for the \"\(album.name!)\" album.")
                         // Notifie controller with albums & photos
-                        NotificationCenter.default.post(name: Notification.Name.ImagePickerDidRetriveAlbumPicture,
-                                                        object: album)
+                        completion?(album)
                     }
                 }
             }
@@ -282,7 +282,6 @@ final class FacebookController {
             // Already logged in, check User_photos permission
             if FBSDKAccessToken.current().permissions.contains("user_photos") {
                 // User_photos's permission ok
-                self.fetchFacebookAlbums()
                 completion(true, nil)
             } else {
                 // User_photos's permission denied

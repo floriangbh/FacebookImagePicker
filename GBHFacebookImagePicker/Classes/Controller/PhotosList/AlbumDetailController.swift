@@ -64,6 +64,8 @@ final class AlbumDetailController: UIViewController {
     
     fileprivate lazy var stateViewController = ContentStateViewController()
     
+    fileprivate var albumDetailListController: AlbumDetailListController?
+    
     // MARK: - Lifecycle
     
     init(facebookController: FacebookController) {
@@ -84,32 +86,12 @@ final class AlbumDetailController: UIViewController {
         self.getPhotos()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: false)
-    }
-    
     // MARK: Prepare
     
-    /// Prepare the observe
-    /// Permit to detect when the pictures of the album did finish loading
-    fileprivate func prepareObserver() {
-        // Orbserve end of picture loading
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.didReceivePicture(_:)),
-                                               name: Notification.Name.ImagePickerDidRetriveAlbumPicture,
-                                               object: nil)
-    }
-    
-    /// Prepare the UIViewController
     fileprivate func prepareViewController() {
-        // Title & Background
         self.title = self.album?.name ?? FacebookImagePicker.pickerConfig.textConfig.localizedPictures
         self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
-        
         self.prepareMultipleSelectionButton()
-        self.prepareObserver()
     }
     
     fileprivate func prepareMultipleSelectionButton() {
@@ -128,69 +110,51 @@ final class AlbumDetailController: UIViewController {
             self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: false)
         }
     }
-
+    
     // MARK: - Action
     
-    /// Start request for album's pictures
     fileprivate func getPhotos() {
-        guard let photosArray = self.album?.photos else { return }
-            if photosArray.isEmpty {
-                if let album = self.album {
-                    FacebookController.shared.fbAlbumsPictureRequest(after: nil, album: album)
-                } else {
-                    //self.albumPictureDelegate?.didFailSelectPictureInAlbum(error: nil)
-                }
-            } else {
-                self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: true)
+        guard let currentAlbum = self.album else {
+            print("Failed to go the album reference")
+            return
+        }
+        
+        let currentAlbumPhotos = currentAlbum.photos
+        if currentAlbumPhotos.isEmpty {
+            FacebookController.shared.fbAlbumsPictureRequest(album: currentAlbum) { (completeAlbum) in
+                self.album = completeAlbum
+                self.render(completeAlbum.photos)
             }
-    }
-    
-    /// Did finish get album's pictures callback
-    @objc fileprivate func didReceivePicture(_ sender: Notification) {
-        // Set album's picture
-        if let album = sender.object as? FacebookAlbum,
-            self.album?.albumId == album.albumId {
-            
-            self.render(album.photos)
-            
-            self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: true)
+        } else {
+            self.render(currentAlbumPhotos)
         }
     }
     
     private func render(_ photos: [FacebookImage]) {
-        let albumDetailListController = AlbumDetailListController(images: photos)
+        self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: true)
+        
+        self.albumDetailListController = AlbumDetailListController(images: photos)
+        guard let albumDetailListController = self.albumDetailListController else { return }
         albumDetailListController.delegate = self
         self.stateViewController.transition(to: .render(albumDetailListController))
     }
     
     @objc func actionSelectBarButton(sender: UIBarButtonItem) {
-        // Clean collection and start loading
-        self.cleanController()
-        
-        // Send to album delegate for download
-        //self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: self.selectedImages)
+        self.delegate?.didSelectImages(images: selectedImages)
     }
     
     @objc func didSelectAllPicture(sender: UIBarButtonItem) {
-//        self.pictureCollection?.selectAllCell()
-//        self.selectedImages = self.imageArray.map {$0}
-    }
-    
-    fileprivate func cleanController() {
-        //
+        self.albumDetailListController?.selectAllCell()
+        self.selectedImages = self.album?.photos.map {$0} ?? []
     }
 }
 
 extension AlbumDetailController: AlbumDetailDelegate {
     func didSelectImage(image: FacebookImage) {
-        if FacebookImagePicker.pickerConfig.maximumSelectedPictures > 0 {
-            self.selectedImages.append(image)
-        } else {
-            // Clean collection and start loading, single selection mode
-            self.cleanController()
-            // Single selection mode
-            // Send to album delegate for download
-            //self.albumPictureDelegate?.didSelecPicturesInAlbum(imageModels: [imageModel])
+        self.selectedImages.append(image)
+        
+        if FacebookImagePicker.pickerConfig.maximumSelectedPictures == 1 {
+            self.delegate?.didSelectImages(images: selectedImages)
         }
     }
     
