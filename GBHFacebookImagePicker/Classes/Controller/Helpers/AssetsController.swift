@@ -1,11 +1,11 @@
 //
-//  GBHAssetManager.swift
+//  AssetsController.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 02/10/2016.
 //  Copyright (c) 2016 Florian Gabach <contact@floriangabach.fr>
 
-public class GBHAssetManager {
+final class AssetsController {
 
     /// Get image from bundle
     ///
@@ -15,7 +15,7 @@ public class GBHAssetManager {
     public static func getImage(name: String) -> UIImage? {
 
         // Retrieved the main bundle
-        var bundle = Bundle(for: GBHAssetManager.self)
+        var bundle = Bundle(for: AssetsController.self)
         if let bundlePath = bundle.resourcePath?.appending("/GBHFacebookImagePicker.bundle"),
             let ressourceBundle = Bundle(path: bundlePath) {
 

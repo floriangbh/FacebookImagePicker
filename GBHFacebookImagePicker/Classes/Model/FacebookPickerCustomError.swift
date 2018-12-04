@@ -1,5 +1,5 @@
 //
-//  GBHFacebookPickerCustomError.swift
+//  FacebookPickerCustomError.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 30/09/2016.

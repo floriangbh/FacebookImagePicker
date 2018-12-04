@@ -1,5 +1,5 @@
 //
-//  GBHSelectedView.swift
+//  SelectedView.swift
 //  Pods
 //
 //  Created by Florian Gabach on 03/05/2017.
@@ -15,7 +15,7 @@ public enum CheckViewPosition {
     case bottomRight
 }
 
-final class GBHSelectedView: UIView {
+final class SelectedView: UIView {
 
     // MARK: - Private var
 
@@ -29,7 +29,7 @@ final class GBHSelectedView: UIView {
         super.init(frame: frame)
 
         // Prepare
-        if  GBHFacebookImagePicker.pickerConfig.uiConfig.showCheckView {
+        if  FacebookImagePicker.pickerConfig.uiConfig.showCheckView {
             self.prepareView()
         }
     }
@@ -38,7 +38,7 @@ final class GBHSelectedView: UIView {
         super.init(coder: aDecoder)
 
         // Prepare
-        if GBHFacebookImagePicker.pickerConfig.uiConfig.showCheckView {
+        if FacebookImagePicker.pickerConfig.uiConfig.showCheckView {
             self.prepareView()
         }
     }
@@ -56,8 +56,8 @@ final class GBHSelectedView: UIView {
                                         height: self.checkMarkViewSize.height)
 
         // Checkmark background color
-        let customColor = GBHFacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor
-        let backgroundColor = customColor ?? GBHAppearanceManager.facebookColor
+        let customColor = FacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor
+        let backgroundColor = customColor ?? Colors.facebookColor
 
         self.checkMarkView?.layer.borderWidth = 1.5
         self.checkMarkView?.layer.borderColor = UIColor.white.cgColor
@@ -75,8 +75,8 @@ final class GBHSelectedView: UIView {
         self.prepareConstraint()
 
         // Border
-        self.layer.borderColor = GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderColor?.cgColor
-        self.layer.borderWidth = GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth
+        self.layer.borderColor = FacebookImagePicker.pickerConfig.uiConfig.selectedBorderColor?.cgColor
+        self.layer.borderWidth = FacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth
     }
 
     fileprivate func prepareCheckMarkView() {
@@ -84,7 +84,7 @@ final class GBHSelectedView: UIView {
 
         // Add checkmark image from assets
         let checkImageView = UIImageView()
-        checkImageView.image = GBHAssetManager.getImage(name: GBHAssetImage.checkMark)
+        checkImageView.image = AssetsController.getImage(name: AssetImage.checkMark)
         checkImageView.backgroundColor = .clear
         checkView.addSubview(checkImageView)
 
@@ -132,7 +132,7 @@ final class GBHSelectedView: UIView {
         var margin: CGFloat = 2
 
         // Extend margin if borderWidth is chosen
-        margin += GBHFacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth
+        margin += FacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth
 
         // Place vertical constraint
         self.applyVerticalConstraints(margin: margin)
@@ -142,17 +142,17 @@ final class GBHSelectedView: UIView {
 
         // Apply width and height
         self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                              attribute: NSLayoutAttribute.width,
-                                              relatedBy: NSLayoutRelation.equal,
+                                              attribute: NSLayoutConstraint.Attribute.width,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                               toItem: nil,
-                                              attribute: NSLayoutAttribute.notAnAttribute,
+                                              attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                               multiplier: 1,
                                               constant: self.checkMarkViewSize.width))
         self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                              attribute: NSLayoutAttribute.height,
-                                              relatedBy: NSLayoutRelation.equal,
+                                              attribute: NSLayoutConstraint.Attribute.height,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                               toItem: nil,
-                                              attribute: NSLayoutAttribute.notAnAttribute,
+                                              attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                               multiplier: 1,
                                               constant: self.checkMarkViewSize.height))
 
@@ -163,21 +163,21 @@ final class GBHSelectedView: UIView {
 
     fileprivate func applyVerticalConstraints(margin: CGFloat) {
         guard let checkMarkView = self.checkMarkView else { return }
-        switch GBHFacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
+        switch FacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
         case .topLeft, .topRight:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                                  attribute: NSLayoutAttribute.top,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.top,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: self,
-                                                  attribute: NSLayoutAttribute.top,
+                                                  attribute: NSLayoutConstraint.Attribute.top,
                                                   multiplier: 1,
                                                   constant: margin))
         case .bottomLeft, .bottomRight:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                                  attribute: NSLayoutAttribute.bottom,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.bottom,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: self,
-                                                  attribute: NSLayoutAttribute.bottom,
+                                                  attribute: NSLayoutConstraint.Attribute.bottom,
                                                   multiplier: 1,
                                                   constant: -margin))
         }
@@ -185,21 +185,21 @@ final class GBHSelectedView: UIView {
 
     fileprivate func applyHorizontalConstraints(margin: CGFloat) {
         guard let checkMarkView = self.checkMarkView else { return }
-        switch GBHFacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
+        switch FacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
         case .topLeft, .bottomLeft:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                                  attribute: NSLayoutAttribute.leading,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.leading,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: self,
-                                                  attribute: NSLayoutAttribute.leading,
+                                                  attribute: NSLayoutConstraint.Attribute.leading,
                                                   multiplier: 1,
                                                   constant: margin))
         case .topRight, .bottomRight:
             self.addConstraint(NSLayoutConstraint(item: checkMarkView,
-                                                  attribute: NSLayoutAttribute.trailing,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.trailing,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: self,
-                                                  attribute: NSLayoutAttribute.trailing,
+                                                  attribute: NSLayoutConstraint.Attribute.trailing,
                                                   multiplier: 1,
                                                   constant: -margin))
         }

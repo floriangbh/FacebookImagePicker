@@ -10,7 +10,7 @@ public enum ImageSize {
     case full
 }
 
-public class GBHFacebookImage {
+public class FacebookImage {
 
     // MARK: - Var
 

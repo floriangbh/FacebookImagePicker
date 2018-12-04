@@ -7,11 +7,11 @@
 
 import Foundation
 
-class GBHImageCacheManager {
+final class ImageCacheController {
 
     // MARK: - Singleton 
 
-    static let shared = GBHImageCacheManager()
+    static let shared = ImageCacheController()
 
     // MARK: - Var 
 

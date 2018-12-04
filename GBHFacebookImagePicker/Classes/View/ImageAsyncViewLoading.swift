@@ -1,5 +1,5 @@
 //
-//  GBHImageAsyncViewLoading.swift
+//  ImageAsyncViewLoading.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 01/10/2016.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GBHImageAsyncViewLoading: UIImageView {
+class ImageAsyncViewLoading: UIImageView {
 
     /// Initializer 
     ///
@@ -16,7 +16,7 @@ class GBHImageAsyncViewLoading: UIImageView {
         super.init(frame: frame)
 
         // Set default image
-        self.image = GBHAssetManager.getImage(name: GBHAssetImage.loader)
+        self.image = AssetsController.getImage(name: AssetImage.loader)
     }
 
     /// Required for deserialization
@@ -29,7 +29,7 @@ class GBHImageAsyncViewLoading: UIImageView {
         didSet {
             if let url = imageUrl {
 
-                if let cachedImage = GBHImageCacheManager.shared.getImage(forUrl: url.absoluteString) {
+                if let cachedImage = ImageCacheController.shared.getImage(forUrl: url.absoluteString) {
                     // Retrieved image from cache 
                     self.image = cachedImage
                 } else {
@@ -58,7 +58,7 @@ class GBHImageAsyncViewLoading: UIImageView {
                             // Display the image !
                             if let downloadedImage = UIImage(data: data) {
                                 // Cache the image 
-                                GBHImageCacheManager.shared.setImage(forUrl: url.absoluteString,
+                                ImageCacheController.shared.setImage(forUrl: url.absoluteString,
                                                                      image: downloadedImage)
 
                                 // Set the image with animation
@@ -85,7 +85,7 @@ class GBHImageAsyncViewLoading: UIImageView {
         // Start animation to final state 
         UIView.animate(withDuration: 0.3,
                        delay: 0.0,
-                       options: UIViewAnimationOptions.curveEaseOut,
+                       options: UIView.AnimationOptions.curveEaseOut,
                        animations: {
                         self.alpha = 1.0
         }, completion: nil)

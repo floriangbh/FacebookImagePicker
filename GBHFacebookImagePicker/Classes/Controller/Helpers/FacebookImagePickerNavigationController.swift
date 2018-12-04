@@ -1,5 +1,5 @@
 //
-//  GBHFacebookNavigationController.swift
+//  FacebookImagePickerNavigationController.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 09/10/2016.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class GBHFacebookNavigationController: UINavigationController {
+final class FacebookImagePickerNavigationController: UINavigationController {
 
     // Status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return GBHFacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
+        return FacebookImagePicker.pickerConfig.uiConfig.statusbarStyle
     }
 
     // MARK: - Lifecycle
@@ -21,20 +21,20 @@ class GBHFacebookNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Apply barTintColor if specified in config struct 
-        if let barTintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.navBarTintColor {
+        if let barTintColor = FacebookImagePicker.pickerConfig.uiConfig.navBarTintColor {
             self.navigationBar.barTintColor = barTintColor
             self.navigationBar.isTranslucent = false
         }
 
         // Apply tintColor if specified in config struct 
-        if let tintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.navTintColor {
+        if let tintColor = FacebookImagePicker.pickerConfig.uiConfig.navTintColor {
             self.navigationBar.tintColor = tintColor
         }
 
         // Apply navigation bar title color if specified in config struct 
-        if let tintColor = GBHFacebookImagePicker.pickerConfig.uiConfig.navTitleColor {
+        if let tintColor = FacebookImagePicker.pickerConfig.uiConfig.navTitleColor {
             self.navigationBar.titleTextAttributes = [
-                NSAttributedStringKey.foregroundColor: tintColor
+                NSAttributedString.Key.foregroundColor: tintColor
             ]
         }
     }

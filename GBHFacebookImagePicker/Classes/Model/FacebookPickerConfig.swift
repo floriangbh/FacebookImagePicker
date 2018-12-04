@@ -1,5 +1,5 @@
 //
-//  GBHFacebookPickerConfig.swift
+//  FacebookPickerConfig.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 29/09/2016.
@@ -8,7 +8,7 @@
 import UIKit
 
 /// Simple struct to hold settings 
-public struct GBHFacebookPickerConfig {
+public struct FacebookPickerConfig {
 
     // MARK: - Configurable
 
@@ -27,7 +27,7 @@ public struct GBHFacebookPickerConfig {
         public var navTintColor: UIColor?
 
         /// Will be applied to the navigation bar 
-        public var backgroundColor: UIColor?
+        public var backgroundColor: UIColor = .white
 
         /// Will be applied to the navigation bar 
         public var closeButtonColor: UIColor?
@@ -96,15 +96,12 @@ public struct GBHFacebookPickerConfig {
 
     /// Tap animation
     public var performTapAnimation: Bool = true
-
-    /// Allow multiple pictures selection
-    public var allowMultipleSelection: Bool = false
-
+    
     /// Allow multiple pictures selection
     public var allowAllSelection: Bool = false
 
     /// Maximum selected pictures
-    public var maximumSelectedPictures: Int?
+    public var maximumSelectedPictures: Int = 1
 
     /// Number of picture per row
     public var picturePerRow: CGFloat = 4.0
@@ -124,6 +121,6 @@ public struct GBHFacebookPickerConfig {
     // MARK: - Internal
 
     internal var shouldDisplayToolbar: Bool {
-        return self.allowMultipleSelection
+        return self.maximumSelectedPictures > 1
     }
 }
