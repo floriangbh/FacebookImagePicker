@@ -19,18 +19,12 @@ final class AlbumDetailController: UIViewController {
     
     var album: FacebookAlbum?
     
-    //
     public var selectedImages = [FacebookImage]() {
         didSet {
-            // How many image selected
             let count = self.selectedImages.count
-            
-            // Manage disable/enable state
             self.selectBarButton.isEnabled = count > 0
-            
-            // Update button title
+        
             var text = FacebookImagePicker.pickerConfig.textConfig.localizedSelect
-            
             if count > 0 {
                 text.append(" (\(count.locallyFormattedString()))")
             }

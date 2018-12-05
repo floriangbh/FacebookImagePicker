@@ -17,16 +17,12 @@ final class FacebookController {
     
     // MARK: - Var
     
-    /// User's album list
     fileprivate var albumList: [FacebookAlbum] = []
     
-    /// Picture url path for the API
     fileprivate var pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
     
-    /// Custom id for custom album
     static let idTaggedPhotosAlbum = "idPhotosOfYouTagged"
     
-    /// Profile picture url, to prevent multiple fetch 
     fileprivate var profilePictureUrl: String?
     
     /// Boolean to check if we have already added the tagged album, prevent multiple addition when fetching next cursor 

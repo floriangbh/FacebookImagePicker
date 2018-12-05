@@ -115,14 +115,11 @@ final class FacebookAlbumController: UIViewController {
     }
     
     // MARK: - Navigation
-    
-    /// Dismiss the picker
+
     func dismissPicker() {
         DispatchQueue.main.async {
-            // Reset flag
             self.facebookController.reset()
-            
-            // Dismiss and call delegate
+
             self.dismiss(animated: true, completion: {
                 self.delegate?.facebookImagePickerDismissed()
             })
@@ -154,14 +151,11 @@ extension FacebookAlbumController: FacebookAlbumDetailPickerDelegate {
         for imageModel in images {
             downloadGroup.enter()
             
-            // Download the image from the full size url
             imageModel.download(completion: { (error) in
                 if error != nil {
-                    // Error case
                     errors.append(error)
                     errorModels.append(imageModel)
                 } else {
-                    // Success case
                     successModels.append(imageModel)
                 }
                 
@@ -170,26 +164,8 @@ extension FacebookAlbumController: FacebookAlbumDetailPickerDelegate {
         }
         
         downloadGroup.notify(queue: .main) {
-            // Call success delegate
-            self.delegate?.facebookImagePicker(
-                imagePicker: self,
-                successImageModels: successModels,
-                errorImageModels: errorModels,
-                errors: errors
-            )
-            
-            // Dismiss picker
+            self.delegate?.facebookImagePicker(imagePicker: self, successImageModels: successModels, errorImageModels: errorModels,errors: errors)
             self.dismissPicker()
         }
     }
 }
-//
-//    /// Performed when an error occured
-//    ///
-//    /// - Parameter error: the happened error
-//    func didFailSelectPictureInAlbum(error: Error?) {
-//        if let err = error {
-//            print(err.localizedDescription)
-//        }
-//    }
-//}

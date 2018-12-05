@@ -13,22 +13,16 @@ final class AssetsController {
     ///
     /// - returns: return the retrieved image 
     public static func getImage(name: String) -> UIImage? {
-
-        // Retrieved the main bundle
         var bundle = Bundle(for: AssetsController.self)
         if let bundlePath = bundle.resourcePath?.appending("/GBHFacebookImagePicker.bundle"),
             let ressourceBundle = Bundle(path: bundlePath) {
-
-            // Bundle with the new path
             bundle = ressourceBundle
         }
 
-        // Return the bundle image
         if let imageFromBundle = UIImage(named: name, in: bundle, compatibleWith: nil) {
             return imageFromBundle
         }
 
-        // Error occured 
         print("Failed to get \(name) from bundle :-(")
         return UIImage()
     }
