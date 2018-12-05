@@ -19,7 +19,7 @@ final class ImageCacheController {
 
     // Method 
 
-    /// Set image to the cache 
+    /// Set image to the cache
     ///
     /// - Parameters:
     ///   - url: url of the image 

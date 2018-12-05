@@ -60,35 +60,34 @@ public struct FacebookPickerConfig {
 
     public struct TextConfig {
         /// Will be applied to the album's navigation bar title
-        public var localizedTitle: String = NSLocalizedString("Album(s)",
-                                                              comment: "")
+        public var localizedTitle: String = NSLocalizedString("Album(s)", comment: "")
+        
         /// Tagged album name
-        public var localizedTaggedAlbumName: String = NSLocalizedString("Photos of You",
-                                                                        comment: "")
+        public var localizedTaggedAlbumName: String = NSLocalizedString("Photos of You", comment: "")
+        
         /// Name for Pictures
-        public var localizedPictures: String = NSLocalizedString("Pictures",
-                                                                 comment: "")
+        public var localizedPictures: String = NSLocalizedString("Pictures", comment: "")
+        
         /// Name for title in popup
-        public var localizedOups: String = NSLocalizedString("Oups",
-                                                             comment: "")
+        public var localizedOups: String = NSLocalizedString("Oups", comment: "")
+        
         /// Name for need photo permission in popup
-        public var localizedAllowPhotoPermission: String = NSLocalizedString("You need to allow photo's permission.",
-                                                                             comment: "")
+        public var localizedAllowPhotoPermission: String = NSLocalizedString("You need to allow photo's permission.", comment: "")
+        
         /// Name for allow in popup
-        public var localizedAllow: String =  NSLocalizedString("Allow",
-                                                               comment: "")
+        public var localizedAllow: String =  NSLocalizedString("Allow", comment: "")
+        
         /// Name for close in popup
-        public var localizedClose: String =  NSLocalizedString("Close",
-                                                               comment: "")
+        public var localizedClose: String =  NSLocalizedString("Close", comment: "")
+        
         /// Naviagtion bar button name
-        public var localizedSelect: String = NSLocalizedString("Select",
-                                                               comment: "")
+        public var localizedSelect: String = NSLocalizedString("Select", comment: "")
+        
         /// Name for Select all
-        public var localizedSelectAll: String = NSLocalizedString("Select all",
-                                                                  comment: "")
+        public var localizedSelectAll: String = NSLocalizedString("Select all", comment: "")
+        
         /// Name for no pictures in the albue
-        public var localizedNoPicturesInAlbum: String = NSLocalizedString("No picture(s) in this album.",
-                                                                          comment: "")
+        public var localizedNoPicturesInAlbum: String = NSLocalizedString("No picture in this album.", comment: "")
     }
 
     /// The picture corner radius. Used for display album cover and album's picture.
