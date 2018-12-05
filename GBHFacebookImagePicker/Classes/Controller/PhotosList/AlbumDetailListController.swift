@@ -76,8 +76,7 @@ extension AlbumDetailListController: UICollectionViewDataSource, UICollectionVie
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
     }
     
@@ -101,8 +100,7 @@ extension AlbumDetailListController: UICollectionViewDataSource, UICollectionVie
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         return cell
     }

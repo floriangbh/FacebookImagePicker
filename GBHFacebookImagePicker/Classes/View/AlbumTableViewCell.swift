@@ -55,38 +55,22 @@ final class AlbumTableViewCell: UITableViewCell, Reusable {
         let defaultColor = UIColor.lightGray
         self.detailTextLabel?.textColor = FacebookImagePicker.pickerConfig.uiConfig.albumsCountColor ?? defaultColor
     }
-
-    /// Required for deserialization
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    /// Overriding prepare for reuse 
     override func prepareForReuse() {
         super.prepareForReuse()
-
-        // Set default image
         self.photoImageView?.image = AssetsController.getImage(name: AssetImage.loader)
     }
-
-    /// Define the layout of the album name label and number of picture label
+    
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        // The cell width 
         let cellWidth: Int = Int(self.frame.size.width)
-
-        // Album's title
-        self.textLabel?.frame = CGRect(x: imageWidth + 30,
-                                       y: 30,
-                                       width: cellWidth - (imageWidth * 2),
-                                       height: 20)
-
-        // Number of photos in the album
-        self.detailTextLabel?.frame = CGRect(x: imageWidth + 30,
-                                             y: 50,
-                                             width: cellWidth - (imageWidth * 2),
-                                             height: 20)
+        self.textLabel?.frame = CGRect(x: imageWidth + 30, y: 30, width: cellWidth - (imageWidth * 2), height: 20)
+        self.detailTextLabel?.frame = CGRect(x: imageWidth + 30, y: 50, width: cellWidth - (imageWidth * 2), height: 20)
     }
 
     // MARK: - Configure 
@@ -95,10 +79,8 @@ final class AlbumTableViewCell: UITableViewCell, Reusable {
     ///
     /// - Parameter album: Album model which contain album information
     func configure(album: FacebookAlbum) {
-        // Album title
         self.textLabel?.text = album.name ?? ""
 
-        // Album's pictures count
         if let count = album.count {
             self.detailTextLabel?.text = "\(count.locallyFormattedString())"
         } else {

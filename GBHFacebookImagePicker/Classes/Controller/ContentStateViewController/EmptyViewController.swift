@@ -11,14 +11,18 @@ final class MessageViewController: UIViewController {
     
     // MARK: - Var
     
+    fileprivate var message: String
+    
     fileprivate lazy var infoLabel: UILabel = {
         let infoLabel = UILabel()
+        infoLabel.text = message
         return infoLabel
     }()
     
     // MARK: - Lifecycle
     
-    init() {
+    init(message: String) {
+        self.message = message
         super.init(nibName: nil, bundle: nil)
     }
     

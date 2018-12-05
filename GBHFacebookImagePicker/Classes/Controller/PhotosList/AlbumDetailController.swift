@@ -23,7 +23,7 @@ final class AlbumDetailController: UIViewController {
         didSet {
             let count = self.selectedImages.count
             self.selectBarButton.isEnabled = count > 0
-        
+            
             var text = FacebookImagePicker.pickerConfig.textConfig.localizedSelect
             if count > 0 {
                 text.append(" (\(count.locallyFormattedString()))")
@@ -117,20 +117,15 @@ final class AlbumDetailController: UIViewController {
         if currentAlbumPhotos.isEmpty {
             FacebookController.shared.fbAlbumsPictureRequest(album: currentAlbum) { (completeAlbum) in
                 self.album = completeAlbum
-                self.render(completeAlbum.photos)
+                if completeAlbum.photos.isEmpty {
+                    self.renderEmptyAlbum()
+                } else {
+                    self.render(completeAlbum.photos)
+                }
             }
         } else {
             self.render(currentAlbumPhotos)
         }
-    }
-    
-    private func render(_ photos: [FacebookImage]) {
-        self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: true)
-        
-        self.albumDetailListController = AlbumDetailListController(images: photos)
-        guard let albumDetailListController = self.albumDetailListController else { return }
-        albumDetailListController.delegate = self
-        self.stateViewController.transition(to: .render(albumDetailListController))
     }
     
     @objc func actionSelectBarButton(sender: UIBarButtonItem) {
@@ -140,6 +135,23 @@ final class AlbumDetailController: UIViewController {
     @objc func didSelectAllPicture(sender: UIBarButtonItem) {
         self.albumDetailListController?.selectAllCell()
         self.selectedImages = self.album?.photos.map {$0} ?? []
+    }
+    
+    // MARK: - Render
+    
+    fileprivate func renderEmptyAlbum() {
+        let message = FacebookImagePicker.pickerConfig.textConfig.localizedNoPicturesInAlbum
+        let emptyAlbumController = MessageViewController(message: message)
+        self.stateViewController.transition(to: .render(emptyAlbumController))
+    }
+    
+    fileprivate func render(_ photos: [FacebookImage]) {
+        self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: true)
+        
+        self.albumDetailListController = AlbumDetailListController(images: photos)
+        guard let albumDetailListController = self.albumDetailListController else { return }
+        albumDetailListController.delegate = self
+        self.stateViewController.transition(to: .render(albumDetailListController))
     }
 }
 

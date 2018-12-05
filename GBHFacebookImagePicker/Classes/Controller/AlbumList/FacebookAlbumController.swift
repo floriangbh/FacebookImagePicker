@@ -164,7 +164,10 @@ extension FacebookAlbumController: FacebookAlbumDetailPickerDelegate {
         }
         
         downloadGroup.notify(queue: .main) {
-            self.delegate?.facebookImagePicker(imagePicker: self, successImageModels: successModels, errorImageModels: errorModels,errors: errors)
+            self.delegate?.facebookImagePicker(imagePicker: self,
+                                               successImageModels: successModels,
+                                               errorImageModels: errorModels,
+                                               errors: errors)
             self.dismissPicker()
         }
     }

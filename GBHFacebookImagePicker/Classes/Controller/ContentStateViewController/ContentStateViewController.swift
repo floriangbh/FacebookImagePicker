@@ -43,7 +43,7 @@ private extension ContentStateViewController {
         case .loading:
             return LoadingViewController()
         case .failed:
-            return MessageViewController()
+            return LoadingViewController()
         case .render(let viewController):
             return viewController
         }
@@ -57,3 +57,4 @@ extension ContentStateViewController {
         case render(UIViewController)
     }
 }
+ 
