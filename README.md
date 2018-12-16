@@ -29,15 +29,14 @@ This picker takes care of all authentication (from the web or with the native Fa
 - [x] Login with Facebook SDK and display user's Albums or tagged photos
 - [x] Display pictures of each albums 
 - [x] Handling denied Facebook photo's permission 
-- [x] Select and get URL/Image of the selected pictures 
-- [x] UI Customization 
-- [x] iPhone/iPad support 
 - [x] Multiple selection in one album
 - [x] Select all 
 
 ## TODOs
 
-- [  ] Use Anchor for layout (make the layout code cleaner and readable)
+- [  ] Refactor : use Anchor for layout (make the layout code cleaner and readable)
+- [  ] Multiple pictures selection across albums 
+- [  ] Refactor : use Codable for parse FB API result 
 - [  ] UI & Unit tests
 
 ## Example
@@ -114,7 +113,7 @@ func facebookImagePickerDismissed() {
 The imageModel contain : 
 
 ```swift
-public class GBHFacebookImage {
+public class FacebookImage {
     public var image: UIImage? // The image, not nil only if image is selected
     public var normalSizeUrl: String? // Normal size picture url
     public var fullSizeUrl: String? // Full size source picture url
@@ -125,7 +124,7 @@ public class GBHFacebookImage {
 - Display picker : 
 
 ```swift
-let picker = GBHFacebookImagePicker() 
+let picker = FacebookImagePicker() 
 picker.presentFacebookAlbumImagePicker(from: self, delegate: self) 
 ```
 
@@ -139,7 +138,7 @@ You can apply some customisation. To do it you can use the [FacebookPickerConfig
 
 ## Translation 
 
-GBHFacebookImagePicker is currently written in english. If you need translation for the permission popup (or whatever thing), just add this line in your localized file  :
+FacebookImagePicker is currently written in english. If you need translation for the permission popup (or whatever thing), just add this line in your localized file  :
 
 ```
 "Pictures" = "<your_translation>";
@@ -162,7 +161,7 @@ GBHFacebookImagePicker is currently written in english. If you need translation 
 
 ## Installation
 
-GBHFacebookImagePicker is available through [CocoaPods](http://cocoapods.org). To install
+FacebookImagePicker is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
@@ -194,6 +193,6 @@ Inspired by [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/Fac
 
 ## License
 
-GBHFacebookImagePicker is available under the [MIT license](LICENSE).
+FacebookImagePicker is available under the [MIT license](LICENSE).
 
 If your application use this picker consider to add the licence in your Credits/About section. You can use [this library to do it](https://github.com/terflogag/OpenSourceController).

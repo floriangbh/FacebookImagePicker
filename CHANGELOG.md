@@ -1,10 +1,14 @@
 Changelog
 ==========
 
-### 3.0.0
+### 2.5.0
 
-- Bump to FBSDK 4.X
+Breaking change with configuration. 
+
+- Bump to FBSDK 4.39
+- Remove every class prefix 
 - Remove allowMultipleSelection, instead use maximumSelectedPictures property 
+- Refactor code with child controller 
 
 ### 2.4.1
 
