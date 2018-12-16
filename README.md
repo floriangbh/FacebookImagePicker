@@ -157,7 +157,7 @@ FacebookImagePicker is currently written in english. If you need translation for
 * iOS 9.0+ target deployment
 * FBSDKCoreKit, FBSDKLoginKit (>= 4.0)
 * Facebook Application, see [usage](#usage) for explaination 
-* Swift 3 or Swift 4 project
+* Swift 3, 4 or 4.2 project
 
 ## Installation
 
@@ -165,7 +165,9 @@ FacebookImagePicker is available through [CocoaPods](http://cocoapods.org). To i
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "GBHFacebookImagePicker", '~> 2.4'
+pod "GBHFacebookImagePicker"
+
+pod "GBHFacebookImagePicker", '~> 2.4' # For swift 4.0
 
 pod "GBHFacebookImagePicker", '~> 1.3.1' # For Swift 3.1
 ```

@@ -5,6 +5,7 @@ Changelog
 
 Breaking change with configuration. 
 
+- Swift 4.2
 - Bump to FBSDK 4.39
 - Remove every class prefix 
 - Remove allowMultipleSelection, instead use maximumSelectedPictures property 
