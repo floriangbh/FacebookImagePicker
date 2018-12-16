@@ -4,7 +4,7 @@ You can apply some customisations. To do it you can use the `FacebookPickerConfi
 
 ```swift
 // Multiple selection settings 
-GBHFacebookImagePicker.pickerConfig.allowMultipleSelection = true // False by default  
+FacebookImagePicker.pickerConfig.allowMultipleSelection = true // False by default  
 ```
 
 Here is the `FacebookPickerConfig`  with default value : 

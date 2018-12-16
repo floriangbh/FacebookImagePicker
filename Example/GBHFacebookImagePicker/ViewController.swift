@@ -124,8 +124,7 @@ class ViewController: UIViewController {
         //self.someCustomisation()
 
         // Present picker 
-        picker.presentFacebookAlbumImagePicker(from: self,
-                                               delegate: self)
+        picker.presentFacebookAlbumImagePicker(from: self, delegate: self)
     }
 
     @IBAction func doDeleteClick(_ sender: Any) {
