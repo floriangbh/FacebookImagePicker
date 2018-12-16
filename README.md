@@ -20,8 +20,6 @@
 GBHFacebookImagePicker is ***Facebook's*** album photo picker written in Swift, built to provide a simple way to pick picture into Facebook account. The picker provides a simple interface like the native iOS photo picker. 
 This picker takes care of all authentication (from the web or with the native Facebook app) when necessary. If the photo's permission isn't accepted during the login, the picker prompts another permission's request.
 
-v3.0 WIP : https://github.com/floriangbh/FacebookImagePicker/projects/1
-
 ## Screenshot / Demo
 
 ![Preview](https://github.com/terflogag/FacebookImagePicker/blob/master/Ressources/preview.png)
@@ -34,7 +32,7 @@ v3.0 WIP : https://github.com/floriangbh/FacebookImagePicker/projects/1
 - [x] Multiple selection in one album
 - [x] Select all 
 
-## TODOs
+## TODOs : https://github.com/floriangbh/FacebookImagePicker/projects/1
 
 - [  ] Refactor : use Anchor for layout (make the layout code cleaner and readable)
 - [  ] Multiple pictures selection across albums 
