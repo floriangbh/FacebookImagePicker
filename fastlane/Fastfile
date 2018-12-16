@@ -20,12 +20,12 @@ platform :ios do
 
   def release(type)
     podspec_name = "GBHFacebookImagePicker.podspec" 
-    pod_lib_lint(use_bundle_exec: false)
+    pod_lib_lint(use_bundle_exec: false, allow_warnings: true)
     version = version_bump_podspec(path: podspec_name, bump_type: type)
     git_add(path: podspec_name)
     git_commit(path: [podspec_name], message: "#{version} release")
     add_git_tag(tag: "#{version}")
     push_to_git_remote
-    pod_push(use_bundle_exec: false)
+    pod_push(use_bundle_exec: false, allow_warnings: true)
   end
 end
