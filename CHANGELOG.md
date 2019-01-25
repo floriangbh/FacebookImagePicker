@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 2.5.1
+
+- Bump to FBSDK 4.40.0
+
 ### 2.5.0
 
 Breaking change with configuration. 
