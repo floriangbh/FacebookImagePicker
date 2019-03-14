@@ -223,7 +223,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = GFNHEZ6Q8N;
+						DevelopmentTeam = XEHEC9B46E;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -330,7 +330,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GBHFacebookImagePicker_Example/Pods-GBHFacebookImagePicker_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-GBHFacebookImagePicker_Example/Pods-GBHFacebookImagePicker_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -345,7 +345,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GBHFacebookImagePicker_Example/Pods-GBHFacebookImagePicker_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GBHFacebookImagePicker_Example/Pods-GBHFacebookImagePicker_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E4D0A1AB056D5DE01971F5A3 /* [CP] Check Pods Manifest.lock */ = {
@@ -528,7 +528,7 @@
 				CODE_SIGN_ENTITLEMENTS = GBHFacebookImagePicker_Example.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GFNHEZ6Q8N;
+				DEVELOPMENT_TEAM = XEHEC9B46E;
 				INFOPLIST_FILE = GBHFacebookImagePicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -549,7 +549,7 @@
 				CODE_SIGN_ENTITLEMENTS = GBHFacebookImagePicker_Example.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GFNHEZ6Q8N;
+				DEVELOPMENT_TEAM = XEHEC9B46E;
 				INFOPLIST_FILE = GBHFacebookImagePicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
