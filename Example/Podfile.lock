@@ -9,7 +9,7 @@ PODS:
     - Bolts (~> 1.9)
   - FBSDKLoginKit (4.41.0):
     - FBSDKCoreKit
-  - GBHFacebookImagePicker (2.5.1):
+  - GBHFacebookImagePicker (2.5.2):
     - FBSDKCoreKit (~> 4.41.0)
     - FBSDKLoginKit (~> 4.41.0)
 
@@ -30,8 +30,8 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FBSDKCoreKit: 974810fe3806173f3777c68062fa8ed6fa59b59d
   FBSDKLoginKit: 159a5c2eebe6a0774c3b128f5085128679233d2b
-  GBHFacebookImagePicker: 4142f796f4f646bc1747535902a71884120588a8
+  GBHFacebookImagePicker: 9e6a79131cb56c7b1e64df79cb2a8bdcc46034e2
 
 PODFILE CHECKSUM: c7986fba07718931af896e9c40736ace0ccbfe4e
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1
