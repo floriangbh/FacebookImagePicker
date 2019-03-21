@@ -11,7 +11,7 @@ public class FacebookImagePicker: NSObject {
 
     // Picker configuration settings
     open static var pickerConfig = FacebookPickerConfig()
-    
+
     fileprivate var facebookController = FacebookController()
 
     /// Present album picker
@@ -21,6 +21,15 @@ public class FacebookImagePicker: NSObject {
     ///   - delegate: delegate for GBHFacebookImagePickerDelegate
     public final func presentFacebookAlbumImagePicker(from: UIViewController,
                                                       delegate: FacebookImagePickerDelegate) {
+        from.present(getFacebookAlbumImagePicker(delegate: delegate), animated: true)
+    }
+
+    /// Get album picker
+    ///
+    /// - Parameters:
+    ///   - delegate: delegate for GBHFacebookImagePickerDelegate
+    /// - Returns: The album picker controller
+    public final func getFacebookAlbumImagePicker(delegate: FacebookImagePickerDelegate) -> UIViewController {
 
         // Create album picker
         let albumPicker = FacebookAlbumController(facebookController: facebookController)
@@ -29,8 +38,6 @@ public class FacebookImagePicker: NSObject {
         // Embed in navigation controller
         let navigationController = FacebookImagePickerNavigationController(rootViewController: albumPicker)
 
-        // Present the picker 
-        from.present(navigationController, animated: true)
+        return navigationController
     }
-
 }
