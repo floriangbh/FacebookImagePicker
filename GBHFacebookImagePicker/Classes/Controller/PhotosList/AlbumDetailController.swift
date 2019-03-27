@@ -165,7 +165,7 @@ extension AlbumDetailController: AlbumDetailDelegate {
     }
     
     func didDeselectImage(image: FacebookImage) {
-        if let index = self.selectedImages.index(where: { $0.imageId == image.imageId }) {
+        if let index = self.selectedImages.firstIndex(where: { $0.imageId == image.imageId }) {
             self.selectedImages.remove(at: index)
         }
     }
