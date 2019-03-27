@@ -10,7 +10,7 @@ import UIKit
 public class FacebookImagePicker: NSObject {
 
     // Picker configuration settings
-    open static var pickerConfig = FacebookPickerConfig()
+    public static var pickerConfig = FacebookPickerConfig()
 
     fileprivate var facebookController = FacebookController()
 

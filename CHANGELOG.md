@@ -1,6 +1,20 @@
 Changelog
 ==========
 
+### 2.6.0
+
+- Bump to FBSDK 4.42.0
+- Swift 5.0
+
+### 2.5.2
+
+- Bump to FBSDK 4.41.2
+- Give access to the album image picker (#53)
+
+### 2.5.2
+
+- Bump to FBSDK 4.41.0
+
 ### 2.5.1
 
 - Bump to FBSDK 4.40.0
