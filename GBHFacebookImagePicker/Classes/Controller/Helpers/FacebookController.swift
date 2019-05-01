@@ -43,11 +43,10 @@ final class FacebookController {
         }
         
         // Build Facebook's request
-        let graphRequest = FBSDKGraphRequest(graphPath: path,
-                                             parameters: nil)
+        let graphRequest = GraphRequest(graphPath: path, parameters: [:])
         
         // Start Facebook Request
-        _ = graphRequest?.start { [weak self] _, result, error in
+        graphRequest.start { [weak self] _, result, error in
             guard let selfStrong = self else { return }
             
             if error != nil {
@@ -109,7 +108,7 @@ final class FacebookController {
                     let albumCount = albumDic["count"] as? Int {
                     
                     // Album's cover url
-                    let token = FBSDKAccessToken.current().tokenString ?? ""
+                    let token = AccessToken.current?.tokenString ?? ""
                     let albumUrlPath = String(format: self.pictureUrl, albumId, token)
                     
                     // Build Album model
@@ -146,13 +145,12 @@ final class FacebookController {
         if let afterPath = after {
             path = path.appendingFormat("&after=%@", afterPath)
         }
-        //print(path)
+        
         // Build Facebook's request
-        let graphRequest = FBSDKGraphRequest(graphPath: path,
-                                             parameters: nil)
+        let graphRequest = GraphRequest(graphPath: path, parameters: [:])
         
         // Start Facebook's request
-        _ = graphRequest?.start { [weak self] _, result, error in
+        _ = graphRequest.start { [weak self] _, result, error in
             guard let selfStrong = self else { return }
             
             if error != nil {
@@ -215,7 +213,7 @@ final class FacebookController {
     
     /// Logout with clear session, token & user's album
     fileprivate func logout() {
-        FBSDKLoginManager().logOut()
+        LoginManager().logOut()
     }
     
     // MARK: - Login
@@ -229,54 +227,53 @@ final class FacebookController {
         
         self.albumList = [] // Clear Album
         
-        if FBSDKAccessToken.current() == nil {
+        if AccessToken.current == nil {
             // No token, we need to log in
             
             // Start Facebook's login
-            let loginManager = FBSDKLoginManager()
-            loginManager.logIn(withReadPermissions: ["user_photos"],
-                               from: controller) { [weak self] (response, error) in
-                                
-                                guard let selfStrong = self else { return }
-                                
-                                if error != nil {
-                                    // Failed
-                                    print("Failed to login")
-                                    print(error.debugDescription)
-                                    completion(false, .loginFailed)
+            let loginManager = LoginManager()
+            loginManager.logIn(permissions: ["user_photos"], from: controller) { [weak self] (response, error) in
+                
+                guard let selfStrong = self else { return }
+                
+                if error != nil {
+                    // Failed
+                    print("Failed to login")
+                    print(error.debugDescription)
+                    completion(false, .loginFailed)
+                } else {
+                    // Success
+                    if response?.isCancelled == true {
+                        // Login Cancelled
+                        completion(false, .loginCancelled)
+                    } else {
+                        if response?.token != nil {
+                            // Check "user_photos" permission statut
+                            if let permission = response?.declinedPermissions {
+                                if permission.contains("user_photos") {
+                                    // "user_photos" is dennied
+                                    selfStrong.logout() // Flush fb session
+                                    completion(false, .permissionDenied)
                                 } else {
-                                    // Success
-                                    if response?.isCancelled == true {
-                                        // Login Cancelled
-                                        completion(false, .loginCancelled)
-                                    } else {
-                                        if response?.token != nil {
-                                            // Check "user_photos" permission statut
-                                            if let permission = response?.declinedPermissions {
-                                                if permission.contains("user_photos") {
-                                                    // "user_photos" is dennied
-                                                    selfStrong.logout() // Flush fb session
-                                                    completion(false, .permissionDenied)
-                                                } else {
-                                                    // "user_photos" is granted
-                                                    completion(true, nil)
-                                                }
-                                            } else {
-                                                // Failed to get permission 
-                                                print("Failed to get permission...")
-                                                completion(false, .loginFailed)
-                                            }
-                                        } else {
-                                            // Failed
-                                            print("Failed to get token")
-                                            completion(false, .loginFailed)
-                                        }
-                                    }
+                                    // "user_photos" is granted
+                                    completion(true, nil)
                                 }
+                            } else {
+                                // Failed to get permission
+                                print("Failed to get permission...")
+                                completion(false, .loginFailed)
+                            }
+                        } else {
+                            // Failed
+                            print("Failed to get token")
+                            completion(false, .loginFailed)
+                        }
+                    }
+                }
             }
         } else {
             // Already logged in, check User_photos permission
-            if FBSDKAccessToken.current().permissions.contains("user_photos") {
+            if AccessToken.current?.hasGranted(permission: "user_photos") ?? false {
                 // User_photos's permission ok
                 completion(true, nil)
             } else {
@@ -295,11 +292,11 @@ final class FacebookController {
             completion(true, profilUrl)
         } else {
             // Retrieve profile url form Graph API
-            if FBSDKAccessToken.current() != nil {
+            if AccessToken.current != nil {
                 let param = ["fields": "picture.width(600).height(600)"]
-                let graphRequest = FBSDKGraphRequest(graphPath: "me",
-                                                     parameters: param)
-                _ = graphRequest?.start(completionHandler: { (_, result, error) -> Void in
+                let graphRequest = GraphRequest(graphPath: "me",
+                                                parameters: param)
+                _ = graphRequest.start(completionHandler: { (_, result, error) -> Void in
                     if error != nil {
                         // KO
                         print("Error")
