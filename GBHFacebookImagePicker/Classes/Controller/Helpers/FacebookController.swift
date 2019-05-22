@@ -83,7 +83,7 @@ final class FacebookController {
                         let after = cursors["after"] as? String {
                         
                         // Restart album request for next page
-                        selfStrong.fetchFacebookAlbums(after: after)
+                        selfStrong.fetchFacebookAlbums(after: after, completion: completion)
                     } else {
                         
                         print("Found \(selfStrong.albumList.count) album(s) with this Facebook account.")
