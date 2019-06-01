@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+### 3.0.2
+
+- Bug fix with facebook picture pagination 
+
+### 3.0.1
+
+- Bug fix with facebook album pagination 
+
 ### 3.0.0
 
 - Bump to FBSDK 5.0.0 (contains a lot of breaking change)

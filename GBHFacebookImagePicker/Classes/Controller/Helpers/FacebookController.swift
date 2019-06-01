@@ -171,8 +171,7 @@ final class FacebookController {
                         let after = cursors["after"] as? String {
                         
                         // Restart album request for next page
-                        selfStrong.fbAlbumsPictureRequest(after: after,
-                                                          album: album)
+                        selfStrong.fbAlbumsPictureRequest(after: after, album: album, completion: completion)
                     } else {
                         print("Found \(album.photos.count) photos for the \"\(album.name!)\" album.")
                         // Notifie controller with albums & photos
