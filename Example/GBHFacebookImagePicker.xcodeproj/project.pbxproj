@@ -234,7 +234,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = GFNHEZ6Q8N;
+						DevelopmentTeam = XEHEC9B46E;
 						LastSwiftMigration = 1020;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -566,7 +566,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E437BF19FF9AF287714980F5 /* Pods-GBHFacebookImagePicker_Tests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = GFNHEZ6Q8N;
+				DEVELOPMENT_TEAM = XEHEC9B46E;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -584,7 +584,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EBBECDEDEE69303E2A07B3A2 /* Pods-GBHFacebookImagePicker_Tests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = GFNHEZ6Q8N;
+				DEVELOPMENT_TEAM = XEHEC9B46E;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

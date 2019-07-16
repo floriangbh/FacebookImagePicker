@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 3.1.0
+
+- Bump to FBSDK 5.2.3 
+
 ### 3.0.2
 
 - Bug fix with facebook picture pagination 
