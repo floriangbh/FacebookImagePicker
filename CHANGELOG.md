@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+### 3.1.5
+
+- Bump to FBSDK 5.11.0
+
+### 3.1.4
+
+- Bump to FBSDK 5.8.0
+
 ### 3.1.3
 
 - Bump to FBSDK 5.6.0
