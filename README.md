@@ -165,14 +165,6 @@ pod "GBHFacebookImagePicker", '~> 2.4' # For swift 4.0
 pod "GBHFacebookImagePicker", '~> 1.3.1' # For Swift 3.1
 ```
 
-## Alternative solutions
-
-Here are some other Facebook's album picker libraries.
-
-- [sanche21/DSFacebookImagePicker](https://github.com/sanche21/DSFacebookImagePicker) 
-- [OceanLabs/FacebookImagePicker-iOS](https://github.com/OceanLabs/FacebookImagePicker-iOS) 
-- [bradtheappguy/BSFacebookImagePicker](https://github.com/bradtheappguy/BSFacebookImagePicker) 
-
 ## Communication
 
 - If you **need help**, open an issue.
