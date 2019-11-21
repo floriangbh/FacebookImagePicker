@@ -32,13 +32,6 @@ This picker takes care of all authentication (from the web or with the native Fa
 - [x] Multiple selection in one album
 - [x] Select all 
 
-## TODOs : https://github.com/floriangbh/FacebookImagePicker/projects/1
-
-- [  ] Refactor : use Anchor for layout (make the layout code cleaner and readable)
-- [  ] Multiple pictures selection across albums 
-- [  ] Refactor : use Codable for parse FB API result 
-- [  ] UI & Unit tests
-
 ## Example
 
 In your terminal :
