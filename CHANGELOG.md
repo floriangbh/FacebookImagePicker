@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 3.1.6
+
+- Pod version fix.
+
 ### 3.1.5
 
 - Bump to FBSDK 5.11.0
