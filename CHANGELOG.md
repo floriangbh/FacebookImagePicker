@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+### 3.2.0
+
+- Bump to FBSDK 5.12.0
+- Use Swift Result 
+
 ### 3.1.6
 
 - Pod version fix.

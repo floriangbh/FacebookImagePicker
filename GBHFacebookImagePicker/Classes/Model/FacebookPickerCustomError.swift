@@ -19,4 +19,5 @@ enum LoginError: Error {
 enum DownloadError: Error {
     case invalidUrl
     case downloadError
+    case tokenError
 }

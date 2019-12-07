@@ -115,12 +115,18 @@ final class AlbumDetailController: UIViewController {
         
         let currentAlbumPhotos = currentAlbum.photos
         if currentAlbumPhotos.isEmpty {
-            FacebookController.shared.fbAlbumsPictureRequest(album: currentAlbum) { (completeAlbum) in
-                self.album = completeAlbum
-                if completeAlbum.photos.isEmpty {
-                    self.renderEmptyAlbum()
-                } else {
-                    self.render(completeAlbum.photos)
+            FacebookController.shared.fbAlbumsPictureRequest(album: currentAlbum) { result in
+                switch result {
+                case .success(let completeAlbum):
+                    self.album = completeAlbum
+                    if completeAlbum.photos.isEmpty {
+                        self.renderEmptyAlbum()
+                    } else {
+                        self.render(completeAlbum.photos)
+                    }
+                case .failure(let error):
+                    // TODO: Error handling 
+                    print(error.localizedDescription)
                 }
             }
         } else {

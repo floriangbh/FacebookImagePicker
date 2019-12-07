@@ -62,33 +62,37 @@ final class FacebookAlbumController: UIViewController {
     
     /// Start Facebook login
     fileprivate func doFacebookLogin() {
-        self.facebookController.login(controller: self) { (success, error) in
-            if !success {
-                // Something wrong
-                if let loginError = error {
-                    switch loginError {
-                    case .loginCancelled:
-                        // Cancelled login
-                        self.delegate?.facebookImagePicker(didCancelled: self)
-                        self.dismissPicker()
-                    case .loginFailed:
-                        // Failed to login with Facebook
-                        self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
-                        self.dismissPicker()
-                    case .permissionDenied:
-                        // "user_photos" permission are denied, we need to ask permission !
-                        self.showDeniedPermissionPopup()
-                    }
-                }
-            } else {
+        self.facebookController.login(controller: self) { (result) in
+            switch result {
+            case .success:
                 self.getFacebookAlbums()
+            case .failure(let error):
+                switch error {
+                case .loginCancelled:
+                    // Cancelled login
+                    self.delegate?.facebookImagePicker(didCancelled: self)
+                    self.dismissPicker()
+                case .loginFailed:
+                    // Failed to login with Facebook
+                    self.delegate?.facebookImagePicker(imagePicker: self, didFailWithError: error)
+                    self.dismissPicker()
+                case .permissionDenied:
+                    // "user_photos" permission are denied, we need to ask permission !
+                    self.showDeniedPermissionPopup()
+                }
             }
         }
     }
     
     fileprivate func getFacebookAlbums() {
-        self.facebookController.fetchFacebookAlbums(completion: { (albums) in
-            self.render(albums)
+        self.facebookController.fetchFacebookAlbums(completion: { (result) in
+            switch result {
+            case .success(let albums):
+                self.render(albums)
+            case .failure(let error):
+                // TODO: ERROR HANDLING
+                print(error.localizedDescription)
+            }
         })
     }
     

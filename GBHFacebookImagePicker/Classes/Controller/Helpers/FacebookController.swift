@@ -34,7 +34,7 @@ final class FacebookController {
     ///
     /// - Parameter after: after page identifier (optional)
     internal func fetchFacebookAlbums(after: String? = nil,
-                                      completion: (([FacebookAlbum]) -> Void)? = nil) {
+                                      completion: ((Result<[FacebookAlbum], Error>) -> Void)? = nil) {
         
         // Build path album request
         var  path = "me/albums?fields=id,name,count,cover_photo"
@@ -47,21 +47,21 @@ final class FacebookController {
         
         // Start Facebook Request
         graphRequest.start { [weak self] _, result, error in
-            guard let selfStrong = self else { return }
+            guard let strongSelf = self else { return }
             
-            if error != nil {
-                print(error.debugDescription)
+            if let error = error {
+                completion?(.failure(error))
                 return
             } else {
                 // Try to parse request's result
                 if let fbResult = result as? [String: AnyObject] {
                     
                     // Parse Album
-                    selfStrong.parseFbAlbumResult(fbResult: fbResult)
+                    strongSelf.parseFbAlbumResult(fbResult: fbResult)
                     
                     // Add tagged album if needed 
                     if FacebookImagePicker.pickerConfig.displayTaggedAlbum
-                        && selfStrong.alreadyAddTagged == false {
+                        && strongSelf.alreadyAddTagged == false {
                         
                         // Create tagged album 
                         let taggedPhotosAlbum = FacebookAlbum(
@@ -70,10 +70,10 @@ final class FacebookController {
                         )
                         
                         // Add to albums 
-                        selfStrong.albumList.insert(taggedPhotosAlbum, at: 0)
+                        strongSelf.albumList.insert(taggedPhotosAlbum, at: 0)
                         
                         // Update flag 
-                        selfStrong.alreadyAddTagged = true
+                        strongSelf.alreadyAddTagged = true
                     }
                     
                     // Try to find next page
@@ -83,11 +83,11 @@ final class FacebookController {
                         let after = cursors["after"] as? String {
                         
                         // Restart album request for next page
-                        selfStrong.fetchFacebookAlbums(after: after, completion: completion)
+                        strongSelf.fetchFacebookAlbums(after: after, completion: completion)
                     } else {
                         
-                        print("Found \(selfStrong.albumList.count) album(s) with this Facebook account.")
-                        completion?(selfStrong.albumList)
+                        print("Found \(strongSelf.albumList.count) album(s) with this Facebook account.")
+                        completion?(.success(strongSelf.albumList))
                     }
                 }
             }
@@ -133,7 +133,7 @@ final class FacebookController {
     ///   - album: album model
     func fbAlbumsPictureRequest(after: String? = nil,
                                 album: FacebookAlbum,
-                                completion: ((FacebookAlbum) -> Void)? = nil) {
+                                completion: ((Result<FacebookAlbum, Error>) -> Void)? = nil) {
         
         // Build path album request
         guard let identifier = album.albumId else {
@@ -151,17 +151,18 @@ final class FacebookController {
         
         // Start Facebook's request
         _ = graphRequest.start { [weak self] _, result, error in
-            guard let selfStrong = self else { return }
+            guard let strongSelf = self else { return }
             
-            if error != nil {
-                print(error.debugDescription)
+            if let error = error {
+                print(error.localizedDescription)
+                completion?(.failure(error))
                 return
             } else {
                 // Try to parse request's result
                 if let fbResult = result as? [String: AnyObject] {
                     // Parse Album
                     //print(fbResult)
-                    selfStrong.parseFbPicture(fbResult: fbResult,
+                    strongSelf.parseFbPicture(fbResult: fbResult,
                                               album: album)
                     
                     // Try to find next page
@@ -171,11 +172,11 @@ final class FacebookController {
                         let after = cursors["after"] as? String {
                         
                         // Restart album request for next page
-                        selfStrong.fbAlbumsPictureRequest(after: after, album: album, completion: completion)
+                        strongSelf.fbAlbumsPictureRequest(after: after, album: album, completion: completion)
                     } else {
                         print("Found \(album.photos.count) photos for the \"\(album.name!)\" album.")
                         // Notifie controller with albums & photos
-                        completion?(album)
+                        completion?(.success(album))
                     }
                 }
             }
@@ -222,7 +223,7 @@ final class FacebookController {
     /// - parameters vc: source controller
     /// - parameters completion: (success , error if needed)
     internal func login(controller: UIViewController,
-                        completion: @escaping (Bool, LoginError?) -> Void) {
+                        completion: @escaping (Result<Void, LoginError>) -> Void) {
         
         self.albumList = [] // Clear Album
         
@@ -233,39 +234,39 @@ final class FacebookController {
             let loginManager = LoginManager()
             loginManager.logIn(permissions: ["user_photos"], from: controller) { [weak self] (response, error) in
                 
-                guard let selfStrong = self else { return }
+                guard let strongSelf = self else { return }
                 
                 if error != nil {
                     // Failed
                     print("Failed to login")
                     print(error.debugDescription)
-                    completion(false, .loginFailed)
+                    completion(.failure(.loginFailed))
                 } else {
                     // Success
                     if response?.isCancelled == true {
                         // Login Cancelled
-                        completion(false, .loginCancelled)
+                        completion(.failure(.loginCancelled))
                     } else {
                         if response?.token != nil {
                             // Check "user_photos" permission statut
                             if let permission = response?.declinedPermissions {
                                 if permission.contains("user_photos") {
                                     // "user_photos" is dennied
-                                    selfStrong.logout() // Flush fb session
-                                    completion(false, .permissionDenied)
+                                    strongSelf.logout() // Flush fb session
+                                    completion(.failure(.permissionDenied))
                                 } else {
                                     // "user_photos" is granted
-                                    completion(true, nil)
+                                    completion(.success(()))
                                 }
                             } else {
                                 // Failed to get permission
                                 print("Failed to get permission...")
-                                completion(false, .loginFailed)
+                                completion(.failure(.loginFailed))
                             }
                         } else {
                             // Failed
                             print("Failed to get token")
-                            completion(false, .loginFailed)
+                            completion(.failure(.loginFailed))
                         }
                     }
                 }
@@ -274,21 +275,20 @@ final class FacebookController {
             // Already logged in, check User_photos permission
             if AccessToken.current?.hasGranted(permission: "user_photos") ?? false {
                 // User_photos's permission ok
-                completion(true, nil)
+                completion(.success(()))
             } else {
                 // User_photos's permission denied
                 self.logout() // Flush fb session
                 print("Permission for user's photos are denied")
-                completion(false,
-                           .permissionDenied)
+                completion(.failure(.permissionDenied))
             }
         }
     }
     
-    func getProfilePicture(_ completion: @escaping ((Bool, String?) -> Void)) {
+    func getProfilePicture(completion: @escaping ((Result<String, Error>) -> Void)) {
         if let profilUrl = self.profilePictureUrl {
             // Return saved url 
-            completion(true, profilUrl)
+            completion(.success(profilUrl))
         } else {
             // Retrieve profile url form Graph API
             if AccessToken.current != nil {
@@ -296,10 +296,9 @@ final class FacebookController {
                 let graphRequest = GraphRequest(graphPath: "me",
                                                 parameters: param)
                 _ = graphRequest.start(completionHandler: { (_, result, error) -> Void in
-                    if error != nil {
+                    if let error = error {
                         // KO
-                        print("Error")
-                        completion(false, nil)
+                        completion(.failure(error))
                     } else {
                         // OK
                         if let result = result as? [String: AnyObject] {
@@ -313,17 +312,17 @@ final class FacebookController {
                                     self.profilePictureUrl = FBPicUrl
                                     
                                     // Start completion 
-                                    completion(true, FBPicUrl)
+                                    completion(.success(FBPicUrl))
                                 }
                             }
                         }
                         
-                        completion(false, nil)
+                        completion(.failure(DownloadError.downloadError))
                     }
                 })
             } else {
                 // KO
-                completion(false, nil)
+                completion(.failure(DownloadError.tokenError))
                 print("Token error")
             }
         }

@@ -90,9 +90,15 @@ final class AlbumTableViewCell: UITableViewCell, Reusable {
         // Album cover image
         if album.albumId == FacebookController.idTaggedPhotosAlbum {
             // Special cover for tagged album : user facebook account picture 
-            FacebookController.shared.getProfilePicture({ (_, url) in
-                if let stringUrl = url, let url = URL(string: stringUrl) {
-                    self.photoImageView?.imageUrl = url
+            FacebookController.shared.getProfilePicture(completion: { (result) in
+                switch result {
+                case .success(let url):
+                    if let url = URL(string: url) {
+                        self.photoImageView?.imageUrl = url
+                    }
+                case .failure(let error):
+                    // TODO: Error handling
+                    print(error.localizedDescription)
                 }
             })
         } else if let url = album.coverUrl {
