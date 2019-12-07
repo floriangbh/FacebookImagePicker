@@ -1,7 +1,7 @@
 Changelog
 ==========
 
-### 3.2.0
+### 3.2.0 (in development)
 
 - Bump to FBSDK 5.12.0
 - Use Swift Result 

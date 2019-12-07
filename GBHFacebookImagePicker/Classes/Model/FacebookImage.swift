@@ -11,23 +11,23 @@ public enum ImageSize {
 }
 
 public class FacebookImage {
-
+    
     // MARK: - Var
-
+    
     /// The image, not nil only if image is selected
     public var image: UIImage?
-
+    
     /// Normal size picture url
     public var normalSizeUrl: String?
-
+    
     /// Full size source picture url
     public var fullSizeUrl: String?
-
+    
     /// Picture id
     public var imageId: String?
-
+    
     // MARK: - Init
-
+    
     /// Initialize Image model from informations retrieve from the graph API
     ///
     /// - Parameters:
@@ -39,32 +39,32 @@ public class FacebookImage {
         self.normalSizeUrl = picture
         self.fullSizeUrl = source
     }
-
+    
     // MARK: - Download
-
+    
     /// Download the image
     ///
     /// - Parameter completion: completion handler with optional error 
-    internal func download(completion: @escaping (Error?) -> Void) {
+    internal func download(completion: @escaping (Result<Void, DownloadError>) -> Void) {
         guard let stringUrl = self.fullSizeUrl,
             let url = URL(string: stringUrl) else {
-                completion(DownloadError.invalidUrl)
+                completion(.failure(.invalidUrl))
                 return
         }
-
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil,
                 let data = data,
                 let httpResponse = response as? HTTPURLResponse,
                 httpResponse.statusCode == 200 else {
-                    completion(DownloadError.downloadError)
+                    completion(.failure(.downloadError))
                     return
             }
-
+            
             // Set the image
             self.image = UIImage(data: data)
-            completion(nil)
-            }
-            .resume()
+            completion(.success(()))
+        }
+        .resume()
     }
 }

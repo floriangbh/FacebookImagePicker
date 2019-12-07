@@ -155,12 +155,13 @@ extension FacebookAlbumController: FacebookAlbumDetailPickerDelegate {
         for imageModel in images {
             downloadGroup.enter()
             
-            imageModel.download(completion: { (error) in
-                if error != nil {
+            imageModel.download(completion: { (result) in
+                switch result {
+                case .success:
+                    successModels.append(imageModel)
+                case .failure(let error):
                     errors.append(error)
                     errorModels.append(imageModel)
-                } else {
-                    successModels.append(imageModel)
                 }
                 
                 downloadGroup.leave()
