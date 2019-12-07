@@ -12,7 +12,7 @@ final class AlbumTableViewCell: UITableViewCell, Reusable {
     // MARK: - Var
 
     /// Album's cover image views
-    fileprivate var photoImageView: ImageAsyncViewLoading?
+    fileprivate var photoImageView: AsyncImageView?
 
     /// Width of the album's cover 
     fileprivate let imageWidth = 70
@@ -36,7 +36,7 @@ final class AlbumTableViewCell: UITableViewCell, Reusable {
         self.accessoryType = .disclosureIndicator
 
         // Album cover image
-        self.photoImageView = ImageAsyncViewLoading(frame: CGRect(x: 15,
+        self.photoImageView = AsyncImageView(frame: CGRect(x: 15,
                                                                      y: 10,
                                                                      width: imageWidth,
                                                                      height: imageHeight))

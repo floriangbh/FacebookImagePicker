@@ -8,9 +8,6 @@
 import Foundation
 
 extension UIViewController {
-
-    // MARK: - Child
-
     func add(_ child: UIViewController) {
         self.addChild(child)
         self.view.addSubview(child.view)

@@ -1,5 +1,5 @@
 //
-//  ImageAsyncViewLoading.swift
+//  AsyncImageView.swift
 //  GBHFacebookImagePicker
 //
 //  Created by Florian Gabach on 01/10/2016.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageAsyncViewLoading: UIImageView {
+class AsyncImageView: UIImageView {
 
     /// Initializer 
     ///

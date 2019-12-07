@@ -8,7 +8,7 @@
 import Foundation
 
 extension UIView {
-    func tapAnimation() {
+    func bounce() {
         let duration = 0.1
         
         UIView.animate(withDuration: duration, animations: {

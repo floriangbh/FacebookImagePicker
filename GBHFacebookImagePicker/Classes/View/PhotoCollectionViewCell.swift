@@ -10,7 +10,7 @@ import UIKit
 class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
     
     /// The album cover photo 
-    fileprivate var albumImageView: ImageAsyncViewLoading?
+    fileprivate var albumImageView: AsyncImageView?
     
     /// Selection hover view
     let selectView = SelectedView()
@@ -27,7 +27,7 @@ class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
         self.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
         
         // Picture contener
-        self.albumImageView = ImageAsyncViewLoading(frame: CGRect(x: 0,
+        self.albumImageView = AsyncImageView(frame: CGRect(x: 0,
                                                                   y: 0,
                                                                   width: self.frame.width,
                                                                   height: self.frame.height))

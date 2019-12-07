@@ -12,7 +12,6 @@ extension Int {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.locale = Locale(identifier: Locale.current.identifier)
-
         return numberFormatter.string(from: NSNumber(value: self)) ?? ""
     }
 }

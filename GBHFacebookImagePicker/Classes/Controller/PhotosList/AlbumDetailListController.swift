@@ -86,7 +86,7 @@ extension AlbumDetailListController: UICollectionViewDataSource, UICollectionVie
         
         if FacebookImagePicker.pickerConfig.performTapAnimation,
             let cell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell {
-            cell.tapAnimation()
+            cell.bounce()
         }
     }
     
@@ -96,7 +96,7 @@ extension AlbumDetailListController: UICollectionViewDataSource, UICollectionVie
 
         if FacebookImagePicker.pickerConfig.performTapAnimation,
             let cell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell {
-            cell.tapAnimation()
+            cell.bounce()
         }
     }
     
