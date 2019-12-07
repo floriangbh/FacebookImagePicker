@@ -33,8 +33,8 @@ final class FacebookController {
     /// Make GRAPH API's request for user's album
     ///
     /// - Parameter after: after page identifier (optional)
-    internal func fetchFacebookAlbums(after: String? = nil,
-                                      completion: ((Result<[FacebookAlbum], Error>) -> Void)? = nil) {
+    func fetchFacebookAlbums(after: String? = nil,
+                             completion: ((Result<[FacebookAlbum], Error>) -> Void)? = nil) {
         
         // Build path album request
         var  path = "me/albums?fields=id,name,count,cover_photo"
@@ -189,7 +189,7 @@ final class FacebookController {
     ///   - fbResult: album's result
     ///   - album: concerned album model
     private func parseFbPicture(fbResult: [String: AnyObject],
-                                    album: FacebookAlbum) {
+                                album: FacebookAlbum) {
         if let photosResult = fbResult["data"] as? [AnyObject] {
             
             // Parsing album's picture
@@ -222,8 +222,8 @@ final class FacebookController {
     ///
     /// - parameters vc: source controller
     /// - parameters completion: (success , error if needed)
-    internal func login(controller: UIViewController,
-                        completion: @escaping (Result<Void, LoginError>) -> Void) {
+    func login(controller: UIViewController,
+               completion: @escaping (Result<Void, LoginError>) -> Void) {
         
         self.albumList = [] // Clear Album
         

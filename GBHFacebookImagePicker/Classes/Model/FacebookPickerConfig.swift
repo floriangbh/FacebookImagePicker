@@ -119,7 +119,7 @@ public struct FacebookPickerConfig {
 
     // MARK: - Internal
 
-    internal var shouldDisplayToolbar: Bool {
+    var shouldDisplayToolbar: Bool {
         return self.maximumSelectedPictures > 1
     }
 }

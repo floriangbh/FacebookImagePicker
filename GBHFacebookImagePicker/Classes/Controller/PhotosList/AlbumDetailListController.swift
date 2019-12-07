@@ -63,7 +63,7 @@ final class AlbumDetailListController: UIViewController {
     
     // MARK: Action
     
-    internal func selectAllCell() {
+    func selectAllCell() {
         self.pictureCollection?.selectAllCell()
     }
 }

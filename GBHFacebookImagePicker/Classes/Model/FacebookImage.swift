@@ -45,7 +45,7 @@ public class FacebookImage {
     /// Download the image
     ///
     /// - Parameter completion: completion handler with optional error 
-    internal func download(completion: @escaping (Result<Void, DownloadError>) -> Void) {
+    func download(completion: @escaping (Result<Void, DownloadError>) -> Void) {
         guard let stringUrl = self.fullSizeUrl,
             let url = URL(string: stringUrl) else {
                 completion(.failure(.invalidUrl))
