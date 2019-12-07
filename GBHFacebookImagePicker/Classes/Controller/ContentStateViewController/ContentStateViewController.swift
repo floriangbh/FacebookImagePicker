@@ -12,9 +12,9 @@ final class ContentStateViewController: UIViewController {
 
     // MARK: - Var
 
-    fileprivate var state: State?
+    private var state: State?
 
-    fileprivate var shownViewController: UIViewController?
+    private var shownViewController: UIViewController?
 
     // MARK: - Lifecycle
 

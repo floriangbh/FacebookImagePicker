@@ -76,7 +76,7 @@ class AsyncImageView: UIImageView {
     /// Set the image with animation
     ///
     /// - Parameter image: the image to set
-    fileprivate func setImageWithAnimation(image: UIImage) {
+    private func setImageWithAnimation(image: UIImage) {
 
         // Set initial state 
         self.image = image

@@ -10,7 +10,7 @@ import UIKit
 class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
     
     /// The album cover photo 
-    fileprivate var albumImageView: AsyncImageView?
+    private var albumImageView: AsyncImageView?
     
     /// Selection hover view
     let selectView = SelectedView()

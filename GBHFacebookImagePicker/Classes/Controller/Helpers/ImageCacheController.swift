@@ -15,7 +15,7 @@ final class ImageCacheController {
 
     // MARK: - Var 
 
-    fileprivate let imageCache = NSCache<NSString, AnyObject>()
+    private let imageCache = NSCache<NSString, AnyObject>()
 
     // Method 
 

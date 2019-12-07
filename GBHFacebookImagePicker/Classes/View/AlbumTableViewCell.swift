@@ -12,13 +12,13 @@ final class AlbumTableViewCell: UITableViewCell, Reusable {
     // MARK: - Var
 
     /// Album's cover image views
-    fileprivate var photoImageView: AsyncImageView?
+    private var photoImageView: AsyncImageView?
 
     /// Width of the album's cover 
-    fileprivate let imageWidth = 70
+    private let imageWidth = 70
 
     /// Height of the album's cover 
-    fileprivate let imageHeight = 70
+    private let imageHeight = 70
 
     // MARK: - Lifecycle
 

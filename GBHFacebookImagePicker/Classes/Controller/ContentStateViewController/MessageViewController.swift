@@ -11,9 +11,9 @@ final class MessageViewController: UIViewController {
     
     // MARK: - Var
     
-    fileprivate var message: String
+    private var message: String
     
-    fileprivate lazy var infoLabel: UILabel = {
+    private lazy var infoLabel: UILabel = {
         let infoLabel = UILabel()
         infoLabel.text = message
         return infoLabel

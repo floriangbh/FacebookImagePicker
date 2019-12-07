@@ -11,7 +11,7 @@ final class FacebookAlbumListController: UITableViewController {
     
     weak var delegate: FacebookAlbumPickerDelegate?
 
-    fileprivate var albums: [FacebookAlbum]
+    private var albums: [FacebookAlbum]
     
     // MARK: - Lifecycle
     
@@ -33,12 +33,12 @@ final class FacebookAlbumListController: UITableViewController {
     
     // MARK: - Prepare
     
-    fileprivate func prepareController() {
+    private func prepareController() {
         self.title = FacebookImagePicker.pickerConfig.textConfig.localizedTitle
         self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
     }
     
-    fileprivate func prepareTableView() {
+    private func prepareTableView() {
         self.tableView.tableFooterView = UIView()
         self.tableView.register(cellType: AlbumTableViewCell.self)
         self.tableView.dataSource = self

@@ -11,7 +11,7 @@ final class AlbumDetailController: UIViewController {
     
     /// MARK: Var
     
-    fileprivate var shouldDisplayToolbar: Bool {
+    private var shouldDisplayToolbar: Bool {
         return (self.album?.photos.count ?? 0 > 0) && FacebookImagePicker.pickerConfig.shouldDisplayToolbar
     }
     
@@ -33,7 +33,7 @@ final class AlbumDetailController: UIViewController {
         }
     }
     
-    fileprivate lazy var selectBarButton: UIBarButtonItem = {
+    private lazy var selectBarButton: UIBarButtonItem = {
         let selectBarButton = UIBarButtonItem(
             title: FacebookImagePicker.pickerConfig.textConfig.localizedSelect,
             style: .plain,
@@ -44,7 +44,7 @@ final class AlbumDetailController: UIViewController {
         return selectBarButton
     }()
     
-    fileprivate lazy var selectAllBarButton: UIBarButtonItem = {
+    private lazy var selectAllBarButton: UIBarButtonItem = {
         let selectAllBarButton = UIBarButtonItem(
             title: FacebookImagePicker.pickerConfig.textConfig.localizedSelectAll,
             style: .plain,
@@ -56,9 +56,9 @@ final class AlbumDetailController: UIViewController {
     
     var facebookController: FacebookController
     
-    fileprivate lazy var stateViewController = ContentStateViewController()
+    private lazy var stateViewController = ContentStateViewController()
     
-    fileprivate var albumDetailListController: AlbumDetailListController?
+    private var albumDetailListController: AlbumDetailListController?
     
     // MARK: - Lifecycle
     
@@ -82,13 +82,13 @@ final class AlbumDetailController: UIViewController {
     
     // MARK: Prepare
     
-    fileprivate func prepareViewController() {
+    private func prepareViewController() {
         self.title = self.album?.name ?? FacebookImagePicker.pickerConfig.textConfig.localizedPictures
         self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
         self.prepareMultipleSelectionButton()
     }
     
-    fileprivate func prepareMultipleSelectionButton() {
+    private func prepareMultipleSelectionButton() {
         var items: [UIBarButtonItem] = [UIBarButtonItem.flexibleSpaceItem()]
         
         if FacebookImagePicker.pickerConfig.maximumSelectedPictures > 1 {
@@ -107,7 +107,7 @@ final class AlbumDetailController: UIViewController {
     
     // MARK: - Action
     
-    fileprivate func getPhotos() {
+    private func getPhotos() {
         guard let currentAlbum = self.album else {
             print("Failed to go the album reference")
             return
@@ -125,7 +125,7 @@ final class AlbumDetailController: UIViewController {
                         self.render(completeAlbum.photos)
                     }
                 case .failure(let error):
-                    // TODO: Error handling 
+                    // TODO: Error handling
                     print(error.localizedDescription)
                 }
             }
@@ -145,13 +145,13 @@ final class AlbumDetailController: UIViewController {
     
     // MARK: - Render
     
-    fileprivate func renderEmptyAlbum() {
+    private func renderEmptyAlbum() {
         let message = FacebookImagePicker.pickerConfig.textConfig.localizedNoPicturesInAlbum
         let emptyAlbumController = MessageViewController(message: message)
         self.stateViewController.transition(to: .render(emptyAlbumController))
     }
     
-    fileprivate func render(_ photos: [FacebookImage]) {
+    private func render(_ photos: [FacebookImage]) {
         self.navigationController?.setToolbarHidden(!shouldDisplayToolbar, animated: true)
         
         self.albumDetailListController = AlbumDetailListController(images: photos)

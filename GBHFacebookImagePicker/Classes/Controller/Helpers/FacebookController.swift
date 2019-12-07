@@ -17,16 +17,16 @@ final class FacebookController {
     
     // MARK: - Var
     
-    fileprivate var albumList: [FacebookAlbum] = []
+    private var albumList: [FacebookAlbum] = []
     
-    fileprivate var pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
+    private var pictureUrl = "https://graph.facebook.com/%@/picture?type=small&access_token=%@"
     
     static let idTaggedPhotosAlbum = "idPhotosOfYouTagged"
     
-    fileprivate var profilePictureUrl: String?
+    private var profilePictureUrl: String?
     
     /// Boolean to check if we have already added the tagged album, prevent multiple addition when fetching next cursor 
-    fileprivate var alreadyAddTagged: Bool = false
+    private var alreadyAddTagged: Bool = false
     
     // MARK: - Retrieve Facebook's Albums
     
@@ -97,7 +97,7 @@ final class FacebookController {
     /// Parsing GRAPH API result for user's album in FacebookAlbumModel array
     ///
     /// - Parameter fbResult: result of the Facebook's graph api
-    fileprivate func parseFbAlbumResult(fbResult: [String: AnyObject]) {
+    private func parseFbAlbumResult(fbResult: [String: AnyObject]) {
         if let albumArray = fbResult["data"] as? [AnyObject] {
             
             // Parsing user's album
@@ -188,7 +188,7 @@ final class FacebookController {
     /// - Parameters:
     ///   - fbResult: album's result
     ///   - album: concerned album model
-    fileprivate func parseFbPicture(fbResult: [String: AnyObject],
+    private func parseFbPicture(fbResult: [String: AnyObject],
                                     album: FacebookAlbum) {
         if let photosResult = fbResult["data"] as? [AnyObject] {
             
@@ -212,7 +212,7 @@ final class FacebookController {
     // MARK: - Logout
     
     /// Logout with clear session, token & user's album
-    fileprivate func logout() {
+    private func logout() {
         LoginManager().logOut()
     }
     

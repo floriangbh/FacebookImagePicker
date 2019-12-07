@@ -12,7 +12,7 @@ public class FacebookImagePicker: NSObject {
     // Picker configuration settings
     public static var pickerConfig = FacebookPickerConfig()
 
-    fileprivate var facebookController = FacebookController()
+    private var facebookController = FacebookController()
 
     /// Present album picker
     ///

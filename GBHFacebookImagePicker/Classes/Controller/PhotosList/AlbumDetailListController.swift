@@ -11,15 +11,15 @@ final class AlbumDetailListController: UIViewController {
     
     /// MARK: Var
     
-    fileprivate var cellSize: CGFloat?
+    private var cellSize: CGFloat?
     
-    fileprivate let cellPerRow: CGFloat = FacebookImagePicker.pickerConfig.picturePerRow
+    private let cellPerRow: CGFloat = FacebookImagePicker.pickerConfig.picturePerRow
 
-    fileprivate let cellSpacing: CGFloat = FacebookImagePicker.pickerConfig.cellSpacing
+    private let cellSpacing: CGFloat = FacebookImagePicker.pickerConfig.cellSpacing
     
-    fileprivate var imageArray: [FacebookImage]
+    private var imageArray: [FacebookImage]
     
-    fileprivate var pictureCollection: UICollectionView?
+    private var pictureCollection: UICollectionView?
     
     weak var delegate: AlbumDetailDelegate?
     
@@ -43,11 +43,11 @@ final class AlbumDetailListController: UIViewController {
     
     // MARK: Prepare
     
-    fileprivate func prepareViewController() {
+    private func prepareViewController() {
         self.view.backgroundColor = FacebookImagePicker.pickerConfig.uiConfig.backgroundColor
     }
     
-    fileprivate func prepareCollectionView() {
+    private func prepareCollectionView() {
         let layout = UICollectionViewFlowLayout()
         self.pictureCollection = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         guard let collectionView = self.pictureCollection else { return }

@@ -44,7 +44,7 @@ final class SelectedView: UIView {
     }
 
     // MARK: - Prepare
-    fileprivate func prepareView() {
+    private func prepareView() {
         // Apply alpha
         self.backgroundColor = UIColor.white.withAlphaComponent(0.3)
 
@@ -79,7 +79,7 @@ final class SelectedView: UIView {
         self.layer.borderWidth = FacebookImagePicker.pickerConfig.uiConfig.selectedBorderWidth
     }
 
-    fileprivate func prepareCheckMarkView() {
+    private func prepareCheckMarkView() {
         guard let checkView = self.checkMarkView else { return }
 
         // Add checkmark image from assets
@@ -124,7 +124,7 @@ final class SelectedView: UIView {
     }
 
     /// Prepare view constraints
-    fileprivate func prepareConstraint() {
+    private func prepareConstraint() {
         // Apply checkmark constraint
         guard let checkMarkView = self.checkMarkView else { return }
 
@@ -161,7 +161,7 @@ final class SelectedView: UIView {
         checkMarkView.clipsToBounds = true
     }
 
-    fileprivate func applyVerticalConstraints(margin: CGFloat) {
+    private func applyVerticalConstraints(margin: CGFloat) {
         guard let checkMarkView = self.checkMarkView else { return }
         switch FacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
         case .topLeft, .topRight:
@@ -183,7 +183,7 @@ final class SelectedView: UIView {
         }
     }
 
-    fileprivate func applyHorizontalConstraints(margin: CGFloat) {
+    private func applyHorizontalConstraints(margin: CGFloat) {
         guard let checkMarkView = self.checkMarkView else { return }
         switch FacebookImagePicker.pickerConfig.uiConfig.placeCheckView {
         case .topLeft, .bottomLeft:
