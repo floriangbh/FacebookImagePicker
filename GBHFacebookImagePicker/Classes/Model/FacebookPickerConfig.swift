@@ -27,13 +27,13 @@ public struct FacebookPickerConfig {
         public var navTintColor: UIColor?
 
         /// Will be applied to the navigation bar 
-        public var backgroundColor: UIColor = .white
+        public var backgroundColor: UIColor = Styles().backgroundColor
 
         /// Will be applied to the navigation bar 
-        public var closeButtonColor: UIColor?
+        public var closeButtonColor: UIColor = Styles().label
 
         /// Will be applied to album's title color 
-        public var albumsTitleColor: UIColor?
+        public var albumsTitleColor: UIColor = Styles().label
 
         /// Will be applied to album's pictures number 
         public var albumsCountColor: UIColor?

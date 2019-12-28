@@ -57,7 +57,7 @@ final class SelectedView: UIView {
 
         // Checkmark background color
         let customColor = FacebookImagePicker.pickerConfig.uiConfig.checkViewBackgroundColor
-        let backgroundColor = customColor ?? Colors.facebookColor
+        let backgroundColor = customColor ?? Styles.facebookColor
 
         self.checkMarkView?.layer.borderWidth = 1.5
         self.checkMarkView?.layer.borderColor = UIColor.white.cgColor

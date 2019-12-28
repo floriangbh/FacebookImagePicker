@@ -49,11 +49,10 @@ final class AlbumTableViewCell: UITableViewCell, Reusable {
 
         // Album title label 
         self.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        self.textLabel?.textColor = FacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor ?? .black
+        self.textLabel?.textColor = FacebookImagePicker.pickerConfig.uiConfig.albumsTitleColor 
 
-        // Photo count label 
-        let defaultColor = UIColor.lightGray
-        self.detailTextLabel?.textColor = FacebookImagePicker.pickerConfig.uiConfig.albumsCountColor ?? defaultColor
+        // Photo count label
+        self.detailTextLabel?.textColor = FacebookImagePicker.pickerConfig.uiConfig.albumsCountColor ?? UIColor.lightGray
     }
     
     required init?(coder aDecoder: NSCoder) {

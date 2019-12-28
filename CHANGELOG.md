@@ -3,6 +3,7 @@ Changelog
 
 ### 3.2.0
 
+- Dark mode support for default configuration 
 - Code refactoring 
 - Bump to FBSDK 5.13.0
 - Use Swift Result 

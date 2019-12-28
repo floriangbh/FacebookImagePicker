@@ -13,7 +13,7 @@ final class LoadingViewController: UIViewController {
     // MARK: - Var
 
     private lazy var activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        let activityIndicator = UIActivityIndicatorView(style: Styles().loaderStyle)
         activityIndicator.startAnimating()
         return activityIndicator
     }()
