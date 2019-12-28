@@ -97,7 +97,6 @@ final class AlbumTableViewCell: UITableViewCell, Reusable {
                         self.photoImageView?.imageUrl = url
                     }
                 case .failure(let error):
-                    // TODO: Error handling
                     print(error.localizedDescription)
                 }
             })

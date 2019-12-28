@@ -90,7 +90,6 @@ final class FacebookAlbumController: UIViewController {
             case .success(let albums):
                 self.render(albums)
             case .failure(let error):
-                // TODO: ERROR HANDLING
                 print(error.localizedDescription)
             }
         })

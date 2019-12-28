@@ -125,7 +125,6 @@ final class AlbumDetailController: UIViewController {
                         self.render(completeAlbum.photos)
                     }
                 case .failure(let error):
-                    // TODO: Error handling
                     print(error.localizedDescription)
                 }
             }
