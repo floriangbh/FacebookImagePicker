@@ -1,9 +1,10 @@
 Changelog
 ==========
 
-### 3.2.0 (in development)
+### 3.2.0
 
-- Bump to FBSDK 5.12.0
+- Code refactoring 
+- Bump to FBSDK 5.13.0
 - Use Swift Result 
 
 ### 3.1.6
