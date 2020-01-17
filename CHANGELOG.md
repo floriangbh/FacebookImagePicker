@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+### 3.2.1
+
+- Bump to FBSDK 5.14.0
+
 ### 3.2.0
 
 - Dark mode support for default configuration 
