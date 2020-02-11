@@ -148,7 +148,7 @@ FacebookImagePicker is currently written in english. If you need translation for
 
 * Xcode 11
 * iOS 9.0+ target deployment
-* FBSDKCoreKit, FBSDKLoginKit (>= 5.0)
+* FBSDKCoreKit, FBSDKLoginKit (>= 6.0 for the v4.0)
 * Facebook Application, see [usage](#usage) for explaination 
 * Swift 3, 4, 4.2 or 5.1 project
 
