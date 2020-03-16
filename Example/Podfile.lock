@@ -1,17 +1,17 @@
 PODS:
-  - FBSDKCoreKit (6.0.0):
-    - FBSDKCoreKit/Basics (= 6.0.0)
-    - FBSDKCoreKit/Core (= 6.0.0)
-  - FBSDKCoreKit/Basics (6.0.0)
-  - FBSDKCoreKit/Core (6.0.0):
+  - FBSDKCoreKit (6.2.0):
+    - FBSDKCoreKit/Basics (= 6.2.0)
+    - FBSDKCoreKit/Core (= 6.2.0)
+  - FBSDKCoreKit/Basics (6.2.0)
+  - FBSDKCoreKit/Core (6.2.0):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (6.0.0):
-    - FBSDKLoginKit/Login (= 6.0.0)
-  - FBSDKLoginKit/Login (6.0.0):
-    - FBSDKCoreKit (~> 6.0.0)
-  - GBHFacebookImagePicker (3.3.0):
-    - FBSDKCoreKit (~> 6.0.0)
-    - FBSDKLoginKit (~> 6.0.0)
+  - FBSDKLoginKit (6.2.0):
+    - FBSDKLoginKit/Login (= 6.2.0)
+  - FBSDKLoginKit/Login (6.2.0):
+    - FBSDKCoreKit (~> 6.2.0)
+  - GBHFacebookImagePicker (4.0.0):
+    - FBSDKCoreKit (~> 6.2.0)
+    - FBSDKLoginKit (~> 6.2.0)
 
 DEPENDENCIES:
   - GBHFacebookImagePicker (from `../`)
@@ -26,10 +26,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FBSDKCoreKit: fe738b172590e622c86735b45e20d196848b54df
-  FBSDKLoginKit: fa57df1b967fe0e147b25bede6ea4e9cdf4d64be
-  GBHFacebookImagePicker: 6428dfdd6d732b234166bd028cda55f07c5d88a7
+  FBSDKCoreKit: a7bb9f5ac56c1e11d5f8ae0b90a3610f8744b43a
+  FBSDKLoginKit: 5877adb09cc249870c352d92ecc3246cb925c771
+  GBHFacebookImagePicker: 2177c38114b92fa470f82a8516b74c44e094832d
 
 PODFILE CHECKSUM: c7986fba07718931af896e9c40736ace0ccbfe4e
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
