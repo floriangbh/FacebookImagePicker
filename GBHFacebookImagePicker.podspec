@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
             'Images/*.{png}'
         ]
     }
-    s.dependency 'FBSDKCoreKit', '~> 6.5.2'
-    s.dependency 'FBSDKLoginKit', '~> 6.5.2'
+    s.dependency 'FBSDKCoreKit', '~> 7.0.0'
+    s.dependency 'FBSDKLoginKit', '~> 7.0.0'
     s.swift_versions = ['5.0']
 end
