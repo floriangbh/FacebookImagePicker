@@ -9,7 +9,7 @@ import UIKit
 
 final class AlbumDetailListController: UIViewController {
     
-    /// MARK: Var
+    // MARK: Var
     
     private var cellSize: CGFloat?
     

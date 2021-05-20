@@ -9,7 +9,7 @@ import UIKit
 
 final class AlbumDetailController: UIViewController {
     
-    /// MARK: Var
+    // MARK: Var
     
     private var shouldDisplayToolbar: Bool {
         return (self.album?.photos.count ?? 0 > 0) && FacebookImagePicker.pickerConfig.shouldDisplayToolbar

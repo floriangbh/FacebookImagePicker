@@ -161,7 +161,7 @@ final class FacebookController {
                 // Try to parse request's result
                 if let fbResult = result as? [String: AnyObject] {
                     // Parse Album
-                    //print(fbResult)
+                    // print(fbResult)
                     strongSelf.parseFbPicture(fbResult: fbResult,
                                               album: album)
                     
