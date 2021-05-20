@@ -5,42 +5,14 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.009731">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000166">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: pod_lib_lint" time="44.481594">
+      <testcase classname="fastlane.lanes" name="1: pod_lib_lint" time="0.049178">
         
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="2: version_bump_podspec" time="0.00216">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="3: git_add" time="0.02051">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="4: git_commit" time="0.037866">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="5: add_git_tag" time="0.020879">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="6: push_to_git_remote" time="4.076481">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="7: pod_push" time="36.597663">
+          <failure message="/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/runner.rb:229:in `chdir'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/runner.rb:229:in `execute_action'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:23:in `release'&#10;Fastfile:18:in `block (2 levels) in parsing_binding'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/lane_manager.rb:47:in `cruise_lane'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/commands_generator.rb:109:in `block (2 levels) in run'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/commander-4.6.0/lib/commander/command.rb:187:in `call'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/commander-4.6.0/lib/commander/command.rb:157:in `run'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/commander-4.6.0/lib/commander/runner.rb:444:in `run_active_command'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:76:in `run!'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/commander-4.6.0/lib/commander/delegates.rb:18:in `run!'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/commands_generator.rb:353:in `run'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/commands_generator.rb:42:in `start'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/fastlane/lib/fastlane/cli_tools_distributor.rb:122:in `take_off'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/gems/fastlane-2.183.1/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/bin/fastlane:23:in `load'&#10;/opt/homebrew/Cellar/fastlane/2.183.1/libexec/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Exit status of command 'pod lib lint --allow-warnings' was 1 instead of 0.&#10;/Library/Ruby/Site/2.6.0/rubygems/specification.rb:1402:in `rescue in block in activate_dependencies': Could not find 'minitest' (~&gt; 5.1) among 138 total gem(s) (Gem::MissingSpecError)&#10;Checked in 'GEM_PATH=/opt/homebrew/Cellar/fastlane/2.183.1/libexec:/opt/homebrew/Cellar/cocoapods/1.10.1/libexec' at: /opt/homebrew/Cellar/cocoapods/1.10.1/libexec/specifications/activesupport-5.2.4.4.gemspec, execute `gem env` for more information&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1399:in `block in activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `each'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1370:in `activate'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1406:in `block in activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `each'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1370:in `activate'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1406:in `block in activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `each'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1370:in `activate'&#10;	from /Library/Ruby/Site/2.6.0/rubygems.rb:302:in `block in activate_bin_path'&#10;	from /Library/Ruby/Site/2.6.0/rubygems.rb:301:in `synchronize'&#10;	from /Library/Ruby/Site/2.6.0/rubygems.rb:301:in `activate_bin_path'&#10;	from /opt/homebrew/Cellar/cocoapods/1.10.1/libexec/bin/pod:23:in `&lt;main&gt;'&#10;/Library/Ruby/Site/2.6.0/rubygems/dependency.rb:307:in `to_specs': Could not find 'minitest' (~&gt; 5.1) among 138 total gem(s) (Gem::MissingSpecError)&#10;Checked in 'GEM_PATH=/opt/homebrew/Cellar/fastlane/2.183.1/libexec:/opt/homebrew/Cellar/cocoapods/1.10.1/libexec' , execute `gem env` for more information&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1400:in `block in activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `each'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1370:in `activate'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1406:in `block in activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `each'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1370:in `activate'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1406:in `block in activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `each'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1388:in `activate_dependencies'&#10;	from /Library/Ruby/Site/2.6.0/rubygems/specification.rb:1370:in `activate'&#10;	from /Library/Ruby/Site/2.6.0/rubygems.rb:302:in `block in activate_bin_path'&#10;	from /Library/Ruby/Site/2.6.0/rubygems.rb:301:in `synchronize'&#10;	from /Library/Ruby/Site/2.6.0/rubygems.rb:301:in `activate_bin_path'&#10;	from /opt/homebrew/Cellar/cocoapods/1.10.1/libexec/bin/pod:23:in `&lt;main&gt;'&#10;" />
         
       </testcase>
     

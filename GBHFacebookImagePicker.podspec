@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'GBHFacebookImagePicker'
-    s.version          = '5.0.1'
+    s.version          = '6.0.0'
     s.summary          = 'GBHFacebookImagePicker is Facebook album photo picker written in Swift. Enjoy !'
     s.description      = 'GBHFacebookImagePicker is Facebook album photo picker written in Swift which permit to pick picture in your Facebook album'
     s.homepage         = 'https://github.com/floriangbh/FacebookImagePicker'
@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
     }
     s.dependency 'FBSDKCoreKit', '~> 9.3.0'
     s.dependency 'FBSDKLoginKit', '~> 9.3.0'
-    s.swift_versions = ['5.0']
+    s.swift_versions = ['5.3', '5.4']
 end

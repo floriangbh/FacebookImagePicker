@@ -9,7 +9,7 @@ PODS:
     - FBSDKLoginKit/Login (= 9.3.0)
   - FBSDKLoginKit/Login (9.3.0):
     - FBSDKCoreKit (~> 9.3.0)
-  - GBHFacebookImagePicker (5.0.1):
+  - GBHFacebookImagePicker (6.0.0):
     - FBSDKCoreKit (~> 9.3.0)
     - FBSDKLoginKit (~> 9.3.0)
 
@@ -28,7 +28,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FBSDKCoreKit: 0d1ae58388a458b8222f72025804cdc84eb5d0c3
   FBSDKLoginKit: aea68df6121c5e165ccae2fabfdc83c4644ee40f
-  GBHFacebookImagePicker: 42c44576bb8fd17ba7ab80999e6f7d3cae347551
+  GBHFacebookImagePicker: 376d11c7b68e84573110b37a04af82faa2fc4999
 
 PODFILE CHECKSUM: c7986fba07718931af896e9c40736ace0ccbfe4e
 
